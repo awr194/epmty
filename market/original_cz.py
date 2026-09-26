@@ -28,10 +28,14 @@ RESULTS_PATH = Path(__file__).resolve().parents[1] / "data" / "original_cz.json"
 STATUSES = ("yes", "likely", "unknown")
 
 # Signal codes -> strength. Texts for the UI live in i18n/ui.py under "cz_sig_<code>".
-STRONG = ("redirect_cz", "hreflang_cs", "link_cz_domain", "html_lang_cs", "lang_picker_cs")
+STRONG = ("redirect_cz", "hreflang_cs", "link_cz_domain", "html_lang_cs", "lang_picker_cs", "og_locale_cs",
+          "cs_path")
 WEAK = ("price_czk",)
 
-_HREFLANG = re.compile(r"""<link[^>]+hreflang\s*=\s*["']?(cs(?:-cz)?)["'\s>]""", re.I)
+_HREFLANG = re.compile(r"""<link[^>]+hreflang\s*=\s*["']?(cs(?:[-_]cz)?)["'\s>]""", re.I)
+# HTTP header form: Link: <https://x.com/cs/>; rel="alternate"; hreflang="cs"
+_HREFLANG_HEADER = re.compile(r"""hreflang\s*=\s*["']?(cs(?:[-_]cz)?)\b""", re.I)
+_OG_LOCALE = re.compile(r"""<meta[^>]+og:locale(?::alternate)?["'][^>]*content\s*=\s*["']?(cs[-_]CZ)""", re.I)
 _HTML_LANG = re.compile(r"""<html[^>]*\blang\s*=\s*["']?(cs(?:-cz)?)\b""", re.I)
 _HREF = re.compile(r"""href\s*=\s*["']?(https?://[^"'\s>]+)""", re.I)
 # Bounded repetition, anchored on a non-digit boundary: an unbounded [\d\s.,]* backtracks
@@ -55,15 +59,24 @@ def brand_label(url: str) -> str:
     return parts[-2] if len(parts) >= 2 else parts[0]
 
 
-def detect_signals(url: str, html: str, final_url: str | None = None) -> list[dict]:
+def czech_page(html: str) -> str | None:
+    """The page itself is in Czech (<html lang="cs"> or og:locale cs_CZ): the matched marker, else None."""
+    m = _HTML_LANG.search(html) or _OG_LOCALE.search(html)
+    return m.group(1) if m else None
+
+
+def detect_signals(url: str, html: str, final_url: str | None = None, link_header: str = "") -> list[dict]:
     """Evidence items {"signal": code, "value": what was found} from one fetched page."""
     found: list[dict] = []
     final = final_url or url
     if _host(final).endswith(".cz") and not _host(url).endswith(".cz"):
         found.append({"signal": "redirect_cz", "value": final})
-    m = _HREFLANG.search(html)
+    m = _HREFLANG.search(html) or _HREFLANG_HEADER.search(link_header)
     if m:
         found.append({"signal": "hreflang_cs", "value": f'hreflang="{m.group(1)}"'})
+    m = _OG_LOCALE.search(html)
+    if m:
+        found.append({"signal": "og_locale_cs", "value": f"og:locale {m.group(1)}"})
     brand = brand_label(url)
     for href in _HREF.findall(html):
         h = _host(href)

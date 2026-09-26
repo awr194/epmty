@@ -62,9 +62,12 @@ Streamlit-приложение, которое собирает проверен
   слабый: цены в Kč/CZK). Статус `yes` / `likely` / `unknown`, «нет» только вручную через оверлей.
   `scripts/check_original_cz.py` → `data/original_cz.json` + `reports/original_cz_unknown.md`.
   Штраф −6 за `yes`, рекомендация для `likely`, значок в карточке, слайдер, учёт в промте LLM.
-  **Скрипт ещё НЕ запускался:** сеть облачной среды блокирует внешние сайты (403 прокси).
-  Запустить локально: `.venv\Scripts\python scripts\check_original_cz.py` (~10 мин на 496 сайтов),
-  закоммитить `data/original_cz.json`.
+  Первый прогон у пользователя (2026-09-26): 30 с признаками, 470 без (49 сайтов не прочитаны:
+  403 ×30, robots ×8, 429 ×3, SSL ×2, 401, 404, без URL ×4; 421 — прочитаны, признаков нет).
+  Исправлено: зависание на регэкспе цены (`e2d8dc7`); добавлены `og:locale cs_CZ`, hreflang
+  из HTTP-заголовка Link, пробы путей /cs/ /cs-cz/ /cz/ (засчитываются только если страница
+  осталась на пути и сама помечена чешской). Перепроверка: `--recheck-unknown`.
+  `data/original_cz.json` пользователь ещё не прислал / не закоммитил.
 - **10.2 сделан** (`51d3cf7`): `market/competitors.py` + `scripts/import_llm_competitors.py` →
   `data/llm_competitors.json`; `scripts/verify_competitors.py` проверяет URL (ещё НЕ запускался — сеть).
   Incumbent: `verified`, `source`, `kind`, `url_status`, `checked_at`, `mentions`. В карточке список
@@ -111,7 +114,7 @@ scripts/
   i18n_extract.py       Найти непереведённые строки данных
 reports/                audit.md, models_without_incumbents.md
 patches/data_fixes.json Патч исправлений данных (33 изменения, НЕ применён)
-tests/                  77 тестов (pytest)
+tests/                  82 теста (pytest)
 ```
 
 ### Поток данных
@@ -223,7 +226,7 @@ Google Trends — официальный API с ограниченным дос�
 
 ```bash
 .venv\Scripts\python -m streamlit run app.py          # приложение (localhost:8501)
-.venv\Scripts\python -m pytest -q tests               # 77 тестов
+.venv\Scripts\python -m pytest -q tests               # 82 теста
 .venv\Scripts\python scripts\i18n_extract.py --check  # все ли данные переведены
 .venv\Scripts\python scripts\audit_data.py            # аудит данных
 .venv\Scripts\python scripts\refresh_nace_sam.py      # обновить SAM из ČSÚ (~540 МБ)

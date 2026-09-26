@@ -11,6 +11,7 @@ Already-checked models are skipped unless --refresh is given, so an interrupted 
   python scripts/check_original_cz.py                 # all models not checked yet
   python scripts/check_original_cz.py --limit 20      # first 20 unchecked
   python scripts/check_original_cz.py --only Spond --only Jobber --refresh
+  python scripts/check_original_cz.py --recheck-unknown   # after a detector update (~30-40 min)
 """
 
 from __future__ import annotations
@@ -30,12 +31,13 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from data_loader import load_curated  # noqa: E402
-from market.original_cz import RESULTS_PATH, classify, detect_signals  # noqa: E402
+from market.original_cz import RESULTS_PATH, classify, czech_page, detect_signals  # noqa: E402
 
 REPORT_PATH = ROOT / "reports" / "original_cz_unknown.md"
 USER_AGENT = "CzechBizRadar/1.0 (research; checks whether a product is offered in Czechia)"
 TIMEOUT = 12
 PAUSE_S = 1.0
+CS_PATHS = ("/cs/", "/cs-cz/", "/cz/")
 MAX_HTML = 1_000_000  # characters; enough for the <head> and the footer language picker
 
 
@@ -69,20 +71,50 @@ def check(url: str, robots_cache: dict) -> dict:
     out |= {"final_url": r.url, "http_status": r.status_code}
     if r.status_code >= 400:
         return out | {"status": "unknown", "evidence": [], "error": f"http_{r.status_code}"}
-    evidence = detect_signals(url, r.text[:MAX_HTML], r.url)
+    evidence = detect_signals(url, r.text[:MAX_HTML], r.url, r.headers.get("Link", ""))
+    if classify(evidence) != "yes":
+        evidence += probe_cs_paths(r.url, robots_cache)
     return out | {"status": classify(evidence), "evidence": evidence}
+
+
+def probe_cs_paths(base_url: str, robots_cache: dict) -> list[dict]:
+    """Try /cs/, /cs-cz/, /cz/ on the same site. Counts only when the page stays on that path and is
+    itself marked Czech (lang="cs" / og:locale cs_CZ): many sites answer 200 to any path."""
+    parts = urlparse(base_url)
+    root = f"{parts.scheme}://{parts.netloc}"
+    for path in CS_PATHS:
+        probe = root + path
+        if not _robots_allows(probe, robots_cache):
+            continue
+        time.sleep(PAUSE_S)
+        try:
+            r = requests.get(probe, headers={"User-Agent": USER_AGENT, "Accept-Language": "cs"}, timeout=TIMEOUT, allow_redirects=True)
+        except requests.RequestException:
+            continue
+        stays = urlparse(r.url).path.lower().rstrip("/").startswith(path.rstrip("/"))
+        marker = czech_page(r.text[:MAX_HTML]) if r.status_code == 200 and stays else None
+        if marker:
+            return [{"signal": "cs_path", "value": f"{r.url} ({marker})"}]
+    return []
 
 
 def write_report(results: dict[str, dict], names: list[str]) -> None:
     unknown = [n for n in names if results.get(n, {}).get("status", "unknown") == "unknown"]
+    blocked = sorted(n for n in unknown if results.get(n, {}).get("error"))
+    silent = sorted(n for n in unknown if not results.get(n, {}).get("error"))
     lines = ["# Originals without evidence of Czech availability", "",
              "No Czech signal on the original's own site (or the site could not be read).",
              "This is NOT proof of absence - check by hand and record the result in",
              "`data/cz_enrichment.json` as `original_available_in_cz` (`yes` / `no`) with a source.", "",
-             f"Total: **{len(unknown)}** of {len(names)}", "", "| Model | URL | Reason |", "|---|---|---|"]
-    for n in sorted(unknown):
-        r = results.get(n, {})
-        lines.append(f"| {n} | {r.get('url', '')} | {r.get('error', 'not checked' if not r else 'no signal')} |")
+             f"Total: **{len(unknown)}** of {len(names)} "
+             f"(site not readable: {len(blocked)}, read but no signal: {len(silent)})", "",
+             "## Site not readable (blocked, rate-limited, no URL) - check these by hand first", "",
+             "| Model | URL | Reason |", "|---|---|---|"]
+    lines += [f"| {n} | {results.get(n, {}).get('url', '')} | {results.get(n, {}).get('error', 'not checked')} |"
+              for n in blocked]
+    lines += ["", "## Read, no Czech signal (home page, Link header, /cs/ /cs-cz/ /cz/ checked)", "",
+              "| Model | URL |", "|---|---|"]
+    lines += [f"| {n} | {results.get(n, {}).get('url', '')} |" for n in silent]
     REPORT_PATH.parent.mkdir(exist_ok=True)
     REPORT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -92,11 +124,14 @@ def main() -> None:
     ap.add_argument("--limit", type=int, default=0, help="check at most N models")
     ap.add_argument("--only", action="append", default=[], help="model name (repeatable)")
     ap.add_argument("--refresh", action="store_true", help="re-check models already in the results file")
+    ap.add_argument("--recheck-unknown", action="store_true",
+                    help="re-check only models whose status is 'unknown' (e.g. after the detector improved)")
     args = ap.parse_args()
 
     models = load_curated()
     existing = json.loads(RESULTS_PATH.read_text(encoding="utf-8"))["models"] if RESULTS_PATH.exists() else {}
-    todo = [m for m in models if (not args.only or m.name in args.only) and (args.refresh or m.name not in existing)]
+    todo = [m for m in models if (not args.only or m.name in args.only) and (args.refresh or m.name not in existing
+             or (args.recheck_unknown and existing[m.name].get("status") == "unknown"))]
     if args.limit:
         todo = todo[:args.limit]
 

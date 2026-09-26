@@ -75,6 +75,15 @@ def test_original_in_cz_penalty_and_likely_recommendation(make_model):
     assert r_likely.score == 60 and any("290 Kč" in rec for rec in r_likely.recommendations)
 
 
+def test_og_locale_and_link_header():
+    ev = detect_signals("https://x.com", '<meta property="og:locale:alternate" content="cs_CZ">')
+    assert _codes(ev) == {"og_locale_cs"} and classify(ev) == "yes"
+    ev = detect_signals("https://x.com", "", link_header='<https://x.com/cs/>; rel="alternate"; hreflang="cs"')
+    assert _codes(ev) == {"hreflang_cs"}
+    assert _codes(detect_signals("https://x.com", '<link rel="alternate" hreflang="cs_CZ" href="/cs">')) == {
+        "hreflang_cs"}
+
+
 def test_check_script_offline(monkeypatch):
     import importlib.util
     from pathlib import Path
@@ -84,23 +93,36 @@ def test_check_script_offline(monkeypatch):
     spec.loader.exec_module(mod)
 
     class Resp:
-        def __init__(self, url, text, status=200):
-            self.url, self.text, self.status_code = url, text, status
+        def __init__(self, url, text, status=200, headers=None):
+            self.url, self.text, self.status_code, self.headers = url, text, status, headers or {}
 
     def fake_get(url, **kw):
         if url.endswith("/robots.txt"):
             return Resp(url, "User-agent: *\nDisallow: /private")
         if "down" in url:
             return Resp(url, "", 503)
+        if "soft404.com" in url:  # answers 200 on every path, English page
+            return Resp(url, "<html lang='en'>")
+        if "withcs.com/cs" in url:
+            return Resp(url, "<html lang='cs'>")
+        if "redirects.com/cs" in url:  # /cs/ bounces to the English home page
+            return Resp("https://redirects.com/", "<html lang='cs'>")
+        if "withcs.com" in url or "redirects.com" in url:
+            return Resp(url, "<html lang='en'>")
         return Resp("https://acme.cz/", "<html lang='cs'>")
 
     monkeypatch.setattr(mod.requests, "get", fake_get)
+    monkeypatch.setattr(mod, "PAUSE_S", 0)
     ok = mod.check("https://acme.com", {})
     assert ok["status"] == "yes" and ok["http_status"] == 200 and {"redirect_cz", "html_lang_cs"} <= _codes(
         ok["evidence"])
     assert mod.check("https://acme.com/private", {})["error"] == "robots_disallow"
     assert mod.check("https://down.com", {})["error"] == "http_503"
     assert mod.check("", {})["status"] == "unknown"
+    probed = mod.check("https://withcs.com", {})
+    assert probed["status"] == "yes" and probed["evidence"][0]["signal"] == "cs_path"
+    assert mod.check("https://soft404.com", {})["status"] == "unknown"
+    assert mod.check("https://redirects.com", {})["status"] == "unknown"
 
 
 def test_price_regex_is_linear_on_hostile_pages():
@@ -112,6 +134,6 @@ def test_price_regex_is_linear_on_hostile_pages():
 
 
 @pytest.mark.parametrize("text, value", [
-    ("od 1 290 Kč měsíčně", "1 290 Kč"), ("1\u00a0290,50 CZK", "1 290,50 CZK"), ("CZK 499", "CZK 499")])
+    ("od 1 290 Kč měsíčně", "1 290 Kč"), ("1 290,50 CZK", "1 290,50 CZK"), ("CZK 499", "CZK 499")])
 def test_price_formats(text, value):
     assert detect_signals("https://x.com", text) == [{"signal": "price_czk", "value": value}]
