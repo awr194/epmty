@@ -1,6 +1,6 @@
 # Состояние проекта: Czech Business Model Radar
 
-*Обновлено: 2026-09-26. Последний коммит: `5bdc087` (шаг 10.4).*
+*Обновлено: 2026-09-26. Последний коммит: `805cb80` (шаг 10.1).*
 
 Streamlit-приложение, которое собирает проверенные в мире модели малого бизнеса и микро-SaaS
 и оценивает, насколько их можно адаптировать для Чехии (Прага, чешский МСП-сегмент).
@@ -57,6 +57,14 @@ Streamlit-приложение, которое собирает проверен
   новый тип `media_ads` (выручка «advertising»: 6AM City, Nextdoor, Mumsnet, 2GIS, Karrot), MRR не сопоставим.
   Влияние на 500 моделей мало (у 481 скор не изменился; Spond 68 → 65): верх рейтинга по-прежнему
   держится на «0 конкурентов», это решает 10.2.
+- **10.1 сделан** (`805cb80`): `market/original_cz.py` ищет признаки на сайте оригинала
+  (сильные: редирект на .cz, `hreflang="cs"`, ссылка на свой .cz-домен, `lang="cs"`, «Čeština»;
+  слабый: цены в Kč/CZK). Статус `yes` / `likely` / `unknown`, «нет» только вручную через оверлей.
+  `scripts/check_original_cz.py` → `data/original_cz.json` + `reports/original_cz_unknown.md`.
+  Штраф −6 за `yes`, рекомендация для `likely`, значок в карточке, слайдер, учёт в промте LLM.
+  **Скрипт ещё НЕ запускался:** сеть облачной среды блокирует внешние сайты (403 прокси).
+  Запустить локально: `.venv\Scripts\python scripts\check_original_cz.py` (~10 мин на 496 сайтов),
+  закоммитить `data/original_cz.json`.
 
 ---
 
@@ -74,6 +82,7 @@ scoring/config.py       CzechScoreWeights — все веса штрафов
 scoring/metrics.py      derived_metrics(): customers_needed, sam_share_12m, статус MRR
 scoring/czech.py        czech_adjusted_score() + to_context() для LLM
 market/nace_sam.py      Загрузка ČSÚ RES, подсчёт активных субъектов по CZ-NACE, sam_for_nace()
+market/original_cz.py   Признаки «оригинал уже в Чехии» на сайте оригинала (10.1)
 report_store.py         Сохранение отчётов LLM (data/llm_reports/, вне git)
 exporter.py             Экспорт Markdown / PDF (RU/EN)
 i18n/                   t() для интерфейса, tr() для данных, подписи категорий/стран/типов
@@ -92,7 +101,7 @@ scripts/
   i18n_extract.py       Найти непереведённые строки данных
 reports/                audit.md, models_without_incumbents.md
 patches/data_fixes.json Патч исправлений данных (33 изменения, НЕ применён)
-tests/                  48 тестов (pytest)
+tests/                  60 тестов (pytest)
 ```
 
 ### Поток данных
@@ -204,7 +213,7 @@ Google Trends — официальный API с ограниченным дос�
 
 ```bash
 .venv\Scripts\python -m streamlit run app.py          # приложение (localhost:8501)
-.venv\Scripts\python -m pytest -q tests               # 48 тестов
+.venv\Scripts\python -m pytest -q tests               # 60 тестов
 .venv\Scripts\python scripts\i18n_extract.py --check  # все ли данные переведены
 .venv\Scripts\python scripts\audit_data.py            # аудит данных
 .venv\Scripts\python scripts\refresh_nace_sam.py      # обновить SAM из ČSÚ (~540 МБ)
