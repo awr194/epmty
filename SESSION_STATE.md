@@ -1,6 +1,6 @@
 # Состояние проекта: Czech Business Model Radar
 
-*Обновлено: 2026-09-26. Последний коммит: `805cb80` (шаг 10.1).*
+*Обновлено: 2026-09-26. Последний коммит: `51d3cf7` (шаг 10.2).*
 
 Streamlit-приложение, которое собирает проверенные в мире модели малого бизнеса и микро-SaaS
 и оценивает, насколько их можно адаптировать для Чехии (Прага, чешский МСП-сегмент).
@@ -65,6 +65,15 @@ Streamlit-приложение, которое собирает проверен
   **Скрипт ещё НЕ запускался:** сеть облачной среды блокирует внешние сайты (403 прокси).
   Запустить локально: `.venv\Scripts\python scripts\check_original_cz.py` (~10 мин на 496 сайтов),
   закоммитить `data/original_cz.json`.
+- **10.2 сделан** (`51d3cf7`): `market/competitors.py` + `scripts/import_llm_competitors.py` →
+  `data/llm_competitors.json`; `scripts/verify_competitors.py` проверяет URL (ещё НЕ запускался — сеть).
+  Incumbent: `verified`, `source`, `kind`, `url_status`, `checked_at`, `mentions`. В карточке список
+  конкурентов с пометкой «не проверено», битые ссылки скрываются.
+  Отчёты Gemini (Slice ×2, 6AM City, Nicereply) пользователь загрузил в сессию; они лежат в
+  `data/llm_reports/` (вне git). Импортировано 9 конкурентов.
+  **Наблюдение для 10.3:** с конкурентами правила стали жёстче Gemini:
+  Slice 28 (Gemini 45/53), 6AM City 47 (50), Nicereply 30 (38) — штраф 4 балла за единицу силы,
+  потолок 25; Gemini вычитает за конкурентов 3–10.
 
 ---
 
@@ -83,6 +92,7 @@ scoring/metrics.py      derived_metrics(): customers_needed, sam_share_12m, ст
 scoring/czech.py        czech_adjusted_score() + to_context() для LLM
 market/nace_sam.py      Загрузка ČSÚ RES, подсчёт активных субъектов по CZ-NACE, sam_for_nace()
 market/original_cz.py   Признаки «оригинал уже в Чехии» на сайте оригинала (10.1)
+market/competitors.py   Конкуренты из отчётов LLM: нормализация, дедупликация (10.2)
 report_store.py         Сохранение отчётов LLM (data/llm_reports/, вне git)
 exporter.py             Экспорт Markdown / PDF (RU/EN)
 i18n/                   t() для интерфейса, tr() для данных, подписи категорий/стран/типов
@@ -101,7 +111,7 @@ scripts/
   i18n_extract.py       Найти непереведённые строки данных
 reports/                audit.md, models_without_incumbents.md
 patches/data_fixes.json Патч исправлений данных (33 изменения, НЕ применён)
-tests/                  60 тестов (pytest)
+tests/                  77 тестов (pytest)
 ```
 
 ### Поток данных
@@ -213,7 +223,7 @@ Google Trends — официальный API с ограниченным дос�
 
 ```bash
 .venv\Scripts\python -m streamlit run app.py          # приложение (localhost:8501)
-.venv\Scripts\python -m pytest -q tests               # 60 тестов
+.venv\Scripts\python -m pytest -q tests               # 77 тестов
 .venv\Scripts\python scripts\i18n_extract.py --check  # все ли данные переведены
 .venv\Scripts\python scripts\audit_data.py            # аудит данных
 .venv\Scripts\python scripts\refresh_nace_sam.py      # обновить SAM из ČSÚ (~540 МБ)
