@@ -5,6 +5,7 @@ Run:  streamlit run app.py
 
 from __future__ import annotations
 
+import calendar
 import os
 
 import altair as alt
@@ -18,7 +19,10 @@ from exporter import to_markdown, to_pdf
 from scoring.config import DEFAULT_WEIGHTS, CzechScoreWeights
 import report_store
 from scoring.czech import czech_adjusted_score, to_context
-from scoring.metrics import derived_metrics
+from cz_enrichment import MODEL_TYPES
+from scoring.metrics import MRR_STATUS_LABELS, derived_metrics
+
+NON_RECURRING_TYPES = ("d2c_physical", "offline_retail")
 
 st.set_page_config(page_title="Czech Business Model Radar", page_icon="🇨🇿", layout="wide")
 
@@ -177,12 +181,21 @@ metrics = {}
 for m in models.values():
     q = quick_metrics(m, a)
     dm = metrics[m.id] = derived_metrics(m, a, q)
-    czech_scores[m.id] = czech_adjusted_score(q["score"], m, dm, weights)
-    rows.append({"id": m.id, "Name": m.name, "Category": m.category, "Source": m.source, "Country": m.country, "Niche": m.niche,
-                 "Score": q["score"], "Czech score": czech_scores[m.id].score, "Price (CZK)": q["price_czk"], "Customers M12": q["customers_m12"],
-                 "CZK potential (M12 MRR)": q["mrr_czk_m12"], "Intl. MRR (USD)": m.mrr_usd,
-                 "Revenue model": m.revenue_model, "Problem": m.problem, "Tech stack": ", ".join(m.tech_stack),
-                 "URL": m.url})
+    cs = czech_scores[m.id] = czech_adjusted_score(q["score"], m, dm, weights)
+    launch = m.seasonality.launch_by_month
+    rows.append({
+        "id": m.id, "Name": m.name, "Category": m.category, "Model type": m.model_type or "saas",
+        "Source": m.source, "Country": m.country, "Niche": m.niche,
+        "Score": q["score"], "Czech score": cs.score, "Price (CZK)": q["price_czk"],
+        "CZK potential (M12 MRR)": q["mrr_czk_m12"], "MRR comparable": dm.comparable,
+        "MRR status": MRR_STATUS_LABELS[dm.mrr_status], "Customers needed": dm.customers_needed,
+        "SAM": m.sam_estimate, "SAM share (12m)": dm.sam_share_12m, "SAM source": m.sam_source,
+        "Local incumbents": len(m.local_incumbents), "Legal complexity": m.legal_complexity or m.regulatory,
+        "Integrations": ", ".join(m.required_integrations),
+        "Launch by": calendar.month_abbr[launch] if launch else "", "Needs rethink for CZ": m.needs_rethink_for_cz,
+        "Intl. MRR (USD)": m.mrr_usd, "Revenue model": m.revenue_model, "Problem": m.problem,
+        "Tech stack": ", ".join(m.tech_stack), "URL": m.url,
+    })
 df = pd.DataFrame(rows)
 
 st.title("🇨🇿 Czech Business Model Radar")
@@ -193,8 +206,21 @@ with st.container(border=True):
     f1, f2, f3, f4 = st.columns([2, 2, 2, 1.4])
     query = f1.text_input("🔎 Search", placeholder="e.g. Shoptet, restaurant, AI")
     cats = f2.multiselect("Category", sorted(df["Category"].unique()))
-    min_score = f3.slider("Min. feasibility score", 0, 100, 0, 5)
-    sort_by = f4.selectbox("Sort by", ["Score", "CZK potential (M12 MRR)", "Intl. MRR (USD)", "Name"])
+    score_mode = f3.radio("Score", ["🇨🇿 Czech score", "Original score"], horizontal=True,
+                          help="Czech score = original feasibility minus Czech frictions (incumbents, SAM share, "
+                               "legal complexity, integrations, Czech support). Weights: sidebar.")
+    score_col = "Czech score" if score_mode.startswith("🇨🇿") else "Score"
+    sort_by = f4.selectbox("Sort by", [score_col, "CZK potential (M12 MRR)", "SAM", "Intl. MRR (USD)", "Name"])
+    h1, h2, h3, h4 = st.columns([2, 3, 1.4, 1.4])
+    min_score = h1.slider(f"Min. {score_col.lower()}", 0, 100, 0, 5)
+    all_types = [t for t in MODEL_TYPES if t in set(df["Model type"])]
+    types = h2.multiselect("Model type", all_types, default=[t for t in all_types if t not in NON_RECURRING_TYPES],
+                           help="Physical D2C and offline retail are hidden by default: their revenue is sales, "
+                                "not SaaS-comparable MRR.")
+    hide_rethink = h3.checkbox("Hide 'rethink'", True,
+                               help="Models tied to fiscal / e-document / platform systems that don't exist in "
+                                    "Czechia (flag set by the reviewed data patch).")
+    only_saas = h4.checkbox("Only SaaS / add-ons", False)
     g1, g2, g3 = st.columns([3, 2, 2])
     max_pot = int(df["CZK potential (M12 MRR)"].max()) + 1
     pot = g1.slider("Estimated CZK potential (month-12 MRR)", 0, max_pot, (0, max_pot), step=5_000,
@@ -202,7 +228,10 @@ with st.container(border=True):
     countries = g2.multiselect("Country of origin", sorted(df["Country"].unique()))
     srcs = g3.multiselect("Source", sorted(df["Source"].unique()))
 
-view_df = df[(df["Score"] >= min_score) & df["CZK potential (M12 MRR)"].between(*pot)]
+view_df = df[(df[score_col] >= min_score) & df["CZK potential (M12 MRR)"].between(*pot)]
+view_df = view_df[view_df["Model type"].isin(["saas"] if only_saas else types)]
+if hide_rethink:
+    view_df = view_df[~view_df["Needs rethink for CZ"]]
 if cats:
     view_df = view_df[view_df["Category"].isin(cats)]
 if countries:
@@ -217,9 +246,9 @@ view_df = view_df.sort_values(sort_by, ascending=sort_by == "Name", na_position=
 k1, k5, k2, k3, k4 = st.columns([1, 0.8, 1, 1.2, 1.4])
 k1.metric("Models shown", f"{len(view_df)} / {len(df)}")
 k5.metric("Countries", view_df["Country"].nunique())
-k2.metric("Avg. feasibility", f"{view_df['Score'].mean():.0f}" if len(view_df) else "-")
+k2.metric(f"Avg. {score_col.lower()}", f"{view_df[score_col].mean():.0f}" if len(view_df) else "-")
 k3.metric("Median CZK potential", czk(view_df["CZK potential (M12 MRR)"].median()) if len(view_df) else "-")
-k4.metric("Top pick", view_df.sort_values("Score", ascending=False).iloc[0]["Name"][:28] if len(view_df) else "-")
+k4.metric("Top pick", view_df.sort_values(score_col, ascending=False).iloc[0]["Name"][:28] if len(view_df) else "-")
 
 view = st.radio("View", VIEWS, key="view", horizontal=True, label_visibility="collapsed")
 
@@ -232,17 +261,30 @@ def radar_view() -> None:
     if view_df.empty:
         st.info("No models match the filters.")
         return
+    color_by = st.radio("Colour", ["Category", "Local incumbents"], horizontal=True, key="map_color")
+    chart_df = view_df.assign(
+        **{"SAM (size)": view_df["SAM"].fillna(0),
+           "MRR": view_df["MRR comparable"].map({True: "comparable", False: "not comparable"})})
+    # Legends sit on the right: Streamlit fits the whole chart (legends included) into `height`.
+    color = (alt.Color("Category:N", legend=alt.Legend(orient="right")) if color_by == "Category" else
+             alt.Color("Local incumbents:Q", scale=alt.Scale(scheme="orangered"),
+                       legend=alt.Legend(title="Local incumbents")))
     chart = (
-        alt.Chart(view_df)
-        .mark_circle(size=140, opacity=0.8)
+        alt.Chart(chart_df)
+        .mark_point(filled=True, opacity=0.75)
         .encode(
-            x=alt.X("Score:Q", title="Czech feasibility score", scale=alt.Scale(domain=[0, 100])),
+            x=alt.X(f"{score_col}:Q", title=score_col, scale=alt.Scale(domain=[0, 100])),
             y=alt.Y("CZK potential (M12 MRR):Q", title="Month-12 MRR potential (CZK)", scale=alt.Scale(type="symlog")),
-            color=alt.Color("Category:N", legend=alt.Legend(orient="bottom", columns=3)),
-            tooltip=["Name", "Category", "Country", "Score", alt.Tooltip("CZK potential (M12 MRR):Q", format=",.0f"),
-                     alt.Tooltip("Price (CZK):Q", format=",.0f")],
+            size=alt.Size("SAM (size):Q", scale=alt.Scale(type="sqrt", range=[20, 600]),
+                          legend=alt.Legend(title="SAM", orient="right", values=[1_000, 10_000, 50_000])),
+            color=color,
+            shape=alt.Shape("MRR:N", scale=alt.Scale(domain=["comparable", "not comparable"],
+                                                       range=["circle", "diamond"])),
+            tooltip=["Name", "Category", "Model type", "Country", "Czech score", "Score", "Local incumbents",
+                     alt.Tooltip("SAM:Q", format=",.0f"), alt.Tooltip("SAM share (12m):Q", format=".1%"),
+                     alt.Tooltip("CZK potential (M12 MRR):Q", format=",.0f"), "MRR status"],
         )
-        .properties(height=340, title="Opportunity map - top-right is best")
+        .properties(height=460, title="Opportunity map - top-right is best; size = SAM; ◆ = MRR not comparable")
     )
     st.altair_chart(chart, width="stretch")
 
@@ -251,22 +293,45 @@ def radar_view() -> None:
     if ss.get("radar_page", 1) > n_pages:  # filters shrank the list
         ss.radar_page = n_pages
     p1, p2 = st.columns([1, 4])
-    page =p1.number_input("Page", 1, n_pages, 1, key="radar_page") if n_pages > 1 else 1
+    page = p1.number_input("Page", 1, n_pages, 1, key="radar_page") if n_pages > 1 else 1
     start = (page - 1) * page_size
     p2.caption(f"Showing {start + 1}-{min(start + page_size, len(view_df))} of {len(view_df)} models")
 
     cols = st.columns(3)
     for i, (_, r) in enumerate(view_df.iloc[start:start + page_size].iterrows()):
-        m = models[r["id"]]
-        score = int(r["Score"])
+        m, cs, dm = models[r["id"]], czech_scores[r["id"]], metrics[r["id"]]
+        score = int(r[score_col])
         with cols[i % 3].container(border=True):
             st.markdown(f"**[{m.name}]({m.url})**" if m.url else f"**{m.name}**")
-            st.markdown(f":blue-badge[{m.category}] :green-badge[{m.country}] :gray-badge[{m.source}]")
+            badges = f":blue-badge[{m.category}] :green-badge[{m.country}] :gray-badge[{m.model_type}]"
+            if m.needs_rethink_for_cz:
+                badges += " :red-badge[needs rethink for CZ]"
+            st.markdown(badges)
             st.caption(m.niche)
-            st.progress(score / 100, text=f"Feasibility **{score}**/100")
+            st.progress(score / 100, text=f"{score_col} **{score}**/100")
+            st.caption(f"🇨🇿 {cs.score} vs. original {cs.base} ({cs.delta:+d})")
             c1, c2 = st.columns(2)
-            c1.metric("Intl. MRR", f"${m.mrr_usd / 1000:,.0f}k" if m.mrr_usd else "n/a")
-            c2.metric("CZK / month (M12)", f"{r['CZK potential (M12 MRR)'] / 1000:,.0f}k")
+            if dm.customers_needed is not None:
+                c1.metric("Customers needed", f"{dm.customers_needed:,}",
+                          f"{dm.sam_share_12m:.1%} of SAM" if dm.sam_share_12m is not None else "no SAM",
+                          delta_color="off")
+            else:
+                c1.metric("Intl. MRR", f"${m.mrr_usd / 1000:,.0f}k" if m.mrr_usd else "n/a")
+            c2.metric("CZK / month (M12)", f"{r['CZK potential (M12 MRR)'] / 1000:,.0f}k",
+                      None if dm.comparable else "not comparable", delta_color="off")
+            with st.expander("Czech score breakdown"):
+                if cs.breakdown:
+                    for adj in cs.breakdown:
+                        st.markdown(f"- **{adj.factor}** {adj.points:+.0f} - {adj.detail}")
+                else:
+                    st.caption("No Czech deductions.")
+                st.markdown(f"**Legal complexity:** {m.legal_complexity or m.regulatory}/5 · "
+                            f"**Integrations:** {', '.join(m.required_integrations) or '-'}")
+                st.caption(f"SAM {m.sam_estimate:,} - {m.sam_source}" if m.sam_estimate else "No SAM estimate")
+                for rec in cs.recommendations:
+                    st.caption(f"💡 {rec}")
+                if m.inferred_fields:
+                    st.caption(f"Inferred by rules (unverified): {', '.join(m.inferred_fields)}")
             with st.expander("Details"):
                 st.write(f"**Problem:** {m.problem}")
                 st.write(f"**Revenue model:** {m.revenue_model}")
@@ -343,6 +408,10 @@ def deep_dive_view() -> None:
     t1, t2, t3, t4, t5, t6 = st.tabs(["🎯 Score", "👥 Audience", "💰 Unit economics", "🏁 Competition",
                                       "🗺️ 14-day roadmap", "⚠️ Risks & checklist"])
     with t1:
+        st.markdown(f"**🇨🇿 Czech-adjusted score: {r.czech_adjusted_score}/100** "
+                    f"(feasibility {r.feasibility_score})")
+        for x in r.czech_adjustments:
+            st.markdown(f"- {x.factor}: **{x.points:+d}** - {x.detail}")
         sdf = pd.DataFrame([f.model_dump() for f in r.score_breakdown])
         st.altair_chart(
             alt.Chart(sdf).mark_bar(cornerRadiusEnd=4).encode(
@@ -424,6 +493,9 @@ def table_view() -> None:
         view_df.drop(columns=["id"]), hide_index=True, width="stretch", height=560,
         column_config={
             "Score": st.column_config.ProgressColumn(min_value=0, max_value=100, format="%d"),
+            "Czech score": st.column_config.ProgressColumn(min_value=0, max_value=100, format="%d"),
+            "SAM share (12m)": st.column_config.NumberColumn(format="percent"),
+            "SAM": st.column_config.NumberColumn(format="%d"),
             "CZK potential (M12 MRR)": st.column_config.NumberColumn(format="%d CZK"),
             "Price (CZK)": st.column_config.NumberColumn(format="%d"),
             "Intl. MRR (USD)": st.column_config.NumberColumn(format="$%d"),
