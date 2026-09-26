@@ -91,6 +91,29 @@ Your app will be live at `https://<your-app>.streamlit.app`. It redeploys on eve
 - **Models 101-500** (`catalog/`) have real global facts (name, country, website, niche, revenue model, typical price, problem) and Czech-market ratings. Where Czech competitors are known they are named; otherwise the report shows a *category-level Czech landscape*, labelled "check relevance for this model". Run a Claude or Gemini Deep-Dive for a model-specific competitor analysis.
 - The target market is always **Czechia**; the country field shows where the model was proven.
 
+## Czech-adjusted score
+
+The original feasibility score says how good a model is in general. The **Czech score**
+(`scoring/czech.py`) subtracts Czech frictions and shows a per-factor breakdown on every card:
+local incumbents (by strength), the share of the Czech SAM needed within 12 months, legal complexity,
+complex integrations (Pohoda, Money S3, ABRA, Bank iD, ISDOC) and the cost of Czech-language support
+for a solo founder. Seasonality adds a "launch by" recommendation instead of a penalty. All weights are
+sliders under *🇨🇿 Market assumptions*; the radar can switch between the Czech and the original score.
+
+Czech-specific data lives in **`data/cz_enrichment.json`**, an overlay keyed by model name. Anything not
+set there is inferred by conservative rules (`cz_enrichment.py`) and listed in `inferred_fields`, so the
+UI shows which values are guesses.
+
+| Script | Purpose |
+|---|---|
+| `scripts/refresh_nace_sam.py` | Refresh SAM counts from the ČSÚ business register |
+| `scripts/seed_target_nace.py` | Map B2B models to CZ-NACE codes |
+| `scripts/seed_incumbents.py` | Seed draft local incumbents; lists models still missing them |
+| `scripts/audit_data.py` | Read-only data audit -> `reports/audit.md` + `patches/data_fixes.json` |
+| `scripts/apply_data_patch.py` | Apply the reviewed patch (dry run unless `--apply`) |
+
+Tests: `pip install -r requirements-dev.txt` then `pytest`.
+
 ## Market size (SAM) from the Czech business register
 
 `scripts/refresh_nace_sam.py` downloads the ČSÚ *Registr ekonomických subjektů* open data
