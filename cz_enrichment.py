@@ -21,6 +21,8 @@ from typing import Literal, Optional
 from pydantic import BaseModel, Field
 
 from market.nace_sam import cache_info, sam_for_nace
+from market.competitors import add_new as add_llm_competitors
+from market.competitors import load_results as load_llm_competitors
 from market.original_cz import load_results as load_original_cz
 
 ENRICHMENT_PATH = Path(__file__).parent / "data" / "cz_enrichment.json"
@@ -48,6 +50,18 @@ class Incumbent(BaseModel):
     strength: int = 2  # 1 = minor, 2 = established, 3 = dominant
     note: str = ""
     url: str = ""
+    # Provenance (step 10.2). Imported from LLM reports: verified=False, source "<engine> <date>".
+    verified: bool = False
+    source: str = ""
+    kind: str = ""  # the LLM's own label ("local leader", "POS system"...), shown as is
+    url_status: str = ""  # "" not checked | "ok" | "http_404" | "unreachable" ... (scripts/verify_competitors.py)
+    checked_at: str = ""
+    mentions: int = 1  # number of LLM runs that named it
+
+    @property
+    def url_usable(self) -> bool:
+        """Show the link only when it is not known to be broken."""
+        return bool(self.url) and self.url_status in ("", "ok")
 
 
 class Seasonality(BaseModel):
@@ -175,6 +189,9 @@ def apply_cz_defaults(row: dict, overlay: dict[str, dict] | None = None) -> dict
 
     put("model_type", lambda: infer_model_type(row))
     put("local_incumbents", lambda: [i.model_dump() for i in incumbents_from_competitors(row)])
+    if llm := load_llm_competitors().get(row["name"]):  # unverified, from stored LLM reports (step 10.2)
+        row["local_incumbents"] = add_llm_competitors(
+            [i if isinstance(i, dict) else i.model_dump() for i in row["local_incumbents"] or []], llm)
     put("legal_complexity", lambda: row.get("regulatory", 1))
     put("required_integrations", lambda: infer_integrations(row))
     put("seasonality", lambda: (infer_seasonality(row.get("cz_notes", "")) or Seasonality()).model_dump())

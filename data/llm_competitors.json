@@ -1,0 +1,118 @@
+{
+ "models": {
+  "Slice": [
+   {
+    "name": "Choice QR",
+    "strength": 3,
+    "url": "https://choiceqr.com",
+    "note": "",
+    "kind": "Локальный сильный игрок",
+    "verified": false,
+    "source": "gemini-3.5-flash 2026-09-26",
+    "url_status": "",
+    "checked_at": "",
+    "mentions": 2
+   },
+   {
+    "name": "Speedlo",
+    "strength": 3,
+    "url": "https://www.speedlo.cz",
+    "note": "",
+    "kind": "Локальный специализированный",
+    "verified": false,
+    "source": "gemini-3.5-flash 2026-09-26",
+    "url_status": "",
+    "checked_at": "",
+    "mentions": 1
+   },
+   {
+    "name": "Dotykačka",
+    "strength": 2,
+    "url": "https://www.dotykacka.cz",
+    "note": "",
+    "kind": "Кассовая система",
+    "verified": false,
+    "source": "gemini-3.5-flash 2026-09-26",
+    "url_status": "",
+    "checked_at": "",
+    "mentions": 2
+   },
+   {
+    "name": "Wolt / Foodora",
+    "strength": 3,
+    "url": "https://wolt.com",
+    "note": "",
+    "kind": "Международный агрегатор",
+    "verified": false,
+    "source": "gemini-3.5-flash 2026-09-26",
+    "url_status": "",
+    "checked_at": "",
+    "mentions": 1
+   },
+   {
+    "name": "OneMenu.cz (Tidypay/Storyous)",
+    "strength": 2,
+    "url": "https://onemenu.cz",
+    "note": "",
+    "kind": "Локальный каталог заказов",
+    "verified": false,
+    "source": "gemini-3.5-flash 2026-09-26",
+    "url_status": "",
+    "checked_at": "",
+    "mentions": 1
+   }
+  ],
+  "6AM City": [
+   {
+    "name": "Vltava Labe Media (Deník.cz)",
+    "strength": 3,
+    "url": "https://www.denik.cz",
+    "note": "",
+    "kind": "Локальный гигант",
+    "verified": false,
+    "source": "gemini-3.5-flash 2026-09-26",
+    "url_status": "",
+    "checked_at": "",
+    "mentions": 1
+   },
+   {
+    "name": "Prague Morning",
+    "strength": 2,
+    "url": "https://www.praguemorning.cz",
+    "note": "",
+    "kind": "Локальное медиа",
+    "verified": false,
+    "source": "gemini-3.5-flash 2026-09-26",
+    "url_status": "",
+    "checked_at": "",
+    "mentions": 1
+   }
+  ],
+  "Nicereply": [
+   {
+    "name": "SupportBox",
+    "strength": 3,
+    "url": "https://www.supportbox.cz",
+    "note": "",
+    "kind": "Локальный хелпдеск",
+    "verified": false,
+    "source": "gemini-3.5-flash 2026-09-26",
+    "url_status": "",
+    "checked_at": "",
+    "mentions": 1
+   },
+   {
+    "name": "Survio",
+    "strength": 2,
+    "url": "https://www.survio.com",
+    "note": "",
+    "kind": "Чешский гигант опросов",
+    "verified": false,
+    "source": "gemini-3.5-flash 2026-09-26",
+    "url_status": "",
+    "checked_at": "",
+    "mentions": 1
+   }
+  ]
+ }
+}

@@ -398,6 +398,13 @@ def radar_view() -> None:
                         st.markdown(f"- **{adj.factor}** {adj.points:+.0f} — {adj.detail}")
                 else:
                     st.caption(t("no_deductions"))
+                if m.local_incumbents:
+                    st.markdown(f"**{t('incumbents_list')}:**")
+                    for inc in m.local_incumbents:
+                        name = f"[{tr(inc.name)}]({inc.url})" if inc.url_usable else tr(inc.name)
+                        mark = "" if inc.verified else f" :gray[({t('not_verified')}{', ' + inc.source if inc.source else ''})]"
+                        kind = f" — {inc.kind}" if inc.kind else ""
+                        st.markdown(f"- {name} · {t('strength')} {inc.strength}/3{kind}{mark}")
                 st.markdown(f"**{t('legal_complexity')}:** {m.legal_complexity or m.regulatory}/5 · "
                             f"**{t('integrations')}:** {', '.join(m.required_integrations) or '—'}")
                 st.caption(t("sam_line", sam=f"{m.sam_estimate:,}".replace(",", " "),
