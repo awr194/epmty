@@ -63,6 +63,11 @@ _TX = {
 }
 
 
+from analyzer import RuText  # noqa: E402  (Russian number formatting)
+
+_TX["ru"] = {k: RuText(v) for k, v in _TX["ru"].items()}
+
+
 def _incumbents(m: BusinessModel, w: CzechScoreWeights, tx: dict) -> Adjustment | None:
     if not m.local_incumbents:
         return None

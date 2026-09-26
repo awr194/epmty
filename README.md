@@ -91,6 +91,17 @@ Your app will be live at `https://<your-app>.streamlit.app`. It redeploys on eve
 - **Models 101-500** (`catalog/`) have real global facts (name, country, website, niche, revenue model, typical price, problem) and Czech-market ratings. Where Czech competitors are known they are named; otherwise the report shows a *category-level Czech landscape*, labelled "check relevance for this model". Run a Claude or Gemini Deep-Dive for a model-specific competitor analysis.
 - The target market is always **Czechia**; the country field shows where the model was proven.
 
+## Languages
+
+The interface, offline reports, exports and model data are available in **Russian (default)** and
+English - switch at the top of the sidebar. Claude/Gemini are asked to answer in the selected language.
+
+- Interface strings: `i18n/ui.py`; fixed vocabularies (categories, countries, model types): `i18n/labels.py`.
+- Model data (niches, problems, segments, notes, descriptive model names): `data/i18n/ru.json`, keyed by the
+  English original. Company and product names are not translated.
+- After adding models, run `python scripts/i18n_extract.py`: it lists untranslated strings in
+  `data/i18n/todo_ru.json`. The test suite fails while anything is left untranslated.
+
 ## Czech-adjusted score
 
 The original feasibility score says how good a model is in general. The **Czech score**

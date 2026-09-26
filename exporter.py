@@ -72,7 +72,7 @@ def to_markdown(m: BusinessModel, res: AnalysisResult, lang: str = "en") -> str:
     engine = engine_label(res.engine, lang)
     revenue = f"~${m.mrr_usd:,} MRR" if m.mrr_usd else L["na"]
     out = [
-        f"# {L['title'].format(name=m.name)}",
+        f"# {L['title'].format(name=tr(m.name, lang))}",
         "",
         f"*{L['generated'].format(d=date.today().isoformat(), engine=engine)}*",
         "",
@@ -213,7 +213,7 @@ def to_pdf(m: BusinessModel, res: AnalysisResult, lang: str = "en") -> bytes:
     r, e = res.report, res.report.unit_economics
     pdf = _PDF(page_word=L["page"])
     pdf.add_page()
-    pdf.heading(L["title"].format(name=m.name), 18)
+    pdf.heading(L["title"].format(name=tr(m.name, lang)), 18)
     pdf.para(L["generated_short"].format(d=date.today().isoformat(), engine=engine_label(res.engine, lang)), size=8)
     pdf.para(f"{cat_label(m.category, lang)} | {tr(m.niche, lang)} | {L['origin']}: {country_label(m.country, lang)}")
     pdf.para(f"{L['original']}: {m.url}", size=9)

@@ -7,3 +7,6 @@ __pycache__/
 data/cache/
 # LLM deep-dive results (generated, may contain paid API output)
 data/llm_reports/
+
+# Working list produced by scripts/i18n_extract.py
+data/i18n/todo_ru.json

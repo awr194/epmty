@@ -47,11 +47,40 @@ def _data_ru() -> dict[str, str]:
     return json.loads(DATA_PATH.read_text(encoding="utf-8")) if DATA_PATH.exists() else {}
 
 
+# Generated suffixes appended to competitor notes (see cz_enrichment / data_loader / seed scripts).
+NOTE_SUFFIXES_RU = {
+    " - strength to verify": " — силу проверить",
+    "; draft - to verify": "; черновик — проверить",
+    " - Category landscape - check relevance for this model": " — ландшафт категории, проверьте применимость к модели",
+}
+_STANDALONE_RU = {
+    "strength to verify": "силу проверить",
+    "draft - to verify": "черновик — проверить",
+    "Category landscape - check relevance for this model": "ландшафт категории, проверьте применимость к модели",
+}
+
+
+def split_note_suffix(text: str) -> tuple[str, str | None]:
+    """'Czech CRM - strength to verify' -> ('Czech CRM', ' - strength to verify')."""
+    for suffix in NOTE_SUFFIXES_RU:
+        if text.endswith(suffix) and len(text) > len(suffix):
+            return text[: -len(suffix)], suffix
+    return text, None
+
+
 def tr(text: str | None, lang: str | None = None) -> str:
     """Translate a piece of model data; unknown text is returned unchanged."""
     if not text or (lang or current_lang()) != "ru":
         return text or ""
-    return _data_ru().get(text, text)
+    data = _data_ru()
+    if text in data:
+        return data[text]
+    if text in _STANDALONE_RU:
+        return _STANDALONE_RU[text]
+    base, suffix = split_note_suffix(text)
+    if suffix:
+        return tr(base, "ru") + NOTE_SUFFIXES_RU[suffix]
+    return text
 
 
 def tr_list(items: list[str], lang: str | None = None) -> list[str]:

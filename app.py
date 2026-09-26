@@ -74,6 +74,17 @@ def month_abbr(n: int) -> str:
     return (MONTHS_RU if lang == "ru" else calendar.month_abbr)[n]
 
 
+def pct(x: float) -> str:
+    """Percent with a decimal comma in Russian."""
+    s = f"{x:.1%}"
+    return s.replace(".", ",") if lang == "ru" else s
+
+
+def mname(m: BusinessModel) -> str:
+    """Display name: descriptive (archetype) names are translated, brand names stay as they are."""
+    return tr(m.name, lang)
+
+
 def conf_label(c: str) -> str:
     return t(f"conf_{c}", lang)
 
@@ -149,7 +160,8 @@ with st.sidebar:
         )
 
     st.header(t("live_header"))
-    sources = st.multiselect(t("live_from"), list(LIVE_SOURCES), default=list(LIVE_SOURCES))
+    sources = st.multiselect(t("live_from"), list(LIVE_SOURCES), default=list(LIVE_SOURCES),
+                             placeholder=t("choose"))
     live_limit = st.slider(t("live_items"), 5, 30, 15)
     show_live = st.toggle(t("live_show"), False, help=t("live_show_help"))
     c1, c2 = st.columns(2)
@@ -215,7 +227,7 @@ for m in models.values():
     launch = m.seasonality.launch_by_month
     niche_tr, problem_tr = tr(m.niche), tr(m.problem)
     rows.append({
-        "id": m.id, "Name": m.name, "Category": m.category, "Model type": m.model_type or "saas",
+        "id": m.id, "Name": mname(m), "Category": m.category, "Model type": m.model_type or "saas",
         "Source": m.source, "Country": m.country, "Niche": niche_tr,
         "Score": q["score"], "Czech score": cs.score, "Price (CZK)": q["price_czk"],
         "CZK potential (M12 MRR)": q["mrr_czk_m12"], "MRR comparable": dm.comparable,
@@ -227,7 +239,7 @@ for m in models.values():
         "Intl. MRR (USD)": m.mrr_usd, "Revenue model": tr(m.revenue_model), "Problem": problem_tr,
         "Tech stack": ", ".join(m.tech_stack), "URL": m.url,
         # searchable in both languages
-        "_search": " ".join([m.name, m.niche, niche_tr, m.problem, problem_tr, m.category, cat_label(m.category),
+        "_search": " ".join([m.name, mname(m), m.niche, niche_tr, m.problem, problem_tr, m.category, cat_label(m.category),
                              m.country, country_label(m.country)]).lower(),
     })
 df = pd.DataFrame(rows)
@@ -239,7 +251,8 @@ st.caption(t("app_caption"))
 with st.container(border=True):
     f1, f2, f3, f4 = st.columns([2, 2, 2, 1.4])
     query = f1.text_input(t("search"), placeholder=t("search_ph"))
-    cats = f2.multiselect(t("category"), sorted(df["Category"].unique(), key=lcat), format_func=lcat)
+    cats = f2.multiselect(t("category"), sorted(df["Category"].unique(), key=lcat), format_func=lcat,
+                          placeholder=t("choose"))
     score_mode = f3.radio(t("score"), ["czech", "orig"], horizontal=True, help=t("score_help"),
                           format_func=lambda s: t("score_czech", lang) if s == "czech" else t("score_orig", lang))
     score_col = "Czech score" if score_mode == "czech" else "Score"
@@ -250,15 +263,16 @@ with st.container(border=True):
     min_score = h1.slider(t("min_score", score=score_name.lower()), 0, 100, 0, 5)
     all_types = [x for x in MODEL_TYPES if x in set(df["Model type"])]
     types = h2.multiselect(t("model_type"), all_types, default=[x for x in all_types if x not in NON_RECURRING_TYPES],
-                           format_func=ltype, help=t("model_type_help"))
+                           format_func=ltype, help=t("model_type_help"), placeholder=t("choose"))
     hide_rethink = h3.checkbox(t("hide_rethink"), True, help=t("hide_rethink_help"))
     only_saas = h4.checkbox(t("only_saas"), False)
     g1, g2, g3 = st.columns([3, 2, 2])
     max_pot = int(df["CZK potential (M12 MRR)"].max()) + 1
     pot = g1.slider(t("potential"), 0, max_pot, (0, max_pot), step=5_000, format="%d CZK")
     countries = g2.multiselect(t("country"), sorted(df["Country"].unique(), key=lcountry),
-                               format_func=lcountry)
-    srcs = g3.multiselect(t("source"), sorted(df["Source"].unique()), format_func=source_label)
+                               format_func=lcountry, placeholder=t("choose"))
+    srcs = g3.multiselect(t("source"), sorted(df["Source"].unique()), format_func=source_label,
+                          placeholder=t("choose"))
 
 view_df = df[(df[score_col] >= min_score) & df["CZK potential (M12 MRR)"].between(*pot)]
 view_df = view_df[view_df["Model type"].isin(["saas"] if only_saas else types)]
@@ -350,7 +364,7 @@ def radar_view() -> None:
         m, cs, dm = models[r["id"]], czech_scores[r["id"]], metrics[r["id"]]
         score = int(r[score_col])
         with cols[i % 3].container(border=True):
-            st.markdown(f"**[{m.name}]({m.url})**" if m.url else f"**{m.name}**")
+            st.markdown(f"**[{mname(m)}]({m.url})**" if m.url else f"**{mname(m)}**")
             badges = (f":blue-badge[{cat_label(m.category)}] :green-badge[{country_label(m.country)}] "
                       f":gray-badge[{type_label(m.model_type)}]")
             if m.needs_rethink_for_cz:
@@ -364,10 +378,10 @@ def radar_view() -> None:
             c1, c2 = st.columns(2)
             if dm.customers_needed is not None:
                 c1.metric(t("customers_needed"), f"{dm.customers_needed:,}".replace(",", " "),
-                          t("of_sam", share=f"{dm.sam_share_12m:.1%}") if dm.sam_share_12m is not None else t("no_sam"),
+                          t("of_sam", share=pct(dm.sam_share_12m)) if dm.sam_share_12m is not None else t("no_sam"),
                           delta_color="off")
             else:
-                c1.metric(t("intl_mrr"), f"${m.mrr_usd / 1000:,.0f}k" if m.mrr_usd else "n/a")
+                c1.metric(t("intl_mrr"), f"${m.mrr_usd / 1000:,.0f}k" if m.mrr_usd else t("na"))
             c2.metric(t("czk_month"), f"{r['CZK potential (M12 MRR)'] / 1000:,.0f}k",
                       None if dm.comparable else t("mrr_not_comparable"), delta_color="off")
             with st.expander(t("breakdown")):
@@ -433,7 +447,7 @@ def deep_dive_view() -> None:
     ss.dd_choice = ss.selected_id
     c1, c2 = st.columns([4, 1])
     c1.selectbox(t("business_model"), ids, key="dd_choice",
-                 format_func=lambda i: f"{models[i].name}  ·  {lcat(models[i].category)}",
+                 format_func=lambda i: f"{mname(models[i])}  ·  {lcat(models[i].category)}",
                  on_change=lambda: ss.update(selected_id=ss.dd_choice))
     m = models[ss.selected_id]
     has_report = get_report(m) is not None
@@ -446,7 +460,7 @@ def deep_dive_view() -> None:
         st.warning(w)
 
     r, e = res.report, res.report.unit_economics
-    st.subheader(m.name)
+    st.subheader(mname(m))
     st.markdown(f"> {r.one_liner}")
     st.caption(t("generated_by", engine=res.engine) if res.engine != "mock" else t("offline_engine"))
     conf_icon = {"low": "🟠", "medium": "🟡", "high": "🟢"}[r.confidence]

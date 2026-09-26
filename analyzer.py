@@ -355,7 +355,7 @@ _RT: dict[str, dict[str, str]] = {
         "chk3": "Счета по чешским правилам с IČO/DIČ (API Fakturoid или iDoklad)",
         "chk4": "Местная оплата: карты и QR platba через Comgate/GoPay/Stripe",
         "chk5": "GDPR и согласие на cookie (opt-in); условия (VOP) и политика конфиденциальности на чешском",
-        "one_liner": "«{niche}» по образцу {name} для сегментов: {segs}; цена ~{price:,} CZK/мес.",
+        "one_liner": "«{niche}» для сегментов: {segs}; цена ~{price:,} CZK/мес.",
         "as1": "Курс USD/CZK {fx}; чешская цена = цена в США × {ppp} (с учётом покупательной способности).",
         "as2": "Доступный рынок ~{sam:,} клиентов; доля к 12-му месяцу выведена из спроса {d}/5 и конкуренции {c}/5.",
         "as3": "Налоговые цифры — округлённые оценки на 2026 год; проверяйте у бухгалтера / на financnisprava.cz.",
@@ -363,6 +363,15 @@ _RT: dict[str, dict[str, str]] = {
                        "исследования конкретной модели не было.",
     },
 }
+
+class RuText(str):
+    """Russian template: after formatting, thousands separators become non-breaking spaces (1 490, not 1,490)."""
+
+    def format(self, *args, **kwargs) -> str:
+        return re.sub(r"(?<=\d),(?=\d{3}(?!\d))", "\u00a0", str.format(self, *args, **kwargs))
+
+
+_RT["ru"] = {k: RuText(v) for k, v in _RT["ru"].items()}
 
 FACTOR_LABELS_RU = {
     "Local demand": "Местный спрос", "Competitive whitespace": "Свободная ниша",
@@ -599,7 +608,7 @@ def mock_report(m: BusinessModel, a: CzechAssumptions, czech_context: dict | Non
 
     checklist = [tx[f"chk{i}"] for i in range(1, 6)] + _CATEGORY_CHECKLIST.get(m.category, {}).get(lang, [])
 
-    one_liner = tx["one_liner"].format(name=m.name, niche=tr(m.niche, lang),
+    one_liner = tx["one_liner"].format(name=tr(m.name, lang), niche=tr(m.niche, lang),
                                        segs=", ".join(segments[:2]) or tx["czech_smes"], price=price)
     assumptions = [
         tx["as1"].format(fx=a.usd_czk, ppp=a.ppp_b2b if m.audience == "B2B" else a.ppp_b2c),

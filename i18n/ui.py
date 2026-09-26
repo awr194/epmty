@@ -126,12 +126,12 @@ UI: dict[str, dict[str, str]] = {
                               "MRR, сопоставимый с SaaS.",
                         "en": "Physical D2C and offline retail are hidden by default: their revenue is sales, not "
                               "SaaS-comparable MRR."},
-    "hide_rethink": {"ru": "Скрыть «переосмыслить»", "en": "Hide 'rethink'"},
+    "hide_rethink": {"ru": "Скрыть «пересмотр»", "en": "Hide 'rethink'"},
     "hide_rethink_help": {"ru": "Модели, завязанные на фискальные системы, ЭДО или платформы, которых нет в Чехии "
                                 "(флаг ставит проверенный патч данных).",
                           "en": "Models tied to fiscal / e-document / platform systems that don't exist in Czechia "
                                 "(flag set by the reviewed data patch)."},
-    "only_saas": {"ru": "Только SaaS / дополнения", "en": "Only SaaS / add-ons"},
+    "only_saas": {"ru": "Только SaaS", "en": "Only SaaS / add-ons"},
     "potential": {"ru": "Оценка потенциала в CZK (MRR на 12-й месяц)", "en": "Estimated CZK potential (month-12 MRR)"},
     "country": {"ru": "Страна происхождения", "en": "Country of origin"},
     "source": {"ru": "Источник", "en": "Source"},
@@ -243,6 +243,10 @@ UI: dict[str, dict[str, str]] = {
     "export_md": {"ru": "⬇️ Экспорт в Markdown", "en": "⬇️ Export Markdown"},
     "export_pdf": {"ru": "⬇️ Экспорт в PDF", "en": "⬇️ Export PDF"},
     "pdf_unavailable": {"ru": "Экспорт в PDF недоступен: {e}", "en": "PDF export unavailable: {e}"},
+
+    # ---------------------------------------------------------------- misc
+    "na": {"ru": "нет данных", "en": "n/a"},
+    "choose": {"ru": "Выберите…", "en": "Choose options"},
 
     # ---------------------------------------------------------------- table
     "download_csv": {"ru": "⬇️ Скачать CSV", "en": "⬇️ Download CSV"},
