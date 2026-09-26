@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 import os
 from dataclasses import dataclass, field
 from typing import Literal
@@ -24,6 +25,7 @@ from typing import Literal
 from pydantic import BaseModel
 
 from data_loader import BusinessModel
+from i18n import tr, tr_list
 
 DEFAULT_CLAUDE_MODEL = "claude-opus-5"
 CLAUDE_MODELS = ["claude-opus-5", "claude-sonnet-5"]
@@ -201,184 +203,364 @@ def quick_metrics(m: BusinessModel, a: CzechAssumptions) -> dict:
     return {"score": score, "price_czk": price, "customers_m12": customers, "mrr_czk_m12": price * customers}
 
 
-def verdict_for(score: int) -> str:
+def verdict_for(score: int, lang: str = "en") -> str:
+    tx = _RT[lang]
     if score >= 70:
-        return "Strong candidate - build the MVP"
+        return tx["verdict_strong"]
     if score >= 55:
-        return "Promising with a sharp niche"
+        return tx["verdict_promising"]
     if score >= 40:
-        return "Risky - validate demand before building"
-    return "Weak fit for the Czech market"
+        return tx["verdict_risky"]
+    return tx["verdict_weak"]
 
 
-def _rationale(name: str, m: BusinessModel) -> str:
-    comps = ", ".join(c.name for c in m.cz_competitors[:2]) or "no obvious incumbents"
+# Offline-report texts. Factor keys (WEIGHTS) stay English; FACTOR_LABELS translates them for display.
+_RT: dict[str, dict[str, str]] = {
+    "en": {
+        "verdict_strong": "Strong candidate - build the MVP", "verdict_promising": "Promising with a sharp niche",
+        "verdict_risky": "Risky - validate demand before building", "verdict_weak": "Weak fit for the Czech market",
+        "no_incumbents": "no obvious incumbents", "czech_smes": "Czech SMEs",
+        "r_demand": "Demand rated {d}/5 across {segs}.",
+        "r_competition": "Competition intensity {c}/5 (e.g. {comps}).",
+        "r_complexity": "Complexity {x}/5 - {fit} for a 14-day MVP.", "feasible": "feasible", "tight": "tight",
+        "r_regulatory": "Regulatory burden {r}/5 in Czechia.",
+        "r_moat": "Czech-specific advantage {mo}/5. {notes}",
+        "r_traction": "~${mrr:,} MRR internationally ({note}).",
+        "r_traction_unknown": "Category proven abroad, exact revenue unknown. {note}",
+        "lf1": "OSVČ in paušální režim (band 1)", "lf1_item": "Paušální daň (band 1)",
+        "lf1_note": "Covers income tax + social + health insurance",
+        "lf1_tax": "Annual revenue under 1M CZK fits band 1 of the flat-tax regime. Stay under the {vat:,} CZK VAT "
+                   "threshold to remain a non-VAT payer. Figures are rounded - verify yearly.",
+        "lf2": "OSVČ in paušální režim (band {band}) - evaluate s.r.o. at year 2",
+        "lf2_item": "Paušální daň (band {band})", "lf2_note": "Band depends on income type and expense flat-rate",
+        "lf2_tax": "Revenue between 1M and 2M CZK: flat-tax band 2/3 applies depending on the type of income. "
+                   "Approaching the VAT threshold - plan for DPH registration and consider an s.r.o.",
+        "lf3": "s.r.o. (limited company), VAT registered",
+        "lf3_acc": "Accountant (účetní)", "lf3_acc_note": "Double-entry bookkeeping + VAT returns",
+        "lf3_fixed": "s.r.o. fixed overhead", "lf3_fixed_note": "Registered office, bank, misc.",
+        "lf3_tax": "Above {vat:,} CZK turnover VAT registration is mandatory ({rate:.0%} DPH; B2C prices must include "
+                   "VAT). Corporate income tax is {cit:.0%} of profit, then 15% withholding tax on dividends.",
+        "target_customers": "target customers", "existing_alternatives": "existing alternatives",
+        "g1_title": "Validate & build a Czech-first MVP", "g1_days": "Days 1-4",
+        "g1_a1": "Interview 10 {seg} (call, LinkedIn, walk-in) - ask how they solve it today (e.g. {comp}) and what "
+                 "it costs them.",
+        "g1_a2": "Build a Czech landing page (Carrd/Webnode) with CZK pricing and a pre-order / waitlist form.",
+        "g1_a3": "Ship the smallest working version of '{niche}' using no-code or a Streamlit/Next.js template.",
+        "g1_kpi": "10 interviews done, 30+ waitlist sign-ups",
+        "g2_title": "Distribution through local channels", "g2_days": "Days 5-9",
+        "g2_a1": "Launch in {channel}.",
+        "g2_a2": "Offer 3 free pilots to {seg} in exchange for a testimonial and a Czech case study.",
+        "g2_a3": "Pitch a revenue-share to {partner} (typically 20-30%).",
+        "g2_kpi": "3 active pilots, 1 partner conversation",
+        "g3_title": "Convert to paying customers", "g3_days": "Days 10-14",
+        "g3_a1": "Switch pilots to paid at {price:,} CZK with a founding-customer discount (e.g. 30% for life).",
+        "g3_a2": "Enable Czech invoicing (Fakturoid/iDoklad API) and card + QR payments (Comgate/GoPay/Stripe).",
+        "g3_a3": "Publish the case study, request reviews on Firmy.cz/Google, and set up a weekly metric review.",
+        "g3_kpi": "First 3-5 paying customers ({mrr:,}+ CZK MRR)",
+        "wtp_b2b": "Medium", "wtp_b2c": "Price-sensitive",
+        "aud_size": "~{n:,} potential customers (rough estimate)",
+        "t_standard": "Standard", "t_annual": "Annual", "b_monthly": "monthly",
+        "b_yearly": "per month, billed yearly", "i_full": "Full service", "i_annual": "Same as Standard, ~20% discount",
+        "t_starter": "Starter", "t_pro": "Pro", "t_business": "Business", "b_excl_vat": "monthly, excl. VAT",
+        "i_starter": "Core features, 1 user/site", "i_pro": "Everything + integrations, priority support in Czech",
+        "i_business": "Multiple sites/users, onboarding call",
+        "c_tools": "Hosting, SaaS tools & APIs", "c_tools_note": "Scales with build complexity",
+        "c_marketing": "Marketing (ads, events, content)", "c_marketing_note": "~12% of month-12 MRR, min 3k CZK",
+        "c_fees": "Payment fees", "c_fees_note": "{fee:.1%} blended",
+        "c_cogs": "Variable costs (COGS)", "c_cogs_note": "{cogs:.0%} of revenue (food, compute, SMS...)",
+        "low": "Low", "medium": "Medium", "high": "High", "local": "Local", "international": "International",
+        "gap_local": "compete on a narrower niche, faster onboarding and founder-led Czech support.",
+        "gap_intl": "win on Czech language, CZK invoicing, local payment methods and integrations.",
+        "risk_crowded": "Crowded local market - differentiation must be explicit from day one.",
+        "risk_regulatory": "Regulatory exposure - get a one-off legal review (≈5-15k CZK) before scaling.",
+        "risk_scope": "Build scope is large for 14 days - fake the back-office manually at first (concierge MVP).",
+        "risk_tam": "Small Czech TAM - plan Slovakia (same language market) and DACH/Poland expansion early.",
+        "risk_b2c": "B2C willingness to pay is ~40% lower than in the US; watch CAC closely.",
+        "risk_heuristic": "All numbers are heuristic estimates - validate with real customer interviews.",
+        "chk1": "Czech UI, onboarding e-mails and support (tykání vs. vykání tone chosen deliberately)",
+        "chk2": "CZK pricing; B2C prices shown including 21% DPH",
+        "chk3": "Czech-compliant invoices with IČO/DIČ (Fakturoid or iDoklad API)",
+        "chk4": "Local payments: cards + QR platba via Comgate/GoPay/Stripe",
+        "chk5": "GDPR + opt-in cookie consent; Czech-language terms (VOP) and privacy policy",
+        "one_liner": "{name}-style '{niche}' for {segs}, priced at ~{price:,} CZK/month.",
+        "as1": "USD/CZK {fx}; Czech price = US price x {ppp} (purchasing power).",
+        "as2": "Serviceable market ~{sam:,} customers; month-12 adoption derived from demand {d}/5 and "
+               "competition {c}/5.",
+        "as3": "Tax figures are rounded 2026 approximations - verify with an accountant / financnisprava.cz.",
+        "conf_reason": "Rule-based heuristic from 1-5 ratings and category defaults; no model-specific research.",
+    },
+    "ru": {
+        "verdict_strong": "Сильный кандидат — стройте MVP", "verdict_promising": "Перспективно при узкой нише",
+        "verdict_risky": "Рискованно — сначала проверьте спрос", "verdict_weak": "Слабо подходит для чешского рынка",
+        "no_incumbents": "явных конкурентов нет", "czech_smes": "чешский малый и средний бизнес",
+        "r_demand": "Спрос оценён на {d}/5 в сегментах: {segs}.",
+        "r_competition": "Интенсивность конкуренции {c}/5 (например, {comps}).",
+        "r_complexity": "Сложность {x}/5 — MVP за 14 дней {fit}.", "feasible": "реалистичен", "tight": "впритык",
+        "r_regulatory": "Регуляторная нагрузка в Чехии: {r}/5.",
+        "r_moat": "Преимущество от чешской специфики: {mo}/5. {notes}",
+        "r_traction": "~${mrr:,} MRR в мире ({note}).",
+        "r_traction_unknown": "Категория доказана за рубежом, точная выручка неизвестна. {note}",
+        "lf1": "OSVČ в режиме paušální daň (уровень 1)", "lf1_item": "Paušální daň (уровень 1)",
+        "lf1_note": "Покрывает подоходный налог, социальное и медицинское страхование",
+        "lf1_tax": "Годовая выручка до 1 млн CZK подходит под 1-й уровень paušální daň. Держитесь ниже порога "
+                   "НДС в {vat:,} CZK, чтобы не становиться плательщиком DPH. Цифры округлены — проверяйте каждый год.",
+        "lf2": "OSVČ в режиме paušální daň (уровень {band}) — на 2-й год оцените переход в s.r.o.",
+        "lf2_item": "Paušální daň (уровень {band})", "lf2_note": "Уровень зависит от типа дохода и нормы расходов",
+        "lf2_tax": "Выручка от 1 до 2 млн CZK: применяется 2-й или 3-й уровень paušální daň в зависимости от типа "
+                   "дохода. Порог НДС близко — заложите регистрацию плательщиком DPH и подумайте об s.r.o.",
+        "lf3": "s.r.o. (ООО), плательщик НДС",
+        "lf3_acc": "Бухгалтер (účetní)", "lf3_acc_note": "Двойная бухгалтерия и декларации по НДС",
+        "lf3_fixed": "Постоянные расходы s.r.o.", "lf3_fixed_note": "Юридический адрес, банк, прочее",
+        "lf3_tax": "При обороте выше {vat:,} CZK регистрация плательщиком НДС обязательна ({rate:.0%} DPH; цены "
+                   "для B2C указываются с НДС). Налог на прибыль — {cit:.0%}, затем 15% с дивидендов.",
+        "target_customers": "целевых клиентов", "existing_alternatives": "существующие альтернативы",
+        "g1_title": "Проверить спрос и собрать MVP для Чехии", "g1_days": "Дни 1–4",
+        "g1_a1": "Проведите 10 интервью: {seg} (звонок, LinkedIn, личный визит) — спросите, как они решают задачу "
+                 "сейчас (например, {comp}) и сколько это стоит.",
+        "g1_a2": "Сделайте лендинг на чешском (Carrd/Webnode) с ценами в CZK и формой предзаказа / листа ожидания.",
+        "g1_a3": "Выпустите минимальную рабочую версию «{niche}» на no-code или шаблоне Streamlit/Next.js.",
+        "g1_kpi": "10 интервью, 30+ записей в лист ожидания",
+        "g2_title": "Дистрибуция через местные каналы", "g2_days": "Дни 5–9",
+        "g2_a1": "Запуститесь здесь: {channel}.",
+        "g2_a2": "Предложите 3 бесплатных пилота ({seg}) в обмен на отзыв и чешский кейс.",
+        "g2_a3": "Предложите партнёрство с долей выручки ({partner}), обычно 20–30%.",
+        "g2_kpi": "3 активных пилота, 1 разговор с партнёром",
+        "g3_title": "Перевести в платящих клиентов", "g3_days": "Дни 10–14",
+        "g3_a1": "Переведите пилоты на оплату {price:,} CZK со скидкой для первых клиентов (например, 30% навсегда).",
+        "g3_a2": "Подключите чешские счета (API Fakturoid/iDoklad) и оплату картой и QR (Comgate/GoPay/Stripe).",
+        "g3_a3": "Опубликуйте кейс, попросите отзывы на Firmy.cz/Google и заведите еженедельный разбор метрик.",
+        "g3_kpi": "Первые 3–5 платящих клиентов ({mrr:,}+ CZK MRR)",
+        "wtp_b2b": "Средняя", "wtp_b2c": "Чувствительны к цене",
+        "aud_size": "~{n:,} потенциальных клиентов (грубая оценка)",
+        "t_standard": "Стандарт", "t_annual": "Годовой", "b_monthly": "ежемесячно",
+        "b_yearly": "в месяц при оплате за год", "i_full": "Полный сервис", "i_annual": "Как «Стандарт», скидка ~20%",
+        "t_starter": "Старт", "t_pro": "Про", "t_business": "Бизнес", "b_excl_vat": "ежемесячно, без НДС",
+        "i_starter": "Основные функции, 1 пользователь/сайт", "i_pro": "Всё + интеграции, приоритетная поддержка на чешском",
+        "i_business": "Несколько сайтов/пользователей, онбординг-звонок",
+        "c_tools": "Хостинг, SaaS-сервисы и API", "c_tools_note": "Растёт со сложностью продукта",
+        "c_marketing": "Маркетинг (реклама, мероприятия, контент)", "c_marketing_note": "~12% MRR 12-го месяца, мин. 3 тыс. CZK",
+        "c_fees": "Платёжные комиссии", "c_fees_note": "в среднем {fee:.1%}",
+        "c_cogs": "Переменные расходы (себестоимость)", "c_cogs_note": "{cogs:.0%} выручки (еда, вычисления, SMS…)",
+        "low": "Низкая", "medium": "Средняя", "high": "Высокая", "local": "Местный", "international": "Международный",
+        "gap_local": "конкурируйте узкой нишей, быстрым онбордингом и поддержкой на чешском от основателя.",
+        "gap_intl": "выигрывайте чешским языком, счетами в CZK, местными способами оплаты и интеграциями.",
+        "risk_crowded": "Рынок переполнен — отличие должно быть явным с первого дня.",
+        "risk_regulatory": "Регуляторные риски — перед масштабированием закажите разовую юр. проверку (≈5–15 тыс. CZK).",
+        "risk_scope": "Объём разработки велик для 14 дней — поначалу делайте бэк-офис вручную (concierge MVP).",
+        "risk_tam": "Маленький чешский рынок — заранее планируйте Словакию (тот же язык), DACH и Польшу.",
+        "risk_b2c": "Готовность B2C-клиентов платить на ~40% ниже, чем в США; следите за стоимостью привлечения.",
+        "risk_heuristic": "Все цифры — эвристические оценки; проверьте их интервью с реальными клиентами.",
+        "chk1": "Интерфейс, письма онбординга и поддержка на чешском (осознанно выберите «ты» или «вы» — tykání/vykání)",
+        "chk2": "Цены в CZK; для B2C — с учётом 21% DPH",
+        "chk3": "Счета по чешским правилам с IČO/DIČ (API Fakturoid или iDoklad)",
+        "chk4": "Местная оплата: карты и QR platba через Comgate/GoPay/Stripe",
+        "chk5": "GDPR и согласие на cookie (opt-in); условия (VOP) и политика конфиденциальности на чешском",
+        "one_liner": "«{niche}» по образцу {name} для сегментов: {segs}; цена ~{price:,} CZK/мес.",
+        "as1": "Курс USD/CZK {fx}; чешская цена = цена в США × {ppp} (с учётом покупательной способности).",
+        "as2": "Доступный рынок ~{sam:,} клиентов; доля к 12-му месяцу выведена из спроса {d}/5 и конкуренции {c}/5.",
+        "as3": "Налоговые цифры — округлённые оценки на 2026 год; проверяйте у бухгалтера / на financnisprava.cz.",
+        "conf_reason": "Эвристика по правилам на основе оценок 1–5 и значений по умолчанию для категории; "
+                       "исследования конкретной модели не было.",
+    },
+}
+
+FACTOR_LABELS_RU = {
+    "Local demand": "Местный спрос", "Competitive whitespace": "Свободная ниша",
+    "Build & ops simplicity": "Простота запуска и работы", "Regulatory ease": "Регуляторная простота",
+    "Localisation moat": "Преимущество локализации", "Proven international traction": "Доказанный спрос в мире",
+}
+
+
+def factor_label(key: str, lang: str = "en") -> str:
+    return FACTOR_LABELS_RU.get(key, key) if lang == "ru" else key
+
+
+def _rationale(name: str, m: BusinessModel, lang: str = "en") -> str:
+    tx = _RT[lang]
+    comps = ", ".join(tr(c.name, lang) for c in m.cz_competitors[:2]) or tx["no_incumbents"]
+    segs = ", ".join(tr_list(m.cz_segments[:2], lang)) or tx["czech_smes"]
+    note = tr(m.revenue_note, lang)
     return {
-        "Local demand": f"Demand rated {m.demand}/5 across {', '.join(m.cz_segments[:2]) or 'Czech SMEs'}.",
-        "Competitive whitespace": f"Competition intensity {m.competition}/5 (e.g. {comps}).",
-        "Build & ops simplicity": f"Complexity {m.complexity}/5 - {'feasible' if m.complexity <= 3 else 'tight'} for a 14-day MVP.",
-        "Regulatory ease": f"Regulatory burden {m.regulatory}/5 in Czechia.",
-        "Localisation moat": f"Czech-specific advantage {m.moat}/5. {m.cz_notes[:140]}".strip(),
-        "Proven international traction": (
-            f"~${m.mrr_usd:,} MRR internationally ({m.revenue_note})." if m.mrr_usd
-            else f"Category proven abroad, exact revenue unknown. {m.revenue_note}"
-        ),
+        "Local demand": tx["r_demand"].format(d=m.demand, segs=segs),
+        "Competitive whitespace": tx["r_competition"].format(c=m.competition, comps=comps),
+        "Build & ops simplicity": tx["r_complexity"].format(
+            x=m.complexity, fit=tx["feasible"] if m.complexity <= 3 else tx["tight"]),
+        "Regulatory ease": tx["r_regulatory"].format(r=m.regulatory),
+        "Localisation moat": tx["r_moat"].format(mo=m.moat, notes=tr(m.cz_notes, lang)[:160]).strip(),
+        "Proven international traction": (tx["r_traction"].format(mrr=m.mrr_usd, note=note) if m.mrr_usd
+                                          else tx["r_traction_unknown"].format(note=note)),
     }[name]
 
 
-def _legal_form(annual: int, a: CzechAssumptions) -> tuple[str, list[CostItem], str]:
+def _legal_form(annual: int, a: CzechAssumptions, lang: str = "en") -> tuple[str, list[CostItem], str]:
+    tx = _RT[lang]
     if annual < 1_000_000:
-        return (
-            "OSVČ in paušální režim (band 1)",
-            [CostItem(item="Paušální daň (band 1)", czk_per_month=a.pausal_band1,
-                      note="Covers income tax + social + health insurance")],
-            "Annual revenue under 1M CZK fits band 1 of the flat-tax regime. Stay under the "
-            f"{a.vat_threshold:,} CZK VAT threshold to remain a non-VAT payer. Figures are rounded - verify yearly.",
-        )
+        return (tx["lf1"], [CostItem(item=tx["lf1_item"], czk_per_month=a.pausal_band1, note=tx["lf1_note"])],
+                tx["lf1_tax"].format(vat=a.vat_threshold))
     if annual < a.vat_threshold:
         band, amt = (2, a.pausal_band2) if annual < 1_500_000 else (3, a.pausal_band3)
-        return (
-            f"OSVČ in paušální režim (band {band}) - evaluate s.r.o. at year 2",
-            [CostItem(item=f"Paušální daň (band {band})", czk_per_month=amt,
-                      note="Band depends on income type and expense flat-rate")],
-            "Revenue between 1M and 2M CZK: flat-tax band 2/3 applies depending on the type of income. "
-            "Approaching the VAT threshold - plan for DPH registration and consider an s.r.o.",
-        )
-    return (
-        "s.r.o. (limited company), VAT registered",
-        [CostItem(item="Accountant (účetní)", czk_per_month=a.sro_accounting, note="Double-entry bookkeeping + VAT returns"),
-         CostItem(item="s.r.o. fixed overhead", czk_per_month=a.sro_fixed_other, note="Registered office, bank, misc.")],
-        f"Above {a.vat_threshold:,} CZK turnover VAT registration is mandatory ({a.vat_rate:.0%} DPH; B2C prices must "
-        f"include VAT). Corporate income tax is {a.corporate_tax:.0%} of profit, then 15% withholding tax on dividends.",
-    )
+        return (tx["lf2"].format(band=band),
+                [CostItem(item=tx["lf2_item"].format(band=band), czk_per_month=amt, note=tx["lf2_note"])],
+                tx["lf2_tax"])
+    return (tx["lf3"],
+            [CostItem(item=tx["lf3_acc"], czk_per_month=a.sro_accounting, note=tx["lf3_acc_note"]),
+             CostItem(item=tx["lf3_fixed"], czk_per_month=a.sro_fixed_other, note=tx["lf3_fixed_note"])],
+            tx["lf3_tax"].format(vat=a.vat_threshold, rate=a.vat_rate, cit=a.corporate_tax))
 
 
 _TOOL_COST = [600, 1_200, 2_500, 4_500, 8_000]
 
+# (launch channel, partner) per category and language
 _GTM = {
-    "E-commerce Add-ons": ("Shoptet Addons marketplace + Czech e-commerce Facebook groups",
-                           "E-commerce agencies & Shoptet partners"),
-    "Hospitality & Gastro": ("in-person walk-ins in Prague 1-2 venues + AHR ČR (hotel & restaurant association)",
-                             "POS resellers & gastro suppliers"),
-    "Local Services": ("Firmy.cz + Google Business Profile + neighbourhood Facebook groups",
-                       "local suppliers & industry associations"),
-    "Finance & Admin": ("Czech accountant & OSVČ communities, Podnikatel.cz and LinkedIn CZ",
-                        "accounting firms as resellers"),
-    "Marketing & Growth": ("LinkedIn CZ + Czech digital-agency network (WebExpo, meetups)",
-                           "digital agencies (white-label)"),
-    "Dev & Productivity Tools": ("Czech dev communities, WebExpo, Product Hunt launch",
-                                 "web agencies & hosting providers"),
-    "AI Tools": ("LinkedIn CZ + Seznam Sklik ads + Czech AI meetups",
-                 "digital agencies & consultants"),
-    "Creator Economy": ("Czech creators on Instagram/YouTube + coach communities",
-                        "course platforms & event organisers"),
-    "Communities & Marketplaces": ("Expats.cz, Prague Facebook groups and Meetup.com",
-                                   "relocation agencies & coworkings"),
-    "D2C & Subscriptions": ("Instagram/TikTok micro-influencers + a Shoptet store + Czech farmers' markets & pop-ups",
-                            "concept stores and Czech micro-influencers"),
-    "Health & Wellness": ("physiotherapists, clinics and pharmacies as referrers + LinkedIn/Facebook health groups",
-                          "clinics and employers' wellness programmes"),
-    "Education & EdTech": ("parent Facebook groups, schools and Seznam/Google ads timed to exam season",
-                           "schools and tutoring centres"),
+    "E-commerce Add-ons": {"en": ("Shoptet Addons marketplace + Czech e-commerce Facebook groups",
+                                  "E-commerce agencies & Shoptet partners"),
+                           "ru": ("маркетплейс дополнений Shoptet и чешские Facebook-группы по e-commerce",
+                                  "e-commerce-агентствам и партнёрам Shoptet")},
+    "Hospitality & Gastro": {"en": ("in-person walk-ins in Prague 1-2 venues + AHR ČR (hotel & restaurant association)",
+                                    "POS resellers & gastro suppliers"),
+                             "ru": ("личные визиты в заведения Праги 1–2 и AHR ČR (ассоциация отелей и ресторанов)",
+                                    "реселлерам POS-систем и поставщикам для общепита")},
+    "Local Services": {"en": ("Firmy.cz + Google Business Profile + neighbourhood Facebook groups",
+                              "local suppliers & industry associations"),
+                       "ru": ("Firmy.cz, профиль компании в Google и районные Facebook-группы",
+                              "местным поставщикам и отраслевым ассоциациям")},
+    "Finance & Admin": {"en": ("Czech accountant & OSVČ communities, Podnikatel.cz and LinkedIn CZ",
+                               "accounting firms as resellers"),
+                        "ru": ("сообщества чешских бухгалтеров и OSVČ, Podnikatel.cz и LinkedIn CZ",
+                               "бухгалтерским фирмам как реселлерам")},
+    "Marketing & Growth": {"en": ("LinkedIn CZ + Czech digital-agency network (WebExpo, meetups)",
+                                  "digital agencies (white-label)"),
+                           "ru": ("LinkedIn CZ и сеть чешских digital-агентств (WebExpo, митапы)",
+                                  "digital-агентствам (white-label)")},
+    "Dev & Productivity Tools": {"en": ("Czech dev communities, WebExpo, Product Hunt launch",
+                                        "web agencies & hosting providers"),
+                                 "ru": ("чешские сообщества разработчиков, WebExpo и запуск на Product Hunt",
+                                        "веб-агентствам и хостинг-провайдерам")},
+    "AI Tools": {"en": ("LinkedIn CZ + Seznam Sklik ads + Czech AI meetups", "digital agencies & consultants"),
+                 "ru": ("LinkedIn CZ, реклама в Seznam Sklik и чешские AI-митапы", "digital-агентствам и консультантам")},
+    "Creator Economy": {"en": ("Czech creators on Instagram/YouTube + coach communities",
+                               "course platforms & event organisers"),
+                        "ru": ("чешские авторы в Instagram/YouTube и сообщества коучей",
+                               "платформам курсов и организаторам мероприятий")},
+    "Communities & Marketplaces": {"en": ("Expats.cz, Prague Facebook groups and Meetup.com",
+                                          "relocation agencies & coworkings"),
+                                   "ru": ("Expats.cz, пражские Facebook-группы и Meetup.com",
+                                          "релокационным агентствам и коворкингам")},
+    "D2C & Subscriptions": {"en": ("Instagram/TikTok micro-influencers + a Shoptet store + Czech farmers' markets & "
+                                   "pop-ups", "concept stores and Czech micro-influencers"),
+                            "ru": ("микроинфлюенсеры в Instagram/TikTok, магазин на Shoptet, фермерские рынки и "
+                                   "pop-up", "концепт-сторам и чешским микроинфлюенсерам")},
+    "Health & Wellness": {"en": ("physiotherapists, clinics and pharmacies as referrers + LinkedIn/Facebook health "
+                                 "groups", "clinics and employers' wellness programmes"),
+                          "ru": ("физиотерапевты, клиники и аптеки как источники рекомендаций, группы о здоровье в "
+                                 "LinkedIn/Facebook", "клиникам и корпоративным велнес-программам")},
+    "Education & EdTech": {"en": ("parent Facebook groups, schools and Seznam/Google ads timed to exam season",
+                                  "schools and tutoring centres"),
+                           "ru": ("родительские Facebook-группы, школы и реклама в Seznam/Google к сезону экзаменов",
+                                  "школам и центрам репетиторства")},
 }
 
 
-def _gtm_plan(m: BusinessModel, price: int) -> list[GTMStep]:
-    channel, partner = _GTM.get(m.category, _GTM["Dev & Productivity Tools"])
-    seg0 = m.cz_segments[0] if m.cz_segments else "target customers"
-    seg1 = m.cz_segments[1] if len(m.cz_segments) > 1 else seg0
-    top_comp = m.cz_competitors[0].name if m.cz_competitors else "existing alternatives"
+def _gtm_plan(m: BusinessModel, price: int, lang: str = "en") -> list[GTMStep]:
+    tx = _RT[lang]
+    channel, partner = _GTM.get(m.category, _GTM["Dev & Productivity Tools"])[lang]
+    segs = tr_list(m.cz_segments, lang)
+    seg0 = segs[0] if segs else tx["target_customers"]
+    seg1 = segs[1] if len(segs) > 1 else seg0
+    top_comp = tr(m.cz_competitors[0].name, lang) if m.cz_competitors else tx["existing_alternatives"]
     return [
-        GTMStep(
-            title="Validate & build a Czech-first MVP", days="Days 1-4",
-            actions=[
-                f"Interview 10 {seg0} (call, LinkedIn, walk-in) - ask how they solve it today (e.g. {top_comp}) and what it costs them.",
-                "Build a Czech landing page (Carrd/Webnode) with CZK pricing and a pre-order / waitlist form.",
-                f"Ship the smallest working version of '{m.niche}' using no-code or a Streamlit/Next.js template.",
-            ],
-            kpi="10 interviews done, 30+ waitlist sign-ups",
-        ),
-        GTMStep(
-            title="Distribution through local channels", days="Days 5-9",
-            actions=[
-                f"Launch in {channel}.",
-                f"Offer 3 free pilots to {seg1} in exchange for a testimonial and a Czech case study.",
-                f"Pitch a revenue-share to {partner} (typically 20-30%).",
-            ],
-            kpi="3 active pilots, 1 partner conversation",
-        ),
-        GTMStep(
-            title="Convert to paying customers", days="Days 10-14",
-            actions=[
-                f"Switch pilots to paid at {price:,} CZK with a founding-customer discount (e.g. 30% for life).",
-                "Enable Czech invoicing (Fakturoid/iDoklad API) and card + QR payments (Comgate/GoPay/Stripe).",
-                "Publish the case study, request reviews on Firmy.cz/Google, and set up a weekly metric review.",
-            ],
-            kpi=f"First 3-5 paying customers ({3 * price:,}+ CZK MRR)",
-        ),
+        GTMStep(title=tx["g1_title"], days=tx["g1_days"],
+                actions=[tx["g1_a1"].format(seg=seg0, comp=top_comp), tx["g1_a2"],
+                         tx["g1_a3"].format(niche=tr(m.niche, lang))],
+                kpi=tx["g1_kpi"]),
+        GTMStep(title=tx["g2_title"], days=tx["g2_days"],
+                actions=[tx["g2_a1"].format(channel=channel), tx["g2_a2"].format(seg=seg1),
+                         tx["g2_a3"].format(partner=partner)],
+                kpi=tx["g2_kpi"]),
+        GTMStep(title=tx["g3_title"], days=tx["g3_days"],
+                actions=[tx["g3_a1"].format(price=price), tx["g3_a2"], tx["g3_a3"]],
+                kpi=tx["g3_kpi"].format(mrr=3 * price)),
     ]
 
 
 _CATEGORY_CHECKLIST = {
-    "E-commerce Add-ons": ["Shoptet API / add-on marketplace listing", "Heureka & Zboží.cz XML feed compatibility"],
-    "Hospitality & Gastro": ["EU allergen labelling (Reg. 1169/2011, 14 allergens)",
-                             "Accommodation/tourist fee & guest-registration compliance where relevant"],
-    "Finance & Admin": ["ISDOC e-invoice format and Pohoda/Money S3 XML import",
-                        "Czech tax calendar (DPH, kontrolní hlášení deadlines)"],
-    "AI Tools": ["EU AI Act transparency: label AI-generated content", "Native-quality Czech prompts & outputs"],
-    "Local Services": ["Trade licence (živnostenský list) for the service type", "Firmy.cz & Google Business Profile listings"],
-    "D2C & Subscriptions": ["Czech-language product labelling and 14-day withdrawal terms",
-                            "Packaging take-back obligations (EKO-KOM) and food/cosmetics rules where relevant"],
-    "Health & Wellness": ["GDPR special-category (health) data handling",
-                          "Check medical-device and health-claim rules before marketing"],
-    "Education & EdTech": ["Align content with the Czech RVP curriculum / CERMAT exam formats",
-                           "Parental consent for pupils' data (GDPR)"],
+    "E-commerce Add-ons": {"en": ["Shoptet API / add-on marketplace listing", "Heureka & Zboží.cz XML feed compatibility"],
+                           "ru": ["API Shoptet / размещение в маркетплейсе дополнений",
+                                  "Совместимость с XML-фидами Heureka и Zboží.cz"]},
+    "Hospitality & Gastro": {"en": ["EU allergen labelling (Reg. 1169/2011, 14 allergens)",
+                                    "Accommodation/tourist fee & guest-registration compliance where relevant"],
+                             "ru": ["Маркировка аллергенов по правилам ЕС (регламент 1169/2011, 14 аллергенов)",
+                                    "Туристический сбор и регистрация гостей, где это применимо"]},
+    "Finance & Admin": {"en": ["ISDOC e-invoice format and Pohoda/Money S3 XML import",
+                               "Czech tax calendar (DPH, kontrolní hlášení deadlines)"],
+                        "ru": ["Формат электронных счетов ISDOC и XML-импорт в Pohoda/Money S3",
+                               "Чешский налоговый календарь (сроки DPH и kontrolní hlášení)"]},
+    "AI Tools": {"en": ["EU AI Act transparency: label AI-generated content", "Native-quality Czech prompts & outputs"],
+                 "ru": ["Прозрачность по EU AI Act: маркируйте контент, созданный ИИ",
+                        "Промпты и ответы на чешском уровня носителя"]},
+    "Local Services": {"en": ["Trade licence (živnostenský list) for the service type",
+                              "Firmy.cz & Google Business Profile listings"],
+                       "ru": ["Лицензия на вид деятельности (živnostenský list)",
+                              "Карточки на Firmy.cz и в профиле компании Google"]},
+    "D2C & Subscriptions": {"en": ["Czech-language product labelling and 14-day withdrawal terms",
+                                   "Packaging take-back obligations (EKO-KOM) and food/cosmetics rules where relevant"],
+                            "ru": ["Маркировка товаров на чешском и 14 дней на возврат",
+                                   "Обязательства по упаковке (EKO-KOM) и правила для еды/косметики, где применимо"]},
+    "Health & Wellness": {"en": ["GDPR special-category (health) data handling",
+                                 "Check medical-device and health-claim rules before marketing"],
+                          "ru": ["Обработка медицинских данных как особой категории по GDPR",
+                                 "Проверьте правила для медизделий и заявлений о пользе для здоровья до рекламы"]},
+    "Education & EdTech": {"en": ["Align content with the Czech RVP curriculum / CERMAT exam formats",
+                                  "Parental consent for pupils' data (GDPR)"],
+                           "ru": ["Согласуйте контент с чешской программой RVP / форматами экзаменов CERMAT",
+                                  "Согласие родителей на обработку данных учеников (GDPR)"]},
 }
 
 
-def mock_report(m: BusinessModel, a: CzechAssumptions, czech_context: dict | None = None) -> CzechReport:
+def mock_report(m: BusinessModel, a: CzechAssumptions, czech_context: dict | None = None,
+                lang: str = "en") -> CzechReport:
+    tx = _RT[lang]
     factors = _factor_scores(m)
-    breakdown = [ScoreFactor(factor=k, score=factors[k], weight=w, rationale=_rationale(k, m)) for k, w in WEIGHTS.items()]
+    breakdown = [ScoreFactor(factor=factor_label(k, lang), score=factors[k], weight=w, rationale=_rationale(k, m, lang))
+                 for k, w in WEIGHTS.items()]
     score = round(sum(f.score * f.weight for f in breakdown))
+    segments = tr_list(m.cz_segments, lang)
 
     # Audiences
     sam = m.cz_sam
     shares = [0.5, 0.3, 0.2]
-    wtp = "Medium" if m.audience == "B2B" else "Price-sensitive"
+    wtp = tx["wtp_b2b"] if m.audience == "B2B" else tx["wtp_b2c"]
     audiences = [
-        TargetAudience(segment=s, size_estimate=f"~{round(sam * shares[i]):,} potential customers (rough estimate)",
-                       pain_point=m.problem, willingness_to_pay=wtp)
-        for i, s in enumerate(m.cz_segments[:3] or ["Czech SMEs"])
+        TargetAudience(segment=s, size_estimate=tx["aud_size"].format(n=round(sam * shares[i])),
+                       pain_point=tr(m.problem, lang), willingness_to_pay=wtp)
+        for i, s in enumerate(segments[:3] or [tx["czech_smes"]])
     ]
 
     # Pricing & projections
     price = price_czk(m, a)
     if m.price_czk_override or m.audience == "B2C":
-        tiers = [PriceTier(name="Standard", price_czk=price, billing="monthly", includes="Full service"),
-                 PriceTier(name="Annual", price_czk=_nice_price(price * 0.8), billing="per month, billed yearly",
-                           includes="Same as Standard, ~20% discount")]
+        tiers = [PriceTier(name=tx["t_standard"], price_czk=price, billing=tx["b_monthly"], includes=tx["i_full"]),
+                 PriceTier(name=tx["t_annual"], price_czk=_nice_price(price * 0.8), billing=tx["b_yearly"],
+                           includes=tx["i_annual"])]
     else:
-        tiers = [PriceTier(name="Starter", price_czk=_nice_price(price * 0.6), billing="monthly, excl. VAT",
-                           includes="Core features, 1 user/site"),
-                 PriceTier(name="Pro", price_czk=price, billing="monthly, excl. VAT",
-                           includes="Everything + integrations, priority support in Czech"),
-                 PriceTier(name="Business", price_czk=_nice_price(price * 2.5), billing="monthly, excl. VAT",
-                           includes="Multiple sites/users, onboarding call")]
+        tiers = [PriceTier(name=tx["t_starter"], price_czk=_nice_price(price * 0.6), billing=tx["b_excl_vat"],
+                           includes=tx["i_starter"]),
+                 PriceTier(name=tx["t_pro"], price_czk=price, billing=tx["b_excl_vat"], includes=tx["i_pro"]),
+                 PriceTier(name=tx["t_business"], price_czk=_nice_price(price * 2.5), billing=tx["b_excl_vat"],
+                           includes=tx["i_business"])]
     c12 = _customers_m12(m)
     c3, c6 = max(1, round(c12 * 0.2)), max(2, round(c12 * 0.45))
     mrr = price * c12
 
-    legal, legal_costs, tax_notes = _legal_form(mrr * 12, a)
+    legal, legal_costs, tax_notes = _legal_form(mrr * 12, a, lang)
     costs = [
-        CostItem(item="Hosting, SaaS tools & APIs", czk_per_month=_TOOL_COST[m.complexity - 1],
-                 note="Scales with build complexity"),
-        CostItem(item="Marketing (ads, events, content)", czk_per_month=max(3_000, round(mrr * 0.12, -2)),
-                 note="~12% of month-12 MRR, min 3k CZK"),
-        CostItem(item="Payment fees", czk_per_month=round(mrr * a.payment_fee), note=f"{a.payment_fee:.1%} blended"),
+        CostItem(item=tx["c_tools"], czk_per_month=_TOOL_COST[m.complexity - 1], note=tx["c_tools_note"]),
+        CostItem(item=tx["c_marketing"], czk_per_month=max(3_000, round(mrr * 0.12, -2)), note=tx["c_marketing_note"]),
+        CostItem(item=tx["c_fees"], czk_per_month=round(mrr * a.payment_fee), note=tx["c_fees_note"].format(fee=a.payment_fee)),
     ]
     if m.cogs_pct:
-        costs.append(CostItem(item="Variable costs (COGS)", czk_per_month=round(mrr * m.cogs_pct),
-                              note=f"{m.cogs_pct:.0%} of revenue (food, compute, SMS...)"))
+        costs.append(CostItem(item=tx["c_cogs"], czk_per_month=round(mrr * m.cogs_pct),
+                              note=tx["c_cogs_note"].format(cogs=m.cogs_pct)))
     costs += legal_costs
     total = sum(c.czk_per_month for c in costs)
     fixed = total - round(mrr * (a.payment_fee + m.cogs_pct))
@@ -392,48 +574,40 @@ def mock_report(m: BusinessModel, a: CzechAssumptions, czech_context: dict | Non
     )
 
     # Competition
-    level = {1: "Low", 2: "Low", 3: "Medium", 4: "High", 5: "High"}[m.competition]
+    level = {1: tx["low"], 2: tx["low"], 3: tx["medium"], 4: tx["high"], 5: tx["high"]}[m.competition]
     competitors = [
         LocalCompetitor(
-            name=c.name, kind="Local" if c.local else "International", url=c.url,
-            threat=level if c.local else ("Medium" if m.moat >= 3 else "High"),
-            gap=(c.note + " - " if c.note else "") + (
-                "compete on a narrower niche, faster onboarding and founder-led Czech support." if c.local
-                else "win on Czech language, CZK invoicing, local payment methods and integrations."),
+            name=tr(c.name, lang), kind=tx["local"] if c.local else tx["international"], url=c.url,
+            threat=level if c.local else (tx["medium"] if m.moat >= 3 else tx["high"]),
+            gap=(tr(c.note, lang) + " — " if c.note else "") + (tx["gap_local"] if c.local else tx["gap_intl"]),
         )
         for c in m.cz_competitors
     ]
 
     risks = []
     if m.competition >= 4:
-        risks.append("Crowded local market - differentiation must be explicit from day one.")
+        risks.append(tx["risk_crowded"])
     if m.regulatory >= 3:
-        risks.append("Regulatory exposure - get a one-off legal review (≈5-15k CZK) before scaling.")
+        risks.append(tx["risk_regulatory"])
     if m.complexity >= 4:
-        risks.append("Build scope is large for 14 days - fake the back-office manually at first (concierge MVP).")
+        risks.append(tx["risk_scope"])
     if m.cz_sam < 5_000:
-        risks.append("Small Czech TAM - plan Slovakia (same language market) and DACH/Poland expansion early.")
+        risks.append(tx["risk_tam"])
     if m.audience == "B2C":
-        risks.append("B2C willingness to pay is ~40% lower than in the US; watch CAC closely.")
-    risks.append("All numbers are heuristic estimates - validate with real customer interviews.")
+        risks.append(tx["risk_b2c"])
+    risks.append(tx["risk_heuristic"])
 
-    checklist = [
-        "Czech UI, onboarding e-mails and support (tykání vs. vykání tone chosen deliberately)",
-        "CZK pricing; B2C prices shown including 21% DPH",
-        "Czech-compliant invoices with IČO/DIČ (Fakturoid or iDoklad API)",
-        "Local payments: cards + QR platba via Comgate/GoPay/Stripe",
-        "GDPR + opt-in cookie consent; Czech-language terms (VOP) and privacy policy",
-    ] + _CATEGORY_CHECKLIST.get(m.category, [])
+    checklist = [tx[f"chk{i}"] for i in range(1, 6)] + _CATEGORY_CHECKLIST.get(m.category, {}).get(lang, [])
 
-    one_liner = (f"{m.name}-style '{m.niche}' for {', '.join(m.cz_segments[:2]) or 'Czech SMEs'}, "
-                 f"priced at ~{price:,} CZK/month.")
+    one_liner = tx["one_liner"].format(name=m.name, niche=tr(m.niche, lang),
+                                       segs=", ".join(segments[:2]) or tx["czech_smes"], price=price)
     assumptions = [
-        f"USD/CZK {a.usd_czk}; Czech price = US price x {a.ppp_b2b if m.audience == 'B2B' else a.ppp_b2c} (purchasing power).",
-        f"Serviceable market ~{m.cz_sam:,} customers; month-12 adoption derived from demand {m.demand}/5 and competition {m.competition}/5.",
-        "Tax figures are rounded 2026 approximations - verify with an accountant / financnisprava.cz.",
+        tx["as1"].format(fx=a.usd_czk, ppp=a.ppp_b2b if m.audience == "B2B" else a.ppp_b2c),
+        tx["as2"].format(sam=m.cz_sam, d=m.demand, c=m.competition),
+        tx["as3"],
     ]
     if m.cz_notes:
-        assumptions.append(m.cz_notes)
+        assumptions.append(tr(m.cz_notes, lang))
 
     ctx = czech_context or {}
     adjustments = [CzechAdjustmentItem(factor=x["factor"], points=round(x["points"]), detail=x["detail"])
@@ -441,10 +615,9 @@ def mock_report(m: BusinessModel, a: CzechAssumptions, czech_context: dict | Non
     risks += [r for r in ctx.get("recommendations", []) if r not in risks]
     return CzechReport(
         feasibility_score=score, czech_adjusted_score=ctx.get("czech_adjusted_score", score),
-        czech_adjustments=adjustments, confidence="low",
-        confidence_reason="Rule-based heuristic from 1-5 ratings and category defaults; no model-specific research.",
-        verdict=verdict_for(score), one_liner=one_liner, score_breakdown=breakdown,
-        target_audiences=audiences, unit_economics=econ, competitors=competitors, gtm_plan=_gtm_plan(m, price),
+        czech_adjustments=adjustments, confidence="low", confidence_reason=tx["conf_reason"],
+        verdict=verdict_for(score, lang), one_liner=one_liner, score_breakdown=breakdown,
+        target_audiences=audiences, unit_economics=econ, competitors=competitors, gtm_plan=_gtm_plan(m, price, lang),
         risks=risks, localization_checklist=checklist, assumptions=assumptions,
     )
 
@@ -467,7 +640,15 @@ are confident they exist; otherwise describe the type of competitor. When a fact
 natural name (OSVČ, s.r.o., DPH, paušální daň)."""
 
 
-def _user_prompt(m: BusinessModel, baseline: CzechReport, a: CzechAssumptions) -> str:
+_LANGUAGE_RULE = {
+    "en": "Write all text fields in English, keeping Czech terms where they are the natural name "
+          "(OSVČ, s.r.o., DPH, paušální daň).",
+    "ru": "Write ALL text fields in Russian. Keep Czech proper names and legal terms as they are "
+          "(OSVČ, s.r.o., DPH, paušální daň, živnost, IČO) and keep company and product names unchanged.",
+}
+
+
+def _user_prompt(m: BusinessModel, baseline: CzechReport, a: CzechAssumptions, lang: str = "en") -> str:
     model_json = m.model_dump(exclude={"id", "inferred_fields"})
     model_json["fields_inferred_by_rules_not_verified"] = m.inferred_fields
     return f"""Produce a Czech feasibility report for this business model.
@@ -509,20 +690,21 @@ Heureka, Zboží.cz, Sklik, Firmy.cz, QR platba, GoPay, Comgate, Bank iD, ISDOC)
 correct them where you know better. Fields listed in fields_inferred_by_rules_not_verified are guesses.
 - confidence: "low", "medium" or "high" - how much the assessment rests on specific, current knowledge of \
 the Czech market rather than assumptions. Explain in confidence_reason (1-2 sentences).
-- risks, localization_checklist and assumptions as short bullet strings."""
+- risks, localization_checklist and assumptions as short bullet strings.
+- Language: {_LANGUAGE_RULE[lang]}"""
 
 
 def claude_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: str,
-                  czech_context: dict | None = None) -> CzechReport:
+                  czech_context: dict | None = None, lang: str = "en") -> CzechReport:
     import anthropic
 
     client = anthropic.Anthropic(api_key=api_key, timeout=300)
-    baseline = mock_report(m, a, czech_context)
+    baseline = mock_report(m, a, czech_context, lang)
     response = client.messages.parse(
         model=model,
         max_tokens=16000,
         system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": _user_prompt(m, baseline, a)}],
+        messages=[{"role": "user", "content": _user_prompt(m, baseline, a, lang)}],
         output_format=CzechReport,
     )
     if response.stop_reason == "refusal":
@@ -533,15 +715,15 @@ def claude_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: st
 
 
 def gemini_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: str,
-                  czech_context: dict | None = None) -> CzechReport:
+                  czech_context: dict | None = None, lang: str = "en") -> CzechReport:
     from google import genai
     from google.genai import types
 
     client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=300_000))
-    baseline = mock_report(m, a, czech_context)
+    baseline = mock_report(m, a, czech_context, lang)
     response = client.models.generate_content(
         model=model,
-        contents=_user_prompt(m, baseline, a),
+        contents=_user_prompt(m, baseline, a, lang),
         config=types.GenerateContentConfig(
             system_instruction=SYSTEM_PROMPT,
             response_mime_type="application/json",
@@ -588,17 +770,51 @@ def pick_engine(engine: str, anthropic_key: str | None, gemini_key: str | None) 
     return "mock"
 
 
-def _fallback(m: BusinessModel, a: CzechAssumptions, msg: str, ctx: dict | None = None) -> AnalysisResult:
-    return AnalysisResult(mock_report(m, a, ctx), "mock", [f"{msg} - showing the offline heuristic report instead."])
+_FALLBACK_MSG = {"en": "{msg} - showing the offline heuristic report instead.",
+                 "ru": "{msg} — показан офлайн-отчёт (эвристика)."}
 
 
-def _run_claude(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx: dict | None) -> AnalysisResult:
+# Russian versions of the engine error messages below (regex on the English text -> template).
+_MSG_RU = [
+    (r"`(\S+)` package not installed", r"не установлен пакет `\1`"),
+    (r"Invalid (Anthropic|Gemini) API key", r"неверный API-ключ \1"),
+    (r"Anthropic rate limit hit - try again in a minute", "превышен лимит запросов Anthropic — повторите через минуту"),
+    (r"Anthropic API error (.*)", r"ошибка API Anthropic \1"),
+    (r"Could not reach the Anthropic API", "не удалось связаться с API Anthropic"),
+    (r"Claude analysis failed \((.*)\)", r"анализ Claude не удался (\1)"),
+    (r"Gemini rate limit / free-tier quota hit - try again later",
+     "превышен лимит или бесплатная квота Gemini — повторите позже"),
+    (r"Gemini model '(.*)' not found", r"модель Gemini «\1» не найдена"),
+    (r"Gemini API error (.*)", r"ошибка API Gemini \1"),
+    (r"Gemini server error (\S+) - try again", r"ошибка сервера Gemini \1 — повторите попытку"),
+    (r"Gemini analysis failed \((.*)\)", r"анализ Gemini не удался (\1)"),
+    (r"No (ANTHROPIC_API_KEY|GEMINI_API_KEY) found", r"не найден \1"),
+]
+
+
+def _localize_msg(msg: str, lang: str) -> str:
+    if lang != "ru":
+        return msg
+    for pattern, ru in _MSG_RU:
+        if re.fullmatch(pattern, msg, flags=re.S):
+            return re.sub(pattern, ru, msg, flags=re.S)
+    return msg
+
+
+def _fallback(m: BusinessModel, a: CzechAssumptions, msg: str, ctx: dict | None = None,
+              lang: str = "en") -> AnalysisResult:
+    text = _FALLBACK_MSG[lang].format(msg=_localize_msg(msg, lang))
+    return AnalysisResult(mock_report(m, a, ctx, lang), "mock", [text[0].upper() + text[1:]])
+
+
+def _run_claude(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx: dict | None,
+                lang: str = "en") -> AnalysisResult:
     try:
         import anthropic
     except ImportError:
-        return _fallback(m, a, "`anthropic` package not installed", ctx)
+        return _fallback(m, a, "`anthropic` package not installed", ctx, lang)
     try:
-        return AnalysisResult(claude_report(m, a, key, model, ctx), model)
+        return AnalysisResult(claude_report(m, a, key, model, ctx, lang), model)
     except anthropic.AuthenticationError:
         msg = "Invalid Anthropic API key"
     except anthropic.RateLimitError:
@@ -609,16 +825,17 @@ def _run_claude(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx
         msg = "Could not reach the Anthropic API"
     except Exception as e:  # validation / refusal / unexpected output
         msg = f"Claude analysis failed ({e})"
-    return _fallback(m, a, msg, ctx)
+    return _fallback(m, a, msg, ctx, lang)
 
 
-def _run_gemini(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx: dict | None) -> AnalysisResult:
+def _run_gemini(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx: dict | None,
+                lang: str = "en") -> AnalysisResult:
     try:
         from google.genai import errors
     except ImportError:
-        return _fallback(m, a, "`google-genai` package not installed", ctx)
+        return _fallback(m, a, "`google-genai` package not installed", ctx, lang)
     try:
-        return AnalysisResult(gemini_report(m, a, key, model, ctx), model)
+        return AnalysisResult(gemini_report(m, a, key, model, ctx, lang), model)
     except errors.ClientError as e:
         if e.code in (401, 403) or "API_KEY_INVALID" in str(e) or "API key not valid" in str(e):
             msg = "Invalid Gemini API key"
@@ -632,13 +849,13 @@ def _run_gemini(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx
         msg = f"Gemini server error {e.code} - try again"
     except Exception as e:  # network / validation / blocked output
         msg = f"Gemini analysis failed ({e})"
-    return _fallback(m, a, msg, ctx)
+    return _fallback(m, a, msg, ctx, lang)
 
 
 def analyze(m: BusinessModel, a: CzechAssumptions | None = None, engine: str = "auto",
             anthropic_key: str | None = None, gemini_key: str | None = None,
             claude_model: str = DEFAULT_CLAUDE_MODEL, gemini_model: str = DEFAULT_GEMINI_MODEL,
-            czech_context: dict | None = None) -> AnalysisResult:
+            czech_context: dict | None = None, lang: str = "en") -> AnalysisResult:
     """Run the deep-dive. engine: 'auto', 'claude', 'gemini' or 'mock'.
     czech_context: the rule-based Czech score (scoring.czech.to_context) given to the LLM as a baseline."""
     ctx = czech_context
@@ -647,10 +864,10 @@ def analyze(m: BusinessModel, a: CzechAssumptions | None = None, engine: str = "
     engine = pick_engine(engine, anthropic_key, gemini_key)
     if engine == "claude":
         if not anthropic_key:
-            return _fallback(m, a, "No ANTHROPIC_API_KEY found", ctx)
-        return _run_claude(m, a, anthropic_key, claude_model, ctx)
+            return _fallback(m, a, "No ANTHROPIC_API_KEY found", ctx, lang)
+        return _run_claude(m, a, anthropic_key, claude_model, ctx, lang)
     if engine == "gemini":
         if not gemini_key:
-            return _fallback(m, a, "No GEMINI_API_KEY found", ctx)
-        return _run_gemini(m, a, gemini_key, gemini_model, ctx)
-    return AnalysisResult(mock_report(m, a, ctx), "mock")
+            return _fallback(m, a, "No GEMINI_API_KEY found", ctx, lang)
+        return _run_gemini(m, a, gemini_key, gemini_model, ctx, lang)
+    return AnalysisResult(mock_report(m, a, ctx, lang), "mock")
