@@ -1,0 +1,8 @@
+streamlit>=1.50
+pandas>=2.2
+pydantic>=2.7
+requests>=2.31
+anthropic>=0.75
+google-genai>=1.0
+fpdf2>=2.8
+altair>=5.0
