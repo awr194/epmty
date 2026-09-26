@@ -20,6 +20,8 @@ from typing import Literal, Optional
 
 from pydantic import BaseModel, Field
 
+from market.nace_sam import cache_info, sam_for_nace
+
 ENRICHMENT_PATH = Path(__file__).parent / "data" / "cz_enrichment.json"
 
 ModelType = Literal["saas", "marketplace", "d2c_physical", "offline_retail", "service"]
@@ -170,6 +172,14 @@ def apply_cz_defaults(row: dict, overlay: dict[str, dict] | None = None) -> dict
     put("czech_support_required", lambda: infer_czech_support(row))
     put("price_includes_vat", lambda: row.get("audience") == "B2C")
     put("target_nace", list)
+    row["sam_segment"] = over.get("sam_segment", "total")
+    if "sam_estimate" not in over and row["target_nace"]:
+        # Firms per CZ-NACE from the ČSÚ register beat the heuristic when codes are known.
+        nace_sam = sam_for_nace(row["target_nace"], row["sam_segment"])
+        if nace_sam:
+            row["sam_estimate"] = nace_sam
+            row["sam_source"] = (f"{cache_info()}, CZ-NACE {', '.join(row['target_nace'])}, "
+                                 f"segment '{row['sam_segment']}'")
     put("sam_estimate", lambda: row.get("cz_sam"))
     put("sam_source", lambda: "heuristic estimate (unverified)")
     for field in ("take_rate", "gmv_estimate", "needs_rethink_for_cz"):

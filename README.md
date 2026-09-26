@@ -91,6 +91,23 @@ Your app will be live at `https://<your-app>.streamlit.app`. It redeploys on eve
 - **Models 101-500** (`catalog/`) have real global facts (name, country, website, niche, revenue model, typical price, problem) and Czech-market ratings. Where Czech competitors are known they are named; otherwise the report shows a *category-level Czech landscape*, labelled "check relevance for this model". Run a Claude or Gemini Deep-Dive for a model-specific competitor analysis.
 - The target market is always **Czechia**; the country field shows where the model was proven.
 
+## Market size (SAM) from the Czech business register
+
+`scripts/refresh_nace_sam.py` downloads the ČSÚ *Registr ekonomických subjektů* open data
+([res_data.csv](https://opendata.csu.gov.cz/soubory/od/od_org03/res_data.csv), ~540 MB, updated twice a month) and caches
+active subjects per CZ-NACE code in `data/nace_counts.json` (split into sole traders, legal entities and firms with employees).
+`scripts/seed_target_nace.py` maps ~60 B2B models to NACE codes in `data/cz_enrichment.json`.
+
+```bash
+python scripts/refresh_nace_sam.py
+```
+
+Caveats found in the data:
+- "Active" in RES includes dormant sole traders (e.g. 115k subjects in restaurants, only ~24k with employees), so gastro tools use the *with employees* segment.
+- E-shops register under product categories (47.xx), not 47.91 - NACE cannot size the e-commerce market; those models keep a heuristic SAM.
+- Some subjects carry only a 3-digit code, so 4-5 digit queries undercount.
+- The ARES REST API's `czNace` search does not return usable counts, so it is not used for SAM.
+
 ## How scoring works
 
 Each model has Czech-market ratings from 1 to 5: demand, competition, build complexity, regulatory burden and localisation moat. It also has a serviceable-market estimate. The weights are:

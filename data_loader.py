@@ -97,6 +97,7 @@ class BusinessModel(BaseModel):
     target_nace: list[str] = Field(default_factory=list)  # CZ-NACE codes for SAM sizing
     sam_estimate: Optional[int] = None  # firms/households in CZ
     sam_source: str = ""
+    sam_segment: str = "total"  # NACE segment: total | natural_persons | legal_entities | with_employees
     take_rate: Optional[float] = None  # marketplaces: share of GMV kept
     gmv_estimate: Optional[int] = None  # marketplaces: monthly GMV at month 12, CZK
     needs_rethink_for_cz: bool = False

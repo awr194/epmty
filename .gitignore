@@ -2,3 +2,6 @@
 __pycache__/
 .streamlit/secrets.toml
 *.pyc
+
+# Raw ČSÚ download (~540 MB); the aggregated data/nace_counts.json is committed
+data/cache/

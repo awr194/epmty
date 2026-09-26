@@ -2,19 +2,20 @@
   "_meta": {
     "description": "Hand-maintained Czech enrichment overlay, keyed by exact model name. Any field set here overrides the inference rules in cz_enrichment.py. Mark unverified values with 'to verify' in notes.",
     "fields": [
-      "model_type",
-      "local_incumbents",
-      "legal_complexity",
-      "required_integrations",
-      "seasonality",
       "czech_support_required",
-      "price_includes_vat",
-      "target_nace",
-      "sam_estimate",
-      "sam_source",
-      "take_rate",
       "gmv_estimate",
-      "needs_rethink_for_cz"
+      "legal_complexity",
+      "local_incumbents",
+      "model_type",
+      "needs_rethink_for_cz",
+      "price_includes_vat",
+      "required_integrations",
+      "sam_estimate",
+      "sam_segment",
+      "sam_source",
+      "seasonality",
+      "take_rate",
+      "target_nace"
     ],
     "updated": "2026-09-26"
   },
@@ -32,7 +33,11 @@
       "model_type": "saas"
     },
     "Travelline": {
-      "model_type": "saas"
+      "model_type": "saas",
+      "target_nace": [
+        "551",
+        "552"
+      ]
     },
     "Raksul": {
       "model_type": "marketplace"
@@ -42,6 +47,356 @@
     },
     "Kitopi": {
       "model_type": "service"
+    },
+    "QR Table Ordering & Pay (Sunday/Mr Yum archetype)": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "AI Multilingual Menu & Allergen Labels": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Restaurant Inventory & Food-cost Control (MarketMan archetype)": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Online Table Reservations (OpenTable archetype)": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Toast": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Slice": {
+      "target_nace": [
+        "5610"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Flipdish": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Deliverect": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "iiko": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Poster POS": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "iCHEF": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Foodics": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Wongnai": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Digital Loyalty Cards for Cafés (Stamp Me archetype)": {
+      "target_nace": [
+        "561",
+        "563",
+        "4724"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Guesthouse Booking Engine & Channel Manager (Little Hotelier archetype)": {
+      "target_nace": [
+        "551",
+        "552"
+      ]
+    },
+    "Lodgify": {
+      "target_nace": [
+        "552"
+      ]
+    },
+    "FareHarbor": {
+      "target_nace": [
+        "7912",
+        "7990"
+      ]
+    },
+    "Salon Booking with No-show Deposits (Fresha archetype)": {
+      "target_nace": [
+        "9602",
+        "9604"
+      ]
+    },
+    "Fitness & Yoga Studio Software (Mindbody archetype)": {
+      "target_nace": [
+        "9311",
+        "9313",
+        "8551"
+      ]
+    },
+    "Glofox": {
+      "target_nace": [
+        "9311",
+        "9313",
+        "8551"
+      ]
+    },
+    "Housecall Pro": {
+      "target_nace": [
+        "432",
+        "812",
+        "8130"
+      ]
+    },
+    "Jobber": {
+      "target_nace": [
+        "432",
+        "812",
+        "8130"
+      ]
+    },
+    "Tradesperson Quote Marketplace (Checkatrade archetype)": {
+      "target_nace": [
+        "432",
+        "433"
+      ]
+    },
+    "Driving School Management & Theory App": {
+      "target_nace": [
+        "8553"
+      ]
+    },
+    "Kids' Clubs & Camps Booking (ActivityHero archetype)": {
+      "target_nace": [
+        "9312",
+        "8551",
+        "8552"
+      ]
+    },
+    "Spond": {
+      "target_nace": [
+        "9312"
+      ]
+    },
+    "Client Galleries for Photographers (Pixieset archetype)": {
+      "target_nace": [
+        "7420"
+      ]
+    },
+    "AI Phone Receptionist in Czech (Smith.ai archetype)": {
+      "target_nace": [
+        "4520",
+        "862",
+        "432"
+      ]
+    },
+    "Review Request Automation (NiceJob archetype)": {
+      "target_nace": [
+        "4520",
+        "862",
+        "9602",
+        "432"
+      ]
+    },
+    "Accountant-Client Document Portal (TaxDome archetype)": {
+      "target_nace": [
+        "6920"
+      ]
+    },
+    "Clio": {
+      "target_nace": [
+        "6910"
+      ]
+    },
+    "AI Legal Research Assistant for Czech Law (Harvey archetype)": {
+      "target_nace": [
+        "6910"
+      ]
+    },
+    "Spellbook": {
+      "target_nace": [
+        "6910"
+      ]
+    },
+    "Follow Up Boss": {
+      "target_nace": [
+        "6831"
+      ]
+    },
+    "Fixflo": {
+      "target_nace": [
+        "6832"
+      ]
+    },
+    "SVJ Building Management Portal (Buildium archetype)": {
+      "target_nace": [
+        "6832"
+      ]
+    },
+    "Local SEO for Google & Seznam (BrightLocal archetype)": {
+      "target_nace": [
+        "7311"
+      ]
+    },
+    "Sklik + Google Ads Client Reporting (AgencyAnalytics archetype)": {
+      "target_nace": [
+        "7311"
+      ]
+    },
+    "Agency Time Tracking & Profitability (Toggl archetype)": {
+      "target_nace": [
+        "7311",
+        "7410",
+        "6201"
+      ]
+    },
+    "Supplier Risk & VAT-Reliability Monitoring (Creditsafe archetype)": {
+      "target_nace": [
+        "6920",
+        "46"
+      ],
+      "sam_segment": "legal_entities"
+    },
+    "Freed": {
+      "target_nace": [
+        "862"
+      ]
+    },
+    "Doctolib": {
+      "target_nace": [
+        "862"
+      ]
+    },
+    "Zocdoc": {
+      "target_nace": [
+        "862"
+      ]
+    },
+    "SimplePractice": {
+      "target_nace": [
+        "8690"
+      ]
+    },
+    "Jane App": {
+      "target_nace": [
+        "8690"
+      ]
+    },
+    "Cliniko": {
+      "target_nace": [
+        "8690"
+      ]
+    },
+    "Birdie": {
+      "target_nace": [
+        "881"
+      ]
+    },
+    "Lottie": {
+      "target_nace": [
+        "873"
+      ]
+    },
+    "Public Tender Alerts for SMEs (GovSpend archetype)": {
+      "target_nace": [
+        "41",
+        "42",
+        "43"
+      ],
+      "sam_segment": "legal_entities"
+    },
+    "PlanRadar": {
+      "target_nace": [
+        "41",
+        "43"
+      ]
+    },
+    "Buildxact": {
+      "target_nace": [
+        "41",
+        "43"
+      ]
+    },
+    "Katana": {
+      "target_nace": [
+        "10",
+        "11",
+        "31",
+        "2042"
+      ]
+    },
+    "Agrivi": {
+      "target_nace": [
+        "01"
+      ]
+    },
+    "Shift Scheduling for Hourly Staff (Deputy archetype)": {
+      "target_nace": [
+        "561",
+        "563",
+        "47"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "7shifts": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "Planday": {
+      "target_nace": [
+        "561",
+        "563"
+      ],
+      "sam_segment": "with_employees"
+    },
+    "AI Tutor for Přijímačky & Maturita (Khanmigo archetype)": {
+      "sam_estimate": 96482,
+      "sam_source": "CERMAT: ~96,482 applicants taking the JPZ for 4-year programmes in 2026 (quoted from CERMAT news; source page not reachable - to verify)"
     }
   }
 }

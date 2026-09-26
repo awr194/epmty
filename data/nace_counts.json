@@ -1,0 +1,9774 @@
+{
+"source": {
+"url": "https://opendata.csu.gov.cz/soubory/od/od_org03/res_data.csv",
+"last_modified": "Thu, 17 Sep 2026 10:38:15 GMT",
+"bytes": 0
+},
+"data_as_of": "2026-09-15",
+"refreshed": "2026-09-26",
+"note": "Active subjects (DDATZAN empty) by primary CZ-NACE prefix; see market/nace_sam.py",
+"counts": {
+"00": {
+"total": 122453,
+"natural_persons": 95147,
+"legal_entities": 27306,
+"with_employees": 3942
+},
+"01": {
+"total": 133663,
+"natural_persons": 102824,
+"legal_entities": 30839,
+"with_employees": 14656
+},
+"011": {
+"total": 10948,
+"natural_persons": 9854,
+"legal_entities": 1094,
+"with_employees": 1981
+},
+"0111": {
+"total": 2783,
+"natural_persons": 2426,
+"legal_entities": 357,
+"with_employees": 741
+},
+"01110": {
+"total": 2780,
+"natural_persons": 2424,
+"legal_entities": 356,
+"with_employees": 741
+},
+"0113": {
+"total": 325,
+"natural_persons": 269,
+"legal_entities": 56,
+"with_employees": 84
+},
+"01130": {
+"total": 322,
+"natural_persons": 268,
+"legal_entities": 54,
+"with_employees": 83
+},
+"0116": {
+"total": 2,
+"natural_persons": 1,
+"legal_entities": 1,
+"with_employees": 1
+},
+"01160": {
+"total": 2,
+"natural_persons": 1,
+"legal_entities": 1,
+"with_employees": 1
+},
+"0119": {
+"total": 279,
+"natural_persons": 236,
+"legal_entities": 43,
+"with_employees": 69
+},
+"01190": {
+"total": 271,
+"natural_persons": 233,
+"legal_entities": 38,
+"with_employees": 65
+},
+"012": {
+"total": 1262,
+"natural_persons": 1074,
+"legal_entities": 188,
+"with_employees": 305
+},
+"0121": {
+"total": 613,
+"natural_persons": 558,
+"legal_entities": 55,
+"with_employees": 137
+},
+"01210": {
+"total": 607,
+"natural_persons": 557,
+"legal_entities": 50,
+"with_employees": 134
+},
+"0122": {
+"total": 1,
+"natural_persons": 1,
+"legal_entities": 0,
+"with_employees": 0
+},
+"01220": {
+"total": 1,
+"natural_persons": 1,
+"legal_entities": 0,
+"with_employees": 0
+},
+"0124": {
+"total": 240,
+"natural_persons": 205,
+"legal_entities": 35,
+"with_employees": 66
+},
+"01240": {
+"total": 237,
+"natural_persons": 205,
+"legal_entities": 32,
+"with_employees": 64
+},
+"0125": {
+"total": 34,
+"natural_persons": 28,
+"legal_entities": 6,
+"with_employees": 10
+},
+"01250": {
+"total": 32,
+"natural_persons": 27,
+"legal_entities": 5,
+"with_employees": 10
+},
+"0127": {
+"total": 2,
+"natural_persons": 1,
+"legal_entities": 1,
+"with_employees": 0
+},
+"01270": {
+"total": 2,
+"natural_persons": 1,
+"legal_entities": 1,
+"with_employees": 0
+},
+"0128": {
+"total": 15,
+"natural_persons": 8,
+"legal_entities": 7,
+"with_employees": 3
+},
+"01280": {
+"total": 13,
+"natural_persons": 8,
+"legal_entities": 5,
+"with_employees": 2
+},
+"0129": {
+"total": 109,
+"natural_persons": 88,
+"legal_entities": 21,
+"with_employees": 37
+},
+"01290": {
+"total": 109,
+"natural_persons": 88,
+"legal_entities": 21,
+"with_employees": 37
+},
+"013": {
+"total": 78,
+"natural_persons": 57,
+"legal_entities": 21,
+"with_employees": 33
+},
+"0130": {
+"total": 71,
+"natural_persons": 50,
+"legal_entities": 21,
+"with_employees": 32
+},
+"01300": {
+"total": 67,
+"natural_persons": 49,
+"legal_entities": 18,
+"with_employees": 30
+},
+"014": {
+"total": 17948,
+"natural_persons": 15918,
+"legal_entities": 2030,
+"with_employees": 1790
+},
+"0141": {
+"total": 300,
+"natural_persons": 239,
+"legal_entities": 61,
+"with_employees": 116
+},
+"01410": {
+"total": 298,
+"natural_persons": 238,
+"legal_entities": 60,
+"with_employees": 115
+},
+"0142": {
+"total": 1324,
+"natural_persons": 1210,
+"legal_entities": 114,
+"with_employees": 242
+},
+"01420": {
+"total": 1319,
+"natural_persons": 1210,
+"legal_entities": 109,
+"with_employees": 240
+},
+"0143": {
+"total": 365,
+"natural_persons": 311,
+"legal_entities": 54,
+"with_employees": 58
+},
+"01430": {
+"total": 349,
+"natural_persons": 306,
+"legal_entities": 43,
+"with_employees": 53
+},
+"0145": {
+"total": 639,
+"natural_persons": 621,
+"legal_entities": 18,
+"with_employees": 59
+},
+"01450": {
+"total": 637,
+"natural_persons": 621,
+"legal_entities": 16,
+"with_employees": 59
+},
+"0146": {
+"total": 166,
+"natural_persons": 118,
+"legal_entities": 48,
+"with_employees": 53
+},
+"01460": {
+"total": 165,
+"natural_persons": 118,
+"legal_entities": 47,
+"with_employees": 52
+},
+"0147": {
+"total": 119,
+"natural_persons": 55,
+"legal_entities": 64,
+"with_employees": 60
+},
+"01470": {
+"total": 117,
+"natural_persons": 55,
+"legal_entities": 62,
+"with_employees": 58
+},
+"0149": {
+"total": 12491,
+"natural_persons": 11207,
+"legal_entities": 1284,
+"with_employees": 663
+},
+"01491": {
+"total": 24,
+"natural_persons": 18,
+"legal_entities": 6,
+"with_employees": 2
+},
+"01492": {
+"total": 4,
+"natural_persons": 2,
+"legal_entities": 2,
+"with_employees": 0
+},
+"01493": {
+"total": 11958,
+"natural_persons": 10796,
+"legal_entities": 1162,
+"with_employees": 612
+},
+"01499": {
+"total": 81,
+"natural_persons": 46,
+"legal_entities": 35,
+"with_employees": 14
+},
+"015": {
+"total": 10315,
+"natural_persons": 7372,
+"legal_entities": 2943,
+"with_employees": 2684
+},
+"0150": {
+"total": 9572,
+"natural_persons": 6894,
+"legal_entities": 2678,
+"with_employees": 2487
+},
+"01500": {
+"total": 9481,
+"natural_persons": 6816,
+"legal_entities": 2665,
+"with_employees": 2471
+},
+"016": {
+"total": 55475,
+"natural_persons": 45856,
+"legal_entities": 9619,
+"with_employees": 4777
+},
+"0161": {
+"total": 811,
+"natural_persons": 596,
+"legal_entities": 215,
+"with_employees": 143
+},
+"01610": {
+"total": 731,
+"natural_persons": 571,
+"legal_entities": 160,
+"with_employees": 109
+},
+"0162": {
+"total": 102,
+"natural_persons": 77,
+"legal_entities": 25,
+"with_employees": 23
+},
+"01620": {
+"total": 89,
+"natural_persons": 73,
+"legal_entities": 16,
+"with_employees": 17
+},
+"0163": {
+"total": 3,
+"natural_persons": 1,
+"legal_entities": 2,
+"with_employees": 2
+},
+"01630": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 2
+},
+"0164": {
+"total": 7,
+"natural_persons": 3,
+"legal_entities": 4,
+"with_employees": 2
+},
+"01640": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 2
+},
+"017": {
+"total": 10026,
+"natural_persons": 4,
+"legal_entities": 10022,
+"with_employees": 158
+},
+"0170": {
+"total": 9814,
+"natural_persons": 4,
+"legal_entities": 9810,
+"with_employees": 137
+},
+"01700": {
+"total": 9761,
+"natural_persons": 4,
+"legal_entities": 9757,
+"with_employees": 131
+},
+"02": {
+"total": 6210,
+"natural_persons": 4588,
+"legal_entities": 1622,
+"with_employees": 907
+},
+"021": {
+"total": 2571,
+"natural_persons": 2018,
+"legal_entities": 553,
+"with_employees": 317
+},
+"0210": {
+"total": 2401,
+"natural_persons": 1932,
+"legal_entities": 469,
+"with_employees": 282
+},
+"02100": {
+"total": 2373,
+"natural_persons": 1921,
+"legal_entities": 452,
+"with_employees": 274
+},
+"022": {
+"total": 292,
+"natural_persons": 185,
+"legal_entities": 107,
+"with_employees": 68
+},
+"0220": {
+"total": 270,
+"natural_persons": 180,
+"legal_entities": 90,
+"with_employees": 54
+},
+"02200": {
+"total": 259,
+"natural_persons": 177,
+"legal_entities": 82,
+"with_employees": 51
+},
+"024": {
+"total": 2140,
+"natural_persons": 1501,
+"legal_entities": 639,
+"with_employees": 322
+},
+"0240": {
+"total": 1978,
+"natural_persons": 1460,
+"legal_entities": 518,
+"with_employees": 278
+},
+"02400": {
+"total": 1879,
+"natural_persons": 1450,
+"legal_entities": 429,
+"with_employees": 245
+},
+"03": {
+"total": 494,
+"natural_persons": 388,
+"legal_entities": 106,
+"with_employees": 93
+},
+"031": {
+"total": 25,
+"natural_persons": 6,
+"legal_entities": 19,
+"with_employees": 3
+},
+"0312": {
+"total": 19,
+"natural_persons": 4,
+"legal_entities": 15,
+"with_employees": 2
+},
+"03120": {
+"total": 13,
+"natural_persons": 2,
+"legal_entities": 11,
+"with_employees": 2
+},
+"032": {
+"total": 461,
+"natural_persons": 378,
+"legal_entities": 83,
+"with_employees": 86
+},
+"0321": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"03210": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"0322": {
+"total": 442,
+"natural_persons": 364,
+"legal_entities": 78,
+"with_employees": 84
+},
+"03220": {
+"total": 424,
+"natural_persons": 355,
+"legal_entities": 69,
+"with_employees": 78
+},
+"05": {
+"total": 20,
+"natural_persons": 0,
+"legal_entities": 20,
+"with_employees": 12
+},
+"051": {
+"total": 11,
+"natural_persons": 0,
+"legal_entities": 11,
+"with_employees": 5
+},
+"0510": {
+"total": 11,
+"natural_persons": 0,
+"legal_entities": 11,
+"with_employees": 5
+},
+"05102": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"052": {
+"total": 6,
+"natural_persons": 0,
+"legal_entities": 6,
+"with_employees": 5
+},
+"0520": {
+"total": 6,
+"natural_persons": 0,
+"legal_entities": 6,
+"with_employees": 5
+},
+"05201": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 4
+},
+"06": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 3
+},
+"07": {
+"total": 13,
+"natural_persons": 3,
+"legal_entities": 10,
+"with_employees": 2
+},
+"071": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 0
+},
+"0710": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 0
+},
+"072": {
+"total": 4,
+"natural_persons": 3,
+"legal_entities": 1,
+"with_employees": 1
+},
+"0721": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"07211": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"0729": {
+"total": 2,
+"natural_persons": 2,
+"legal_entities": 0,
+"with_employees": 0
+},
+"07292": {
+"total": 2,
+"natural_persons": 2,
+"legal_entities": 0,
+"with_employees": 0
+},
+"08": {
+"total": 729,
+"natural_persons": 365,
+"legal_entities": 364,
+"with_employees": 198
+},
+"081": {
+"total": 157,
+"natural_persons": 11,
+"legal_entities": 146,
+"with_employees": 103
+},
+"0811": {
+"total": 83,
+"natural_persons": 4,
+"legal_entities": 79,
+"with_employees": 55
+},
+"08110": {
+"total": 81,
+"natural_persons": 3,
+"legal_entities": 78,
+"with_employees": 54
+},
+"0812": {
+"total": 56,
+"natural_persons": 4,
+"legal_entities": 52,
+"with_employees": 38
+},
+"08120": {
+"total": 54,
+"natural_persons": 3,
+"legal_entities": 51,
+"with_employees": 37
+},
+"089": {
+"total": 53,
+"natural_persons": 13,
+"legal_entities": 40,
+"with_employees": 16
+},
+"0891": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 1
+},
+"08910": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 1
+},
+"0892": {
+"total": 16,
+"natural_persons": 3,
+"legal_entities": 13,
+"with_employees": 4
+},
+"08920": {
+"total": 6,
+"natural_persons": 3,
+"legal_entities": 3,
+"with_employees": 1
+},
+"0899": {
+"total": 18,
+"natural_persons": 4,
+"legal_entities": 14,
+"with_employees": 8
+},
+"08990": {
+"total": 14,
+"natural_persons": 2,
+"legal_entities": 12,
+"with_employees": 7
+},
+"09": {
+"total": 148,
+"natural_persons": 116,
+"legal_entities": 32,
+"with_employees": 39
+},
+"091": {
+"total": 7,
+"natural_persons": 4,
+"legal_entities": 3,
+"with_employees": 3
+},
+"0910": {
+"total": 7,
+"natural_persons": 4,
+"legal_entities": 3,
+"with_employees": 3
+},
+"09100": {
+"total": 6,
+"natural_persons": 3,
+"legal_entities": 3,
+"with_employees": 3
+},
+"099": {
+"total": 47,
+"natural_persons": 26,
+"legal_entities": 21,
+"with_employees": 20
+},
+"0990": {
+"total": 42,
+"natural_persons": 23,
+"legal_entities": 19,
+"with_employees": 18
+},
+"09900": {
+"total": 32,
+"natural_persons": 16,
+"legal_entities": 16,
+"with_employees": 16
+},
+"10": {
+"total": 24767,
+"natural_persons": 17318,
+"legal_entities": 7449,
+"with_employees": 5223
+},
+"101": {
+"total": 2701,
+"natural_persons": 2010,
+"legal_entities": 691,
+"with_employees": 771
+},
+"1011": {
+"total": 445,
+"natural_persons": 333,
+"legal_entities": 112,
+"with_employees": 120
+},
+"10110": {
+"total": 437,
+"natural_persons": 332,
+"legal_entities": 105,
+"with_employees": 113
+},
+"1012": {
+"total": 14,
+"natural_persons": 4,
+"legal_entities": 10,
+"with_employees": 7
+},
+"10120": {
+"total": 14,
+"natural_persons": 4,
+"legal_entities": 10,
+"with_employees": 7
+},
+"1013": {
+"total": 136,
+"natural_persons": 36,
+"legal_entities": 100,
+"with_employees": 60
+},
+"10130": {
+"total": 133,
+"natural_persons": 36,
+"legal_entities": 97,
+"with_employees": 58
+},
+"102": {
+"total": 8,
+"natural_persons": 2,
+"legal_entities": 6,
+"with_employees": 7
+},
+"1020": {
+"total": 8,
+"natural_persons": 2,
+"legal_entities": 6,
+"with_employees": 7
+},
+"10200": {
+"total": 8,
+"natural_persons": 2,
+"legal_entities": 6,
+"with_employees": 7
+},
+"103": {
+"total": 69,
+"natural_persons": 9,
+"legal_entities": 60,
+"with_employees": 40
+},
+"1031": {
+"total": 21,
+"natural_persons": 2,
+"legal_entities": 19,
+"with_employees": 17
+},
+"10310": {
+"total": 16,
+"natural_persons": 1,
+"legal_entities": 15,
+"with_employees": 13
+},
+"1032": {
+"total": 5,
+"natural_persons": 1,
+"legal_entities": 4,
+"with_employees": 4
+},
+"10320": {
+"total": 4,
+"natural_persons": 1,
+"legal_entities": 3,
+"with_employees": 3
+},
+"1039": {
+"total": 27,
+"natural_persons": 3,
+"legal_entities": 24,
+"with_employees": 14
+},
+"10390": {
+"total": 20,
+"natural_persons": 1,
+"legal_entities": 19,
+"with_employees": 11
+},
+"104": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 7
+},
+"1041": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 5
+},
+"10410": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 5
+},
+"105": {
+"total": 220,
+"natural_persons": 84,
+"legal_entities": 136,
+"with_employees": 95
+},
+"1051": {
+"total": 75,
+"natural_persons": 5,
+"legal_entities": 70,
+"with_employees": 48
+},
+"10510": {
+"total": 71,
+"natural_persons": 4,
+"legal_entities": 67,
+"with_employees": 45
+},
+"1052": {
+"total": 17,
+"natural_persons": 2,
+"legal_entities": 15,
+"with_employees": 11
+},
+"10520": {
+"total": 13,
+"natural_persons": 1,
+"legal_entities": 12,
+"with_employees": 10
+},
+"106": {
+"total": 267,
+"natural_persons": 68,
+"legal_entities": 199,
+"with_employees": 99
+},
+"1061": {
+"total": 59,
+"natural_persons": 12,
+"legal_entities": 47,
+"with_employees": 35
+},
+"10610": {
+"total": 59,
+"natural_persons": 12,
+"legal_entities": 47,
+"with_employees": 35
+},
+"1062": {
+"total": 79,
+"natural_persons": 12,
+"legal_entities": 67,
+"with_employees": 30
+},
+"10620": {
+"total": 55,
+"natural_persons": 7,
+"legal_entities": 48,
+"with_employees": 24
+},
+"107": {
+"total": 7314,
+"natural_persons": 5707,
+"legal_entities": 1607,
+"with_employees": 1862
+},
+"1071": {
+"total": 996,
+"natural_persons": 457,
+"legal_entities": 539,
+"with_employees": 403
+},
+"10710": {
+"total": 954,
+"natural_persons": 442,
+"legal_entities": 512,
+"with_employees": 382
+},
+"1072": {
+"total": 55,
+"natural_persons": 14,
+"legal_entities": 41,
+"with_employees": 31
+},
+"10720": {
+"total": 49,
+"natural_persons": 13,
+"legal_entities": 36,
+"with_employees": 27
+},
+"1073": {
+"total": 17,
+"natural_persons": 4,
+"legal_entities": 13,
+"with_employees": 7
+},
+"10730": {
+"total": 16,
+"natural_persons": 4,
+"legal_entities": 12,
+"with_employees": 7
+},
+"108": {
+"total": 1611,
+"natural_persons": 739,
+"legal_entities": 872,
+"with_employees": 450
+},
+"1081": {
+"total": 10,
+"natural_persons": 0,
+"legal_entities": 10,
+"with_employees": 7
+},
+"10810": {
+"total": 10,
+"natural_persons": 0,
+"legal_entities": 10,
+"with_employees": 7
+},
+"1082": {
+"total": 40,
+"natural_persons": 8,
+"legal_entities": 32,
+"with_employees": 20
+},
+"10820": {
+"total": 34,
+"natural_persons": 7,
+"legal_entities": 27,
+"with_employees": 17
+},
+"1083": {
+"total": 45,
+"natural_persons": 9,
+"legal_entities": 36,
+"with_employees": 25
+},
+"10830": {
+"total": 36,
+"natural_persons": 8,
+"legal_entities": 28,
+"with_employees": 19
+},
+"1084": {
+"total": 13,
+"natural_persons": 1,
+"legal_entities": 12,
+"with_employees": 11
+},
+"10840": {
+"total": 12,
+"natural_persons": 1,
+"legal_entities": 11,
+"with_employees": 10
+},
+"1085": {
+"total": 15,
+"natural_persons": 1,
+"legal_entities": 14,
+"with_employees": 14
+},
+"10850": {
+"total": 13,
+"natural_persons": 1,
+"legal_entities": 12,
+"with_employees": 12
+},
+"1086": {
+"total": 16,
+"natural_persons": 3,
+"legal_entities": 13,
+"with_employees": 8
+},
+"10860": {
+"total": 13,
+"natural_persons": 3,
+"legal_entities": 10,
+"with_employees": 6
+},
+"1089": {
+"total": 1095,
+"natural_persons": 594,
+"legal_entities": 501,
+"with_employees": 241
+},
+"10890": {
+"total": 860,
+"natural_persons": 422,
+"legal_entities": 438,
+"with_employees": 216
+},
+"109": {
+"total": 944,
+"natural_persons": 582,
+"legal_entities": 362,
+"with_employees": 218
+},
+"1091": {
+"total": 50,
+"natural_persons": 5,
+"legal_entities": 45,
+"with_employees": 38
+},
+"10910": {
+"total": 47,
+"natural_persons": 4,
+"legal_entities": 43,
+"with_employees": 38
+},
+"1092": {
+"total": 36,
+"natural_persons": 6,
+"legal_entities": 30,
+"with_employees": 18
+},
+"10920": {
+"total": 30,
+"natural_persons": 6,
+"legal_entities": 24,
+"with_employees": 14
+},
+"11": {
+"total": 8866,
+"natural_persons": 7155,
+"legal_entities": 1711,
+"with_employees": 2036
+},
+"110": {
+"total": 8855,
+"natural_persons": 7155,
+"legal_entities": 1700,
+"with_employees": 2028
+},
+"1101": {
+"total": 7872,
+"natural_persons": 6747,
+"legal_entities": 1125,
+"with_employees": 1669
+},
+"11010": {
+"total": 7827,
+"natural_persons": 6743,
+"legal_entities": 1084,
+"with_employees": 1652
+},
+"1102": {
+"total": 82,
+"natural_persons": 17,
+"legal_entities": 65,
+"with_employees": 42
+},
+"11020": {
+"total": 70,
+"natural_persons": 17,
+"legal_entities": 53,
+"with_employees": 36
+},
+"1103": {
+"total": 4,
+"natural_persons": 1,
+"legal_entities": 3,
+"with_employees": 2
+},
+"11030": {
+"total": 2,
+"natural_persons": 1,
+"legal_entities": 1,
+"with_employees": 1
+},
+"1104": {
+"total": 5,
+"natural_persons": 1,
+"legal_entities": 4,
+"with_employees": 2
+},
+"11040": {
+"total": 5,
+"natural_persons": 1,
+"legal_entities": 4,
+"with_employees": 2
+},
+"1105": {
+"total": 456,
+"natural_persons": 121,
+"legal_entities": 335,
+"with_employees": 205
+},
+"11050": {
+"total": 304,
+"natural_persons": 69,
+"legal_entities": 235,
+"with_employees": 149
+},
+"1106": {
+"total": 23,
+"natural_persons": 2,
+"legal_entities": 21,
+"with_employees": 16
+},
+"11060": {
+"total": 15,
+"natural_persons": 1,
+"legal_entities": 14,
+"with_employees": 10
+},
+"1107": {
+"total": 56,
+"natural_persons": 4,
+"legal_entities": 52,
+"with_employees": 29
+},
+"11070": {
+"total": 51,
+"natural_persons": 4,
+"legal_entities": 47,
+"with_employees": 27
+},
+"12": {
+"total": 13,
+"natural_persons": 1,
+"legal_entities": 12,
+"with_employees": 5
+},
+"120": {
+"total": 12,
+"natural_persons": 1,
+"legal_entities": 11,
+"with_employees": 5
+},
+"1200": {
+"total": 12,
+"natural_persons": 1,
+"legal_entities": 11,
+"with_employees": 5
+},
+"12000": {
+"total": 12,
+"natural_persons": 1,
+"legal_entities": 11,
+"with_employees": 5
+},
+"13": {
+"total": 2169,
+"natural_persons": 540,
+"legal_entities": 1629,
+"with_employees": 665
+},
+"131": {
+"total": 55,
+"natural_persons": 8,
+"legal_entities": 47,
+"with_employees": 30
+},
+"1310": {
+"total": 55,
+"natural_persons": 8,
+"legal_entities": 47,
+"with_employees": 30
+},
+"13100": {
+"total": 53,
+"natural_persons": 8,
+"legal_entities": 45,
+"with_employees": 29
+},
+"132": {
+"total": 47,
+"natural_persons": 4,
+"legal_entities": 43,
+"with_employees": 28
+},
+"1320": {
+"total": 45,
+"natural_persons": 4,
+"legal_entities": 41,
+"with_employees": 26
+},
+"13200": {
+"total": 44,
+"natural_persons": 4,
+"legal_entities": 40,
+"with_employees": 25
+},
+"133": {
+"total": 88,
+"natural_persons": 41,
+"legal_entities": 47,
+"with_employees": 29
+},
+"1330": {
+"total": 83,
+"natural_persons": 40,
+"legal_entities": 43,
+"with_employees": 27
+},
+"13300": {
+"total": 77,
+"natural_persons": 39,
+"legal_entities": 38,
+"with_employees": 25
+},
+"139": {
+"total": 700,
+"natural_persons": 361,
+"legal_entities": 339,
+"with_employees": 249
+},
+"1391": {
+"total": 20,
+"natural_persons": 11,
+"legal_entities": 9,
+"with_employees": 7
+},
+"13910": {
+"total": 20,
+"natural_persons": 11,
+"legal_entities": 9,
+"with_employees": 7
+},
+"1392": {
+"total": 313,
+"natural_persons": 155,
+"legal_entities": 158,
+"with_employees": 113
+},
+"13920": {
+"total": 292,
+"natural_persons": 150,
+"legal_entities": 142,
+"with_employees": 103
+},
+"1393": {
+"total": 9,
+"natural_persons": 4,
+"legal_entities": 5,
+"with_employees": 4
+},
+"13930": {
+"total": 8,
+"natural_persons": 3,
+"legal_entities": 5,
+"with_employees": 3
+},
+"1394": {
+"total": 15,
+"natural_persons": 5,
+"legal_entities": 10,
+"with_employees": 9
+},
+"13940": {
+"total": 14,
+"natural_persons": 4,
+"legal_entities": 10,
+"with_employees": 8
+},
+"1395": {
+"total": 20,
+"natural_persons": 0,
+"legal_entities": 20,
+"with_employees": 17
+},
+"13950": {
+"total": 19,
+"natural_persons": 0,
+"legal_entities": 19,
+"with_employees": 16
+},
+"1396": {
+"total": 121,
+"natural_persons": 73,
+"legal_entities": 48,
+"with_employees": 39
+},
+"13960": {
+"total": 115,
+"natural_persons": 71,
+"legal_entities": 44,
+"with_employees": 35
+},
+"1399": {
+"total": 87,
+"natural_persons": 56,
+"legal_entities": 31,
+"with_employees": 19
+},
+"13990": {
+"total": 82,
+"natural_persons": 53,
+"legal_entities": 29,
+"with_employees": 18
+},
+"14": {
+"total": 39755,
+"natural_persons": 35477,
+"legal_entities": 4278,
+"with_employees": 2426
+},
+"141": {
+"total": 11170,
+"natural_persons": 9838,
+"legal_entities": 1332,
+"with_employees": 705
+},
+"1411": {
+"total": 39,
+"natural_persons": 25,
+"legal_entities": 14,
+"with_employees": 5
+},
+"14110": {
+"total": 39,
+"natural_persons": 25,
+"legal_entities": 14,
+"with_employees": 5
+},
+"1412": {
+"total": 82,
+"natural_persons": 44,
+"legal_entities": 38,
+"with_employees": 31
+},
+"14120": {
+"total": 77,
+"natural_persons": 44,
+"legal_entities": 33,
+"with_employees": 27
+},
+"1413": {
+"total": 1613,
+"natural_persons": 1347,
+"legal_entities": 266,
+"with_employees": 139
+},
+"14130": {
+"total": 1595,
+"natural_persons": 1331,
+"legal_entities": 264,
+"with_employees": 137
+},
+"1414": {
+"total": 34,
+"natural_persons": 6,
+"legal_entities": 28,
+"with_employees": 18
+},
+"14140": {
+"total": 30,
+"natural_persons": 6,
+"legal_entities": 24,
+"with_employees": 16
+},
+"1419": {
+"total": 2426,
+"natural_persons": 2194,
+"legal_entities": 232,
+"with_employees": 96
+},
+"14190": {
+"total": 1212,
+"natural_persons": 1109,
+"legal_entities": 103,
+"with_employees": 49
+},
+"142": {
+"total": 25,
+"natural_persons": 15,
+"legal_entities": 10,
+"with_employees": 4
+},
+"1420": {
+"total": 24,
+"natural_persons": 14,
+"legal_entities": 10,
+"with_employees": 4
+},
+"14200": {
+"total": 23,
+"natural_persons": 14,
+"legal_entities": 9,
+"with_employees": 3
+},
+"143": {
+"total": 197,
+"natural_persons": 142,
+"legal_entities": 55,
+"with_employees": 23
+},
+"1431": {
+"total": 22,
+"natural_persons": 1,
+"legal_entities": 21,
+"with_employees": 10
+},
+"14310": {
+"total": 19,
+"natural_persons": 1,
+"legal_entities": 18,
+"with_employees": 7
+},
+"1439": {
+"total": 52,
+"natural_persons": 43,
+"legal_entities": 9,
+"with_employees": 3
+},
+"14390": {
+"total": 51,
+"natural_persons": 43,
+"legal_entities": 8,
+"with_employees": 3
+},
+"15": {
+"total": 455,
+"natural_persons": 242,
+"legal_entities": 213,
+"with_employees": 113
+},
+"151": {
+"total": 280,
+"natural_persons": 200,
+"legal_entities": 80,
+"with_employees": 60
+},
+"1511": {
+"total": 144,
+"natural_persons": 121,
+"legal_entities": 23,
+"with_employees": 16
+},
+"15110": {
+"total": 144,
+"natural_persons": 121,
+"legal_entities": 23,
+"with_employees": 16
+},
+"1512": {
+"total": 134,
+"natural_persons": 77,
+"legal_entities": 57,
+"with_employees": 44
+},
+"15120": {
+"total": 120,
+"natural_persons": 73,
+"legal_entities": 47,
+"with_employees": 38
+},
+"152": {
+"total": 166,
+"natural_persons": 38,
+"legal_entities": 128,
+"with_employees": 50
+},
+"1520": {
+"total": 146,
+"natural_persons": 34,
+"legal_entities": 112,
+"with_employees": 45
+},
+"15201": {
+"total": 3,
+"natural_persons": 1,
+"legal_entities": 2,
+"with_employees": 0
+},
+"15209": {
+"total": 12,
+"natural_persons": 7,
+"legal_entities": 5,
+"with_employees": 2
+},
+"16": {
+"total": 24841,
+"natural_persons": 19527,
+"legal_entities": 5314,
+"with_employees": 2773
+},
+"161": {
+"total": 921,
+"natural_persons": 347,
+"legal_entities": 574,
+"with_employees": 309
+},
+"1610": {
+"total": 901,
+"natural_persons": 342,
+"legal_entities": 559,
+"with_employees": 297
+},
+"16100": {
+"total": 885,
+"natural_persons": 339,
+"legal_entities": 546,
+"with_employees": 286
+},
+"162": {
+"total": 9768,
+"natural_persons": 7808,
+"legal_entities": 1960,
+"with_employees": 1236
+},
+"1621": {
+"total": 23,
+"natural_persons": 4,
+"legal_entities": 19,
+"with_employees": 14
+},
+"16210": {
+"total": 22,
+"natural_persons": 4,
+"legal_entities": 18,
+"with_employees": 13
+},
+"1622": {
+"total": 2,
+"natural_persons": 1,
+"legal_entities": 1,
+"with_employees": 2
+},
+"16220": {
+"total": 1,
+"natural_persons": 1,
+"legal_entities": 0,
+"with_employees": 1
+},
+"1623": {
+"total": 6217,
+"natural_persons": 5154,
+"legal_entities": 1063,
+"with_employees": 798
+},
+"16230": {
+"total": 6170,
+"natural_persons": 5134,
+"legal_entities": 1036,
+"with_employees": 774
+},
+"1624": {
+"total": 113,
+"natural_persons": 52,
+"legal_entities": 61,
+"with_employees": 44
+},
+"16240": {
+"total": 109,
+"natural_persons": 52,
+"legal_entities": 57,
+"with_employees": 42
+},
+"1629": {
+"total": 1959,
+"natural_persons": 1506,
+"legal_entities": 453,
+"with_employees": 203
+},
+"16290": {
+"total": 1878,
+"natural_persons": 1454,
+"legal_entities": 424,
+"with_employees": 180
+},
+"17": {
+"total": 1993,
+"natural_persons": 1247,
+"legal_entities": 746,
+"with_employees": 460
+},
+"171": {
+"total": 290,
+"natural_persons": 77,
+"legal_entities": 213,
+"with_employees": 111
+},
+"1711": {
+"total": 6,
+"natural_persons": 1,
+"legal_entities": 5,
+"with_employees": 3
+},
+"17112": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 0
+},
+"17113": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 3
+},
+"1712": {
+"total": 155,
+"natural_persons": 10,
+"legal_entities": 145,
+"with_employees": 67
+},
+"17120": {
+"total": 136,
+"natural_persons": 8,
+"legal_entities": 128,
+"with_employees": 59
+},
+"172": {
+"total": 231,
+"natural_persons": 44,
+"legal_entities": 187,
+"with_employees": 144
+},
+"1721": {
+"total": 75,
+"natural_persons": 9,
+"legal_entities": 66,
+"with_employees": 53
+},
+"17210": {
+"total": 70,
+"natural_persons": 7,
+"legal_entities": 63,
+"with_employees": 50
+},
+"1722": {
+"total": 19,
+"natural_persons": 2,
+"legal_entities": 17,
+"with_employees": 11
+},
+"17220": {
+"total": 16,
+"natural_persons": 2,
+"legal_entities": 14,
+"with_employees": 9
+},
+"1723": {
+"total": 17,
+"natural_persons": 2,
+"legal_entities": 15,
+"with_employees": 14
+},
+"17230": {
+"total": 17,
+"natural_persons": 2,
+"legal_entities": 15,
+"with_employees": 14
+},
+"1724": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"17240": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"1729": {
+"total": 72,
+"natural_persons": 21,
+"legal_entities": 51,
+"with_employees": 42
+},
+"17290": {
+"total": 68,
+"natural_persons": 20,
+"legal_entities": 48,
+"with_employees": 40
+},
+"18": {
+"total": 12486,
+"natural_persons": 9577,
+"legal_entities": 2909,
+"with_employees": 1126
+},
+"181": {
+"total": 8208,
+"natural_persons": 6509,
+"legal_entities": 1699,
+"with_employees": 778
+},
+"1811": {
+"total": 8,
+"natural_persons": 1,
+"legal_entities": 7,
+"with_employees": 4
+},
+"18110": {
+"total": 8,
+"natural_persons": 1,
+"legal_entities": 7,
+"with_employees": 4
+},
+"1812": {
+"total": 280,
+"natural_persons": 82,
+"legal_entities": 198,
+"with_employees": 140
+},
+"18120": {
+"total": 244,
+"natural_persons": 66,
+"legal_entities": 178,
+"with_employees": 124
+},
+"1813": {
+"total": 1146,
+"natural_persons": 853,
+"legal_entities": 293,
+"with_employees": 169
+},
+"18130": {
+"total": 1126,
+"natural_persons": 835,
+"legal_entities": 291,
+"with_employees": 167
+},
+"1814": {
+"total": 1975,
+"natural_persons": 1807,
+"legal_entities": 168,
+"with_employees": 60
+},
+"18140": {
+"total": 1818,
+"natural_persons": 1667,
+"legal_entities": 151,
+"with_employees": 52
+},
+"182": {
+"total": 4019,
+"natural_persons": 2990,
+"legal_entities": 1029,
+"with_employees": 280
+},
+"1820": {
+"total": 2255,
+"natural_persons": 1507,
+"legal_entities": 748,
+"with_employees": 219
+},
+"18200": {
+"total": 1604,
+"natural_persons": 1105,
+"legal_entities": 499,
+"with_employees": 133
+},
+"19": {
+"total": 75,
+"natural_persons": 4,
+"legal_entities": 71,
+"with_employees": 22
+},
+"191": {
+"total": 49,
+"natural_persons": 3,
+"legal_entities": 46,
+"with_employees": 10
+},
+"1910": {
+"total": 48,
+"natural_persons": 3,
+"legal_entities": 45,
+"with_employees": 10
+},
+"19100": {
+"total": 43,
+"natural_persons": 3,
+"legal_entities": 40,
+"with_employees": 9
+},
+"192": {
+"total": 23,
+"natural_persons": 1,
+"legal_entities": 22,
+"with_employees": 12
+},
+"1920": {
+"total": 21,
+"natural_persons": 1,
+"legal_entities": 20,
+"with_employees": 11
+},
+"19200": {
+"total": 17,
+"natural_persons": 1,
+"legal_entities": 16,
+"with_employees": 9
+},
+"20": {
+"total": 3386,
+"natural_persons": 1765,
+"legal_entities": 1621,
+"with_employees": 936
+},
+"201": {
+"total": 644,
+"natural_persons": 333,
+"legal_entities": 311,
+"with_employees": 188
+},
+"2011": {
+"total": 214,
+"natural_persons": 205,
+"legal_entities": 9,
+"with_employees": 21
+},
+"20110": {
+"total": 214,
+"natural_persons": 205,
+"legal_entities": 9,
+"with_employees": 21
+},
+"2012": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 4
+},
+"20120": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 4
+},
+"2013": {
+"total": 46,
+"natural_persons": 0,
+"legal_entities": 46,
+"with_employees": 23
+},
+"20130": {
+"total": 33,
+"natural_persons": 0,
+"legal_entities": 33,
+"with_employees": 18
+},
+"2014": {
+"total": 26,
+"natural_persons": 1,
+"legal_entities": 25,
+"with_employees": 18
+},
+"20149": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 4
+},
+"2015": {
+"total": 207,
+"natural_persons": 108,
+"legal_entities": 99,
+"with_employees": 46
+},
+"20150": {
+"total": 183,
+"natural_persons": 106,
+"legal_entities": 77,
+"with_employees": 36
+},
+"2016": {
+"total": 27,
+"natural_persons": 4,
+"legal_entities": 23,
+"with_employees": 17
+},
+"20160": {
+"total": 21,
+"natural_persons": 4,
+"legal_entities": 17,
+"with_employees": 12
+},
+"2017": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 3
+},
+"20170": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 3
+},
+"202": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 10
+},
+"2020": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 10
+},
+"20200": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 10
+},
+"203": {
+"total": 37,
+"natural_persons": 2,
+"legal_entities": 35,
+"with_employees": 28
+},
+"2030": {
+"total": 34,
+"natural_persons": 2,
+"legal_entities": 32,
+"with_employees": 25
+},
+"20300": {
+"total": 34,
+"natural_persons": 2,
+"legal_entities": 32,
+"with_employees": 25
+},
+"204": {
+"total": 197,
+"natural_persons": 25,
+"legal_entities": 172,
+"with_employees": 106
+},
+"2041": {
+"total": 22,
+"natural_persons": 2,
+"legal_entities": 20,
+"with_employees": 15
+},
+"20410": {
+"total": 17,
+"natural_persons": 0,
+"legal_entities": 17,
+"with_employees": 14
+},
+"2042": {
+"total": 128,
+"natural_persons": 20,
+"legal_entities": 108,
+"with_employees": 65
+},
+"20420": {
+"total": 113,
+"natural_persons": 19,
+"legal_entities": 94,
+"with_employees": 56
+},
+"205": {
+"total": 119,
+"natural_persons": 10,
+"legal_entities": 109,
+"with_employees": 77
+},
+"2051": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 6
+},
+"20510": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 6
+},
+"2052": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"20520": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"2053": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 3
+},
+"20530": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 1
+},
+"2059": {
+"total": 68,
+"natural_persons": 8,
+"legal_entities": 60,
+"with_employees": 47
+},
+"20591": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"20599": {
+"total": 9,
+"natural_persons": 0,
+"legal_entities": 9,
+"with_employees": 8
+},
+"206": {
+"total": 9,
+"natural_persons": 0,
+"legal_entities": 9,
+"with_employees": 6
+},
+"2060": {
+"total": 9,
+"natural_persons": 0,
+"legal_entities": 9,
+"with_employees": 6
+},
+"20600": {
+"total": 9,
+"natural_persons": 0,
+"legal_entities": 9,
+"with_employees": 6
+},
+"21": {
+"total": 77,
+"natural_persons": 3,
+"legal_entities": 74,
+"with_employees": 57
+},
+"211": {
+"total": 11,
+"natural_persons": 0,
+"legal_entities": 11,
+"with_employees": 10
+},
+"2110": {
+"total": 9,
+"natural_persons": 0,
+"legal_entities": 9,
+"with_employees": 9
+},
+"21100": {
+"total": 9,
+"natural_persons": 0,
+"legal_entities": 9,
+"with_employees": 9
+},
+"212": {
+"total": 48,
+"natural_persons": 0,
+"legal_entities": 48,
+"with_employees": 37
+},
+"2120": {
+"total": 45,
+"natural_persons": 0,
+"legal_entities": 45,
+"with_employees": 34
+},
+"21200": {
+"total": 39,
+"natural_persons": 0,
+"legal_entities": 39,
+"with_employees": 29
+},
+"22": {
+"total": 6633,
+"natural_persons": 3736,
+"legal_entities": 2897,
+"with_employees": 1842
+},
+"221": {
+"total": 295,
+"natural_persons": 84,
+"legal_entities": 211,
+"with_employees": 147
+},
+"2211": {
+"total": 62,
+"natural_persons": 31,
+"legal_entities": 31,
+"with_employees": 22
+},
+"22110": {
+"total": 61,
+"natural_persons": 30,
+"legal_entities": 31,
+"with_employees": 22
+},
+"2219": {
+"total": 77,
+"natural_persons": 12,
+"legal_entities": 65,
+"with_employees": 52
+},
+"22190": {
+"total": 74,
+"natural_persons": 12,
+"legal_entities": 62,
+"with_employees": 49
+},
+"222": {
+"total": 1320,
+"natural_persons": 254,
+"legal_entities": 1066,
+"with_employees": 796
+},
+"2221": {
+"total": 78,
+"natural_persons": 12,
+"legal_entities": 66,
+"with_employees": 57
+},
+"22210": {
+"total": 74,
+"natural_persons": 10,
+"legal_entities": 64,
+"with_employees": 54
+},
+"2222": {
+"total": 102,
+"natural_persons": 14,
+"legal_entities": 88,
+"with_employees": 75
+},
+"22220": {
+"total": 95,
+"natural_persons": 12,
+"legal_entities": 83,
+"with_employees": 70
+},
+"2223": {
+"total": 160,
+"natural_persons": 22,
+"legal_entities": 138,
+"with_employees": 110
+},
+"22230": {
+"total": 141,
+"natural_persons": 21,
+"legal_entities": 120,
+"with_employees": 95
+},
+"2229": {
+"total": 355,
+"natural_persons": 91,
+"legal_entities": 264,
+"with_employees": 207
+},
+"22290": {
+"total": 334,
+"natural_persons": 86,
+"legal_entities": 248,
+"with_employees": 192
+},
+"23": {
+"total": 10832,
+"natural_persons": 8354,
+"legal_entities": 2478,
+"with_employees": 1519
+},
+"231": {
+"total": 3519,
+"natural_persons": 2812,
+"legal_entities": 707,
+"with_employees": 456
+},
+"2311": {
+"total": 12,
+"natural_persons": 4,
+"legal_entities": 8,
+"with_employees": 6
+},
+"23110": {
+"total": 10,
+"natural_persons": 3,
+"legal_entities": 7,
+"with_employees": 5
+},
+"2312": {
+"total": 50,
+"natural_persons": 13,
+"legal_entities": 37,
+"with_employees": 27
+},
+"23120": {
+"total": 47,
+"natural_persons": 13,
+"legal_entities": 34,
+"with_employees": 25
+},
+"2313": {
+"total": 142,
+"natural_persons": 73,
+"legal_entities": 69,
+"with_employees": 42
+},
+"23130": {
+"total": 141,
+"natural_persons": 73,
+"legal_entities": 68,
+"with_employees": 41
+},
+"2314": {
+"total": 8,
+"natural_persons": 1,
+"legal_entities": 7,
+"with_employees": 5
+},
+"23140": {
+"total": 7,
+"natural_persons": 1,
+"legal_entities": 6,
+"with_employees": 5
+},
+"2319": {
+"total": 87,
+"natural_persons": 33,
+"legal_entities": 54,
+"with_employees": 37
+},
+"23190": {
+"total": 83,
+"natural_persons": 32,
+"legal_entities": 51,
+"with_employees": 36
+},
+"232": {
+"total": 24,
+"natural_persons": 4,
+"legal_entities": 20,
+"with_employees": 17
+},
+"2320": {
+"total": 23,
+"natural_persons": 4,
+"legal_entities": 19,
+"with_employees": 16
+},
+"23200": {
+"total": 22,
+"natural_persons": 4,
+"legal_entities": 18,
+"with_employees": 15
+},
+"233": {
+"total": 274,
+"natural_persons": 177,
+"legal_entities": 97,
+"with_employees": 42
+},
+"2331": {
+"total": 9,
+"natural_persons": 3,
+"legal_entities": 6,
+"with_employees": 3
+},
+"23310": {
+"total": 9,
+"natural_persons": 3,
+"legal_entities": 6,
+"with_employees": 3
+},
+"2332": {
+"total": 89,
+"natural_persons": 47,
+"legal_entities": 42,
+"with_employees": 22
+},
+"23320": {
+"total": 83,
+"natural_persons": 45,
+"legal_entities": 38,
+"with_employees": 21
+},
+"234": {
+"total": 613,
+"natural_persons": 465,
+"legal_entities": 148,
+"with_employees": 85
+},
+"2341": {
+"total": 439,
+"natural_persons": 390,
+"legal_entities": 49,
+"with_employees": 32
+},
+"23410": {
+"total": 380,
+"natural_persons": 334,
+"legal_entities": 46,
+"with_employees": 29
+},
+"2342": {
+"total": 4,
+"natural_persons": 1,
+"legal_entities": 3,
+"with_employees": 2
+},
+"23420": {
+"total": 4,
+"natural_persons": 1,
+"legal_entities": 3,
+"with_employees": 2
+},
+"2343": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 3
+},
+"23430": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 3
+},
+"2344": {
+"total": 9,
+"natural_persons": 1,
+"legal_entities": 8,
+"with_employees": 7
+},
+"23440": {
+"total": 9,
+"natural_persons": 1,
+"legal_entities": 8,
+"with_employees": 7
+},
+"2349": {
+"total": 63,
+"natural_persons": 51,
+"legal_entities": 12,
+"with_employees": 7
+},
+"23490": {
+"total": 59,
+"natural_persons": 47,
+"legal_entities": 12,
+"with_employees": 7
+},
+"235": {
+"total": 98,
+"natural_persons": 14,
+"legal_entities": 84,
+"with_employees": 41
+},
+"2351": {
+"total": 14,
+"natural_persons": 3,
+"legal_entities": 11,
+"with_employees": 7
+},
+"23510": {
+"total": 13,
+"natural_persons": 2,
+"legal_entities": 11,
+"with_employees": 7
+},
+"2352": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 5
+},
+"23520": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 5
+},
+"236": {
+"total": 528,
+"natural_persons": 75,
+"legal_entities": 453,
+"with_employees": 247
+},
+"2361": {
+"total": 87,
+"natural_persons": 11,
+"legal_entities": 76,
+"with_employees": 56
+},
+"23610": {
+"total": 82,
+"natural_persons": 10,
+"legal_entities": 72,
+"with_employees": 52
+},
+"2362": {
+"total": 11,
+"natural_persons": 5,
+"legal_entities": 6,
+"with_employees": 1
+},
+"23620": {
+"total": 11,
+"natural_persons": 5,
+"legal_entities": 6,
+"with_employees": 1
+},
+"2363": {
+"total": 28,
+"natural_persons": 0,
+"legal_entities": 28,
+"with_employees": 21
+},
+"23630": {
+"total": 26,
+"natural_persons": 0,
+"legal_entities": 26,
+"with_employees": 19
+},
+"2364": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 9
+},
+"23640": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 9
+},
+"2365": {
+"total": 8,
+"natural_persons": 1,
+"legal_entities": 7,
+"with_employees": 4
+},
+"23650": {
+"total": 8,
+"natural_persons": 1,
+"legal_entities": 7,
+"with_employees": 4
+},
+"2369": {
+"total": 221,
+"natural_persons": 34,
+"legal_entities": 187,
+"with_employees": 74
+},
+"23690": {
+"total": 77,
+"natural_persons": 24,
+"legal_entities": 53,
+"with_employees": 25
+},
+"237": {
+"total": 2270,
+"natural_persons": 1937,
+"legal_entities": 333,
+"with_employees": 305
+},
+"2370": {
+"total": 2179,
+"natural_persons": 1934,
+"legal_entities": 245,
+"with_employees": 280
+},
+"23700": {
+"total": 2150,
+"natural_persons": 1932,
+"legal_entities": 218,
+"with_employees": 262
+},
+"239": {
+"total": 296,
+"natural_persons": 165,
+"legal_entities": 131,
+"with_employees": 69
+},
+"2391": {
+"total": 16,
+"natural_persons": 3,
+"legal_entities": 13,
+"with_employees": 10
+},
+"23910": {
+"total": 14,
+"natural_persons": 3,
+"legal_entities": 11,
+"with_employees": 8
+},
+"2399": {
+"total": 41,
+"natural_persons": 7,
+"legal_entities": 34,
+"with_employees": 24
+},
+"23990": {
+"total": 35,
+"natural_persons": 7,
+"legal_entities": 28,
+"with_employees": 20
+},
+"24": {
+"total": 2710,
+"natural_persons": 1754,
+"legal_entities": 956,
+"with_employees": 442
+},
+"241": {
+"total": 65,
+"natural_persons": 7,
+"legal_entities": 58,
+"with_employees": 29
+},
+"2410": {
+"total": 49,
+"natural_persons": 4,
+"legal_entities": 45,
+"with_employees": 25
+},
+"24101": {
+"total": 6,
+"natural_persons": 0,
+"legal_entities": 6,
+"with_employees": 4
+},
+"24102": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"24103": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 4
+},
+"242": {
+"total": 20,
+"natural_persons": 1,
+"legal_entities": 19,
+"with_employees": 10
+},
+"2420": {
+"total": 18,
+"natural_persons": 1,
+"legal_entities": 17,
+"with_employees": 10
+},
+"24200": {
+"total": 18,
+"natural_persons": 1,
+"legal_entities": 17,
+"with_employees": 10
+},
+"243": {
+"total": 16,
+"natural_persons": 1,
+"legal_entities": 15,
+"with_employees": 14
+},
+"2431": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"24310": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"2432": {
+"total": 3,
+"natural_persons": 1,
+"legal_entities": 2,
+"with_employees": 2
+},
+"24320": {
+"total": 3,
+"natural_persons": 1,
+"legal_entities": 2,
+"with_employees": 2
+},
+"2433": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 5
+},
+"24330": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 5
+},
+"2434": {
+"total": 6,
+"natural_persons": 0,
+"legal_entities": 6,
+"with_employees": 6
+},
+"24340": {
+"total": 6,
+"natural_persons": 0,
+"legal_entities": 6,
+"with_employees": 6
+},
+"244": {
+"total": 208,
+"natural_persons": 44,
+"legal_entities": 164,
+"with_employees": 68
+},
+"2441": {
+"total": 110,
+"natural_persons": 1,
+"legal_entities": 109,
+"with_employees": 39
+},
+"24410": {
+"total": 91,
+"natural_persons": 1,
+"legal_entities": 90,
+"with_employees": 32
+},
+"2442": {
+"total": 10,
+"natural_persons": 0,
+"legal_entities": 10,
+"with_employees": 7
+},
+"24420": {
+"total": 10,
+"natural_persons": 0,
+"legal_entities": 10,
+"with_employees": 7
+},
+"2443": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 1
+},
+"24430": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 1
+},
+"2444": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 2
+},
+"24440": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 2
+},
+"2445": {
+"total": 10,
+"natural_persons": 1,
+"legal_entities": 9,
+"with_employees": 4
+},
+"24450": {
+"total": 10,
+"natural_persons": 1,
+"legal_entities": 9,
+"with_employees": 4
+},
+"245": {
+"total": 566,
+"natural_persons": 379,
+"legal_entities": 187,
+"with_employees": 164
+},
+"2451": {
+"total": 37,
+"natural_persons": 22,
+"legal_entities": 15,
+"with_employees": 12
+},
+"24511": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"24512": {
+"total": 1,
+"natural_persons": 1,
+"legal_entities": 0,
+"with_employees": 0
+},
+"2452": {
+"total": 9,
+"natural_persons": 0,
+"legal_entities": 9,
+"with_employees": 8
+},
+"24521": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 2
+},
+"2453": {
+"total": 20,
+"natural_persons": 0,
+"legal_entities": 20,
+"with_employees": 20
+},
+"24530": {
+"total": 18,
+"natural_persons": 0,
+"legal_entities": 18,
+"with_employees": 18
+},
+"2454": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 3
+},
+"24540": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 3
+},
+"25": {
+"total": 94480,
+"natural_persons": 76360,
+"legal_entities": 18120,
+"with_employees": 11438
+},
+"251": {
+"total": 3220,
+"natural_persons": 1077,
+"legal_entities": 2143,
+"with_employees": 1075
+},
+"2511": {
+"total": 1989,
+"natural_persons": 453,
+"legal_entities": 1536,
+"with_employees": 753
+},
+"25110": {
+"total": 1311,
+"natural_persons": 277,
+"legal_entities": 1034,
+"with_employees": 533
+},
+"2512": {
+"total": 39,
+"natural_persons": 7,
+"legal_entities": 32,
+"with_employees": 25
+},
+"25120": {
+"total": 35,
+"natural_persons": 7,
+"legal_entities": 28,
+"with_employees": 22
+},
+"252": {
+"total": 205,
+"natural_persons": 42,
+"legal_entities": 163,
+"with_employees": 114
+},
+"2521": {
+"total": 66,
+"natural_persons": 13,
+"legal_entities": 53,
+"with_employees": 37
+},
+"25210": {
+"total": 60,
+"natural_persons": 13,
+"legal_entities": 47,
+"with_employees": 31
+},
+"2529": {
+"total": 73,
+"natural_persons": 6,
+"legal_entities": 67,
+"with_employees": 46
+},
+"25290": {
+"total": 71,
+"natural_persons": 6,
+"legal_entities": 65,
+"with_employees": 44
+},
+"253": {
+"total": 130,
+"natural_persons": 115,
+"legal_entities": 15,
+"with_employees": 15
+},
+"2530": {
+"total": 129,
+"natural_persons": 114,
+"legal_entities": 15,
+"with_employees": 15
+},
+"25300": {
+"total": 129,
+"natural_persons": 114,
+"legal_entities": 15,
+"with_employees": 15
+},
+"254": {
+"total": 122,
+"natural_persons": 32,
+"legal_entities": 90,
+"with_employees": 52
+},
+"2540": {
+"total": 111,
+"natural_persons": 27,
+"legal_entities": 84,
+"with_employees": 49
+},
+"25400": {
+"total": 89,
+"natural_persons": 19,
+"legal_entities": 70,
+"with_employees": 37
+},
+"255": {
+"total": 2164,
+"natural_persons": 2008,
+"legal_entities": 156,
+"with_employees": 143
+},
+"2550": {
+"total": 2139,
+"natural_persons": 2003,
+"legal_entities": 136,
+"with_employees": 128
+},
+"25500": {
+"total": 2128,
+"natural_persons": 2001,
+"legal_entities": 127,
+"with_employees": 124
+},
+"256": {
+"total": 31504,
+"natural_persons": 24488,
+"legal_entities": 7016,
+"with_employees": 4005
+},
+"2561": {
+"total": 1218,
+"natural_persons": 267,
+"legal_entities": 951,
+"with_employees": 557
+},
+"25610": {
+"total": 1155,
+"natural_persons": 265,
+"legal_entities": 890,
+"with_employees": 521
+},
+"2562": {
+"total": 4375,
+"natural_persons": 2376,
+"legal_entities": 1999,
+"with_employees": 1526
+},
+"25620": {
+"total": 4077,
+"natural_persons": 2234,
+"legal_entities": 1843,
+"with_employees": 1401
+},
+"257": {
+"total": 42029,
+"natural_persons": 36567,
+"legal_entities": 5462,
+"with_employees": 4407
+},
+"2571": {
+"total": 22,
+"natural_persons": 10,
+"legal_entities": 12,
+"with_employees": 7
+},
+"25710": {
+"total": 19,
+"natural_persons": 10,
+"legal_entities": 9,
+"with_employees": 6
+},
+"2572": {
+"total": 9405,
+"natural_persons": 7174,
+"legal_entities": 2231,
+"with_employees": 1533
+},
+"25720": {
+"total": 9127,
+"natural_persons": 7115,
+"legal_entities": 2012,
+"with_employees": 1397
+},
+"2573": {
+"total": 516,
+"natural_persons": 236,
+"legal_entities": 280,
+"with_employees": 227
+},
+"25730": {
+"total": 480,
+"natural_persons": 227,
+"legal_entities": 253,
+"with_employees": 205
+},
+"259": {
+"total": 759,
+"natural_persons": 324,
+"legal_entities": 435,
+"with_employees": 320
+},
+"2591": {
+"total": 6,
+"natural_persons": 0,
+"legal_entities": 6,
+"with_employees": 4
+},
+"25910": {
+"total": 6,
+"natural_persons": 0,
+"legal_entities": 6,
+"with_employees": 4
+},
+"2592": {
+"total": 12,
+"natural_persons": 1,
+"legal_entities": 11,
+"with_employees": 9
+},
+"25920": {
+"total": 12,
+"natural_persons": 1,
+"legal_entities": 11,
+"with_employees": 9
+},
+"2593": {
+"total": 30,
+"natural_persons": 4,
+"legal_entities": 26,
+"with_employees": 24
+},
+"25930": {
+"total": 28,
+"natural_persons": 4,
+"legal_entities": 24,
+"with_employees": 23
+},
+"2594": {
+"total": 14,
+"natural_persons": 2,
+"legal_entities": 12,
+"with_employees": 12
+},
+"25940": {
+"total": 14,
+"natural_persons": 2,
+"legal_entities": 12,
+"with_employees": 12
+},
+"2599": {
+"total": 340,
+"natural_persons": 104,
+"legal_entities": 236,
+"with_employees": 174
+},
+"25990": {
+"total": 322,
+"natural_persons": 102,
+"legal_entities": 220,
+"with_employees": 165
+},
+"26": {
+"total": 4857,
+"natural_persons": 2143,
+"legal_entities": 2714,
+"with_employees": 1237
+},
+"261": {
+"total": 2384,
+"natural_persons": 939,
+"legal_entities": 1445,
+"with_employees": 589
+},
+"2611": {
+"total": 1347,
+"natural_persons": 309,
+"legal_entities": 1038,
+"with_employees": 401
+},
+"26110": {
+"total": 677,
+"natural_persons": 106,
+"legal_entities": 571,
+"with_employees": 235
+},
+"2612": {
+"total": 13,
+"natural_persons": 0,
+"legal_entities": 13,
+"with_employees": 12
+},
+"26120": {
+"total": 11,
+"natural_persons": 0,
+"legal_entities": 11,
+"with_employees": 10
+},
+"262": {
+"total": 87,
+"natural_persons": 2,
+"legal_entities": 85,
+"with_employees": 52
+},
+"2620": {
+"total": 85,
+"natural_persons": 1,
+"legal_entities": 84,
+"with_employees": 52
+},
+"26200": {
+"total": 80,
+"natural_persons": 1,
+"legal_entities": 79,
+"with_employees": 47
+},
+"263": {
+"total": 163,
+"natural_persons": 3,
+"legal_entities": 160,
+"with_employees": 92
+},
+"2630": {
+"total": 157,
+"natural_persons": 3,
+"legal_entities": 154,
+"with_employees": 88
+},
+"26300": {
+"total": 147,
+"natural_persons": 3,
+"legal_entities": 144,
+"with_employees": 80
+},
+"264": {
+"total": 74,
+"natural_persons": 2,
+"legal_entities": 72,
+"with_employees": 36
+},
+"2640": {
+"total": 72,
+"natural_persons": 2,
+"legal_entities": 70,
+"with_employees": 36
+},
+"26400": {
+"total": 69,
+"natural_persons": 1,
+"legal_entities": 68,
+"with_employees": 34
+},
+"265": {
+"total": 735,
+"natural_persons": 240,
+"legal_entities": 495,
+"with_employees": 271
+},
+"2651": {
+"total": 587,
+"natural_persons": 161,
+"legal_entities": 426,
+"with_employees": 229
+},
+"26510": {
+"total": 492,
+"natural_persons": 151,
+"legal_entities": 341,
+"with_employees": 192
+},
+"2652": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 4
+},
+"26520": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 4
+},
+"266": {
+"total": 126,
+"natural_persons": 93,
+"legal_entities": 33,
+"with_employees": 20
+},
+"2660": {
+"total": 122,
+"natural_persons": 93,
+"legal_entities": 29,
+"with_employees": 18
+},
+"26600": {
+"total": 115,
+"natural_persons": 93,
+"legal_entities": 22,
+"with_employees": 13
+},
+"267": {
+"total": 47,
+"natural_persons": 6,
+"legal_entities": 41,
+"with_employees": 20
+},
+"2670": {
+"total": 44,
+"natural_persons": 5,
+"legal_entities": 39,
+"with_employees": 19
+},
+"26700": {
+"total": 44,
+"natural_persons": 5,
+"legal_entities": 39,
+"with_employees": 19
+},
+"268": {
+"total": 132,
+"natural_persons": 54,
+"legal_entities": 78,
+"with_employees": 21
+},
+"2680": {
+"total": 129,
+"natural_persons": 51,
+"legal_entities": 78,
+"with_employees": 21
+},
+"26800": {
+"total": 125,
+"natural_persons": 48,
+"legal_entities": 77,
+"with_employees": 19
+},
+"27": {
+"total": 8816,
+"natural_persons": 6191,
+"legal_entities": 2625,
+"with_employees": 1878
+},
+"271": {
+"total": 3966,
+"natural_persons": 3354,
+"legal_entities": 612,
+"with_employees": 543
+},
+"2711": {
+"total": 3044,
+"natural_persons": 2857,
+"legal_entities": 187,
+"with_employees": 201
+},
+"27110": {
+"total": 3038,
+"natural_persons": 2854,
+"legal_entities": 184,
+"with_employees": 198
+},
+"2712": {
+"total": 902,
+"natural_persons": 485,
+"legal_entities": 417,
+"with_employees": 332
+},
+"27120": {
+"total": 885,
+"natural_persons": 476,
+"legal_entities": 409,
+"with_employees": 324
+},
+"272": {
+"total": 14,
+"natural_persons": 3,
+"legal_entities": 11,
+"with_employees": 7
+},
+"2720": {
+"total": 13,
+"natural_persons": 3,
+"legal_entities": 10,
+"with_employees": 7
+},
+"27200": {
+"total": 12,
+"natural_persons": 2,
+"legal_entities": 10,
+"with_employees": 7
+},
+"273": {
+"total": 93,
+"natural_persons": 17,
+"legal_entities": 76,
+"with_employees": 68
+},
+"2731": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 2
+},
+"27310": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"2732": {
+"total": 23,
+"natural_persons": 1,
+"legal_entities": 22,
+"with_employees": 20
+},
+"27320": {
+"total": 22,
+"natural_persons": 0,
+"legal_entities": 22,
+"with_employees": 20
+},
+"2733": {
+"total": 22,
+"natural_persons": 0,
+"legal_entities": 22,
+"with_employees": 19
+},
+"27330": {
+"total": 19,
+"natural_persons": 0,
+"legal_entities": 19,
+"with_employees": 17
+},
+"274": {
+"total": 72,
+"natural_persons": 7,
+"legal_entities": 65,
+"with_employees": 53
+},
+"2740": {
+"total": 70,
+"natural_persons": 7,
+"legal_entities": 63,
+"with_employees": 51
+},
+"27400": {
+"total": 59,
+"natural_persons": 6,
+"legal_entities": 53,
+"with_employees": 43
+},
+"275": {
+"total": 1542,
+"natural_persons": 1222,
+"legal_entities": 320,
+"with_employees": 231
+},
+"2751": {
+"total": 151,
+"natural_persons": 53,
+"legal_entities": 98,
+"with_employees": 69
+},
+"27510": {
+"total": 136,
+"natural_persons": 44,
+"legal_entities": 92,
+"with_employees": 63
+},
+"2752": {
+"total": 1385,
+"natural_persons": 1166,
+"legal_entities": 219,
+"with_employees": 160
+},
+"27520": {
+"total": 1346,
+"natural_persons": 1155,
+"legal_entities": 191,
+"with_employees": 144
+},
+"279": {
+"total": 2946,
+"natural_persons": 1557,
+"legal_entities": 1389,
+"with_employees": 891
+},
+"2790": {
+"total": 2371,
+"natural_persons": 1324,
+"legal_entities": 1047,
+"with_employees": 675
+},
+"27900": {
+"total": 2341,
+"natural_persons": 1322,
+"legal_entities": 1019,
+"with_employees": 652
+},
+"28": {
+"total": 6246,
+"natural_persons": 2796,
+"legal_entities": 3450,
+"with_employees": 2198
+},
+"281": {
+"total": 302,
+"natural_persons": 52,
+"legal_entities": 250,
+"with_employees": 187
+},
+"2811": {
+"total": 18,
+"natural_persons": 1,
+"legal_entities": 17,
+"with_employees": 14
+},
+"28110": {
+"total": 14,
+"natural_persons": 0,
+"legal_entities": 14,
+"with_employees": 12
+},
+"2812": {
+"total": 17,
+"natural_persons": 0,
+"legal_entities": 17,
+"with_employees": 17
+},
+"28120": {
+"total": 15,
+"natural_persons": 0,
+"legal_entities": 15,
+"with_employees": 15
+},
+"2813": {
+"total": 25,
+"natural_persons": 1,
+"legal_entities": 24,
+"with_employees": 23
+},
+"28130": {
+"total": 21,
+"natural_persons": 1,
+"legal_entities": 20,
+"with_employees": 20
+},
+"2814": {
+"total": 17,
+"natural_persons": 0,
+"legal_entities": 17,
+"with_employees": 17
+},
+"28140": {
+"total": 15,
+"natural_persons": 0,
+"legal_entities": 15,
+"with_employees": 15
+},
+"2815": {
+"total": 20,
+"natural_persons": 3,
+"legal_entities": 17,
+"with_employees": 16
+},
+"28150": {
+"total": 20,
+"natural_persons": 3,
+"legal_entities": 17,
+"with_employees": 16
+},
+"282": {
+"total": 1598,
+"natural_persons": 456,
+"legal_entities": 1142,
+"with_employees": 789
+},
+"2821": {
+"total": 15,
+"natural_persons": 1,
+"legal_entities": 14,
+"with_employees": 10
+},
+"28210": {
+"total": 14,
+"natural_persons": 1,
+"legal_entities": 13,
+"with_employees": 9
+},
+"2822": {
+"total": 394,
+"natural_persons": 191,
+"legal_entities": 203,
+"with_employees": 173
+},
+"28220": {
+"total": 388,
+"natural_persons": 191,
+"legal_entities": 197,
+"with_employees": 168
+},
+"2823": {
+"total": 48,
+"natural_persons": 15,
+"legal_entities": 33,
+"with_employees": 18
+},
+"28230": {
+"total": 48,
+"natural_persons": 15,
+"legal_entities": 33,
+"with_employees": 18
+},
+"2824": {
+"total": 9,
+"natural_persons": 3,
+"legal_entities": 6,
+"with_employees": 5
+},
+"28240": {
+"total": 9,
+"natural_persons": 3,
+"legal_entities": 6,
+"with_employees": 5
+},
+"2825": {
+"total": 342,
+"natural_persons": 65,
+"legal_entities": 277,
+"with_employees": 209
+},
+"28250": {
+"total": 314,
+"natural_persons": 59,
+"legal_entities": 255,
+"with_employees": 190
+},
+"2829": {
+"total": 332,
+"natural_persons": 42,
+"legal_entities": 290,
+"with_employees": 191
+},
+"28290": {
+"total": 318,
+"natural_persons": 41,
+"legal_entities": 277,
+"with_employees": 182
+},
+"283": {
+"total": 107,
+"natural_persons": 22,
+"legal_entities": 85,
+"with_employees": 56
+},
+"2830": {
+"total": 105,
+"natural_persons": 22,
+"legal_entities": 83,
+"with_employees": 55
+},
+"28300": {
+"total": 102,
+"natural_persons": 22,
+"legal_entities": 80,
+"with_employees": 52
+},
+"284": {
+"total": 56,
+"natural_persons": 2,
+"legal_entities": 54,
+"with_employees": 47
+},
+"2841": {
+"total": 30,
+"natural_persons": 1,
+"legal_entities": 29,
+"with_employees": 28
+},
+"28410": {
+"total": 27,
+"natural_persons": 1,
+"legal_entities": 26,
+"with_employees": 25
+},
+"2849": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 10
+},
+"28490": {
+"total": 10,
+"natural_persons": 0,
+"legal_entities": 10,
+"with_employees": 9
+},
+"289": {
+"total": 606,
+"natural_persons": 32,
+"legal_entities": 574,
+"with_employees": 384
+},
+"2891": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 4
+},
+"28910": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 4
+},
+"2892": {
+"total": 18,
+"natural_persons": 0,
+"legal_entities": 18,
+"with_employees": 14
+},
+"28920": {
+"total": 16,
+"natural_persons": 0,
+"legal_entities": 16,
+"with_employees": 12
+},
+"2893": {
+"total": 33,
+"natural_persons": 0,
+"legal_entities": 33,
+"with_employees": 19
+},
+"28930": {
+"total": 32,
+"natural_persons": 0,
+"legal_entities": 32,
+"with_employees": 18
+},
+"2894": {
+"total": 27,
+"natural_persons": 0,
+"legal_entities": 27,
+"with_employees": 22
+},
+"28940": {
+"total": 27,
+"natural_persons": 0,
+"legal_entities": 27,
+"with_employees": 22
+},
+"2895": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 5
+},
+"28950": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 5
+},
+"2896": {
+"total": 8,
+"natural_persons": 0,
+"legal_entities": 8,
+"with_employees": 5
+},
+"28960": {
+"total": 8,
+"natural_persons": 0,
+"legal_entities": 8,
+"with_employees": 5
+},
+"2899": {
+"total": 301,
+"natural_persons": 29,
+"legal_entities": 272,
+"with_employees": 191
+},
+"28990": {
+"total": 288,
+"natural_persons": 28,
+"legal_entities": 260,
+"with_employees": 183
+},
+"29": {
+"total": 1371,
+"natural_persons": 646,
+"legal_entities": 725,
+"with_employees": 451
+},
+"291": {
+"total": 113,
+"natural_persons": 17,
+"legal_entities": 96,
+"with_employees": 58
+},
+"2910": {
+"total": 106,
+"natural_persons": 16,
+"legal_entities": 90,
+"with_employees": 54
+},
+"29100": {
+"total": 104,
+"natural_persons": 16,
+"legal_entities": 88,
+"with_employees": 53
+},
+"292": {
+"total": 223,
+"natural_persons": 76,
+"legal_entities": 147,
+"with_employees": 74
+},
+"2920": {
+"total": 138,
+"natural_persons": 57,
+"legal_entities": 81,
+"with_employees": 50
+},
+"29200": {
+"total": 135,
+"natural_persons": 57,
+"legal_entities": 78,
+"with_employees": 49
+},
+"293": {
+"total": 250,
+"natural_persons": 18,
+"legal_entities": 232,
+"with_employees": 203
+},
+"2931": {
+"total": 56,
+"natural_persons": 11,
+"legal_entities": 45,
+"with_employees": 34
+},
+"29310": {
+"total": 53,
+"natural_persons": 11,
+"legal_entities": 42,
+"with_employees": 32
+},
+"2932": {
+"total": 186,
+"natural_persons": 7,
+"legal_entities": 179,
+"with_employees": 162
+},
+"29320": {
+"total": 171,
+"natural_persons": 6,
+"legal_entities": 165,
+"with_employees": 147
+},
+"30": {
+"total": 1987,
+"natural_persons": 1324,
+"legal_entities": 663,
+"with_employees": 308
+},
+"301": {
+"total": 262,
+"natural_persons": 106,
+"legal_entities": 156,
+"with_employees": 52
+},
+"3011": {
+"total": 171,
+"natural_persons": 66,
+"legal_entities": 105,
+"with_employees": 30
+},
+"30110": {
+"total": 93,
+"natural_persons": 38,
+"legal_entities": 55,
+"with_employees": 19
+},
+"3012": {
+"total": 8,
+"natural_persons": 0,
+"legal_entities": 8,
+"with_employees": 8
+},
+"30120": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 7
+},
+"302": {
+"total": 142,
+"natural_persons": 88,
+"legal_entities": 54,
+"with_employees": 36
+},
+"3020": {
+"total": 137,
+"natural_persons": 88,
+"legal_entities": 49,
+"with_employees": 34
+},
+"30200": {
+"total": 136,
+"natural_persons": 88,
+"legal_entities": 48,
+"with_employees": 33
+},
+"303": {
+"total": 156,
+"natural_persons": 26,
+"legal_entities": 130,
+"with_employees": 63
+},
+"3030": {
+"total": 144,
+"natural_persons": 23,
+"legal_entities": 121,
+"with_employees": 59
+},
+"30300": {
+"total": 112,
+"natural_persons": 20,
+"legal_entities": 92,
+"with_employees": 48
+},
+"304": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 3
+},
+"3040": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 3
+},
+"30400": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 2
+},
+"309": {
+"total": 1123,
+"natural_persons": 872,
+"legal_entities": 251,
+"with_employees": 139
+},
+"3091": {
+"total": 9,
+"natural_persons": 2,
+"legal_entities": 7,
+"with_employees": 3
+},
+"30910": {
+"total": 6,
+"natural_persons": 1,
+"legal_entities": 5,
+"with_employees": 1
+},
+"3092": {
+"total": 258,
+"natural_persons": 123,
+"legal_entities": 135,
+"with_employees": 64
+},
+"30920": {
+"total": 200,
+"natural_persons": 104,
+"legal_entities": 96,
+"with_employees": 46
+},
+"3099": {
+"total": 44,
+"natural_persons": 26,
+"legal_entities": 18,
+"with_employees": 10
+},
+"30990": {
+"total": 44,
+"natural_persons": 26,
+"legal_entities": 18,
+"with_employees": 10
+},
+"31": {
+"total": 7803,
+"natural_persons": 6846,
+"legal_entities": 957,
+"with_employees": 969
+},
+"310": {
+"total": 7735,
+"natural_persons": 6839,
+"legal_entities": 896,
+"with_employees": 936
+},
+"3101": {
+"total": 44,
+"natural_persons": 11,
+"legal_entities": 33,
+"with_employees": 32
+},
+"31010": {
+"total": 40,
+"natural_persons": 9,
+"legal_entities": 31,
+"with_employees": 30
+},
+"3102": {
+"total": 35,
+"natural_persons": 9,
+"legal_entities": 26,
+"with_employees": 24
+},
+"31020": {
+"total": 30,
+"natural_persons": 7,
+"legal_entities": 23,
+"with_employees": 21
+},
+"3103": {
+"total": 28,
+"natural_persons": 19,
+"legal_entities": 9,
+"with_employees": 7
+},
+"31030": {
+"total": 27,
+"natural_persons": 19,
+"legal_entities": 8,
+"with_employees": 6
+},
+"3109": {
+"total": 358,
+"natural_persons": 215,
+"legal_entities": 143,
+"with_employees": 103
+},
+"31090": {
+"total": 281,
+"natural_persons": 168,
+"legal_entities": 113,
+"with_employees": 80
+},
+"32": {
+"total": 21718,
+"natural_persons": 18121,
+"legal_entities": 3597,
+"with_employees": 2515
+},
+"321": {
+"total": 2932,
+"natural_persons": 2524,
+"legal_entities": 408,
+"with_employees": 377
+},
+"3211": {
+"total": 5,
+"natural_persons": 2,
+"legal_entities": 3,
+"with_employees": 2
+},
+"32110": {
+"total": 4,
+"natural_persons": 2,
+"legal_entities": 2,
+"with_employees": 1
+},
+"3212": {
+"total": 2698,
+"natural_persons": 2375,
+"legal_entities": 323,
+"with_employees": 329
+},
+"32120": {
+"total": 2657,
+"natural_persons": 2368,
+"legal_entities": 289,
+"with_employees": 315
+},
+"3213": {
+"total": 207,
+"natural_persons": 137,
+"legal_entities": 70,
+"with_employees": 40
+},
+"32130": {
+"total": 200,
+"natural_persons": 133,
+"legal_entities": 67,
+"with_employees": 39
+},
+"322": {
+"total": 122,
+"natural_persons": 83,
+"legal_entities": 39,
+"with_employees": 25
+},
+"3220": {
+"total": 108,
+"natural_persons": 75,
+"legal_entities": 33,
+"with_employees": 21
+},
+"32200": {
+"total": 101,
+"natural_persons": 71,
+"legal_entities": 30,
+"with_employees": 20
+},
+"323": {
+"total": 834,
+"natural_persons": 572,
+"legal_entities": 262,
+"with_employees": 141
+},
+"3230": {
+"total": 336,
+"natural_persons": 202,
+"legal_entities": 134,
+"with_employees": 90
+},
+"32300": {
+"total": 318,
+"natural_persons": 194,
+"legal_entities": 124,
+"with_employees": 81
+},
+"324": {
+"total": 315,
+"natural_persons": 167,
+"legal_entities": 148,
+"with_employees": 79
+},
+"3240": {
+"total": 310,
+"natural_persons": 166,
+"legal_entities": 144,
+"with_employees": 77
+},
+"32400": {
+"total": 292,
+"natural_persons": 163,
+"legal_entities": 129,
+"with_employees": 69
+},
+"325": {
+"total": 2621,
+"natural_persons": 1503,
+"legal_entities": 1118,
+"with_employees": 954
+},
+"3250": {
+"total": 2406,
+"natural_persons": 1489,
+"legal_entities": 917,
+"with_employees": 863
+},
+"32500": {
+"total": 2218,
+"natural_persons": 1380,
+"legal_entities": 838,
+"with_employees": 789
+},
+"329": {
+"total": 3396,
+"natural_persons": 2849,
+"legal_entities": 547,
+"with_employees": 279
+},
+"3291": {
+"total": 35,
+"natural_persons": 11,
+"legal_entities": 24,
+"with_employees": 17
+},
+"32910": {
+"total": 35,
+"natural_persons": 11,
+"legal_entities": 24,
+"with_employees": 17
+},
+"3299": {
+"total": 2547,
+"natural_persons": 2102,
+"legal_entities": 445,
+"with_employees": 221
+},
+"32990": {
+"total": 2350,
+"natural_persons": 1956,
+"legal_entities": 394,
+"with_employees": 197
+},
+"33": {
+"total": 38106,
+"natural_persons": 30800,
+"legal_entities": 7306,
+"with_employees": 5162
+},
+"331": {
+"total": 14715,
+"natural_persons": 11966,
+"legal_entities": 2749,
+"with_employees": 1818
+},
+"3311": {
+"total": 28,
+"natural_persons": 7,
+"legal_entities": 21,
+"with_employees": 19
+},
+"33110": {
+"total": 21,
+"natural_persons": 5,
+"legal_entities": 16,
+"with_employees": 15
+},
+"3312": {
+"total": 944,
+"natural_persons": 706,
+"legal_entities": 238,
+"with_employees": 232
+},
+"33120": {
+"total": 862,
+"natural_persons": 683,
+"legal_entities": 179,
+"with_employees": 187
+},
+"3313": {
+"total": 815,
+"natural_persons": 721,
+"legal_entities": 94,
+"with_employees": 67
+},
+"33130": {
+"total": 772,
+"natural_persons": 694,
+"legal_entities": 78,
+"with_employees": 58
+},
+"3314": {
+"total": 862,
+"natural_persons": 100,
+"legal_entities": 762,
+"with_employees": 460
+},
+"33140": {
+"total": 243,
+"natural_persons": 33,
+"legal_entities": 210,
+"with_employees": 133
+},
+"3315": {
+"total": 39,
+"natural_persons": 37,
+"legal_entities": 2,
+"with_employees": 2
+},
+"33150": {
+"total": 38,
+"natural_persons": 37,
+"legal_entities": 1,
+"with_employees": 1
+},
+"3316": {
+"total": 52,
+"natural_persons": 20,
+"legal_entities": 32,
+"with_employees": 17
+},
+"33160": {
+"total": 39,
+"natural_persons": 13,
+"legal_entities": 26,
+"with_employees": 14
+},
+"3317": {
+"total": 415,
+"natural_persons": 266,
+"legal_entities": 149,
+"with_employees": 118
+},
+"33171": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 7
+},
+"33179": {
+"total": 49,
+"natural_persons": 39,
+"legal_entities": 10,
+"with_employees": 8
+},
+"3319": {
+"total": 70,
+"natural_persons": 53,
+"legal_entities": 17,
+"with_employees": 11
+},
+"33190": {
+"total": 58,
+"natural_persons": 50,
+"legal_entities": 8,
+"with_employees": 6
+},
+"332": {
+"total": 19548,
+"natural_persons": 15819,
+"legal_entities": 3729,
+"with_employees": 2767
+},
+"3320": {
+"total": 19177,
+"natural_persons": 15737,
+"legal_entities": 3440,
+"with_employees": 2588
+},
+"33200": {
+"total": 18977,
+"natural_persons": 15716,
+"legal_entities": 3261,
+"with_employees": 2465
+},
+"35": {
+"total": 20108,
+"natural_persons": 17603,
+"legal_entities": 2505,
+"with_employees": 2284
+},
+"351": {
+"total": 19610,
+"natural_persons": 17578,
+"legal_entities": 2032,
+"with_employees": 1929
+},
+"3511": {
+"total": 19134,
+"natural_persons": 17576,
+"legal_entities": 1558,
+"with_employees": 1702
+},
+"35110": {
+"total": 18817,
+"natural_persons": 17543,
+"legal_entities": 1274,
+"with_employees": 1601
+},
+"3512": {
+"total": 15,
+"natural_persons": 0,
+"legal_entities": 15,
+"with_employees": 5
+},
+"35120": {
+"total": 6,
+"natural_persons": 0,
+"legal_entities": 6,
+"with_employees": 1
+},
+"3513": {
+"total": 20,
+"natural_persons": 0,
+"legal_entities": 20,
+"with_employees": 13
+},
+"35130": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 9
+},
+"3514": {
+"total": 229,
+"natural_persons": 2,
+"legal_entities": 227,
+"with_employees": 102
+},
+"35140": {
+"total": 159,
+"natural_persons": 2,
+"legal_entities": 157,
+"with_employees": 64
+},
+"352": {
+"total": 66,
+"natural_persons": 0,
+"legal_entities": 66,
+"with_employees": 34
+},
+"3521": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 0
+},
+"35210": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 0
+},
+"3522": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 3
+},
+"35220": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 2
+},
+"3523": {
+"total": 52,
+"natural_persons": 0,
+"legal_entities": 52,
+"with_employees": 26
+},
+"35230": {
+"total": 31,
+"natural_persons": 0,
+"legal_entities": 31,
+"with_employees": 18
+},
+"353": {
+"total": 368,
+"natural_persons": 25,
+"legal_entities": 343,
+"with_employees": 290
+},
+"3530": {
+"total": 349,
+"natural_persons": 25,
+"legal_entities": 324,
+"with_employees": 277
+},
+"35301": {
+"total": 76,
+"natural_persons": 0,
+"legal_entities": 76,
+"with_employees": 56
+},
+"35302": {
+"total": 23,
+"natural_persons": 0,
+"legal_entities": 23,
+"with_employees": 21
+},
+"35304": {
+"total": 2,
+"natural_persons": 1,
+"legal_entities": 1,
+"with_employees": 0
+},
+"36": {
+"total": 1905,
+"natural_persons": 1077,
+"legal_entities": 828,
+"with_employees": 339
+},
+"360": {
+"total": 1578,
+"natural_persons": 1065,
+"legal_entities": 513,
+"with_employees": 254
+},
+"3600": {
+"total": 1566,
+"natural_persons": 1064,
+"legal_entities": 502,
+"with_employees": 248
+},
+"36000": {
+"total": 1538,
+"natural_persons": 1059,
+"legal_entities": 479,
+"with_employees": 239
+},
+"37": {
+"total": 145,
+"natural_persons": 64,
+"legal_entities": 81,
+"with_employees": 47
+},
+"370": {
+"total": 142,
+"natural_persons": 63,
+"legal_entities": 79,
+"with_employees": 46
+},
+"3700": {
+"total": 141,
+"natural_persons": 63,
+"legal_entities": 78,
+"with_employees": 46
+},
+"37000": {
+"total": 137,
+"natural_persons": 61,
+"legal_entities": 76,
+"with_employees": 45
+},
+"38": {
+"total": 8798,
+"natural_persons": 4091,
+"legal_entities": 4707,
+"with_employees": 2266
+},
+"381": {
+"total": 2526,
+"natural_persons": 174,
+"legal_entities": 2352,
+"with_employees": 915
+},
+"3811": {
+"total": 2251,
+"natural_persons": 158,
+"legal_entities": 2093,
+"with_employees": 750
+},
+"38110": {
+"total": 1230,
+"natural_persons": 75,
+"legal_entities": 1155,
+"with_employees": 486
+},
+"3812": {
+"total": 238,
+"natural_persons": 16,
+"legal_entities": 222,
+"with_employees": 149
+},
+"38120": {
+"total": 145,
+"natural_persons": 11,
+"legal_entities": 134,
+"with_employees": 84
+},
+"382": {
+"total": 69,
+"natural_persons": 9,
+"legal_entities": 60,
+"with_employees": 34
+},
+"3821": {
+"total": 39,
+"natural_persons": 8,
+"legal_entities": 31,
+"with_employees": 17
+},
+"38210": {
+"total": 37,
+"natural_persons": 8,
+"legal_entities": 29,
+"with_employees": 16
+},
+"3822": {
+"total": 26,
+"natural_persons": 1,
+"legal_entities": 25,
+"with_employees": 16
+},
+"38220": {
+"total": 24,
+"natural_persons": 1,
+"legal_entities": 23,
+"with_employees": 15
+},
+"383": {
+"total": 371,
+"natural_persons": 163,
+"legal_entities": 208,
+"with_employees": 141
+},
+"3831": {
+"total": 10,
+"natural_persons": 3,
+"legal_entities": 7,
+"with_employees": 3
+},
+"38310": {
+"total": 6,
+"natural_persons": 2,
+"legal_entities": 4,
+"with_employees": 2
+},
+"3832": {
+"total": 185,
+"natural_persons": 48,
+"legal_entities": 137,
+"with_employees": 87
+},
+"38320": {
+"total": 174,
+"natural_persons": 46,
+"legal_entities": 128,
+"with_employees": 80
+},
+"39": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 3
+},
+"390": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 3
+},
+"3900": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 3
+},
+"39000": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 2
+},
+"41": {
+"total": 70323,
+"natural_persons": 47937,
+"legal_entities": 22386,
+"with_employees": 14158
+},
+"411": {
+"total": 341,
+"natural_persons": 22,
+"legal_entities": 319,
+"with_employees": 85
+},
+"4110": {
+"total": 318,
+"natural_persons": 19,
+"legal_entities": 299,
+"with_employees": 80
+},
+"41100": {
+"total": 260,
+"natural_persons": 18,
+"legal_entities": 242,
+"with_employees": 69
+},
+"412": {
+"total": 69944,
+"natural_persons": 47912,
+"legal_entities": 22032,
+"with_employees": 14050
+},
+"4120": {
+"total": 68754,
+"natural_persons": 47889,
+"legal_entities": 20865,
+"with_employees": 13352
+},
+"41201": {
+"total": 254,
+"natural_persons": 20,
+"legal_entities": 234,
+"with_employees": 116
+},
+"41202": {
+"total": 104,
+"natural_persons": 13,
+"legal_entities": 91,
+"with_employees": 51
+},
+"42": {
+"total": 556,
+"natural_persons": 83,
+"legal_entities": 473,
+"with_employees": 379
+},
+"421": {
+"total": 181,
+"natural_persons": 2,
+"legal_entities": 179,
+"with_employees": 155
+},
+"4211": {
+"total": 107,
+"natural_persons": 1,
+"legal_entities": 106,
+"with_employees": 97
+},
+"42110": {
+"total": 90,
+"natural_persons": 1,
+"legal_entities": 89,
+"with_employees": 82
+},
+"4212": {
+"total": 24,
+"natural_persons": 0,
+"legal_entities": 24,
+"with_employees": 22
+},
+"42120": {
+"total": 22,
+"natural_persons": 0,
+"legal_entities": 22,
+"with_employees": 21
+},
+"4213": {
+"total": 15,
+"natural_persons": 1,
+"legal_entities": 14,
+"with_employees": 9
+},
+"42130": {
+"total": 15,
+"natural_persons": 1,
+"legal_entities": 14,
+"with_employees": 9
+},
+"422": {
+"total": 206,
+"natural_persons": 45,
+"legal_entities": 161,
+"with_employees": 148
+},
+"4221": {
+"total": 122,
+"natural_persons": 39,
+"legal_entities": 83,
+"with_employees": 82
+},
+"42211": {
+"total": 22,
+"natural_persons": 1,
+"legal_entities": 21,
+"with_employees": 17
+},
+"42212": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 5
+},
+"4222": {
+"total": 61,
+"natural_persons": 1,
+"legal_entities": 60,
+"with_employees": 54
+},
+"42220": {
+"total": 53,
+"natural_persons": 1,
+"legal_entities": 52,
+"with_employees": 47
+},
+"429": {
+"total": 146,
+"natural_persons": 35,
+"legal_entities": 111,
+"with_employees": 59
+},
+"4291": {
+"total": 34,
+"natural_persons": 7,
+"legal_entities": 27,
+"with_employees": 15
+},
+"42910": {
+"total": 32,
+"natural_persons": 7,
+"legal_entities": 25,
+"with_employees": 13
+},
+"4299": {
+"total": 103,
+"natural_persons": 27,
+"legal_entities": 76,
+"with_employees": 40
+},
+"42990": {
+"total": 99,
+"natural_persons": 27,
+"legal_entities": 72,
+"with_employees": 38
+},
+"43": {
+"total": 269043,
+"natural_persons": 221300,
+"legal_entities": 47743,
+"with_employees": 23281
+},
+"431": {
+"total": 131200,
+"natural_persons": 102332,
+"legal_entities": 28868,
+"with_employees": 8740
+},
+"4311": {
+"total": 56,
+"natural_persons": 18,
+"legal_entities": 38,
+"with_employees": 18
+},
+"43110": {
+"total": 43,
+"natural_persons": 12,
+"legal_entities": 31,
+"with_employees": 17
+},
+"4312": {
+"total": 111375,
+"natural_persons": 93866,
+"legal_entities": 17509,
+"with_employees": 5182
+},
+"43120": {
+"total": 109730,
+"natural_persons": 93574,
+"legal_entities": 16156,
+"with_employees": 4660
+},
+"4313": {
+"total": 32,
+"natural_persons": 10,
+"legal_entities": 22,
+"with_employees": 11
+},
+"43130": {
+"total": 31,
+"natural_persons": 10,
+"legal_entities": 21,
+"with_employees": 11
+},
+"432": {
+"total": 37893,
+"natural_persons": 30299,
+"legal_entities": 7594,
+"with_employees": 6062
+},
+"4321": {
+"total": 6202,
+"natural_persons": 3212,
+"legal_entities": 2990,
+"with_employees": 1840
+},
+"43210": {
+"total": 4699,
+"natural_persons": 2040,
+"legal_entities": 2659,
+"with_employees": 1626
+},
+"4322": {
+"total": 27818,
+"natural_persons": 24221,
+"legal_entities": 3597,
+"with_employees": 3461
+},
+"43220": {
+"total": 27482,
+"natural_persons": 24104,
+"legal_entities": 3378,
+"with_employees": 3290
+},
+"4329": {
+"total": 1420,
+"natural_persons": 803,
+"legal_entities": 617,
+"with_employees": 387
+},
+"43290": {
+"total": 1309,
+"natural_persons": 789,
+"legal_entities": 520,
+"with_employees": 320
+},
+"433": {
+"total": 78745,
+"natural_persons": 71284,
+"legal_entities": 7461,
+"with_employees": 5757
+},
+"4331": {
+"total": 126,
+"natural_persons": 93,
+"legal_entities": 33,
+"with_employees": 19
+},
+"43310": {
+"total": 122,
+"natural_persons": 89,
+"legal_entities": 33,
+"with_employees": 18
+},
+"4332": {
+"total": 30073,
+"natural_persons": 27256,
+"legal_entities": 2817,
+"with_employees": 2676
+},
+"43320": {
+"total": 29688,
+"natural_persons": 27205,
+"legal_entities": 2483,
+"with_employees": 2451
+},
+"4333": {
+"total": 937,
+"natural_persons": 586,
+"legal_entities": 351,
+"with_employees": 256
+},
+"43330": {
+"total": 871,
+"natural_persons": 567,
+"legal_entities": 304,
+"with_employees": 226
+},
+"4334": {
+"total": 16822,
+"natural_persons": 15466,
+"legal_entities": 1356,
+"with_employees": 1154
+},
+"43341": {
+"total": 1682,
+"natural_persons": 1424,
+"legal_entities": 258,
+"with_employees": 185
+},
+"43342": {
+"total": 12648,
+"natural_persons": 11972,
+"legal_entities": 676,
+"with_employees": 660
+},
+"4339": {
+"total": 1002,
+"natural_persons": 569,
+"legal_entities": 433,
+"with_employees": 173
+},
+"43390": {
+"total": 932,
+"natural_persons": 529,
+"legal_entities": 403,
+"with_employees": 155
+},
+"439": {
+"total": 19811,
+"natural_persons": 17109,
+"legal_entities": 2702,
+"with_employees": 2167
+},
+"4391": {
+"total": 16170,
+"natural_persons": 14841,
+"legal_entities": 1329,
+"with_employees": 1412
+},
+"43910": {
+"total": 15999,
+"natural_persons": 14812,
+"legal_entities": 1187,
+"with_employees": 1320
+},
+"4399": {
+"total": 3229,
+"natural_persons": 2164,
+"legal_entities": 1065,
+"with_employees": 596
+},
+"43991": {
+"total": 18,
+"natural_persons": 0,
+"legal_entities": 18,
+"with_employees": 13
+},
+"43999": {
+"total": 90,
+"natural_persons": 10,
+"legal_entities": 80,
+"with_employees": 47
+},
+"45": {
+"total": 66027,
+"natural_persons": 53871,
+"legal_entities": 12156,
+"with_employees": 9868
+},
+"451": {
+"total": 1528,
+"natural_persons": 355,
+"legal_entities": 1173,
+"with_employees": 645
+},
+"4511": {
+"total": 346,
+"natural_persons": 49,
+"legal_entities": 297,
+"with_employees": 182
+},
+"45110": {
+"total": 307,
+"natural_persons": 41,
+"legal_entities": 266,
+"with_employees": 169
+},
+"4519": {
+"total": 54,
+"natural_persons": 14,
+"legal_entities": 40,
+"with_employees": 28
+},
+"45190": {
+"total": 37,
+"natural_persons": 5,
+"legal_entities": 32,
+"with_employees": 25
+},
+"452": {
+"total": 63811,
+"natural_persons": 53363,
+"legal_entities": 10448,
+"with_employees": 8891
+},
+"4520": {
+"total": 63164,
+"natural_persons": 53303,
+"legal_entities": 9861,
+"with_employees": 8552
+},
+"45200": {
+"total": 62002,
+"natural_persons": 53225,
+"legal_entities": 8777,
+"with_employees": 7934
+},
+"453": {
+"total": 494,
+"natural_persons": 103,
+"legal_entities": 391,
+"with_employees": 251
+},
+"4531": {
+"total": 114,
+"natural_persons": 5,
+"legal_entities": 109,
+"with_employees": 86
+},
+"45310": {
+"total": 100,
+"natural_persons": 5,
+"legal_entities": 95,
+"with_employees": 77
+},
+"4532": {
+"total": 175,
+"natural_persons": 50,
+"legal_entities": 125,
+"with_employees": 88
+},
+"45320": {
+"total": 139,
+"natural_persons": 32,
+"legal_entities": 107,
+"with_employees": 72
+},
+"454": {
+"total": 114,
+"natural_persons": 30,
+"legal_entities": 84,
+"with_employees": 50
+},
+"4540": {
+"total": 105,
+"natural_persons": 27,
+"legal_entities": 78,
+"with_employees": 46
+},
+"45400": {
+"total": 71,
+"natural_persons": 17,
+"legal_entities": 54,
+"with_employees": 36
+},
+"46": {
+"total": 180433,
+"natural_persons": 97649,
+"legal_entities": 82784,
+"with_employees": 29292
+},
+"461": {
+"total": 125282,
+"natural_persons": 91409,
+"legal_entities": 33873,
+"with_employees": 13388
+},
+"4611": {
+"total": 493,
+"natural_persons": 397,
+"legal_entities": 96,
+"with_employees": 53
+},
+"46110": {
+"total": 456,
+"natural_persons": 390,
+"legal_entities": 66,
+"with_employees": 27
+},
+"4612": {
+"total": 43,
+"natural_persons": 10,
+"legal_entities": 33,
+"with_employees": 17
+},
+"46120": {
+"total": 36,
+"natural_persons": 9,
+"legal_entities": 27,
+"with_employees": 14
+},
+"4613": {
+"total": 120,
+"natural_persons": 58,
+"legal_entities": 62,
+"with_employees": 23
+},
+"46130": {
+"total": 111,
+"natural_persons": 56,
+"legal_entities": 55,
+"with_employees": 20
+},
+"4614": {
+"total": 89,
+"natural_persons": 18,
+"legal_entities": 71,
+"with_employees": 35
+},
+"46140": {
+"total": 82,
+"natural_persons": 17,
+"legal_entities": 65,
+"with_employees": 33
+},
+"4615": {
+"total": 52,
+"natural_persons": 36,
+"legal_entities": 16,
+"with_employees": 8
+},
+"46150": {
+"total": 51,
+"natural_persons": 36,
+"legal_entities": 15,
+"with_employees": 7
+},
+"4616": {
+"total": 52,
+"natural_persons": 28,
+"legal_entities": 24,
+"with_employees": 6
+},
+"46160": {
+"total": 52,
+"natural_persons": 28,
+"legal_entities": 24,
+"with_employees": 6
+},
+"4617": {
+"total": 68,
+"natural_persons": 42,
+"legal_entities": 26,
+"with_employees": 8
+},
+"46170": {
+"total": 67,
+"natural_persons": 42,
+"legal_entities": 25,
+"with_employees": 8
+},
+"4618": {
+"total": 3920,
+"natural_persons": 3632,
+"legal_entities": 288,
+"with_employees": 131
+},
+"46181": {
+"total": 7,
+"natural_persons": 1,
+"legal_entities": 6,
+"with_employees": 6
+},
+"46189": {
+"total": 3124,
+"natural_persons": 2961,
+"legal_entities": 163,
+"with_employees": 79
+},
+"4619": {
+"total": 2996,
+"natural_persons": 690,
+"legal_entities": 2306,
+"with_employees": 683
+},
+"46190": {
+"total": 2940,
+"natural_persons": 644,
+"legal_entities": 2296,
+"with_employees": 677
+},
+"462": {
+"total": 942,
+"natural_persons": 690,
+"legal_entities": 252,
+"with_employees": 286
+},
+"4621": {
+"total": 69,
+"natural_persons": 1,
+"legal_entities": 68,
+"with_employees": 46
+},
+"46210": {
+"total": 62,
+"natural_persons": 1,
+"legal_entities": 61,
+"with_employees": 41
+},
+"4622": {
+"total": 25,
+"natural_persons": 2,
+"legal_entities": 23,
+"with_employees": 17
+},
+"46220": {
+"total": 22,
+"natural_persons": 1,
+"legal_entities": 21,
+"with_employees": 15
+},
+"4623": {
+"total": 774,
+"natural_persons": 681,
+"legal_entities": 93,
+"with_employees": 199
+},
+"46230": {
+"total": 762,
+"natural_persons": 679,
+"legal_entities": 83,
+"with_employees": 192
+},
+"4624": {
+"total": 8,
+"natural_persons": 2,
+"legal_entities": 6,
+"with_employees": 3
+},
+"46240": {
+"total": 7,
+"natural_persons": 1,
+"legal_entities": 6,
+"with_employees": 3
+},
+"463": {
+"total": 784,
+"natural_persons": 84,
+"legal_entities": 700,
+"with_employees": 379
+},
+"4631": {
+"total": 93,
+"natural_persons": 6,
+"legal_entities": 87,
+"with_employees": 44
+},
+"46310": {
+"total": 86,
+"natural_persons": 6,
+"legal_entities": 80,
+"with_employees": 39
+},
+"4632": {
+"total": 38,
+"natural_persons": 2,
+"legal_entities": 36,
+"with_employees": 24
+},
+"46320": {
+"total": 36,
+"natural_persons": 2,
+"legal_entities": 34,
+"with_employees": 23
+},
+"4633": {
+"total": 25,
+"natural_persons": 1,
+"legal_entities": 24,
+"with_employees": 16
+},
+"46330": {
+"total": 20,
+"natural_persons": 0,
+"legal_entities": 20,
+"with_employees": 14
+},
+"4634": {
+"total": 157,
+"natural_persons": 6,
+"legal_entities": 151,
+"with_employees": 86
+},
+"46340": {
+"total": 125,
+"natural_persons": 5,
+"legal_entities": 120,
+"with_employees": 72
+},
+"4635": {
+"total": 22,
+"natural_persons": 1,
+"legal_entities": 21,
+"with_employees": 11
+},
+"46350": {
+"total": 16,
+"natural_persons": 0,
+"legal_entities": 16,
+"with_employees": 8
+},
+"4636": {
+"total": 27,
+"natural_persons": 1,
+"legal_entities": 26,
+"with_employees": 18
+},
+"46360": {
+"total": 25,
+"natural_persons": 1,
+"legal_entities": 24,
+"with_employees": 16
+},
+"4637": {
+"total": 56,
+"natural_persons": 4,
+"legal_entities": 52,
+"with_employees": 33
+},
+"46370": {
+"total": 38,
+"natural_persons": 3,
+"legal_entities": 35,
+"with_employees": 26
+},
+"4638": {
+"total": 56,
+"natural_persons": 4,
+"legal_entities": 52,
+"with_employees": 34
+},
+"46380": {
+"total": 45,
+"natural_persons": 3,
+"legal_entities": 42,
+"with_employees": 30
+},
+"4639": {
+"total": 97,
+"natural_persons": 8,
+"legal_entities": 89,
+"with_employees": 47
+},
+"46390": {
+"total": 94,
+"natural_persons": 8,
+"legal_entities": 86,
+"with_employees": 46
+},
+"464": {
+"total": 1524,
+"natural_persons": 80,
+"legal_entities": 1444,
+"with_employees": 864
+},
+"4641": {
+"total": 127,
+"natural_persons": 1,
+"legal_entities": 126,
+"with_employees": 58
+},
+"46410": {
+"total": 122,
+"natural_persons": 1,
+"legal_entities": 121,
+"with_employees": 54
+},
+"4642": {
+"total": 172,
+"natural_persons": 18,
+"legal_entities": 154,
+"with_employees": 95
+},
+"46421": {
+"total": 43,
+"natural_persons": 4,
+"legal_entities": 39,
+"with_employees": 23
+},
+"46422": {
+"total": 14,
+"natural_persons": 0,
+"legal_entities": 14,
+"with_employees": 11
+},
+"4643": {
+"total": 155,
+"natural_persons": 11,
+"legal_entities": 144,
+"with_employees": 88
+},
+"46430": {
+"total": 145,
+"natural_persons": 10,
+"legal_entities": 135,
+"with_employees": 86
+},
+"4644": {
+"total": 88,
+"natural_persons": 6,
+"legal_entities": 82,
+"with_employees": 46
+},
+"46441": {
+"total": 14,
+"natural_persons": 1,
+"legal_entities": 13,
+"with_employees": 11
+},
+"46442": {
+"total": 18,
+"natural_persons": 2,
+"legal_entities": 16,
+"with_employees": 12
+},
+"4645": {
+"total": 128,
+"natural_persons": 14,
+"legal_entities": 114,
+"with_employees": 75
+},
+"46450": {
+"total": 104,
+"natural_persons": 12,
+"legal_entities": 92,
+"with_employees": 62
+},
+"4646": {
+"total": 347,
+"natural_persons": 2,
+"legal_entities": 345,
+"with_employees": 254
+},
+"46460": {
+"total": 280,
+"natural_persons": 1,
+"legal_entities": 279,
+"with_employees": 210
+},
+"4647": {
+"total": 62,
+"natural_persons": 2,
+"legal_entities": 60,
+"with_employees": 42
+},
+"46470": {
+"total": 47,
+"natural_persons": 1,
+"legal_entities": 46,
+"with_employees": 36
+},
+"4648": {
+"total": 26,
+"natural_persons": 4,
+"legal_entities": 22,
+"with_employees": 15
+},
+"46480": {
+"total": 22,
+"natural_persons": 2,
+"legal_entities": 20,
+"with_employees": 14
+},
+"4649": {
+"total": 139,
+"natural_persons": 12,
+"legal_entities": 127,
+"with_employees": 107
+},
+"46490": {
+"total": 122,
+"natural_persons": 9,
+"legal_entities": 113,
+"with_employees": 99
+},
+"465": {
+"total": 350,
+"natural_persons": 13,
+"legal_entities": 337,
+"with_employees": 181
+},
+"4651": {
+"total": 149,
+"natural_persons": 9,
+"legal_entities": 140,
+"with_employees": 74
+},
+"46510": {
+"total": 140,
+"natural_persons": 8,
+"legal_entities": 132,
+"with_employees": 68
+},
+"4652": {
+"total": 137,
+"natural_persons": 1,
+"legal_entities": 136,
+"with_employees": 74
+},
+"46520": {
+"total": 119,
+"natural_persons": 0,
+"legal_entities": 119,
+"with_employees": 62
+},
+"466": {
+"total": 596,
+"natural_persons": 35,
+"legal_entities": 561,
+"with_employees": 428
+},
+"4661": {
+"total": 90,
+"natural_persons": 7,
+"legal_entities": 83,
+"with_employees": 63
+},
+"46610": {
+"total": 75,
+"natural_persons": 6,
+"legal_entities": 69,
+"with_employees": 54
+},
+"4662": {
+"total": 40,
+"natural_persons": 1,
+"legal_entities": 39,
+"with_employees": 30
+},
+"46620": {
+"total": 39,
+"natural_persons": 1,
+"legal_entities": 38,
+"with_employees": 30
+},
+"4663": {
+"total": 34,
+"natural_persons": 0,
+"legal_entities": 34,
+"with_employees": 24
+},
+"46630": {
+"total": 26,
+"natural_persons": 0,
+"legal_entities": 26,
+"with_employees": 20
+},
+"4664": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 7
+},
+"46640": {
+"total": 11,
+"natural_persons": 0,
+"legal_entities": 11,
+"with_employees": 6
+},
+"4665": {
+"total": 15,
+"natural_persons": 1,
+"legal_entities": 14,
+"with_employees": 10
+},
+"46650": {
+"total": 10,
+"natural_persons": 1,
+"legal_entities": 9,
+"with_employees": 7
+},
+"4666": {
+"total": 33,
+"natural_persons": 1,
+"legal_entities": 32,
+"with_employees": 21
+},
+"46660": {
+"total": 31,
+"natural_persons": 1,
+"legal_entities": 30,
+"with_employees": 19
+},
+"4669": {
+"total": 294,
+"natural_persons": 24,
+"legal_entities": 270,
+"with_employees": 224
+},
+"46690": {
+"total": 246,
+"natural_persons": 13,
+"legal_entities": 233,
+"with_employees": 196
+},
+"467": {
+"total": 2140,
+"natural_persons": 140,
+"legal_entities": 2000,
+"with_employees": 1381
+},
+"4671": {
+"total": 226,
+"natural_persons": 27,
+"legal_entities": 199,
+"with_employees": 121
+},
+"46711": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 7
+},
+"46712": {
+"total": 21,
+"natural_persons": 0,
+"legal_entities": 21,
+"with_employees": 17
+},
+"46713": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 2
+},
+"4672": {
+"total": 132,
+"natural_persons": 2,
+"legal_entities": 130,
+"with_employees": 90
+},
+"46720": {
+"total": 118,
+"natural_persons": 2,
+"legal_entities": 116,
+"with_employees": 82
+},
+"4673": {
+"total": 462,
+"natural_persons": 26,
+"legal_entities": 436,
+"with_employees": 268
+},
+"46730": {
+"total": 408,
+"natural_persons": 20,
+"legal_entities": 388,
+"with_employees": 243
+},
+"4674": {
+"total": 268,
+"natural_persons": 19,
+"legal_entities": 249,
+"with_employees": 197
+},
+"46740": {
+"total": 231,
+"natural_persons": 13,
+"legal_entities": 218,
+"with_employees": 169
+},
+"4675": {
+"total": 345,
+"natural_persons": 24,
+"legal_entities": 321,
+"with_employees": 264
+},
+"46750": {
+"total": 299,
+"natural_persons": 12,
+"legal_entities": 287,
+"with_employees": 235
+},
+"4676": {
+"total": 137,
+"natural_persons": 9,
+"legal_entities": 128,
+"with_employees": 90
+},
+"46761": {
+"total": 48,
+"natural_persons": 1,
+"legal_entities": 47,
+"with_employees": 29
+},
+"46769": {
+"total": 30,
+"natural_persons": 4,
+"legal_entities": 26,
+"with_employees": 21
+},
+"4677": {
+"total": 78,
+"natural_persons": 7,
+"legal_entities": 71,
+"with_employees": 49
+},
+"46770": {
+"total": 75,
+"natural_persons": 6,
+"legal_entities": 69,
+"with_employees": 47
+},
+"469": {
+"total": 22211,
+"natural_persons": 808,
+"legal_entities": 21403,
+"with_employees": 9064
+},
+"4690": {
+"total": 20571,
+"natural_persons": 611,
+"legal_entities": 19960,
+"with_employees": 8442
+},
+"46900": {
+"total": 19149,
+"natural_persons": 602,
+"legal_entities": 18547,
+"with_employees": 7914
+},
+"47": {
+"total": 158949,
+"natural_persons": 120409,
+"legal_entities": 38540,
+"with_employees": 20668
+},
+"471": {
+"total": 112033,
+"natural_persons": 93681,
+"legal_entities": 18352,
+"with_employees": 8604
+},
+"4711": {
+"total": 2087,
+"natural_persons": 1423,
+"legal_entities": 664,
+"with_employees": 368
+},
+"47110": {
+"total": 1978,
+"natural_persons": 1352,
+"legal_entities": 626,
+"with_employees": 317
+},
+"4719": {
+"total": 9730,
+"natural_persons": 6733,
+"legal_entities": 2997,
+"with_employees": 911
+},
+"47190": {
+"total": 9636,
+"natural_persons": 6653,
+"legal_entities": 2983,
+"with_employees": 904
+},
+"472": {
+"total": 5359,
+"natural_persons": 2459,
+"legal_entities": 2900,
+"with_employees": 1819
+},
+"4721": {
+"total": 49,
+"natural_persons": 21,
+"legal_entities": 28,
+"with_employees": 14
+},
+"47210": {
+"total": 45,
+"natural_persons": 17,
+"legal_entities": 28,
+"with_employees": 13
+},
+"4722": {
+"total": 170,
+"natural_persons": 28,
+"legal_entities": 142,
+"with_employees": 86
+},
+"47220": {
+"total": 125,
+"natural_persons": 24,
+"legal_entities": 101,
+"with_employees": 63
+},
+"4723": {
+"total": 20,
+"natural_persons": 12,
+"legal_entities": 8,
+"with_employees": 3
+},
+"47230": {
+"total": 18,
+"natural_persons": 10,
+"legal_entities": 8,
+"with_employees": 2
+},
+"4724": {
+"total": 49,
+"natural_persons": 6,
+"legal_entities": 43,
+"with_employees": 20
+},
+"47240": {
+"total": 36,
+"natural_persons": 3,
+"legal_entities": 33,
+"with_employees": 19
+},
+"4725": {
+"total": 4433,
+"natural_persons": 2111,
+"legal_entities": 2322,
+"with_employees": 1494
+},
+"47250": {
+"total": 2769,
+"natural_persons": 1270,
+"legal_entities": 1499,
+"with_employees": 937
+},
+"4726": {
+"total": 230,
+"natural_persons": 149,
+"legal_entities": 81,
+"with_employees": 66
+},
+"47260": {
+"total": 213,
+"natural_persons": 141,
+"legal_entities": 72,
+"with_employees": 61
+},
+"4729": {
+"total": 194,
+"natural_persons": 72,
+"legal_entities": 122,
+"with_employees": 58
+},
+"47290": {
+"total": 157,
+"natural_persons": 59,
+"legal_entities": 98,
+"with_employees": 45
+},
+"473": {
+"total": 421,
+"natural_persons": 49,
+"legal_entities": 372,
+"with_employees": 225
+},
+"4730": {
+"total": 403,
+"natural_persons": 48,
+"legal_entities": 355,
+"with_employees": 211
+},
+"47300": {
+"total": 379,
+"natural_persons": 43,
+"legal_entities": 336,
+"with_employees": 201
+},
+"474": {
+"total": 342,
+"natural_persons": 103,
+"legal_entities": 239,
+"with_employees": 134
+},
+"4741": {
+"total": 219,
+"natural_persons": 60,
+"legal_entities": 159,
+"with_employees": 85
+},
+"47410": {
+"total": 186,
+"natural_persons": 44,
+"legal_entities": 142,
+"with_employees": 74
+},
+"4742": {
+"total": 53,
+"natural_persons": 15,
+"legal_entities": 38,
+"with_employees": 22
+},
+"47420": {
+"total": 45,
+"natural_persons": 11,
+"legal_entities": 34,
+"with_employees": 22
+},
+"4743": {
+"total": 35,
+"natural_persons": 17,
+"legal_entities": 18,
+"with_employees": 13
+},
+"47430": {
+"total": 26,
+"natural_persons": 10,
+"legal_entities": 16,
+"with_employees": 10
+},
+"475": {
+"total": 1797,
+"natural_persons": 683,
+"legal_entities": 1114,
+"with_employees": 702
+},
+"4751": {
+"total": 353,
+"natural_persons": 150,
+"legal_entities": 203,
+"with_employees": 108
+},
+"47510": {
+"total": 308,
+"natural_persons": 127,
+"legal_entities": 181,
+"with_employees": 93
+},
+"4752": {
+"total": 447,
+"natural_persons": 156,
+"legal_entities": 291,
+"with_employees": 216
+},
+"47520": {
+"total": 356,
+"natural_persons": 112,
+"legal_entities": 244,
+"with_employees": 181
+},
+"4753": {
+"total": 54,
+"natural_persons": 20,
+"legal_entities": 34,
+"with_employees": 24
+},
+"47530": {
+"total": 42,
+"natural_persons": 15,
+"legal_entities": 27,
+"with_employees": 20
+},
+"4754": {
+"total": 429,
+"natural_persons": 162,
+"legal_entities": 267,
+"with_employees": 163
+},
+"47540": {
+"total": 390,
+"natural_persons": 142,
+"legal_entities": 248,
+"with_employees": 153
+},
+"4759": {
+"total": 401,
+"natural_persons": 149,
+"legal_entities": 252,
+"with_employees": 144
+},
+"47590": {
+"total": 301,
+"natural_persons": 104,
+"legal_entities": 197,
+"with_employees": 111
+},
+"476": {
+"total": 784,
+"natural_persons": 324,
+"legal_entities": 460,
+"with_employees": 289
+},
+"4761": {
+"total": 84,
+"natural_persons": 34,
+"legal_entities": 50,
+"with_employees": 29
+},
+"47610": {
+"total": 68,
+"natural_persons": 23,
+"legal_entities": 45,
+"with_employees": 25
+},
+"4762": {
+"total": 85,
+"natural_persons": 46,
+"legal_entities": 39,
+"with_employees": 32
+},
+"47620": {
+"total": 61,
+"natural_persons": 31,
+"legal_entities": 30,
+"with_employees": 25
+},
+"4763": {
+"total": 29,
+"natural_persons": 10,
+"legal_entities": 19,
+"with_employees": 9
+},
+"47630": {
+"total": 18,
+"natural_persons": 6,
+"legal_entities": 12,
+"with_employees": 7
+},
+"4764": {
+"total": 448,
+"natural_persons": 152,
+"legal_entities": 296,
+"with_employees": 183
+},
+"47640": {
+"total": 372,
+"natural_persons": 114,
+"legal_entities": 258,
+"with_employees": 158
+},
+"4765": {
+"total": 115,
+"natural_persons": 62,
+"legal_entities": 53,
+"with_employees": 30
+},
+"47650": {
+"total": 82,
+"natural_persons": 41,
+"legal_entities": 41,
+"with_employees": 26
+},
+"477": {
+"total": 23192,
+"natural_persons": 14141,
+"legal_entities": 9051,
+"with_employees": 5919
+},
+"4771": {
+"total": 480,
+"natural_persons": 216,
+"legal_entities": 264,
+"with_employees": 177
+},
+"47710": {
+"total": 358,
+"natural_persons": 152,
+"legal_entities": 206,
+"with_employees": 133
+},
+"4772": {
+"total": 163,
+"natural_persons": 64,
+"legal_entities": 99,
+"with_employees": 63
+},
+"47720": {
+"total": 129,
+"natural_persons": 45,
+"legal_entities": 84,
+"with_employees": 51
+},
+"4773": {
+"total": 1076,
+"natural_persons": 240,
+"legal_entities": 836,
+"with_employees": 814
+},
+"47730": {
+"total": 937,
+"natural_persons": 215,
+"legal_entities": 722,
+"with_employees": 719
+},
+"4774": {
+"total": 197,
+"natural_persons": 57,
+"legal_entities": 140,
+"with_employees": 98
+},
+"47740": {
+"total": 163,
+"natural_persons": 49,
+"legal_entities": 114,
+"with_employees": 80
+},
+"4775": {
+"total": 445,
+"natural_persons": 249,
+"legal_entities": 196,
+"with_employees": 103
+},
+"47750": {
+"total": 368,
+"natural_persons": 213,
+"legal_entities": 155,
+"with_employees": 88
+},
+"4776": {
+"total": 492,
+"natural_persons": 238,
+"legal_entities": 254,
+"with_employees": 206
+},
+"47760": {
+"total": 369,
+"natural_persons": 190,
+"legal_entities": 179,
+"with_employees": 155
+},
+"4777": {
+"total": 322,
+"natural_persons": 53,
+"legal_entities": 269,
+"with_employees": 172
+},
+"47770": {
+"total": 167,
+"natural_persons": 30,
+"legal_entities": 137,
+"with_employees": 95
+},
+"4778": {
+"total": 8421,
+"natural_persons": 3535,
+"legal_entities": 4886,
+"with_employees": 2567
+},
+"47781": {
+"total": 94,
+"natural_persons": 14,
+"legal_entities": 80,
+"with_employees": 77
+},
+"47782": {
+"total": 87,
+"natural_persons": 53,
+"legal_entities": 34,
+"with_employees": 30
+},
+"47783": {
+"total": 1,
+"natural_persons": 1,
+"legal_entities": 0,
+"with_employees": 0
+},
+"47789": {
+"total": 1149,
+"natural_persons": 921,
+"legal_entities": 228,
+"with_employees": 130
+},
+"4779": {
+"total": 11179,
+"natural_persons": 9206,
+"legal_entities": 1973,
+"with_employees": 1626
+},
+"47790": {
+"total": 10872,
+"natural_persons": 9168,
+"legal_entities": 1704,
+"with_employees": 1487
+},
+"478": {
+"total": 250,
+"natural_persons": 207,
+"legal_entities": 43,
+"with_employees": 16
+},
+"4781": {
+"total": 17,
+"natural_persons": 6,
+"legal_entities": 11,
+"with_employees": 8
+},
+"47810": {
+"total": 9,
+"natural_persons": 6,
+"legal_entities": 3,
+"with_employees": 2
+},
+"4782": {
+"total": 204,
+"natural_persons": 182,
+"legal_entities": 22,
+"with_employees": 3
+},
+"47820": {
+"total": 203,
+"natural_persons": 181,
+"legal_entities": 22,
+"with_employees": 3
+},
+"4789": {
+"total": 7,
+"natural_persons": 3,
+"legal_entities": 4,
+"with_employees": 3
+},
+"47890": {
+"total": 6,
+"natural_persons": 2,
+"legal_entities": 4,
+"with_employees": 3
+},
+"479": {
+"total": 2037,
+"natural_persons": 1080,
+"legal_entities": 957,
+"with_employees": 467
+},
+"4791": {
+"total": 676,
+"natural_persons": 109,
+"legal_entities": 567,
+"with_employees": 292
+},
+"47911": {
+"total": 364,
+"natural_persons": 39,
+"legal_entities": 325,
+"with_employees": 182
+},
+"47912": {
+"total": 12,
+"natural_persons": 6,
+"legal_entities": 6,
+"with_employees": 4
+},
+"4799": {
+"total": 1219,
+"natural_persons": 864,
+"legal_entities": 355,
+"with_employees": 159
+},
+"47990": {
+"total": 1188,
+"natural_persons": 852,
+"legal_entities": 336,
+"with_employees": 148
+},
+"49": {
+"total": 98537,
+"natural_persons": 78197,
+"legal_entities": 20340,
+"with_employees": 14824
+},
+"491": {
+"total": 20,
+"natural_persons": 0,
+"legal_entities": 20,
+"with_employees": 19
+},
+"4910": {
+"total": 15,
+"natural_persons": 0,
+"legal_entities": 15,
+"with_employees": 15
+},
+"49100": {
+"total": 14,
+"natural_persons": 0,
+"legal_entities": 14,
+"with_employees": 14
+},
+"492": {
+"total": 32,
+"natural_persons": 1,
+"legal_entities": 31,
+"with_employees": 28
+},
+"4920": {
+"total": 27,
+"natural_persons": 1,
+"legal_entities": 26,
+"with_employees": 25
+},
+"49200": {
+"total": 27,
+"natural_persons": 1,
+"legal_entities": 26,
+"with_employees": 25
+},
+"493": {
+"total": 16943,
+"natural_persons": 13050,
+"legal_entities": 3893,
+"with_employees": 1587
+},
+"4931": {
+"total": 205,
+"natural_persons": 146,
+"legal_entities": 59,
+"with_employees": 44
+},
+"49310": {
+"total": 198,
+"natural_persons": 145,
+"legal_entities": 53,
+"with_employees": 39
+},
+"4932": {
+"total": 2723,
+"natural_persons": 2346,
+"legal_entities": 377,
+"with_employees": 202
+},
+"49320": {
+"total": 2644,
+"natural_persons": 2296,
+"legal_entities": 348,
+"with_employees": 190
+},
+"4939": {
+"total": 7369,
+"natural_persons": 5290,
+"legal_entities": 2079,
+"with_employees": 918
+},
+"49391": {
+"total": 50,
+"natural_persons": 8,
+"legal_entities": 42,
+"with_employees": 33
+},
+"49392": {
+"total": 31,
+"natural_persons": 2,
+"legal_entities": 29,
+"with_employees": 22
+},
+"49393": {
+"total": 1167,
+"natural_persons": 235,
+"legal_entities": 932,
+"with_employees": 397
+},
+"49399": {
+"total": 872,
+"natural_persons": 578,
+"legal_entities": 294,
+"with_employees": 128
+},
+"494": {
+"total": 81486,
+"natural_persons": 65141,
+"legal_entities": 16345,
+"with_employees": 13163
+},
+"4941": {
+"total": 81297,
+"natural_persons": 65060,
+"legal_entities": 16237,
+"with_employees": 13098
+},
+"49410": {
+"total": 79684,
+"natural_persons": 64978,
+"legal_entities": 14706,
+"with_employees": 12178
+},
+"4942": {
+"total": 115,
+"natural_persons": 72,
+"legal_entities": 43,
+"with_employees": 34
+},
+"49420": {
+"total": 110,
+"natural_persons": 68,
+"legal_entities": 42,
+"with_employees": 33
+},
+"495": {
+"total": 6,
+"natural_persons": 1,
+"legal_entities": 5,
+"with_employees": 2
+},
+"4950": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 2
+},
+"49502": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"50": {
+"total": 155,
+"natural_persons": 79,
+"legal_entities": 76,
+"with_employees": 65
+},
+"501": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 2
+},
+"5010": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 1
+},
+"502": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"503": {
+"total": 116,
+"natural_persons": 76,
+"legal_entities": 40,
+"with_employees": 42
+},
+"5030": {
+"total": 102,
+"natural_persons": 76,
+"legal_entities": 26,
+"with_employees": 32
+},
+"50300": {
+"total": 101,
+"natural_persons": 76,
+"legal_entities": 25,
+"with_employees": 31
+},
+"504": {
+"total": 16,
+"natural_persons": 1,
+"legal_entities": 15,
+"with_employees": 11
+},
+"5040": {
+"total": 13,
+"natural_persons": 1,
+"legal_entities": 12,
+"with_employees": 8
+},
+"50400": {
+"total": 12,
+"natural_persons": 1,
+"legal_entities": 11,
+"with_employees": 8
+},
+"51": {
+"total": 205,
+"natural_persons": 107,
+"legal_entities": 98,
+"with_employees": 44
+},
+"511": {
+"total": 47,
+"natural_persons": 7,
+"legal_entities": 40,
+"with_employees": 20
+},
+"5110": {
+"total": 42,
+"natural_persons": 7,
+"legal_entities": 35,
+"with_employees": 18
+},
+"51102": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"51103": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 3
+},
+"51104": {
+"total": 11,
+"natural_persons": 0,
+"legal_entities": 11,
+"with_employees": 7
+},
+"51109": {
+"total": 3,
+"natural_persons": 1,
+"legal_entities": 2,
+"with_employees": 0
+},
+"512": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 9
+},
+"5121": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 9
+},
+"51210": {
+"total": 6,
+"natural_persons": 0,
+"legal_entities": 6,
+"with_employees": 4
+},
+"52": {
+"total": 12474,
+"natural_persons": 8377,
+"legal_entities": 4097,
+"with_employees": 2082
+},
+"521": {
+"total": 1420,
+"natural_persons": 509,
+"legal_entities": 911,
+"with_employees": 394
+},
+"5210": {
+"total": 1177,
+"natural_persons": 321,
+"legal_entities": 856,
+"with_employees": 369
+},
+"52100": {
+"total": 1116,
+"natural_persons": 319,
+"legal_entities": 797,
+"with_employees": 338
+},
+"522": {
+"total": 4265,
+"natural_persons": 2338,
+"legal_entities": 1927,
+"with_employees": 1220
+},
+"5221": {
+"total": 194,
+"natural_persons": 95,
+"legal_entities": 99,
+"with_employees": 60
+},
+"52210": {
+"total": 183,
+"natural_persons": 93,
+"legal_entities": 90,
+"with_employees": 54
+},
+"5222": {
+"total": 9,
+"natural_persons": 3,
+"legal_entities": 6,
+"with_employees": 3
+},
+"52220": {
+"total": 8,
+"natural_persons": 3,
+"legal_entities": 5,
+"with_employees": 2
+},
+"5223": {
+"total": 45,
+"natural_persons": 3,
+"legal_entities": 42,
+"with_employees": 31
+},
+"52230": {
+"total": 32,
+"natural_persons": 3,
+"legal_entities": 29,
+"with_employees": 23
+},
+"5224": {
+"total": 89,
+"natural_persons": 59,
+"legal_entities": 30,
+"with_employees": 18
+},
+"52240": {
+"total": 86,
+"natural_persons": 58,
+"legal_entities": 28,
+"with_employees": 16
+},
+"5229": {
+"total": 3812,
+"natural_persons": 2114,
+"legal_entities": 1698,
+"with_employees": 1076
+},
+"52290": {
+"total": 3483,
+"natural_persons": 2097,
+"legal_entities": 1386,
+"with_employees": 880
+},
+"53": {
+"total": 254,
+"natural_persons": 95,
+"legal_entities": 159,
+"with_employees": 74
+},
+"531": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"5310": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"53100": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"532": {
+"total": 248,
+"natural_persons": 95,
+"legal_entities": 153,
+"with_employees": 69
+},
+"5320": {
+"total": 241,
+"natural_persons": 93,
+"legal_entities": 148,
+"with_employees": 67
+},
+"53200": {
+"total": 236,
+"natural_persons": 89,
+"legal_entities": 147,
+"with_employees": 66
+},
+"55": {
+"total": 27417,
+"natural_persons": 19107,
+"legal_entities": 8310,
+"with_employees": 3584
+},
+"551": {
+"total": 1396,
+"natural_persons": 229,
+"legal_entities": 1167,
+"with_employees": 612
+},
+"5510": {
+"total": 1348,
+"natural_persons": 221,
+"legal_entities": 1127,
+"with_employees": 588
+},
+"55101": {
+"total": 305,
+"natural_persons": 7,
+"legal_entities": 298,
+"with_employees": 233
+},
+"55102": {
+"total": 18,
+"natural_persons": 0,
+"legal_entities": 18,
+"with_employees": 10
+},
+"55109": {
+"total": 366,
+"natural_persons": 78,
+"legal_entities": 288,
+"with_employees": 88
+},
+"552": {
+"total": 1280,
+"natural_persons": 680,
+"legal_entities": 600,
+"with_employees": 267
+},
+"5520": {
+"total": 1104,
+"natural_persons": 534,
+"legal_entities": 570,
+"with_employees": 245
+},
+"55200": {
+"total": 1053,
+"natural_persons": 511,
+"legal_entities": 542,
+"with_employees": 226
+},
+"553": {
+"total": 68,
+"natural_persons": 19,
+"legal_entities": 49,
+"with_employees": 28
+},
+"5530": {
+"total": 64,
+"natural_persons": 19,
+"legal_entities": 45,
+"with_employees": 26
+},
+"55300": {
+"total": 57,
+"natural_persons": 17,
+"legal_entities": 40,
+"with_employees": 24
+},
+"559": {
+"total": 2472,
+"natural_persons": 1188,
+"legal_entities": 1284,
+"with_employees": 565
+},
+"5590": {
+"total": 1608,
+"natural_persons": 566,
+"legal_entities": 1042,
+"with_employees": 480
+},
+"55901": {
+"total": 32,
+"natural_persons": 25,
+"legal_entities": 7,
+"with_employees": 3
+},
+"55902": {
+"total": 59,
+"natural_persons": 39,
+"legal_entities": 20,
+"with_employees": 17
+},
+"55909": {
+"total": 36,
+"natural_persons": 10,
+"legal_entities": 26,
+"with_employees": 15
+},
+"56": {
+"total": 115810,
+"natural_persons": 88319,
+"legal_entities": 27491,
+"with_employees": 24743
+},
+"561": {
+"total": 114618,
+"natural_persons": 88247,
+"legal_entities": 26371,
+"with_employees": 24006
+},
+"5610": {
+"total": 112486,
+"natural_persons": 88170,
+"legal_entities": 24316,
+"with_employees": 22869
+},
+"56100": {
+"total": 110962,
+"natural_persons": 88134,
+"legal_entities": 22828,
+"with_employees": 22011
+},
+"562": {
+"total": 268,
+"natural_persons": 14,
+"legal_entities": 254,
+"with_employees": 213
+},
+"5621": {
+"total": 31,
+"natural_persons": 5,
+"legal_entities": 26,
+"with_employees": 18
+},
+"56210": {
+"total": 26,
+"natural_persons": 3,
+"legal_entities": 23,
+"with_employees": 16
+},
+"5629": {
+"total": 212,
+"natural_persons": 6,
+"legal_entities": 206,
+"with_employees": 184
+},
+"56291": {
+"total": 16,
+"natural_persons": 1,
+"legal_entities": 15,
+"with_employees": 13
+},
+"56292": {
+"total": 170,
+"natural_persons": 0,
+"legal_entities": 170,
+"with_employees": 154
+},
+"56299": {
+"total": 6,
+"natural_persons": 2,
+"legal_entities": 4,
+"with_employees": 3
+},
+"563": {
+"total": 646,
+"natural_persons": 56,
+"legal_entities": 590,
+"with_employees": 354
+},
+"5630": {
+"total": 411,
+"natural_persons": 45,
+"legal_entities": 366,
+"with_employees": 224
+},
+"56300": {
+"total": 363,
+"natural_persons": 34,
+"legal_entities": 329,
+"with_employees": 191
+},
+"58": {
+"total": 8528,
+"natural_persons": 3096,
+"legal_entities": 5432,
+"with_employees": 1827
+},
+"581": {
+"total": 5693,
+"natural_persons": 2343,
+"legal_entities": 3350,
+"with_employees": 1116
+},
+"5811": {
+"total": 121,
+"natural_persons": 57,
+"legal_entities": 64,
+"with_employees": 29
+},
+"58110": {
+"total": 110,
+"natural_persons": 52,
+"legal_entities": 58,
+"with_employees": 26
+},
+"5813": {
+"total": 28,
+"natural_persons": 10,
+"legal_entities": 18,
+"with_employees": 9
+},
+"58130": {
+"total": 27,
+"natural_persons": 10,
+"legal_entities": 17,
+"with_employees": 8
+},
+"5814": {
+"total": 123,
+"natural_persons": 45,
+"legal_entities": 78,
+"with_employees": 30
+},
+"58140": {
+"total": 117,
+"natural_persons": 42,
+"legal_entities": 75,
+"with_employees": 29
+},
+"5819": {
+"total": 801,
+"natural_persons": 445,
+"legal_entities": 356,
+"with_employees": 135
+},
+"58190": {
+"total": 460,
+"natural_persons": 227,
+"legal_entities": 233,
+"with_employees": 84
+},
+"582": {
+"total": 331,
+"natural_persons": 93,
+"legal_entities": 238,
+"with_employees": 142
+},
+"5821": {
+"total": 8,
+"natural_persons": 1,
+"legal_entities": 7,
+"with_employees": 5
+},
+"58210": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 5
+},
+"5829": {
+"total": 75,
+"natural_persons": 4,
+"legal_entities": 71,
+"with_employees": 52
+},
+"58290": {
+"total": 63,
+"natural_persons": 2,
+"legal_entities": 61,
+"with_employees": 47
+},
+"59": {
+"total": 3191,
+"natural_persons": 1568,
+"legal_entities": 1623,
+"with_employees": 537
+},
+"591": {
+"total": 348,
+"natural_persons": 76,
+"legal_entities": 272,
+"with_employees": 107
+},
+"5911": {
+"total": 177,
+"natural_persons": 22,
+"legal_entities": 155,
+"with_employees": 57
+},
+"59110": {
+"total": 159,
+"natural_persons": 19,
+"legal_entities": 140,
+"with_employees": 50
+},
+"5912": {
+"total": 19,
+"natural_persons": 8,
+"legal_entities": 11,
+"with_employees": 5
+},
+"59120": {
+"total": 13,
+"natural_persons": 5,
+"legal_entities": 8,
+"with_employees": 5
+},
+"5913": {
+"total": 70,
+"natural_persons": 23,
+"legal_entities": 47,
+"with_employees": 15
+},
+"59130": {
+"total": 69,
+"natural_persons": 23,
+"legal_entities": 46,
+"with_employees": 15
+},
+"5914": {
+"total": 36,
+"natural_persons": 7,
+"legal_entities": 29,
+"with_employees": 16
+},
+"59140": {
+"total": 36,
+"natural_persons": 7,
+"legal_entities": 29,
+"with_employees": 16
+},
+"592": {
+"total": 1281,
+"natural_persons": 1077,
+"legal_entities": 204,
+"with_employees": 94
+},
+"5920": {
+"total": 1234,
+"natural_persons": 1039,
+"legal_entities": 195,
+"with_employees": 92
+},
+"59200": {
+"total": 1202,
+"natural_persons": 1011,
+"legal_entities": 191,
+"with_employees": 89
+},
+"60": {
+"total": 83,
+"natural_persons": 11,
+"legal_entities": 72,
+"with_employees": 43
+},
+"601": {
+"total": 35,
+"natural_persons": 1,
+"legal_entities": 34,
+"with_employees": 19
+},
+"6010": {
+"total": 29,
+"natural_persons": 1,
+"legal_entities": 28,
+"with_employees": 16
+},
+"60100": {
+"total": 22,
+"natural_persons": 1,
+"legal_entities": 21,
+"with_employees": 13
+},
+"602": {
+"total": 39,
+"natural_persons": 3,
+"legal_entities": 36,
+"with_employees": 23
+},
+"6020": {
+"total": 30,
+"natural_persons": 2,
+"legal_entities": 28,
+"with_employees": 20
+},
+"60200": {
+"total": 21,
+"natural_persons": 2,
+"legal_entities": 19,
+"with_employees": 15
+},
+"61": {
+"total": 835,
+"natural_persons": 251,
+"legal_entities": 584,
+"with_employees": 404
+},
+"611": {
+"total": 70,
+"natural_persons": 1,
+"legal_entities": 69,
+"with_employees": 48
+},
+"6110": {
+"total": 59,
+"natural_persons": 1,
+"legal_entities": 58,
+"with_employees": 43
+},
+"61101": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"61103": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 0
+},
+"61104": {
+"total": 25,
+"natural_persons": 0,
+"legal_entities": 25,
+"with_employees": 18
+},
+"61109": {
+"total": 6,
+"natural_persons": 0,
+"legal_entities": 6,
+"with_employees": 6
+},
+"612": {
+"total": 134,
+"natural_persons": 9,
+"legal_entities": 125,
+"with_employees": 78
+},
+"6120": {
+"total": 123,
+"natural_persons": 9,
+"legal_entities": 114,
+"with_employees": 71
+},
+"61201": {
+"total": 4,
+"natural_persons": 0,
+"legal_entities": 4,
+"with_employees": 4
+},
+"61203": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 2
+},
+"61204": {
+"total": 54,
+"natural_persons": 5,
+"legal_entities": 49,
+"with_employees": 31
+},
+"61209": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 1
+},
+"613": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 1
+},
+"6130": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 0
+},
+"61300": {
+"total": 2,
+"natural_persons": 0,
+"legal_entities": 2,
+"with_employees": 0
+},
+"619": {
+"total": 41,
+"natural_persons": 2,
+"legal_entities": 39,
+"with_employees": 19
+},
+"6190": {
+"total": 36,
+"natural_persons": 2,
+"legal_entities": 34,
+"with_employees": 18
+},
+"61900": {
+"total": 29,
+"natural_persons": 1,
+"legal_entities": 28,
+"with_employees": 15
+},
+"62": {
+"total": 72645,
+"natural_persons": 49868,
+"legal_entities": 22777,
+"with_employees": 7982
+},
+"620": {
+"total": 67181,
+"natural_persons": 45598,
+"legal_entities": 21583,
+"with_employees": 7505
+},
+"6201": {
+"total": 923,
+"natural_persons": 292,
+"legal_entities": 631,
+"with_employees": 413
+},
+"62010": {
+"total": 721,
+"natural_persons": 219,
+"legal_entities": 502,
+"with_employees": 345
+},
+"6202": {
+"total": 6527,
+"natural_persons": 5346,
+"legal_entities": 1181,
+"with_employees": 478
+},
+"62020": {
+"total": 6091,
+"natural_persons": 5028,
+"legal_entities": 1063,
+"with_employees": 429
+},
+"6203": {
+"total": 68,
+"natural_persons": 22,
+"legal_entities": 46,
+"with_employees": 34
+},
+"62030": {
+"total": 54,
+"natural_persons": 16,
+"legal_entities": 38,
+"with_employees": 28
+},
+"6209": {
+"total": 1255,
+"natural_persons": 1057,
+"legal_entities": 198,
+"with_employees": 88
+},
+"62090": {
+"total": 1085,
+"natural_persons": 919,
+"legal_entities": 166,
+"with_employees": 74
+},
+"63": {
+"total": 5939,
+"natural_persons": 4250,
+"legal_entities": 1689,
+"with_employees": 630
+},
+"631": {
+"total": 946,
+"natural_persons": 463,
+"legal_entities": 483,
+"with_employees": 221
+},
+"6311": {
+"total": 414,
+"natural_persons": 196,
+"legal_entities": 218,
+"with_employees": 113
+},
+"63110": {
+"total": 226,
+"natural_persons": 66,
+"legal_entities": 160,
+"with_employees": 86
+},
+"6312": {
+"total": 317,
+"natural_persons": 140,
+"legal_entities": 177,
+"with_employees": 79
+},
+"63120": {
+"total": 259,
+"natural_persons": 119,
+"legal_entities": 140,
+"with_employees": 74
+},
+"639": {
+"total": 2653,
+"natural_persons": 2148,
+"legal_entities": 505,
+"with_employees": 136
+},
+"6391": {
+"total": 446,
+"natural_persons": 142,
+"legal_entities": 304,
+"with_employees": 110
+},
+"63910": {
+"total": 418,
+"natural_persons": 141,
+"legal_entities": 277,
+"with_employees": 101
+},
+"6399": {
+"total": 2195,
+"natural_persons": 2001,
+"legal_entities": 194,
+"with_employees": 24
+},
+"63990": {
+"total": 968,
+"natural_persons": 837,
+"legal_entities": 131,
+"with_employees": 20
+},
+"64": {
+"total": 4428,
+"natural_persons": 101,
+"legal_entities": 4327,
+"with_employees": 1097
+},
+"641": {
+"total": 57,
+"natural_persons": 0,
+"legal_entities": 57,
+"with_employees": 50
+},
+"6411": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"64110": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"6419": {
+"total": 54,
+"natural_persons": 0,
+"legal_entities": 54,
+"with_employees": 49
+},
+"64190": {
+"total": 53,
+"natural_persons": 0,
+"legal_entities": 53,
+"with_employees": 48
+},
+"642": {
+"total": 1239,
+"natural_persons": 0,
+"legal_entities": 1239,
+"with_employees": 271
+},
+"6420": {
+"total": 1238,
+"natural_persons": 0,
+"legal_entities": 1238,
+"with_employees": 271
+},
+"64200": {
+"total": 1210,
+"natural_persons": 0,
+"legal_entities": 1210,
+"with_employees": 269
+},
+"643": {
+"total": 1201,
+"natural_persons": 0,
+"legal_entities": 1201,
+"with_employees": 80
+},
+"6430": {
+"total": 1197,
+"natural_persons": 0,
+"legal_entities": 1197,
+"with_employees": 79
+},
+"64300": {
+"total": 1158,
+"natural_persons": 0,
+"legal_entities": 1158,
+"with_employees": 68
+},
+"649": {
+"total": 1927,
+"natural_persons": 100,
+"legal_entities": 1827,
+"with_employees": 695
+},
+"6491": {
+"total": 93,
+"natural_persons": 0,
+"legal_entities": 93,
+"with_employees": 28
+},
+"64910": {
+"total": 91,
+"natural_persons": 0,
+"legal_entities": 91,
+"with_employees": 27
+},
+"6492": {
+"total": 847,
+"natural_persons": 28,
+"legal_entities": 819,
+"with_employees": 382
+},
+"64921": {
+"total": 49,
+"natural_persons": 0,
+"legal_entities": 49,
+"with_employees": 36
+},
+"64922": {
+"total": 8,
+"natural_persons": 0,
+"legal_entities": 8,
+"with_employees": 6
+},
+"64923": {
+"total": 47,
+"natural_persons": 5,
+"legal_entities": 42,
+"with_employees": 26
+},
+"64929": {
+"total": 470,
+"natural_persons": 5,
+"legal_entities": 465,
+"with_employees": 221
+},
+"6499": {
+"total": 837,
+"natural_persons": 71,
+"legal_entities": 766,
+"with_employees": 236
+},
+"64991": {
+"total": 18,
+"natural_persons": 0,
+"legal_entities": 18,
+"with_employees": 10
+},
+"64992": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 6
+},
+"64999": {
+"total": 317,
+"natural_persons": 65,
+"legal_entities": 252,
+"with_employees": 77
+},
+"65": {
+"total": 92,
+"natural_persons": 0,
+"legal_entities": 92,
+"with_employees": 42
+},
+"651": {
+"total": 42,
+"natural_persons": 0,
+"legal_entities": 42,
+"with_employees": 40
+},
+"6511": {
+"total": 8,
+"natural_persons": 0,
+"legal_entities": 8,
+"with_employees": 8
+},
+"65110": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 5
+},
+"6512": {
+"total": 28,
+"natural_persons": 0,
+"legal_entities": 28,
+"with_employees": 26
+},
+"65120": {
+"total": 25,
+"natural_persons": 0,
+"legal_entities": 25,
+"with_employees": 24
+},
+"652": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"6520": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"65200": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"653": {
+"total": 48,
+"natural_persons": 0,
+"legal_entities": 48,
+"with_employees": 0
+},
+"6530": {
+"total": 48,
+"natural_persons": 0,
+"legal_entities": 48,
+"with_employees": 0
+},
+"65300": {
+"total": 48,
+"natural_persons": 0,
+"legal_entities": 48,
+"with_employees": 0
+},
+"66": {
+"total": 40038,
+"natural_persons": 37503,
+"legal_entities": 2535,
+"with_employees": 3136
+},
+"661": {
+"total": 12220,
+"natural_persons": 11310,
+"legal_entities": 910,
+"with_employees": 933
+},
+"6611": {
+"total": 6275,
+"natural_persons": 6084,
+"legal_entities": 191,
+"with_employees": 468
+},
+"66110": {
+"total": 5591,
+"natural_persons": 5419,
+"legal_entities": 172,
+"with_employees": 404
+},
+"6612": {
+"total": 737,
+"natural_persons": 514,
+"legal_entities": 223,
+"with_employees": 124
+},
+"66120": {
+"total": 686,
+"natural_persons": 492,
+"legal_entities": 194,
+"with_employees": 102
+},
+"6619": {
+"total": 5155,
+"natural_persons": 4708,
+"legal_entities": 447,
+"with_employees": 329
+},
+"66190": {
+"total": 4627,
+"natural_persons": 4201,
+"legal_entities": 426,
+"with_employees": 300
+},
+"662": {
+"total": 23535,
+"natural_persons": 22429,
+"legal_entities": 1106,
+"with_employees": 1629
+},
+"6621": {
+"total": 656,
+"natural_persons": 620,
+"legal_entities": 36,
+"with_employees": 70
+},
+"66210": {
+"total": 652,
+"natural_persons": 617,
+"legal_entities": 35,
+"with_employees": 69
+},
+"6622": {
+"total": 21935,
+"natural_persons": 21028,
+"legal_entities": 907,
+"with_employees": 1387
+},
+"66220": {
+"total": 20428,
+"natural_persons": 19582,
+"legal_entities": 846,
+"with_employees": 1271
+},
+"6629": {
+"total": 398,
+"natural_persons": 384,
+"legal_entities": 14,
+"with_employees": 39
+},
+"66290": {
+"total": 395,
+"natural_persons": 384,
+"legal_entities": 11,
+"with_employees": 37
+},
+"663": {
+"total": 506,
+"natural_persons": 0,
+"legal_entities": 506,
+"with_employees": 149
+},
+"6630": {
+"total": 488,
+"natural_persons": 0,
+"legal_entities": 488,
+"with_employees": 149
+},
+"66300": {
+"total": 485,
+"natural_persons": 0,
+"legal_entities": 485,
+"with_employees": 147
+},
+"68": {
+"total": 205945,
+"natural_persons": 29751,
+"legal_entities": 176194,
+"with_employees": 61129
+},
+"681": {
+"total": 188,
+"natural_persons": 9,
+"legal_entities": 179,
+"with_employees": 44
+},
+"6810": {
+"total": 177,
+"natural_persons": 9,
+"legal_entities": 168,
+"with_employees": 43
+},
+"68100": {
+"total": 127,
+"natural_persons": 8,
+"legal_entities": 119,
+"with_employees": 25
+},
+"682": {
+"total": 170839,
+"natural_persons": 16507,
+"legal_entities": 154332,
+"with_employees": 54730
+},
+"6820": {
+"total": 168895,
+"natural_persons": 16231,
+"legal_entities": 152664,
+"with_employees": 54230
+},
+"68201": {
+"total": 421,
+"natural_persons": 3,
+"legal_entities": 418,
+"with_employees": 92
+},
+"68202": {
+"total": 295,
+"natural_persons": 2,
+"legal_entities": 293,
+"with_employees": 130
+},
+"68203": {
+"total": 141,
+"natural_persons": 1,
+"legal_entities": 140,
+"with_employees": 41
+},
+"68204": {
+"total": 117,
+"natural_persons": 2,
+"legal_entities": 115,
+"with_employees": 29
+},
+"683": {
+"total": 32765,
+"natural_persons": 12287,
+"legal_entities": 20478,
+"with_employees": 5962
+},
+"6831": {
+"total": 22627,
+"natural_persons": 9958,
+"legal_entities": 12669,
+"with_employees": 4010
+},
+"68310": {
+"total": 21760,
+"natural_persons": 9873,
+"legal_entities": 11887,
+"with_employees": 3756
+},
+"6832": {
+"total": 8469,
+"natural_persons": 1762,
+"legal_entities": 6707,
+"with_employees": 1626
+},
+"68320": {
+"total": 8224,
+"natural_persons": 1651,
+"legal_entities": 6573,
+"with_employees": 1584
+},
+"69": {
+"total": 86027,
+"natural_persons": 72742,
+"legal_entities": 13285,
+"with_employees": 14227
+},
+"691": {
+"total": 18334,
+"natural_persons": 16995,
+"legal_entities": 1339,
+"with_employees": 3845
+},
+"6910": {
+"total": 18290,
+"natural_persons": 16993,
+"legal_entities": 1297,
+"with_employees": 3810
+},
+"69100": {
+"total": 18079,
+"natural_persons": 16989,
+"legal_entities": 1090,
+"with_employees": 3622
+},
+"692": {
+"total": 67675,
+"natural_persons": 55746,
+"legal_entities": 11929,
+"with_employees": 10368
+},
+"6920": {
+"total": 67170,
+"natural_persons": 55677,
+"legal_entities": 11493,
+"with_employees": 10028
+},
+"69200": {
+"total": 65934,
+"natural_persons": 55621,
+"legal_entities": 10313,
+"with_employees": 9193
+},
+"70": {
+"total": 17830,
+"natural_persons": 7719,
+"legal_entities": 10111,
+"with_employees": 3448
+},
+"701": {
+"total": 712,
+"natural_persons": 26,
+"legal_entities": 686,
+"with_employees": 177
+},
+"7010": {
+"total": 697,
+"natural_persons": 25,
+"legal_entities": 672,
+"with_employees": 172
+},
+"70100": {
+"total": 607,
+"natural_persons": 23,
+"legal_entities": 584,
+"with_employees": 151
+},
+"702": {
+"total": 17092,
+"natural_persons": 7689,
+"legal_entities": 9403,
+"with_employees": 3265
+},
+"7021": {
+"total": 29,
+"natural_persons": 7,
+"legal_entities": 22,
+"with_employees": 14
+},
+"70210": {
+"total": 22,
+"natural_persons": 3,
+"legal_entities": 19,
+"with_employees": 13
+},
+"7022": {
+"total": 4555,
+"natural_persons": 775,
+"legal_entities": 3780,
+"with_employees": 1238
+},
+"70220": {
+"total": 4407,
+"natural_persons": 695,
+"legal_entities": 3712,
+"with_employees": 1213
+},
+"71": {
+"total": 78424,
+"natural_persons": 62054,
+"legal_entities": 16370,
+"with_employees": 9154
+},
+"711": {
+"total": 70499,
+"natural_persons": 55933,
+"legal_entities": 14566,
+"with_employees": 8142
+},
+"7111": {
+"total": 18106,
+"natural_persons": 15254,
+"legal_entities": 2852,
+"with_employees": 2117
+},
+"71110": {
+"total": 17454,
+"natural_persons": 15113,
+"legal_entities": 2341,
+"with_employees": 1837
+},
+"7112": {
+"total": 38468,
+"natural_persons": 32828,
+"legal_entities": 5640,
+"with_employees": 2726
+},
+"71121": {
+"total": 574,
+"natural_persons": 340,
+"legal_entities": 234,
+"with_employees": 175
+},
+"71122": {
+"total": 3037,
+"natural_persons": 2281,
+"legal_entities": 756,
+"with_employees": 664
+},
+"71123": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"71129": {
+"total": 705,
+"natural_persons": 628,
+"legal_entities": 77,
+"with_employees": 76
+},
+"712": {
+"total": 7874,
+"natural_persons": 6082,
+"legal_entities": 1792,
+"with_employees": 1008
+},
+"7120": {
+"total": 7693,
+"natural_persons": 6069,
+"legal_entities": 1624,
+"with_employees": 931
+},
+"71201": {
+"total": 179,
+"natural_persons": 143,
+"legal_entities": 36,
+"with_employees": 54
+},
+"71209": {
+"total": 6175,
+"natural_persons": 5272,
+"legal_entities": 903,
+"with_employees": 357
+},
+"72": {
+"total": 4454,
+"natural_persons": 2942,
+"legal_entities": 1512,
+"with_employees": 672
+},
+"721": {
+"total": 1233,
+"natural_persons": 470,
+"legal_entities": 763,
+"with_employees": 422
+},
+"7211": {
+"total": 15,
+"natural_persons": 1,
+"legal_entities": 14,
+"with_employees": 9
+},
+"72110": {
+"total": 13,
+"natural_persons": 1,
+"legal_entities": 12,
+"with_employees": 8
+},
+"7219": {
+"total": 831,
+"natural_persons": 270,
+"legal_entities": 561,
+"with_employees": 329
+},
+"72191": {
+"total": 30,
+"natural_persons": 6,
+"legal_entities": 24,
+"with_employees": 13
+},
+"72192": {
+"total": 39,
+"natural_persons": 2,
+"legal_entities": 37,
+"with_employees": 22
+},
+"72199": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 2
+},
+"722": {
+"total": 83,
+"natural_persons": 12,
+"legal_entities": 71,
+"with_employees": 43
+},
+"7220": {
+"total": 74,
+"natural_persons": 10,
+"legal_entities": 64,
+"with_employees": 40
+},
+"72200": {
+"total": 66,
+"natural_persons": 10,
+"legal_entities": 56,
+"with_employees": 37
+},
+"73": {
+"total": 65179,
+"natural_persons": 50399,
+"legal_entities": 14780,
+"with_employees": 5229
+},
+"731": {
+"total": 64710,
+"natural_persons": 50269,
+"legal_entities": 14441,
+"with_employees": 5114
+},
+"7311": {
+"total": 47697,
+"natural_persons": 41747,
+"legal_entities": 5950,
+"with_employees": 1847
+},
+"73110": {
+"total": 47230,
+"natural_persons": 41653,
+"legal_entities": 5577,
+"with_employees": 1733
+},
+"7312": {
+"total": 197,
+"natural_persons": 5,
+"legal_entities": 192,
+"with_employees": 92
+},
+"73120": {
+"total": 195,
+"natural_persons": 5,
+"legal_entities": 190,
+"with_employees": 90
+},
+"732": {
+"total": 283,
+"natural_persons": 75,
+"legal_entities": 208,
+"with_employees": 62
+},
+"7320": {
+"total": 269,
+"natural_persons": 73,
+"legal_entities": 196,
+"with_employees": 59
+},
+"73200": {
+"total": 263,
+"natural_persons": 71,
+"legal_entities": 192,
+"with_employees": 57
+},
+"74": {
+"total": 123116,
+"natural_persons": 89544,
+"legal_entities": 33572,
+"with_employees": 10790
+},
+"741": {
+"total": 8679,
+"natural_persons": 7477,
+"legal_entities": 1202,
+"with_employees": 442
+},
+"7410": {
+"total": 8595,
+"natural_persons": 7431,
+"legal_entities": 1164,
+"with_employees": 430
+},
+"74100": {
+"total": 8497,
+"natural_persons": 7400,
+"legal_entities": 1097,
+"with_employees": 402
+},
+"742": {
+"total": 12499,
+"natural_persons": 11416,
+"legal_entities": 1083,
+"with_employees": 400
+},
+"7420": {
+"total": 12430,
+"natural_persons": 11372,
+"legal_entities": 1058,
+"with_employees": 392
+},
+"74200": {
+"total": 12327,
+"natural_persons": 11334,
+"legal_entities": 993,
+"with_employees": 368
+},
+"743": {
+"total": 32084,
+"natural_persons": 29063,
+"legal_entities": 3021,
+"with_employees": 829
+},
+"7430": {
+"total": 31891,
+"natural_persons": 28960,
+"legal_entities": 2931,
+"with_employees": 787
+},
+"74300": {
+"total": 31768,
+"natural_persons": 28893,
+"legal_entities": 2875,
+"with_employees": 764
+},
+"749": {
+"total": 39416,
+"natural_persons": 32970,
+"legal_entities": 6446,
+"with_employees": 3201
+},
+"7490": {
+"total": 38099,
+"natural_persons": 32472,
+"legal_entities": 5627,
+"with_employees": 2854
+},
+"74901": {
+"total": 1806,
+"natural_persons": 1313,
+"legal_entities": 493,
+"with_employees": 389
+},
+"74902": {
+"total": 2028,
+"natural_persons": 1744,
+"legal_entities": 284,
+"with_employees": 238
+},
+"74909": {
+"total": 418,
+"natural_persons": 288,
+"legal_entities": 130,
+"with_employees": 69
+},
+"75": {
+"total": 4389,
+"natural_persons": 3717,
+"legal_entities": 672,
+"with_employees": 929
+},
+"750": {
+"total": 4252,
+"natural_persons": 3717,
+"legal_entities": 535,
+"with_employees": 829
+},
+"7500": {
+"total": 4235,
+"natural_persons": 3716,
+"legal_entities": 519,
+"with_employees": 816
+},
+"75000": {
+"total": 4188,
+"natural_persons": 3716,
+"legal_entities": 472,
+"with_employees": 776
+},
+"77": {
+"total": 13455,
+"natural_persons": 7836,
+"legal_entities": 5619,
+"with_employees": 2107
+},
+"771": {
+"total": 418,
+"natural_persons": 113,
+"legal_entities": 305,
+"with_employees": 78
+},
+"7711": {
+"total": 309,
+"natural_persons": 100,
+"legal_entities": 209,
+"with_employees": 52
+},
+"77110": {
+"total": 295,
+"natural_persons": 97,
+"legal_entities": 198,
+"with_employees": 48
+},
+"7712": {
+"total": 25,
+"natural_persons": 4,
+"legal_entities": 21,
+"with_employees": 8
+},
+"77120": {
+"total": 18,
+"natural_persons": 3,
+"legal_entities": 15,
+"with_employees": 5
+},
+"772": {
+"total": 12592,
+"natural_persons": 7624,
+"legal_entities": 4968,
+"with_employees": 1877
+},
+"7721": {
+"total": 47,
+"natural_persons": 17,
+"legal_entities": 30,
+"with_employees": 11
+},
+"77210": {
+"total": 34,
+"natural_persons": 13,
+"legal_entities": 21,
+"with_employees": 8
+},
+"7722": {
+"total": 5,
+"natural_persons": 3,
+"legal_entities": 2,
+"with_employees": 1
+},
+"77220": {
+"total": 3,
+"natural_persons": 1,
+"legal_entities": 2,
+"with_employees": 1
+},
+"7729": {
+"total": 9753,
+"natural_persons": 7106,
+"legal_entities": 2647,
+"with_employees": 1015
+},
+"77290": {
+"total": 9519,
+"natural_persons": 7089,
+"legal_entities": 2430,
+"with_employees": 918
+},
+"773": {
+"total": 383,
+"natural_persons": 87,
+"legal_entities": 296,
+"with_employees": 139
+},
+"7731": {
+"total": 9,
+"natural_persons": 3,
+"legal_entities": 6,
+"with_employees": 3
+},
+"77310": {
+"total": 9,
+"natural_persons": 3,
+"legal_entities": 6,
+"with_employees": 3
+},
+"7732": {
+"total": 63,
+"natural_persons": 11,
+"legal_entities": 52,
+"with_employees": 40
+},
+"77320": {
+"total": 47,
+"natural_persons": 5,
+"legal_entities": 42,
+"with_employees": 36
+},
+"7733": {
+"total": 19,
+"natural_persons": 3,
+"legal_entities": 16,
+"with_employees": 7
+},
+"77330": {
+"total": 17,
+"natural_persons": 3,
+"legal_entities": 14,
+"with_employees": 6
+},
+"7734": {
+"total": 13,
+"natural_persons": 3,
+"legal_entities": 10,
+"with_employees": 2
+},
+"77340": {
+"total": 9,
+"natural_persons": 2,
+"legal_entities": 7,
+"with_employees": 2
+},
+"7735": {
+"total": 14,
+"natural_persons": 0,
+"legal_entities": 14,
+"with_employees": 4
+},
+"77350": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 3
+},
+"7739": {
+"total": 129,
+"natural_persons": 25,
+"legal_entities": 104,
+"with_employees": 42
+},
+"77390": {
+"total": 108,
+"natural_persons": 17,
+"legal_entities": 91,
+"with_employees": 38
+},
+"774": {
+"total": 8,
+"natural_persons": 0,
+"legal_entities": 8,
+"with_employees": 1
+},
+"7740": {
+"total": 8,
+"natural_persons": 0,
+"legal_entities": 8,
+"with_employees": 1
+},
+"77400": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 1
+},
+"78": {
+"total": 1482,
+"natural_persons": 38,
+"legal_entities": 1444,
+"with_employees": 1075
+},
+"781": {
+"total": 1031,
+"natural_persons": 25,
+"legal_entities": 1006,
+"with_employees": 754
+},
+"7810": {
+"total": 747,
+"natural_persons": 25,
+"legal_entities": 722,
+"with_employees": 554
+},
+"78100": {
+"total": 680,
+"natural_persons": 22,
+"legal_entities": 658,
+"with_employees": 510
+},
+"782": {
+"total": 171,
+"natural_persons": 0,
+"legal_entities": 171,
+"with_employees": 143
+},
+"7820": {
+"total": 169,
+"natural_persons": 0,
+"legal_entities": 169,
+"with_employees": 142
+},
+"78200": {
+"total": 164,
+"natural_persons": 0,
+"legal_entities": 164,
+"with_employees": 139
+},
+"783": {
+"total": 25,
+"natural_persons": 2,
+"legal_entities": 23,
+"with_employees": 19
+},
+"7830": {
+"total": 21,
+"natural_persons": 2,
+"legal_entities": 19,
+"with_employees": 15
+},
+"78300": {
+"total": 18,
+"natural_persons": 1,
+"legal_entities": 17,
+"with_employees": 13
+},
+"79": {
+"total": 13812,
+"natural_persons": 10254,
+"legal_entities": 3558,
+"with_employees": 1639
+},
+"791": {
+"total": 12827,
+"natural_persons": 9349,
+"legal_entities": 3478,
+"with_employees": 1589
+},
+"7911": {
+"total": 10465,
+"natural_persons": 8315,
+"legal_entities": 2150,
+"with_employees": 930
+},
+"79110": {
+"total": 10099,
+"natural_persons": 8274,
+"legal_entities": 1825,
+"with_employees": 803
+},
+"7912": {
+"total": 1059,
+"natural_persons": 390,
+"legal_entities": 669,
+"with_employees": 408
+},
+"79120": {
+"total": 985,
+"natural_persons": 385,
+"legal_entities": 600,
+"with_employees": 370
+},
+"799": {
+"total": 967,
+"natural_persons": 897,
+"legal_entities": 70,
+"with_employees": 43
+},
+"7990": {
+"total": 965,
+"natural_persons": 896,
+"legal_entities": 69,
+"with_employees": 42
+},
+"79901": {
+"total": 934,
+"natural_persons": 886,
+"legal_entities": 48,
+"with_employees": 28
+},
+"79909": {
+"total": 10,
+"natural_persons": 1,
+"legal_entities": 9,
+"with_employees": 8
+},
+"80": {
+"total": 6996,
+"natural_persons": 4304,
+"legal_entities": 2692,
+"with_employees": 1914
+},
+"801": {
+"total": 1097,
+"natural_persons": 72,
+"legal_entities": 1025,
+"with_employees": 649
+},
+"8010": {
+"total": 649,
+"natural_persons": 25,
+"legal_entities": 624,
+"with_employees": 402
+},
+"80100": {
+"total": 633,
+"natural_persons": 23,
+"legal_entities": 610,
+"with_employees": 391
+},
+"802": {
+"total": 2117,
+"natural_persons": 1817,
+"legal_entities": 300,
+"with_employees": 297
+},
+"8020": {
+"total": 2079,
+"natural_persons": 1809,
+"legal_entities": 270,
+"with_employees": 280
+},
+"80200": {
+"total": 2058,
+"natural_persons": 1805,
+"legal_entities": 253,
+"with_employees": 266
+},
+"803": {
+"total": 330,
+"natural_persons": 258,
+"legal_entities": 72,
+"with_employees": 42
+},
+"8030": {
+"total": 328,
+"natural_persons": 258,
+"legal_entities": 70,
+"with_employees": 41
+},
+"80300": {
+"total": 316,
+"natural_persons": 258,
+"legal_entities": 58,
+"with_employees": 36
+},
+"81": {
+"total": 10464,
+"natural_persons": 7798,
+"legal_entities": 2666,
+"with_employees": 1650
+},
+"811": {
+"total": 36,
+"natural_persons": 1,
+"legal_entities": 35,
+"with_employees": 21
+},
+"8110": {
+"total": 29,
+"natural_persons": 1,
+"legal_entities": 28,
+"with_employees": 18
+},
+"81100": {
+"total": 26,
+"natural_persons": 1,
+"legal_entities": 25,
+"with_employees": 16
+},
+"812": {
+"total": 10158,
+"natural_persons": 7719,
+"legal_entities": 2439,
+"with_employees": 1496
+},
+"8121": {
+"total": 214,
+"natural_persons": 52,
+"legal_entities": 162,
+"with_employees": 129
+},
+"81210": {
+"total": 183,
+"natural_persons": 42,
+"legal_entities": 141,
+"with_employees": 112
+},
+"8122": {
+"total": 1544,
+"natural_persons": 1308,
+"legal_entities": 236,
+"with_employees": 200
+},
+"81220": {
+"total": 1477,
+"natural_persons": 1299,
+"legal_entities": 178,
+"with_employees": 169
+},
+"8129": {
+"total": 6636,
+"natural_persons": 5392,
+"legal_entities": 1244,
+"with_employees": 802
+},
+"81290": {
+"total": 6480,
+"natural_persons": 5380,
+"legal_entities": 1100,
+"with_employees": 714
+},
+"813": {
+"total": 221,
+"natural_persons": 68,
+"legal_entities": 153,
+"with_employees": 108
+},
+"8130": {
+"total": 196,
+"natural_persons": 64,
+"legal_entities": 132,
+"with_employees": 99
+},
+"81300": {
+"total": 139,
+"natural_persons": 46,
+"legal_entities": 93,
+"with_employees": 77
+},
+"82": {
+"total": 35997,
+"natural_persons": 27681,
+"legal_entities": 8316,
+"with_employees": 2477
+},
+"821": {
+"total": 33929,
+"natural_persons": 27167,
+"legal_entities": 6762,
+"with_employees": 1915
+},
+"8211": {
+"total": 31193,
+"natural_persons": 26981,
+"legal_entities": 4212,
+"with_employees": 1212
+},
+"82110": {
+"total": 29923,
+"natural_persons": 26674,
+"legal_entities": 3249,
+"with_employees": 941
+},
+"8219": {
+"total": 31,
+"natural_persons": 12,
+"legal_entities": 19,
+"with_employees": 12
+},
+"82190": {
+"total": 21,
+"natural_persons": 11,
+"legal_entities": 10,
+"with_employees": 6
+},
+"822": {
+"total": 25,
+"natural_persons": 1,
+"legal_entities": 24,
+"with_employees": 20
+},
+"8220": {
+"total": 21,
+"natural_persons": 1,
+"legal_entities": 20,
+"with_employees": 17
+},
+"82200": {
+"total": 15,
+"natural_persons": 1,
+"legal_entities": 14,
+"with_employees": 13
+},
+"823": {
+"total": 54,
+"natural_persons": 6,
+"legal_entities": 48,
+"with_employees": 36
+},
+"8230": {
+"total": 46,
+"natural_persons": 6,
+"legal_entities": 40,
+"with_employees": 32
+},
+"82300": {
+"total": 33,
+"natural_persons": 3,
+"legal_entities": 30,
+"with_employees": 25
+},
+"829": {
+"total": 1237,
+"natural_persons": 471,
+"legal_entities": 766,
+"with_employees": 304
+},
+"8291": {
+"total": 47,
+"natural_persons": 1,
+"legal_entities": 46,
+"with_employees": 25
+},
+"82910": {
+"total": 34,
+"natural_persons": 0,
+"legal_entities": 34,
+"with_employees": 18
+},
+"8292": {
+"total": 258,
+"natural_persons": 37,
+"legal_entities": 221,
+"with_employees": 124
+},
+"82920": {
+"total": 252,
+"natural_persons": 37,
+"legal_entities": 215,
+"with_employees": 119
+},
+"8299": {
+"total": 494,
+"natural_persons": 143,
+"legal_entities": 351,
+"with_employees": 127
+},
+"82990": {
+"total": 449,
+"natural_persons": 128,
+"legal_entities": 321,
+"with_employees": 122
+},
+"84": {
+"total": 15692,
+"natural_persons": 85,
+"legal_entities": 15607,
+"with_employees": 7271
+},
+"841": {
+"total": 7217,
+"natural_persons": 0,
+"legal_entities": 7217,
+"with_employees": 6958
+},
+"8411": {
+"total": 6445,
+"natural_persons": 0,
+"legal_entities": 6445,
+"with_employees": 6389
+},
+"84110": {
+"total": 6444,
+"natural_persons": 0,
+"legal_entities": 6444,
+"with_employees": 6388
+},
+"8412": {
+"total": 17,
+"natural_persons": 0,
+"legal_entities": 17,
+"with_employees": 15
+},
+"84120": {
+"total": 16,
+"natural_persons": 0,
+"legal_entities": 16,
+"with_employees": 15
+},
+"8413": {
+"total": 52,
+"natural_persons": 0,
+"legal_entities": 52,
+"with_employees": 51
+},
+"84130": {
+"total": 51,
+"natural_persons": 0,
+"legal_entities": 51,
+"with_employees": 50
+},
+"842": {
+"total": 8464,
+"natural_persons": 85,
+"legal_entities": 8379,
+"with_employees": 305
+},
+"8421": {
+"total": 14,
+"natural_persons": 0,
+"legal_entities": 14,
+"with_employees": 5
+},
+"84212": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 2
+},
+"84219": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"8422": {
+"total": 7,
+"natural_persons": 0,
+"legal_entities": 7,
+"with_employees": 5
+},
+"84220": {
+"total": 6,
+"natural_persons": 0,
+"legal_entities": 6,
+"with_employees": 4
+},
+"8423": {
+"total": 114,
+"natural_persons": 0,
+"legal_entities": 114,
+"with_employees": 114
+},
+"84230": {
+"total": 114,
+"natural_persons": 0,
+"legal_entities": 114,
+"with_employees": 114
+},
+"8424": {
+"total": 17,
+"natural_persons": 0,
+"legal_entities": 17,
+"with_employees": 17
+},
+"84240": {
+"total": 16,
+"natural_persons": 0,
+"legal_entities": 16,
+"with_employees": 16
+},
+"8425": {
+"total": 8312,
+"natural_persons": 85,
+"legal_entities": 8227,
+"with_employees": 164
+},
+"84250": {
+"total": 7988,
+"natural_persons": 83,
+"legal_entities": 7905,
+"with_employees": 154
+},
+"843": {
+"total": 11,
+"natural_persons": 0,
+"legal_entities": 11,
+"with_employees": 8
+},
+"8430": {
+"total": 11,
+"natural_persons": 0,
+"legal_entities": 11,
+"with_employees": 8
+},
+"84300": {
+"total": 11,
+"natural_persons": 0,
+"legal_entities": 11,
+"with_employees": 8
+},
+"85": {
+"total": 66747,
+"natural_persons": 47334,
+"legal_entities": 19413,
+"with_employees": 14074
+},
+"851": {
+"total": 3439,
+"natural_persons": 2,
+"legal_entities": 3437,
+"with_employees": 3286
+},
+"8510": {
+"total": 3327,
+"natural_persons": 2,
+"legal_entities": 3325,
+"with_employees": 3200
+},
+"85100": {
+"total": 3271,
+"natural_persons": 2,
+"legal_entities": 3269,
+"with_employees": 3156
+},
+"852": {
+"total": 820,
+"natural_persons": 1,
+"legal_entities": 819,
+"with_employees": 786
+},
+"8520": {
+"total": 774,
+"natural_persons": 1,
+"legal_entities": 773,
+"with_employees": 751
+},
+"85200": {
+"total": 750,
+"natural_persons": 1,
+"legal_entities": 749,
+"with_employees": 730
+},
+"853": {
+"total": 4625,
+"natural_persons": 9,
+"legal_entities": 4616,
+"with_employees": 4521
+},
+"8531": {
+"total": 3712,
+"natural_persons": 5,
+"legal_entities": 3707,
+"with_employees": 3674
+},
+"85311": {
+"total": 3342,
+"natural_persons": 0,
+"legal_entities": 3342,
+"with_employees": 3329
+},
+"85312": {
+"total": 346,
+"natural_persons": 5,
+"legal_entities": 341,
+"with_employees": 327
+},
+"8532": {
+"total": 864,
+"natural_persons": 4,
+"legal_entities": 860,
+"with_employees": 805
+},
+"85321": {
+"total": 121,
+"natural_persons": 2,
+"legal_entities": 119,
+"with_employees": 106
+},
+"85322": {
+"total": 697,
+"natural_persons": 2,
+"legal_entities": 695,
+"with_employees": 666
+},
+"854": {
+"total": 135,
+"natural_persons": 2,
+"legal_entities": 133,
+"with_employees": 118
+},
+"8541": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 3
+},
+"85410": {
+"total": 1,
+"natural_persons": 0,
+"legal_entities": 1,
+"with_employees": 1
+},
+"8542": {
+"total": 125,
+"natural_persons": 2,
+"legal_entities": 123,
+"with_employees": 111
+},
+"85420": {
+"total": 119,
+"natural_persons": 2,
+"legal_entities": 117,
+"with_employees": 107
+},
+"855": {
+"total": 57494,
+"natural_persons": 47272,
+"legal_entities": 10222,
+"with_employees": 5263
+},
+"8551": {
+"total": 310,
+"natural_persons": 129,
+"legal_entities": 181,
+"with_employees": 75
+},
+"85510": {
+"total": 210,
+"natural_persons": 68,
+"legal_entities": 142,
+"with_employees": 52
+},
+"8552": {
+"total": 803,
+"natural_persons": 226,
+"legal_entities": 577,
+"with_employees": 515
+},
+"85520": {
+"total": 726,
+"natural_persons": 196,
+"legal_entities": 530,
+"with_employees": 488
+},
+"8553": {
+"total": 3317,
+"natural_persons": 2564,
+"legal_entities": 753,
+"with_employees": 821
+},
+"85531": {
+"total": 380,
+"natural_persons": 42,
+"legal_entities": 338,
+"with_employees": 209
+},
+"85532": {
+"total": 11,
+"natural_persons": 1,
+"legal_entities": 10,
+"with_employees": 5
+},
+"85539": {
+"total": 2,
+"natural_persons": 1,
+"legal_entities": 1,
+"with_employees": 0
+},
+"8559": {
+"total": 4717,
+"natural_persons": 2007,
+"legal_entities": 2710,
+"with_employees": 1371
+},
+"85591": {
+"total": 159,
+"natural_persons": 67,
+"legal_entities": 92,
+"with_employees": 62
+},
+"85592": {
+"total": 24,
+"natural_persons": 0,
+"legal_entities": 24,
+"with_employees": 15
+},
+"85593": {
+"total": 8,
+"natural_persons": 1,
+"legal_entities": 7,
+"with_employees": 3
+},
+"85599": {
+"total": 161,
+"natural_persons": 17,
+"legal_entities": 144,
+"with_employees": 65
+},
+"856": {
+"total": 164,
+"natural_persons": 8,
+"legal_entities": 156,
+"with_employees": 84
+},
+"8560": {
+"total": 151,
+"natural_persons": 5,
+"legal_entities": 146,
+"with_employees": 78
+},
+"85600": {
+"total": 135,
+"natural_persons": 3,
+"legal_entities": 132,
+"with_employees": 71
+},
+"86": {
+"total": 30998,
+"natural_persons": 16753,
+"legal_entities": 14245,
+"with_employees": 19343
+},
+"861": {
+"total": 278,
+"natural_persons": 1,
+"legal_entities": 277,
+"with_employees": 260
+},
+"8610": {
+"total": 274,
+"natural_persons": 1,
+"legal_entities": 273,
+"with_employees": 257
+},
+"86100": {
+"total": 269,
+"natural_persons": 1,
+"legal_entities": 268,
+"with_employees": 255
+},
+"862": {
+"total": 20778,
+"natural_persons": 9145,
+"legal_entities": 11633,
+"with_employees": 16627
+},
+"8621": {
+"total": 5210,
+"natural_persons": 2356,
+"legal_entities": 2854,
+"with_employees": 4531
+},
+"86210": {
+"total": 4583,
+"natural_persons": 2176,
+"legal_entities": 2407,
+"with_employees": 3975
+},
+"8622": {
+"total": 8541,
+"natural_persons": 3319,
+"legal_entities": 5222,
+"with_employees": 6290
+},
+"86220": {
+"total": 7243,
+"natural_persons": 2987,
+"legal_entities": 4256,
+"with_employees": 5292
+},
+"8623": {
+"total": 5348,
+"natural_persons": 2803,
+"legal_entities": 2545,
+"with_employees": 4585
+},
+"86230": {
+"total": 4600,
+"natural_persons": 2542,
+"legal_entities": 2058,
+"with_employees": 3930
+},
+"869": {
+"total": 9602,
+"natural_persons": 7465,
+"legal_entities": 2137,
+"with_employees": 2235
+},
+"8690": {
+"total": 8649,
+"natural_persons": 6972,
+"legal_entities": 1677,
+"with_employees": 1854
+},
+"86901": {
+"total": 49,
+"natural_persons": 10,
+"legal_entities": 39,
+"with_employees": 34
+},
+"86909": {
+"total": 2050,
+"natural_persons": 1589,
+"legal_entities": 461,
+"with_employees": 619
+},
+"87": {
+"total": 1087,
+"natural_persons": 44,
+"legal_entities": 1043,
+"with_employees": 935
+},
+"871": {
+"total": 30,
+"natural_persons": 0,
+"legal_entities": 30,
+"with_employees": 20
+},
+"8710": {
+"total": 25,
+"natural_persons": 0,
+"legal_entities": 25,
+"with_employees": 17
+},
+"87100": {
+"total": 17,
+"natural_persons": 0,
+"legal_entities": 17,
+"with_employees": 12
+},
+"872": {
+"total": 166,
+"natural_persons": 0,
+"legal_entities": 166,
+"with_employees": 161
+},
+"8720": {
+"total": 162,
+"natural_persons": 0,
+"legal_entities": 162,
+"with_employees": 157
+},
+"87201": {
+"total": 140,
+"natural_persons": 0,
+"legal_entities": 140,
+"with_employees": 139
+},
+"87202": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 3
+},
+"873": {
+"total": 489,
+"natural_persons": 3,
+"legal_entities": 486,
+"with_employees": 446
+},
+"8730": {
+"total": 458,
+"natural_persons": 3,
+"legal_entities": 455,
+"with_employees": 427
+},
+"87301": {
+"total": 334,
+"natural_persons": 0,
+"legal_entities": 334,
+"with_employees": 323
+},
+"87302": {
+"total": 24,
+"natural_persons": 0,
+"legal_entities": 24,
+"with_employees": 22
+},
+"879": {
+"total": 338,
+"natural_persons": 39,
+"legal_entities": 299,
+"with_employees": 272
+},
+"8790": {
+"total": 325,
+"natural_persons": 37,
+"legal_entities": 288,
+"with_employees": 264
+},
+"87900": {
+"total": 292,
+"natural_persons": 36,
+"legal_entities": 256,
+"with_employees": 234
+},
+"88": {
+"total": 3418,
+"natural_persons": 1507,
+"legal_entities": 1911,
+"with_employees": 1252
+},
+"881": {
+"total": 352,
+"natural_persons": 40,
+"legal_entities": 312,
+"with_employees": 263
+},
+"8810": {
+"total": 323,
+"natural_persons": 37,
+"legal_entities": 286,
+"with_employees": 253
+},
+"88101": {
+"total": 23,
+"natural_persons": 0,
+"legal_entities": 23,
+"with_employees": 17
+},
+"88102": {
+"total": 82,
+"natural_persons": 1,
+"legal_entities": 81,
+"with_employees": 73
+},
+"889": {
+"total": 2426,
+"natural_persons": 1335,
+"legal_entities": 1091,
+"with_employees": 768
+},
+"8891": {
+"total": 1603,
+"natural_persons": 1320,
+"legal_entities": 283,
+"with_employees": 179
+},
+"88910": {
+"total": 1481,
+"natural_persons": 1314,
+"legal_entities": 167,
+"with_employees": 115
+},
+"8899": {
+"total": 743,
+"natural_persons": 3,
+"legal_entities": 740,
+"with_employees": 541
+},
+"88991": {
+"total": 9,
+"natural_persons": 0,
+"legal_entities": 9,
+"with_employees": 4
+},
+"88992": {
+"total": 15,
+"natural_persons": 0,
+"legal_entities": 15,
+"with_employees": 10
+},
+"88993": {
+"total": 12,
+"natural_persons": 0,
+"legal_entities": 12,
+"with_employees": 12
+},
+"88999": {
+"total": 142,
+"natural_persons": 0,
+"legal_entities": 142,
+"with_employees": 101
+},
+"90": {
+"total": 17157,
+"natural_persons": 12512,
+"legal_entities": 4645,
+"with_employees": 1328
+},
+"900": {
+"total": 17082,
+"natural_persons": 12487,
+"legal_entities": 4595,
+"with_employees": 1317
+},
+"9001": {
+"total": 1305,
+"natural_persons": 63,
+"legal_entities": 1242,
+"with_employees": 197
+},
+"90010": {
+"total": 1265,
+"natural_persons": 51,
+"legal_entities": 1214,
+"with_employees": 192
+},
+"9002": {
+"total": 11406,
+"natural_persons": 9996,
+"legal_entities": 1410,
+"with_employees": 559
+},
+"90020": {
+"total": 11280,
+"natural_persons": 9963,
+"legal_entities": 1317,
+"with_employees": 522
+},
+"9003": {
+"total": 2318,
+"natural_persons": 1589,
+"legal_entities": 729,
+"with_employees": 139
+},
+"90030": {
+"total": 2219,
+"natural_persons": 1558,
+"legal_entities": 661,
+"with_employees": 122
+},
+"9004": {
+"total": 1297,
+"natural_persons": 539,
+"legal_entities": 758,
+"with_employees": 348
+},
+"90040": {
+"total": 1249,
+"natural_persons": 516,
+"legal_entities": 733,
+"with_employees": 335
+},
+"91": {
+"total": 587,
+"natural_persons": 12,
+"legal_entities": 575,
+"with_employees": 436
+},
+"910": {
+"total": 586,
+"natural_persons": 11,
+"legal_entities": 575,
+"with_employees": 436
+},
+"9101": {
+"total": 175,
+"natural_persons": 1,
+"legal_entities": 174,
+"with_employees": 166
+},
+"91010": {
+"total": 170,
+"natural_persons": 1,
+"legal_entities": 169,
+"with_employees": 162
+},
+"9102": {
+"total": 233,
+"natural_persons": 6,
+"legal_entities": 227,
+"with_employees": 189
+},
+"91020": {
+"total": 210,
+"natural_persons": 2,
+"legal_entities": 208,
+"with_employees": 178
+},
+"9103": {
+"total": 63,
+"natural_persons": 0,
+"legal_entities": 63,
+"with_employees": 29
+},
+"91030": {
+"total": 48,
+"natural_persons": 0,
+"legal_entities": 48,
+"with_employees": 25
+},
+"9104": {
+"total": 49,
+"natural_persons": 2,
+"legal_entities": 47,
+"with_employees": 33
+},
+"91041": {
+"total": 9,
+"natural_persons": 2,
+"legal_entities": 7,
+"with_employees": 5
+},
+"91042": {
+"total": 3,
+"natural_persons": 0,
+"legal_entities": 3,
+"with_employees": 1
+},
+"92": {
+"total": 223,
+"natural_persons": 2,
+"legal_entities": 221,
+"with_employees": 53
+},
+"920": {
+"total": 217,
+"natural_persons": 2,
+"legal_entities": 215,
+"with_employees": 49
+},
+"9200": {
+"total": 215,
+"natural_persons": 2,
+"legal_entities": 213,
+"with_employees": 48
+},
+"92000": {
+"total": 211,
+"natural_persons": 1,
+"legal_entities": 210,
+"with_employees": 44
+},
+"93": {
+"total": 72561,
+"natural_persons": 36328,
+"legal_entities": 36233,
+"with_employees": 8217
+},
+"931": {
+"total": 49249,
+"natural_persons": 14803,
+"legal_entities": 34446,
+"with_employees": 7373
+},
+"9311": {
+"total": 15491,
+"natural_persons": 669,
+"legal_entities": 14822,
+"with_employees": 3373
+},
+"93110": {
+"total": 14742,
+"natural_persons": 646,
+"legal_entities": 14096,
+"with_employees": 3135
+},
+"9312": {
+"total": 6709,
+"natural_persons": 2,
+"legal_entities": 6707,
+"with_employees": 1160
+},
+"93120": {
+"total": 6281,
+"natural_persons": 2,
+"legal_entities": 6279,
+"with_employees": 1052
+},
+"9313": {
+"total": 269,
+"natural_persons": 41,
+"legal_entities": 228,
+"with_employees": 102
+},
+"93130": {
+"total": 243,
+"natural_persons": 35,
+"legal_entities": 208,
+"with_employees": 89
+},
+"9319": {
+"total": 20410,
+"natural_persons": 12094,
+"legal_entities": 8316,
+"with_employees": 1592
+},
+"93190": {
+"total": 18309,
+"natural_persons": 11716,
+"legal_entities": 6593,
+"with_employees": 1282
+},
+"932": {
+"total": 23230,
+"natural_persons": 21512,
+"legal_entities": 1718,
+"with_employees": 817
+},
+"9321": {
+"total": 84,
+"natural_persons": 50,
+"legal_entities": 34,
+"with_employees": 16
+},
+"93210": {
+"total": 81,
+"natural_persons": 50,
+"legal_entities": 31,
+"with_employees": 14
+},
+"9329": {
+"total": 23111,
+"natural_persons": 21454,
+"legal_entities": 1657,
+"with_employees": 790
+},
+"93290": {
+"total": 23040,
+"natural_persons": 21425,
+"legal_entities": 1615,
+"with_employees": 772
+},
+"94": {
+"total": 93469,
+"natural_persons": 0,
+"legal_entities": 93469,
+"with_employees": 10074
+},
+"941": {
+"total": 1812,
+"natural_persons": 0,
+"legal_entities": 1812,
+"with_employees": 540
+},
+"9411": {
+"total": 423,
+"natural_persons": 0,
+"legal_entities": 423,
+"with_employees": 206
+},
+"94110": {
+"total": 403,
+"natural_persons": 0,
+"legal_entities": 403,
+"with_employees": 194
+},
+"9412": {
+"total": 1381,
+"natural_persons": 0,
+"legal_entities": 1381,
+"with_employees": 328
+},
+"94120": {
+"total": 1214,
+"natural_persons": 0,
+"legal_entities": 1214,
+"with_employees": 290
+},
+"942": {
+"total": 7107,
+"natural_persons": 0,
+"legal_entities": 7107,
+"with_employees": 501
+},
+"9420": {
+"total": 7095,
+"natural_persons": 0,
+"legal_entities": 7095,
+"with_employees": 498
+},
+"94200": {
+"total": 7091,
+"natural_persons": 0,
+"legal_entities": 7091,
+"with_employees": 498
+},
+"949": {
+"total": 83923,
+"natural_persons": 0,
+"legal_entities": 83923,
+"with_employees": 8982
+},
+"9491": {
+"total": 3923,
+"natural_persons": 0,
+"legal_entities": 3923,
+"with_employees": 740
+},
+"94910": {
+"total": 3894,
+"natural_persons": 0,
+"legal_entities": 3894,
+"with_employees": 738
+},
+"9492": {
+"total": 285,
+"natural_persons": 0,
+"legal_entities": 285,
+"with_employees": 28
+},
+"94920": {
+"total": 284,
+"natural_persons": 0,
+"legal_entities": 284,
+"with_employees": 28
+},
+"9499": {
+"total": 79670,
+"natural_persons": 0,
+"legal_entities": 79670,
+"with_employees": 8210
+},
+"94991": {
+"total": 4365,
+"natural_persons": 0,
+"legal_entities": 4365,
+"with_employees": 891
+},
+"94992": {
+"total": 250,
+"natural_persons": 0,
+"legal_entities": 250,
+"with_employees": 34
+},
+"94993": {
+"total": 10705,
+"natural_persons": 0,
+"legal_entities": 10705,
+"with_employees": 845
+},
+"94994": {
+"total": 5,
+"natural_persons": 0,
+"legal_entities": 5,
+"with_employees": 2
+},
+"94995": {
+"total": 3146,
+"natural_persons": 0,
+"legal_entities": 3146,
+"with_employees": 248
+},
+"94996": {
+"total": 3528,
+"natural_persons": 0,
+"legal_entities": 3528,
+"with_employees": 582
+},
+"94997": {
+"total": 157,
+"natural_persons": 0,
+"legal_entities": 157,
+"with_employees": 20
+},
+"94999": {
+"total": 3467,
+"natural_persons": 0,
+"legal_entities": 3467,
+"with_employees": 400
+},
+"95": {
+"total": 36159,
+"natural_persons": 34065,
+"legal_entities": 2094,
+"with_employees": 1879
+},
+"951": {
+"total": 985,
+"natural_persons": 827,
+"legal_entities": 158,
+"with_employees": 110
+},
+"9511": {
+"total": 509,
+"natural_persons": 390,
+"legal_entities": 119,
+"with_employees": 66
+},
+"95110": {
+"total": 493,
+"natural_persons": 377,
+"legal_entities": 116,
+"with_employees": 60
+},
+"9512": {
+"total": 464,
+"natural_persons": 431,
+"legal_entities": 33,
+"with_employees": 41
+},
+"95120": {
+"total": 450,
+"natural_persons": 424,
+"legal_entities": 26,
+"with_employees": 36
+},
+"952": {
+"total": 35165,
+"natural_persons": 33229,
+"legal_entities": 1936,
+"with_employees": 1768
+},
+"9521": {
+"total": 33,
+"natural_persons": 14,
+"legal_entities": 19,
+"with_employees": 13
+},
+"95210": {
+"total": 20,
+"natural_persons": 8,
+"legal_entities": 12,
+"with_employees": 10
+},
+"9522": {
+"total": 2414,
+"natural_persons": 2259,
+"legal_entities": 155,
+"with_employees": 108
+},
+"95220": {
+"total": 2390,
+"natural_persons": 2243,
+"legal_entities": 147,
+"with_employees": 105
+},
+"9523": {
+"total": 2117,
+"natural_persons": 1960,
+"legal_entities": 157,
+"with_employees": 115
+},
+"95230": {
+"total": 2089,
+"natural_persons": 1946,
+"legal_entities": 143,
+"with_employees": 111
+},
+"9524": {
+"total": 16,
+"natural_persons": 9,
+"legal_entities": 7,
+"with_employees": 5
+},
+"95240": {
+"total": 11,
+"natural_persons": 8,
+"legal_entities": 3,
+"with_employees": 3
+},
+"9525": {
+"total": 430,
+"natural_persons": 411,
+"legal_entities": 19,
+"with_employees": 49
+},
+"95250": {
+"total": 427,
+"natural_persons": 410,
+"legal_entities": 17,
+"with_employees": 49
+},
+"9529": {
+"total": 805,
+"natural_persons": 751,
+"legal_entities": 54,
+"with_employees": 38
+},
+"95290": {
+"total": 785,
+"natural_persons": 738,
+"legal_entities": 47,
+"with_employees": 35
+},
+"96": {
+"total": 129034,
+"natural_persons": 120571,
+"legal_entities": 8463,
+"with_employees": 5826
+},
+"960": {
+"total": 128891,
+"natural_persons": 120544,
+"legal_entities": 8347,
+"with_employees": 5777
+},
+"9601": {
+"total": 4747,
+"natural_persons": 4076,
+"legal_entities": 671,
+"with_employees": 513
+},
+"96010": {
+"total": 4647,
+"natural_persons": 4049,
+"legal_entities": 598,
+"with_employees": 477
+},
+"9602": {
+"total": 75200,
+"natural_persons": 71292,
+"legal_entities": 3908,
+"with_employees": 3080
+},
+"96020": {
+"total": 74805,
+"natural_persons": 71217,
+"legal_entities": 3588,
+"with_employees": 2901
+},
+"9603": {
+"total": 463,
+"natural_persons": 259,
+"legal_entities": 204,
+"with_employees": 270
+},
+"96030": {
+"total": 440,
+"natural_persons": 259,
+"legal_entities": 181,
+"with_employees": 252
+},
+"9604": {
+"total": 32775,
+"natural_persons": 30533,
+"legal_entities": 2242,
+"with_employees": 1374
+},
+"96040": {
+"total": 32457,
+"natural_persons": 30466,
+"legal_entities": 1991,
+"with_employees": 1235
+},
+"9609": {
+"total": 14529,
+"natural_persons": 13323,
+"legal_entities": 1206,
+"with_employees": 502
+},
+"96090": {
+"total": 14264,
+"natural_persons": 13243,
+"legal_entities": 1021,
+"with_employees": 445
+},
+"99": {
+"total": 60,
+"natural_persons": 0,
+"legal_entities": 60,
+"with_employees": 38
+},
+"990": {
+"total": 59,
+"natural_persons": 0,
+"legal_entities": 59,
+"with_employees": 38
+},
+"9900": {
+"total": 59,
+"natural_persons": 0,
+"legal_entities": 59,
+"with_employees": 38
+},
+"99000": {
+"total": 59,
+"natural_persons": 0,
+"legal_entities": 59,
+"with_employees": 38
+}
+}
+}
