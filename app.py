@@ -488,8 +488,8 @@ def deep_dive_view() -> None:
     k3.metric(t("k_profit"), czk(e.net_profit_czk_m12))
     k4.metric(t("k_breakeven"), t("k_customers", n=e.breakeven_customers), e.legal_form, delta_color="off")
 
-    t1, t2, t3, t4, t5, t6 = st.tabs([t("tab_score"), t("tab_audience"), t("tab_economics"), t("tab_competition"),
-                                      t("tab_roadmap"), t("tab_risks")])
+    t1, t2, t3, t4, t5, t6, t7 = st.tabs([t("tab_score"), t("tab_audience"), t("tab_economics"),
+                                          t("tab_competition"), t("tab_roadmap"), t("tab_risks"), t("tab_verify")])
     with t1:
         st.markdown(t("czech_adjusted", cz=r.czech_adjusted_score, f=r.feasibility_score))
         for x in r.czech_adjustments:
@@ -547,6 +547,7 @@ def deep_dive_view() -> None:
                               {"name": "col_name", "kind": "col_kind", "url": "f_url", "threat": "col_threat",
                                "gap": "col_gap"}),
                      hide_index=True, width="stretch", column_config={t("f_url"): st.column_config.LinkColumn()})
+        st.caption(t("competitor_urls_note"))
     with t5:
         cols = st.columns(len(r.gtm_plan) or 1)
         for i, step in enumerate(r.gtm_plan):
@@ -569,6 +570,14 @@ def deep_dive_view() -> None:
             st.markdown(t("checklist"))
             for i, x in enumerate(r.localization_checklist):
                 st.checkbox(x, key=f"chk_{m.id}_{i}")
+    with t7:
+        st.caption(t("verify_intro"))
+        if r.verify_before_launch:
+            st.dataframe([{t("v_claim"): v.claim, t("v_topic"): t("vt_" + v.topic), t("v_as_of"): v.as_of,
+                           t("v_where"): v.where_to_check} for v in r.verify_before_launch],
+                         hide_index=True, width="stretch")
+        else:
+            st.caption(t("verify_none"))
 
     st.divider()
     slug = "".join(ch if ch.isalnum() else "-" for ch in m.name.lower()).strip("-")[:40]

@@ -22,10 +22,10 @@ import os
 from dataclasses import dataclass, field
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from data_loader import BusinessModel
-from i18n import tr, tr_list
+from i18n import tr, tr_list, tr_sam_source
 
 DEFAULT_CLAUDE_MODEL = "claude-opus-5"
 CLAUDE_MODELS = ["claude-opus-5", "claude-sonnet-5"]
@@ -103,9 +103,17 @@ class UnitEconomics(BaseModel):
 class LocalCompetitor(BaseModel):
     name: str
     kind: str  # Local | International | Substitute
-    url: str
+    url: str | None = None  # exact homepage only when certain; null otherwise (never guessed)
     threat: str  # Low | Medium | High
     gap: str
+
+
+class VerifyItem(BaseModel):
+    """A fact the report relies on that can be outdated or wrong: check it before launching."""
+    claim: str  # one sentence: what must be true
+    topic: Literal["tax", "legal", "competitor", "price", "market", "integration", "other"]
+    as_of: str  # the date the claim reflects ("2026-09", "2026", or "unknown")
+    where_to_check: str  # a named source or who to ask (no invented URLs)
 
 
 class GTMStep(BaseModel):
@@ -137,6 +145,8 @@ class CzechReport(BaseModel):
     risks: list[str]
     localization_checklist: list[str]
     assumptions: list[str]
+    # Default keeps reports stored before step 10.5 readable.
+    verify_before_launch: list[VerifyItem] = Field(default_factory=list)
 
 
 @dataclass
@@ -526,6 +536,94 @@ _CATEGORY_CHECKLIST = {
 }
 
 
+# "Verify before launch" items for the offline report: every fact here is either rounded, inferred
+# or taken from an unverified source, so it gets a date and a place to check it.
+_VX = {
+    "en": {
+        "pausal": "Paušální daň bands are about {b1:,} / {b2:,} / {b3:,} CZK per month.",
+        "vat": "VAT (DPH) registration becomes mandatory above {vat:,} CZK turnover in 12 months.",
+        "fin": "Finanční správa (financnisprava.cz) or an accountant",
+        "sam": "The market size is {sam:,} potential customers ({src}).",
+        "sam_where": "ČSÚ register (RES) or industry associations; ask 5-10 target customers",
+        "sam_heur": "a rule-of-thumb estimate",
+        "inc": "{name} is active in Czechia and competes directly (strength {s}/3).",
+        "inc_where": "Their website, Firmy.cz, ARES (IČO)",
+        "orig_unknown": "Whether {name} itself already sells in Czechia (not confirmed by a site check).",
+        "orig_yes": "{name} already sells in Czechia ({ev}) - check its Czech pricing and support.",
+        "orig_where": "The original's website in a Czech browser session, Czech reviews",
+        "legal": "The trade licence type (volná / vázaná / koncese) and sector rules for this activity.",
+        "legal_where": "Živnostenský úřad (RŽP) or a lawyer",
+        "integr": "The integration with {x} is feasible for a small team (API access, fees).",
+        "integr_where": "The vendor's developer documentation and partner programme",
+        "price": "Czech customers accept about {p:,} CZK per month.",
+        "price_where": "5-10 customer interviews; prices of local alternatives",
+        "unknown": "unknown", "checked": "site check {d}",
+    },
+    "ru": {
+        "pausal": "Уровни paušální daň — около {b1:,} / {b2:,} / {b3:,} CZK в месяц.",
+        "vat": "Регистрация плательщиком DPH обязательна при обороте выше {vat:,} CZK за 12 месяцев.",
+        "fin": "Finanční správa (financnisprava.cz) или бухгалтер",
+        "sam": "Размер рынка — {sam:,} потенциальных клиентов ({src}).",
+        "sam_where": "Реестр ČSÚ (RES) или отраслевые ассоциации; спросить 5–10 целевых клиентов",
+        "sam_heur": "оценка по эвристике",
+        "inc": "{name} работает в Чехии и конкурирует напрямую (сила {s}/3).",
+        "inc_where": "Сайт компании, Firmy.cz, ARES (IČO)",
+        "orig_unknown": "Продаёт ли {name} уже в Чехии (проверка сайта этого не подтвердила).",
+        "orig_yes": "{name} уже продаёт в Чехии ({ev}) — проверьте его чешские цены и поддержку.",
+        "orig_where": "Сайт оригинала из чешской сессии браузера, чешские отзывы",
+        "legal": "Тип živnost (volná / vázaná / koncese) и отраслевые правила для этой деятельности.",
+        "legal_where": "Živnostenský úřad (RŽP) или юрист",
+        "integr": "Интеграция с {x} посильна для небольшой команды (доступ к API, платность).",
+        "integr_where": "Документация для разработчиков и партнёрская программа поставщика",
+        "price": "Чешские клиенты готовы платить около {p:,} CZK в месяц.",
+        "price_where": "5–10 интервью с клиентами; цены местных альтернатив",
+        "unknown": "неизвестно", "checked": "проверка сайта {d}",
+    },
+}
+_VX["ru"] = {k: RuText(v) for k, v in _VX["ru"].items()}
+
+
+def _as_of_from(source: str, fallback: str) -> str:
+    m = re.search(r"\d{4}-\d{2}(?:-\d{2})?", source or "")
+    return m.group(0) if m else fallback
+
+
+def verify_items(m: BusinessModel, a: CzechAssumptions, price: int, lang: str = "en") -> list[VerifyItem]:
+    """Offline "verify before launch" list built from what the data does not guarantee."""
+    vx = _VX[lang]
+    unk = vx["unknown"]
+    items = [
+        VerifyItem(claim=vx["pausal"].format(b1=a.pausal_band1, b2=a.pausal_band2, b3=a.pausal_band3),
+                   topic="tax", as_of="2026", where_to_check=vx["fin"]),
+        VerifyItem(claim=vx["vat"].format(vat=a.vat_threshold), topic="tax", as_of="2026", where_to_check=vx["fin"]),
+        VerifyItem(claim=vx["price"].format(p=price), topic="price", as_of=unk, where_to_check=vx["price_where"]),
+    ]
+    if m.sam_estimate:
+        heuristic = not m.sam_source or m.sam_source.startswith("heuristic")
+        src = vx["sam_heur"] if heuristic else tr_sam_source(m.sam_source, lang)
+        items.append(VerifyItem(claim=vx["sam"].format(sam=m.sam_estimate, src=src), topic="market",
+                                as_of=unk if heuristic else _as_of_from(m.sam_source, unk),
+                                where_to_check=vx["sam_where"]))
+    for inc in [i for i in m.local_incumbents if not i.verified][:3]:
+        items.append(VerifyItem(claim=vx["inc"].format(name=tr(inc.name, lang), s=inc.strength), topic="competitor",
+                                as_of=_as_of_from(inc.source or inc.checked_at, unk), where_to_check=vx["inc_where"]))
+    name = tr(m.name, lang)
+    if m.original_available_in_cz == "yes":
+        ev = ", ".join(e.get("value", "") for e in m.original_cz_evidence[:2])
+        items.append(VerifyItem(claim=vx["orig_yes"].format(name=name, ev=ev), topic="competitor",
+                                as_of=_as_of_from(m.original_cz_source, unk), where_to_check=vx["orig_where"]))
+    elif m.original_available_in_cz == "unknown" and m.url:
+        items.append(VerifyItem(claim=vx["orig_unknown"].format(name=name), topic="competitor",
+                                as_of=_as_of_from(m.original_cz_source, unk), where_to_check=vx["orig_where"]))
+    if (m.legal_complexity or m.regulatory) >= 3:
+        items.append(VerifyItem(claim=vx["legal"], topic="legal", as_of=unk, where_to_check=vx["legal_where"]))
+    hard = [x for x in m.required_integrations if x in ("Pohoda", "Money S3", "ABRA", "Bank iD", "ISDOC")]
+    if hard:
+        items.append(VerifyItem(claim=vx["integr"].format(x=", ".join(hard)), topic="integration", as_of=unk,
+                                where_to_check=vx["integr_where"]))
+    return items
+
+
 def mock_report(m: BusinessModel, a: CzechAssumptions, czech_context: dict | None = None,
                 lang: str = "en") -> CzechReport:
     tx = _RT[lang]
@@ -586,7 +684,7 @@ def mock_report(m: BusinessModel, a: CzechAssumptions, czech_context: dict | Non
     level = {1: tx["low"], 2: tx["low"], 3: tx["medium"], 4: tx["high"], 5: tx["high"]}[m.competition]
     competitors = [
         LocalCompetitor(
-            name=tr(c.name, lang), kind=tx["local"] if c.local else tx["international"], url=c.url,
+            name=tr(c.name, lang), kind=tx["local"] if c.local else tx["international"], url=c.url or None,
             threat=level if c.local else (tx["medium"] if m.moat >= 3 else tx["high"]),
             gap=(tr(c.note, lang) + " — " if c.note else "") + (tx["gap_local"] if c.local else tx["gap_intl"]),
         )
@@ -628,6 +726,7 @@ def mock_report(m: BusinessModel, a: CzechAssumptions, czech_context: dict | Non
         verdict=verdict_for(score, lang), one_liner=one_liner, score_breakdown=breakdown,
         target_audiences=audiences, unit_economics=econ, competitors=competitors, gtm_plan=_gtm_plan(m, price, lang),
         risks=risks, localization_checklist=checklist, assumptions=assumptions,
+        verify_before_launch=verify_items(m, a, price, lang),
     )
 
 
@@ -683,7 +782,8 @@ Requirements:
 - unit_economics: CZK pricing, customers at months 3/6/12, month-12 MRR, itemised monthly costs including \
 the right legal form (OSVČ paušální daň vs. s.r.o.), total costs, net profit and break-even customers.
 - competitors: the most relevant local incumbents plus international substitutes, each with threat level \
-(Low/Medium/High) and the gap a newcomer could exploit.
+(Low/Medium/High) and the gap a newcomer could exploit. url: the exact homepage ONLY if you are certain it \
+exists; otherwise null. Never build a URL from a company name and never use a social-media or search URL.
 - gtm_plan: exactly 3 steps covering days 1-14 to launch the MVP in Prague/Czechia, each with concrete actions and a KPI.
 - czech_adjusted_score: start from feasibility_score and subtract Czech-specific frictions, one \
 czech_adjustments item each (negative points, one-line detail):
@@ -703,6 +803,11 @@ correct them where you know better. Fields listed in fields_inferred_by_rules_no
 - confidence: "low", "medium" or "high" - how much the assessment rests on specific, current knowledge of \
 the Czech market rather than assumptions. Explain in confidence_reason (1-2 sentences).
 - risks, localization_checklist and assumptions as short bullet strings.
+- verify_before_launch: 5-10 facts this report relies on that may be outdated or wrong - tax figures and \
+thresholds, legal requirements, each named competitor's existence and pricing, market size, integrations, \
+price acceptance. For each: claim (one sentence), topic, as_of (the date your knowledge of it reflects, \
+"YYYY-MM" or "YYYY", or "unknown") and where_to_check (a named official source, register or who to ask - \
+names only, no URLs). Include the baseline's verify_before_launch items that still apply.
 - Language: {_LANGUAGE_RULE[lang]}"""
 
 
@@ -754,9 +859,26 @@ def gemini_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: st
     return _clamp(report)
 
 
+_URL_OK = re.compile(r"https?://[a-z0-9.-]+\.[a-z]{2,}(?:[/?#]\S*)?", re.I)
+# Hosts that never identify a competitor (a group, a search, a profile).
+_GENERIC_HOSTS = ("facebook.com", "instagram.com", "linkedin.com", "google.", "seznam.cz", "youtube.com",
+                  "t.me", "x.com", "twitter.com", "example.")
+
+
+def _clean_url(url: str | None) -> str | None:
+    if not url or not _URL_OK.fullmatch(url.strip()):
+        return None
+    host = re.sub(r"^https?://(www\.)?", "", url.strip().lower()).split("/")[0]
+    if any(host == g or host.endswith("." + g) or (g.endswith(".") and g in host) for g in _GENERIC_HOSTS):
+        return None
+    return url.strip()
+
+
 def _clamp(report: CzechReport) -> CzechReport:
     report.feasibility_score = max(0, min(100, report.feasibility_score))
     report.czech_adjusted_score = max(0, min(100, report.czech_adjusted_score))
+    for c in report.competitors:  # an unusable or generic link is worse than none
+        c.url = _clean_url(c.url)
     return report
 
 

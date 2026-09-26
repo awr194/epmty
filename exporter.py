@@ -31,6 +31,7 @@ _L = {
         "competition": "Local competition", "competitor": "Competitor", "type": "Type", "threat": "Threat",
         "gap": "Gap to exploit", "gtm": "14-day go-to-market plan", "risks": "Risks",
         "checklist": "Localisation checklist", "assumptions": "Assumptions", "page": "page",
+        "verify": "Verify before launch", "claim": "Claim", "as_of": "As of", "where": "Where to check",
         "costs": "costs",
     },
     "ru": {
@@ -51,6 +52,8 @@ _L = {
         "competition": "Местная конкуренция", "competitor": "Конкурент", "type": "Тип", "threat": "Угроза",
         "gap": "Незанятая ниша", "gtm": "План выхода на рынок за 14 дней", "risks": "Риски",
         "checklist": "Чек-лист локализации", "assumptions": "Допущения", "page": "стр.",
+        "verify": "Проверить перед запуском", "claim": "Утверждение", "as_of": "Актуально на",
+        "where": "Где проверить",
         "costs": "расходы",
     },
 }
@@ -133,6 +136,9 @@ def to_markdown(m: BusinessModel, res: AnalysisResult, lang: str = "en") -> str:
     out += [f"## {L['risks']}", "", *[f"- {x}" for x in r.risks], "",
             f"## {L['checklist']}", "", *[f"- [ ] {x}" for x in r.localization_checklist], "",
             f"## {L['assumptions']}", "", *[f"- {x}" for x in r.assumptions], ""]
+    if r.verify_before_launch:
+        out += [f"## {L['verify']}", "", f"| {L['claim']} | {L['as_of']} | {L['where']} |", "|---|---|---|",
+                *[f"| {v.claim} | {v.as_of} | {v.where_to_check} |" for v in r.verify_before_launch], ""]
     return "\n".join(out)
 
 
@@ -264,4 +270,8 @@ def to_pdf(m: BusinessModel, res: AnalysisResult, lang: str = "en") -> bytes:
     pdf.heading(L["assumptions"])
     for x in r.assumptions:
         pdf.bullet(x)
+    if r.verify_before_launch:
+        pdf.heading(L["verify"])
+        pdf.grid([L["claim"], L["as_of"], L["where"]],
+                 [[v.claim, v.as_of, v.where_to_check] for v in r.verify_before_launch], [100, 22, 68])
     return bytes(pdf.output())
