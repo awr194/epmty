@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "description": "Hand-maintained Czech enrichment overlay, keyed by exact model name. Any field set here overrides the inference rules in cz_enrichment.py. Mark unverified values with 'to verify' in notes.",
+    "fields": [
+      "model_type",
+      "local_incumbents",
+      "legal_complexity",
+      "required_integrations",
+      "seasonality",
+      "czech_support_required",
+      "price_includes_vat",
+      "target_nace",
+      "sam_estimate",
+      "sam_source",
+      "take_rate",
+      "gmv_estimate",
+      "needs_rethink_for_cz"
+    ],
+    "updated": "2026-09-26"
+  },
+  "models": {
+    "Laundry Pickup & Delivery (Rinse archetype)": {
+      "model_type": "service"
+    },
+    "Eden Life": {
+      "model_type": "service"
+    },
+    "Chai Point": {
+      "model_type": "offline_retail"
+    },
+    "Wedding Website & RSVP (Joy archetype)": {
+      "model_type": "saas"
+    },
+    "Travelline": {
+      "model_type": "saas"
+    },
+    "Raksul": {
+      "model_type": "marketplace"
+    },
+    "Live-stream shopping for small brands (Taobao Live archetype)": {
+      "model_type": "service"
+    },
+    "Kitopi": {
+      "model_type": "service"
+    }
+  }
+}

@@ -26,6 +26,7 @@ import requests
 from pydantic import BaseModel, Field
 
 from catalog import GLOBAL_MODELS
+from cz_enrichment import Incumbent, ModelType, Seasonality, apply_cz_defaults
 from curated_more import MORE_MODELS
 
 # --------------------------------------------------------------------------- #
@@ -83,6 +84,23 @@ class BusinessModel(BaseModel):
     cz_segments: list[str] = Field(default_factory=list)
     cz_competitors: list[Competitor] = Field(default_factory=list)
     cz_notes: str = ""
+
+    # --- Czech enrichment (cz_enrichment.py; overlay data/cz_enrichment.json) --- #
+    # All optional with defaults so older records and saved objects keep working.
+    model_type: Optional[ModelType] = None
+    local_incumbents: list[Incumbent] = Field(default_factory=list)
+    legal_complexity: Optional[int] = None  # 1-5; falls back to `regulatory`
+    required_integrations: list[str] = Field(default_factory=list)
+    seasonality: Seasonality = Field(default_factory=Seasonality)
+    czech_support_required: Optional[bool] = None
+    price_includes_vat: Optional[bool] = None  # B2C prices incl. 21% DPH, B2B excl.
+    target_nace: list[str] = Field(default_factory=list)  # CZ-NACE codes for SAM sizing
+    sam_estimate: Optional[int] = None  # firms/households in CZ
+    sam_source: str = ""
+    take_rate: Optional[float] = None  # marketplaces: share of GMV kept
+    gmv_estimate: Optional[int] = None  # marketplaces: monthly GMV at month 12, CZK
+    needs_rethink_for_cz: bool = False
+    inferred_fields: list[str] = Field(default_factory=list)  # fields filled by rules, not verified
 
 
 def _id(name: str, source: str) -> str:
@@ -618,7 +636,12 @@ def _with_landscape(row: dict) -> dict:
 def load_curated() -> list[BusinessModel]:
     rows = [dict(r, country=_ORIGIN.get(r["name"], "Unknown")) for r in _RAW + [_from_compact(r) for r in MORE_MODELS]]
     rows += [_with_landscape(r) for r in GLOBAL_MODELS]
-    return [BusinessModel(id=_id(r["name"], "Curated"), **r) for r in rows]
+    return [BusinessModel(id=_id(r["name"], "Curated"), **apply_cz_defaults(r)) for r in rows]
+
+
+def with_cz_defaults(m: BusinessModel) -> BusinessModel:
+    """Enrich a model built elsewhere (live feeds, user-added ideas)."""
+    return BusinessModel(**apply_cz_defaults(m.model_dump()))
 
 
 # --------------------------------------------------------------------------- #
@@ -671,7 +694,7 @@ _CATEGORY_DEFAULT_SEGMENTS = {
 def _live_entry(name: str, url: str, desc: str, source: str, points: int = 0) -> BusinessModel:
     cat = guess_category(f"{name} {desc}")
     local_heavy = cat in {"Hospitality & Gastro", "Local Services", "Finance & Admin"}
-    return BusinessModel(
+    return with_cz_defaults(BusinessModel(
         id=_id(name, source), name=name[:80], url=url, category=cat,
         niche=desc[:120] or "Newly launched product", revenue_model="Unknown (early-stage launch)",
         mrr_usd=None, revenue_note=f"Live launch signal ({points} upvotes)" if points else "Live launch signal",
@@ -681,7 +704,7 @@ def _live_entry(name: str, url: str, desc: str, source: str, points: int = 0) ->
         moat=3 if local_heavy else 2,
         cz_segments=_CATEGORY_DEFAULT_SEGMENTS.get(cat, []),
         cz_notes="Auto-classified from a live feed - run a Deep-Dive for a proper assessment.",
-    )
+    ))
 
 
 def fetch_show_hn(limit: int = 20, min_points: int = 50) -> list[BusinessModel]:

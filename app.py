@@ -13,7 +13,7 @@ import streamlit as st
 
 from analyzer import (CLAUDE_MODELS, DEFAULT_CLAUDE_MODEL, DEFAULT_GEMINI_MODEL, GEMINI_MODELS, AnalysisResult,
                       CzechAssumptions, analyze, pick_engine, quick_metrics)
-from data_loader import CATEGORIES, LIVE_SOURCES, BusinessModel, _id, load_curated
+from data_loader import CATEGORIES, LIVE_SOURCES, BusinessModel, _id, load_curated, with_cz_defaults
 from exporter import to_markdown, to_pdf
 
 st.set_page_config(page_title="Czech Business Model Radar", page_icon="🇨🇿", layout="wide")
@@ -129,13 +129,13 @@ with st.sidebar:
             comp = st.slider("Local competition", 1, 5, 3)
             cplx = st.slider("Build complexity", 1, 5, 3)
             if st.form_submit_button("Add") and name:
-                ss.custom_models.append(BusinessModel(
+                ss.custom_models.append(with_cz_defaults(BusinessModel(
                     id=_id(name, "Custom"), name=name, url=url or "", category=cat, niche=niche or cat,
                     revenue_model=rev_model, mrr_usd=mrr or None, revenue_note="User-supplied",
                     problem=problem or niche, source="Custom", audience=audience, price_usd=price, cz_sam=sam,
                     demand=demand, competition=comp, complexity=cplx,
                     cz_segments=[s.strip() for s in segs.split(",") if s.strip()],
-                ))
+                )))
                 st.toast(f"Added {name}")
 
 
