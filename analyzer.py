@@ -693,7 +693,10 @@ czech_adjustments item each (negative points, one-line detail):
 (ochrana spotřebitele), trade licence type (živnost volná / vázaná / koncese), health-care rules, ČNB licensing;
   * complex integrations the Czech market expects (Pohoda, Money S3, ABRA, Fakturoid, iDoklad, Shoptet, Upgates, \
 Heureka, Zboží.cz, Sklik, Firmy.cz, QR platba, GoPay, Comgate, Bank iD, ISDOC);
-  * the cost of Czech-language support for a solo founder.
+  * the cost of Czech-language support for a solo founder;
+  * the original product itself already selling in Czechia (original_available_in_cz: "yes" = evidence on its \
+own site in original_cz_evidence, "likely" = only CZK prices, "unknown" = not checked or no evidence - \
+unknown is NOT proof of absence).
   Seasonality is not a penalty: put the latest sensible launch month into risks or gtm_plan.
   The rule-based values in the baseline (czech_adjusted_score, czech_adjustments) are a starting point - \
 correct them where you know better. Fields listed in fields_inferred_by_rules_not_verified are guesses.

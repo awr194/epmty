@@ -49,6 +49,9 @@ _TX = {
         "integr": "Complex integrations",
         "support": "Czech-language support", "support_d": "Customers expect support in Czech",
         "support_other": "B2B segment: English or occasional Czech support is usually enough",
+        "orig": "Original already in Czechia", "orig_d": "Evidence on its site: {ev}",
+        "orig_likely": "The original may already sell in Czechia ({ev}) - check before launch.",
+        "orig_no": "Original not offered in Czechia ({src}).",
         "season": "Seasonal (peak {peaks}): launch by {month}.",
         "not_comparable": "MRR is not comparable with SaaS models for this model type - judge it on unit economics.",
         "no_sam": "No SAM estimate - market-share check skipped.",
@@ -61,6 +64,9 @@ _TX = {
         "integr": "Сложные интеграции",
         "support": "Поддержка на чешском", "support_d": "Клиенты ждут поддержки на чешском",
         "support_other": "B2B-сегмент: обычно хватает английского или эпизодической поддержки на чешском",
+        "orig": "Оригинал уже в Чехии", "orig_d": "Признаки на его сайте: {ev}",
+        "orig_likely": "Оригинал, возможно, уже продаёт в Чехии ({ev}) — проверьте перед запуском.",
+        "orig_no": "Оригинал в Чехии не представлен ({src}).",
         "season": "Сезонность (пик: {peaks}): запускайтесь до {month}.",
         "not_comparable": "Для этого типа модели MRR не сопоставим с SaaS — оценивайте по юнит-экономике.",
         "no_sam": "Нет оценки размера рынка — проверка доли рынка пропущена.",
@@ -135,6 +141,16 @@ def _support(m: BusinessModel, w: CzechScoreWeights, tx: dict) -> Adjustment | N
     return Adjustment(tx["support"], -w.czech_support_penalty_other_b2b, tx["support_other"])
 
 
+def _evidence_text(m: BusinessModel) -> str:
+    return ", ".join(e.get("value", "") for e in m.original_cz_evidence[:3]) or m.original_cz_source
+
+
+def _original(m: BusinessModel, w: CzechScoreWeights, tx: dict) -> Adjustment | None:
+    if m.original_available_in_cz != "yes" or w.original_in_cz_penalty <= 0:
+        return None
+    return Adjustment(tx["orig"], -w.original_in_cz_penalty, tx["orig_d"].format(ev=_evidence_text(m)))
+
+
 def _recommendations(m: BusinessModel, metrics: DerivedMetrics, w: CzechScoreWeights, tx: dict,
                      lang: str) -> list[str]:
     recs = []
@@ -147,6 +163,10 @@ def _recommendations(m: BusinessModel, metrics: DerivedMetrics, w: CzechScoreWei
         abbr = _MONTHS_RU if lang == "ru" else calendar.month_abbr
         full = _MONTHS_RU_FULL if lang == "ru" else calendar.month_name
         recs.append(tx["season"].format(peaks=", ".join(abbr[p] for p in peaks), month=full[launch]))
+    if m.original_available_in_cz == "likely":
+        recs.append(tx["orig_likely"].format(ev=_evidence_text(m)))
+    elif m.original_available_in_cz == "no":
+        recs.append(tx["orig_no"].format(src=m.original_cz_source))
     if not metrics.comparable:
         recs.append(tx["not_comparable"])
     if metrics.sam_share_12m is None and metrics.comparable:
@@ -160,7 +180,8 @@ def czech_adjusted_score(base: int, m: BusinessModel, metrics: DerivedMetrics,
     `lang` ('en' | 'ru') only changes the explanatory texts, never the numbers."""
     tx = _TX.get(lang, _TX["en"])
     breakdown = [adj for adj in (_incumbents(m, weights, tx), _sam_share(m, metrics, weights, tx),
-                                 _legal(m, weights, tx), _integrations(m, weights, tx), _support(m, weights, tx))
+                                 _legal(m, weights, tx), _integrations(m, weights, tx), _support(m, weights, tx),
+                                 _original(m, weights, tx))
                  if adj is not None]
     score = round(max(0.0, min(100.0, base + sum(a.points for a in breakdown))))
     return CzechScore(base=base, score=score, breakdown=breakdown,
@@ -180,4 +201,6 @@ def to_context(result: CzechScore, m: BusinessModel, metrics: DerivedMetrics) ->
         "sam_share_12m": metrics.sam_share_12m,
         "sam_estimate": m.sam_estimate,
         "sam_source": m.sam_source,
+        "original_available_in_cz": m.original_available_in_cz,
+        "original_cz_evidence": m.original_cz_evidence,
     }

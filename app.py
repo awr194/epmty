@@ -161,6 +161,7 @@ with st.sidebar:
             czech_support_penalty=st.slider(t("w_support"), 0.0, 10.0, d.czech_support_penalty, 0.5),
             czech_support_penalty_other_b2b=st.slider(t("w_support_other"), 0.0, 10.0,
                                                       d.czech_support_penalty_other_b2b, 0.5),
+            original_in_cz_penalty=st.slider(t("w_original"), 0.0, 20.0, d.original_in_cz_penalty, 1.0),
         )
 
     st.header(t("live_header"))
@@ -373,6 +374,9 @@ def radar_view() -> None:
                       f":gray-badge[{type_label(m.model_type)}]")
             if m.needs_rethink_for_cz:
                 badges += f" :red-badge[{t('badge_rethink')}]"
+            if m.original_available_in_cz in ("yes", "likely"):
+                badges += (f" :{'red' if m.original_available_in_cz == 'yes' else 'orange'}-badge"
+                           f"[{t('badge_orig_' + m.original_available_in_cz)}]")
             if m.source in LOW_CZ_RELEVANCE_SOURCES:
                 badges += f" :orange-badge[{t('badge_feed')}]"
             st.markdown(badges)

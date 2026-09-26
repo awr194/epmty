@@ -37,6 +37,10 @@ class CzechScoreWeights:
     czech_support_penalty: float = 3.0
     czech_support_penalty_other_b2b: float = 1.0
 
+    # The original product itself already sells in Czechia (Czech site / hreflang / .cz domain):
+    # a proven, localised competitor. "likely" (only CZK prices) gives a recommendation, no penalty.
+    original_in_cz_penalty: float = 6.0
+
     # Months of lead time before a seasonal peak (used for the recommendation only).
     season_lead_months: int = 2
 

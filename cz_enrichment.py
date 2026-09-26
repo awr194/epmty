@@ -21,6 +21,7 @@ from typing import Literal, Optional
 from pydantic import BaseModel, Field
 
 from market.nace_sam import cache_info, sam_for_nace
+from market.original_cz import load_results as load_original_cz
 
 ENRICHMENT_PATH = Path(__file__).parent / "data" / "cz_enrichment.json"
 
@@ -193,6 +194,16 @@ def apply_cz_defaults(row: dict, overlay: dict[str, dict] | None = None) -> dict
     for field in ("take_rate", "gmv_estimate", "needs_rethink_for_cz"):
         if field in over:
             row[field] = over[field]
+
+    # Is the original already offered in Czechia? Hand-checked overlay beats the website check.
+    if "original_available_in_cz" in over:
+        row["original_available_in_cz"] = over["original_available_in_cz"]
+        row["original_cz_evidence"] = over.get("original_cz_evidence", [])
+        row["original_cz_source"] = over.get("original_cz_source", "manual (cz_enrichment.json)")
+    elif (check := load_original_cz().get(row["name"])) is not None:
+        row["original_available_in_cz"] = check["status"]
+        row["original_cz_evidence"] = check.get("evidence", [])
+        row["original_cz_source"] = f"site check {check.get('checked_at', '')}".strip()
 
     row["inferred_fields"] = inferred
     return row

@@ -19,7 +19,7 @@ from __future__ import annotations
 import hashlib
 import re
 import xml.etree.ElementTree as ET
-from typing import Optional
+from typing import Literal, Optional
 
 import pandas as pd
 import requests
@@ -101,6 +101,10 @@ class BusinessModel(BaseModel):
     take_rate: Optional[float] = None  # marketplaces: share of GMV kept
     gmv_estimate: Optional[int] = None  # marketplaces: monthly GMV at month 12, CZK
     needs_rethink_for_cz: bool = False
+    # Is the original product already offered in Czechia? yes | likely | no | unknown (step 10.1)
+    original_available_in_cz: Literal["yes", "likely", "no", "unknown"] = "unknown"
+    original_cz_evidence: list[dict] = Field(default_factory=list)  # {"signal": code, "value": found text}
+    original_cz_source: str = ""  # "site check YYYY-MM-DD" or the manual source
     inferred_fields: list[str] = Field(default_factory=list)  # fields filled by rules, not verified
 
 

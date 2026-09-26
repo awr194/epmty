@@ -71,6 +71,8 @@ UI: dict[str, dict[str, str]] = {
     "w_support_other": {"ru": "Штраф за поддержку на чешском (прочий B2B)",
                         "en": "Czech-support penalty (other B2B)"},
 
+    "w_original": {"ru": "Штраф, если оригинал уже в Чехии", "en": "Penalty if the original is already in Czechia"},
+
     # ---------------------------------------------------------------- sidebar: live sources
     "live_header": {"ru": "🌐 Живые источники", "en": "🌐 Live sources"},
     "live_from": {"ru": "Загружать свежие запуски из", "en": "Fetch fresh launches from"},
@@ -160,6 +162,8 @@ UI: dict[str, dict[str, str]] = {
     "page": {"ru": "Страница", "en": "Page"},
     "showing": {"ru": "Показаны {a}–{b} из {n}", "en": "Showing {a}-{b} of {n} models"},
     "badge_rethink": {"ru": "переосмыслить для CZ", "en": "needs rethink for CZ"},
+    "badge_orig_yes": {"ru": "оригинал уже в CZ", "en": "original already in CZ"},
+    "badge_orig_likely": {"ru": "оригинал, возможно, в CZ", "en": "original possibly in CZ"},
     "badge_feed": {"ru": "лента запусков — мало релевантно для CZ", "en": "launch feed - low CZ SMB relevance"},
     "czech_vs_orig": {"ru": "🇨🇿 {cz} против исходного {base} ({delta:+d})", "en": "🇨🇿 {cz} vs. original {base} ({delta:+d})"},
     "customers_needed": {"ru": "Нужно клиентов", "en": "Customers needed"},
