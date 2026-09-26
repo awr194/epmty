@@ -1,6 +1,6 @@
 # Состояние проекта: Czech Business Model Radar
 
-*Обновлено: 2026-09-26. Последний коммит: `51d3cf7` (шаг 10.2).*
+*Обновлено: 2026-09-26. Последний коммит: `8322c27` (результаты 10.1).*
 
 Streamlit-приложение, которое собирает проверенные в мире модели малого бизнеса и микро-SaaS
 и оценивает, насколько их можно адаптировать для Чехии (Прага, чешский МСП-сегмент).
@@ -67,7 +67,11 @@ Streamlit-приложение, которое собирает проверен
   Исправлено: зависание на регэкспе цены (`e2d8dc7`); добавлены `og:locale cs_CZ`, hreflang
   из HTTP-заголовка Link, пробы путей /cs/ /cs-cz/ /cz/ (засчитываются только если страница
   осталась на пути и сама помечена чешской). Перепроверка: `--recheck-unknown`.
-  `data/original_cz.json` пользователь ещё не прислал / не закоммитил.
+  Второй прогон + `--reclassify` (`8322c27`): **29 моделей «оригинал уже в CZ»** (hreflang/lang/.cz/…),
+  471 unknown (44 сайта не прочитаны). Убраны ложные: Class101 «4CZk», Karrot «czk58» (цены теперь
+  с учётом регистра), Creditsafe `/cs/en.html`; Huel → yes (cz.huel.com + Kč). Архетип Shopify-приложения
+  вручную → unknown (URL — поиск в App Store). В отчёте раздел «редирект на другой домен» (15 моделей,
+  La Belle Assiette → посторонний сайт, вероятно мёртвый домен; URL не менялись — нужен проверенный патч).
 - **10.2 сделан** (`51d3cf7`): `market/competitors.py` + `scripts/import_llm_competitors.py` →
   `data/llm_competitors.json`; `scripts/verify_competitors.py` проверяет URL (ещё НЕ запускался — сеть).
   Incumbent: `verified`, `source`, `kind`, `url_status`, `checked_at`, `mentions`. В карточке список
@@ -114,7 +118,7 @@ scripts/
   i18n_extract.py       Найти непереведённые строки данных
 reports/                audit.md, models_without_incumbents.md
 patches/data_fixes.json Патч исправлений данных (33 изменения, НЕ применён)
-tests/                  82 теста (pytest)
+tests/                  90 тестов (pytest)
 ```
 
 ### Поток данных
@@ -226,7 +230,7 @@ Google Trends — официальный API с ограниченным дос�
 
 ```bash
 .venv\Scripts\python -m streamlit run app.py          # приложение (localhost:8501)
-.venv\Scripts\python -m pytest -q tests               # 82 теста
+.venv\Scripts\python -m pytest -q tests               # 90 тестов
 .venv\Scripts\python scripts\i18n_extract.py --check  # все ли данные переведены
 .venv\Scripts\python scripts\audit_data.py            # аудит данных
 .venv\Scripts\python scripts\refresh_nace_sam.py      # обновить SAM из ČSÚ (~540 МБ)
