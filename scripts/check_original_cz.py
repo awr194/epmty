@@ -12,6 +12,7 @@ Already-checked models are skipped unless --refresh is given, so an interrupted 
   python scripts/check_original_cz.py --limit 20      # first 20 unchecked
   python scripts/check_original_cz.py --only Spond --only Jobber --refresh
   python scripts/check_original_cz.py --recheck-unknown   # after a detector update (~30-40 min)
+  python scripts/check_original_cz.py --reclassify        # re-apply rules to saved results, no network
 """
 
 from __future__ import annotations
@@ -31,7 +32,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from data_loader import load_curated  # noqa: E402
-from market.original_cz import RESULTS_PATH, classify, czech_page, detect_signals  # noqa: E402
+from market.original_cz import RESULTS_PATH, brand_label, classify, czech_page, detect_signals, reclassify  # noqa: E402
 
 REPORT_PATH = ROOT / "reports" / "original_cz_unknown.md"
 USER_AGENT = "CzechBizRadar/1.0 (research; checks whether a product is offered in Czechia)"
@@ -115,6 +116,11 @@ def write_report(results: dict[str, dict], names: list[str]) -> None:
     lines += ["", "## Read, no Czech signal (home page, Link header, /cs/ /cs-cz/ /cz/ checked)", "",
               "| Model | URL |", "|---|---|"]
     lines += [f"| {n} | {results.get(n, {}).get('url', '')} |" for n in silent]
+    moved = sorted(n for n in names if (r := results.get(n)) and r.get("final_url") and r.get("url")
+                   and brand_label(r["final_url"]) != brand_label(r["url"]))
+    lines += ["", "## Redirected to another domain (rebrand, acquisition or a dead domain) - check the URL", "",
+              "| Model | URL | Now goes to |", "|---|---|---|"]
+    lines += [f"| {n} | {results[n]['url']} | {results[n]['final_url']} |" for n in moved]
     REPORT_PATH.parent.mkdir(exist_ok=True)
     REPORT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -126,6 +132,8 @@ def main() -> None:
     ap.add_argument("--refresh", action="store_true", help="re-check models already in the results file")
     ap.add_argument("--recheck-unknown", action="store_true",
                     help="re-check only models whose status is 'unknown' (e.g. after the detector improved)")
+    ap.add_argument("--reclassify", action="store_true",
+                    help="no network: re-apply the current rules to the saved results and rewrite the report")
     args = ap.parse_args()
 
     models = load_curated()
@@ -134,6 +142,13 @@ def main() -> None:
              or (args.recheck_unknown and existing[m.name].get("status") == "unknown"))]
     if args.limit:
         todo = todo[:args.limit]
+    if args.reclassify:
+        before = {n: r["status"] for n, r in existing.items()}
+        existing = {n: reclassify(r) for n, r in existing.items()}
+        for n, r in existing.items():
+            if r["status"] != before[n]:
+                print(f"{n}: {before[n]} -> {r['status']}")
+        todo = []
 
     def save() -> None:
         RESULTS_PATH.write_text(json.dumps({"models": dict(sorted(existing.items()))}, ensure_ascii=False,

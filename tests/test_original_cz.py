@@ -137,3 +137,29 @@ def test_price_regex_is_linear_on_hostile_pages():
     ("od 1 290 Kč měsíčně", "1 290 Kč"), ("1 290,50 CZK", "1 290,50 CZK"), ("CZK 499", "CZK 499")])
 def test_price_formats(text, value):
     assert detect_signals("https://x.com", text) == [{"signal": "price_czk", "value": value}]
+
+
+def test_price_is_case_sensitive():
+    assert detect_signals("https://x.com", "var a='czk58';b='4CZk'") == []
+
+
+@pytest.mark.parametrize("final, expected", [
+    ("https://cz.huel.com/", True), ("https://www.fresha.com/cs", True), ("https://base.com/cs-CZ/home/", True),
+    ("https://www.creditsafe.com/cs/en.html", False),  # an English page under /cs/
+    ("https://www.domestika.org/en", False), ("https://x.com/cosmetics", False)])
+def test_locale_url(final, expected):
+    from market.original_cz import locale_url_cs
+    assert locale_url_cs(final) is expected
+
+
+def test_reclassify_offline():
+    from market.original_cz import reclassify
+    junk = {"url": "https://k.com", "final_url": "https://k.com/", "status": "likely",
+            "evidence": [{"signal": "price_czk", "value": "czk58"}]}
+    huel = {"url": "https://huel.com", "final_url": "https://cz.huel.com/", "status": "likely",
+            "evidence": [{"signal": "price_czk", "value": "1 370 Kč"}]}
+    blocked = {"url": "https://e.com", "status": "unknown", "evidence": [], "error": "http_403"}
+    assert reclassify(junk)["status"] == "unknown"
+    assert reclassify(huel)["status"] == "yes" and {e["signal"] for e in reclassify(huel)["evidence"]} == {
+        "price_czk", "locale_url_cs"}
+    assert reclassify(blocked)["status"] == "unknown"

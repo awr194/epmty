@@ -29,7 +29,8 @@ STATUSES = ("yes", "likely", "unknown")
 
 # Signal codes -> strength. Texts for the UI live in i18n/ui.py under "cz_sig_<code>".
 STRONG = ("redirect_cz", "hreflang_cs", "link_cz_domain", "html_lang_cs", "lang_picker_cs", "og_locale_cs",
-          "cs_path")
+          "cs_path", "locale_url_cs")
+_CS_PATH_SEGMENTS = {"cs", "cz", "cs-cz", "cs_cz"}
 WEAK = ("price_czk",)
 
 _HREFLANG = re.compile(r"""<link[^>]+hreflang\s*=\s*["']?(cs(?:[-_]cz)?)["'\s>]""", re.I)
@@ -42,7 +43,7 @@ _HREF = re.compile(r"""href\s*=\s*["']?(https?://[^"'\s>]+)""", re.I)
 # quadratically on long runs of numbers and spaces (minified scripts) and hangs the check.
 # The character classes contain a space and a no-break space (U+00A0).
 _PRICE_CZK = re.compile(r"(?<![\d.,])(\d{1,3}(?:[  .,]?\d{3}){0,3}(?:[.,]\d{1,2})?[  ]?(?:Kč|CZK)\b"
-                        r"|\bCZK[  ]?\d[\d.,]{0,12})", re.I)
+                        r"|\bCZK[  ]?\d[\d.,]{0,12})")  # case-sensitive: "czk58" in a script is not a price
 _LANG_PICKER = re.compile(r"Čeština", re.I)
 
 
@@ -59,6 +60,26 @@ def brand_label(url: str) -> str:
     return parts[-2] if len(parts) >= 2 else parts[0]
 
 
+def locale_url_cs(url: str) -> bool:
+    """The site sent us to its Czech edition: cz.example.com or example.com/cs/..., /cs-cz/, /cz/."""
+    segments = [re.sub(r"\.html?$", "", x) for x in urlparse(url).path.lower().strip("/").split("/") if x]
+    # /cs/en.html is an English page: another language code later in the path cancels the match
+    other_lang = any(re.fullmatch(r"[a-z]{2}(?:[-_][a-z]{2})?", x) and x not in _CS_PATH_SEGMENTS
+                     for x in segments[1:])
+    return _host(url).startswith("cz.") or (bool(segments) and segments[0] in _CS_PATH_SEGMENTS and not other_lang)
+
+
+def reclassify(result: dict) -> dict:
+    """Re-apply the current rules to a stored result without fetching anything: drop price evidence
+    the current pattern rejects, add the Czech-edition URL signal, recompute the status."""
+    ev = [e for e in result.get("evidence", []) if e["signal"] != "locale_url_cs"
+          and (e["signal"] != "price_czk" or _PRICE_CZK.fullmatch(e["value"]))]
+    final, url = result.get("final_url", ""), result.get("url", "")
+    if final and final != url and locale_url_cs(final):
+        ev.append({"signal": "locale_url_cs", "value": final})
+    return result | {"evidence": ev, "status": "unknown" if result.get("error") else classify(ev)}
+
+
 def czech_page(html: str) -> str | None:
     """The page itself is in Czech (<html lang="cs"> or og:locale cs_CZ): the matched marker, else None."""
     m = _HTML_LANG.search(html) or _OG_LOCALE.search(html)
@@ -71,6 +92,8 @@ def detect_signals(url: str, html: str, final_url: str | None = None, link_heade
     final = final_url or url
     if _host(final).endswith(".cz") and not _host(url).endswith(".cz"):
         found.append({"signal": "redirect_cz", "value": final})
+    elif final != url and locale_url_cs(final):
+        found.append({"signal": "locale_url_cs", "value": final})
     m = _HREFLANG.search(html) or _HREFLANG_HEADER.search(link_header)
     if m:
         found.append({"signal": "hreflang_cs", "value": f'hreflang="{m.group(1)}"'})

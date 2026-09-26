@@ -502,7 +502,9 @@
           "url": "https://www.shoptet.cz",
           "note": "native back-in-stock watchdog; draft - to verify"
         }
-      ]
+      ],
+      "original_available_in_cz": "unknown",
+      "original_cz_source": "manual 2026-09-26: the URL is a Shopify App Store search; the Czech signals belong to Shopify, not to a specific back-in-stock app"
     },
     "Treatwell": {
       "local_incumbents": [

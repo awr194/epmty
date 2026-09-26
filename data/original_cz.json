@@ -1,0 +1,4318 @@
+{
+ "models": {
+  "2GIS": {
+   "url": "https://2gis.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://2gis.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "6AM City": {
+   "url": "https://6amcity.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://6amcity.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "7shifts": {
+   "url": "https://www.7shifts.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.7shifts.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "99designs": {
+   "url": "https://99designs.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://99designs.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "AI CV & Cover Letter Builder (Kickresume archetype)": {
+   "url": "https://www.kickresume.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.kickresume.com/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "AI Grant & Subsidy Finder (Instrumentl archetype)": {
+   "url": "https://www.instrumentl.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.instrumentl.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "AI Legal Research Assistant for Czech Law (Harvey archetype)": {
+   "url": "https://www.harvey.ai",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.harvey.ai/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "AI Meeting Notes (Otter/Fireflies archetype)": {
+   "url": "https://fireflies.ai",
+   "checked_at": "2026-09-26",
+   "final_url": "https://fireflies.ai/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "AI Multilingual Menu & Allergen Labels": {
+   "url": "https://www.menutiger.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.menutiger.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "AI Phone Receptionist in Czech (Smith.ai archetype)": {
+   "url": "https://smith.ai",
+   "checked_at": "2026-09-26",
+   "final_url": "https://smith.ai/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "AI Product Descriptions for E-shops (Hypotenuse archetype)": {
+   "url": "https://www.hypotenuse.ai",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.hypotenuse.ai/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "AI SEO Content Writer in Czech (Surfer archetype)": {
+   "url": "https://surferseo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://surferseo.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "AI Tutor for Přijímačky & Maturita (Khanmigo archetype)": {
+   "url": "https://www.khanmigo.ai",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.khanmigo.ai/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Accountant-Client Document Portal (TaxDome archetype)": {
+   "url": "https://taxdome.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://taxdome.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Acuity Scheduling": {
+   "url": "https://acuityscheduling.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://acuityscheduling.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "AfterShip": {
+   "url": "https://www.aftership.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.aftership.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    }
+   ]
+  },
+  "Agency Time Tracking & Profitability (Toggl archetype)": {
+   "url": "https://toggl.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://toggl.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Agrivi": {
+   "url": "https://www.agrivi.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.agrivi.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Ahrefs": {
+   "url": "https://ahrefs.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://ahrefs.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "AirDNA": {
+   "url": "https://www.airdna.co",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.airdna.co/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Airbnb Cleaning Turnover Marketplace (Turno archetype)": {
+   "url": "https://turno.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://turno.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Airtasker": {
+   "url": "https://www.airtasker.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.airtasker.com/au/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Ankorstore": {
+   "url": "https://www.ankorstore.com",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "robots_disallow"
+  },
+  "Apna": {
+   "url": "https://apna.co",
+   "checked_at": "2026-09-26",
+   "final_url": "https://apna.co/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Asaas": {
+   "url": "https://www.asaas.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.asaas.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Aspro": {
+   "url": "https://aspro.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://aspro.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Automated Payment Reminders & Collections (Chaser archetype)": {
+   "url": "https://www.chaserhq.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.chaserhq.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Aviasales": {
+   "url": "https://www.aviasales.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.aviasales.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "B2B Wholesale Portal for Small Brands (Faire/SparkLayer archetype)": {
+   "url": "https://www.sparklayer.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.sparklayer.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Babbel": {
+   "url": "https://www.babbel.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.babbel.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Back-in-Stock Alerts (Shopify app archetype)": {
+   "url": "https://apps.shopify.com/search?q=back%20in%20stock",
+   "checked_at": "2026-09-26",
+   "final_url": "https://apps.shopify.com/search?q=back%20in%20stock&locale=cs",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    },
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs\""
+    },
+    {
+     "signal": "lang_picker_cs",
+     "value": "Čeština"
+    }
+   ]
+  },
+  "BambooHR": {
+   "url": "https://www.bamboohr.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.bamboohr.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Banki.ru": {
+   "url": "https://www.banki.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.banki.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Bannerbear": {
+   "url": "https://www.bannerbear.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.bannerbear.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Baremetrics": {
+   "url": "https://baremetrics.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://baremetrics.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "BarkBox": {
+   "url": "https://www.barkbox.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://bark.co",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "BaseLinker (Base)": {
+   "url": "https://base.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://base.com/cs-CZ/home/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs-CZ\""
+    },
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs\""
+    },
+    {
+     "signal": "lang_picker_cs",
+     "value": "Čeština"
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://base.com/cs-CZ/home/"
+    }
+   ]
+  },
+  "Basecamp": {
+   "url": "https://basecamp.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://basecamp.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Beardbrand": {
+   "url": "https://www.beardbrand.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.beardbrand.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Beauty Pie": {
+   "url": "https://www.beautypie.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.beautypie.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Beekeeper": {
+   "url": "https://www.beekeeper.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.beekeeper.io/",
+   "http_status": 525,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_525"
+  },
+  "BetterHelp": {
+   "url": "https://www.betterhelp.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.betterhelp.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "BetterMe": {
+   "url": "https://betterme.world",
+   "checked_at": "2026-09-26",
+   "final_url": "https://betterme.world/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Birdie": {
+   "url": "https://www.birdie.care",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.birdie.care/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Bitrix24": {
+   "url": "https://www.bitrix24.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.bitrix24.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Blinkist": {
+   "url": "https://www.blinkist.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.blinkist.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Bloom & Wild": {
+   "url": "https://www.bloomandwild.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.bloomandwild.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Bookio": {
+   "url": "https://www.bookio.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.bookio.com/cs",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs\""
+    },
+    {
+     "signal": "lang_picker_cs",
+     "value": "Čeština"
+    },
+    {
+     "signal": "price_czk",
+     "value": "169 Kč"
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://www.bookio.com/cs"
+    }
+   ]
+  },
+  "Booksy": {
+   "url": "https://booksy.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://booksy.com/en-us/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Brainly": {
+   "url": "https://brainly.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://brainly.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Brand24": {
+   "url": "https://brand24.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://brand24.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "BrowserStack": {
+   "url": "https://www.browserstack.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.browserstack.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Bubble": {
+   "url": "https://bubble.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://bubble.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Buffer": {
+   "url": "https://buffer.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://buffer.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Buildxact": {
+   "url": "https://www.buildxact.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.buildxact.com/uk/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Buk": {
+   "url": "https://www.buk.cl",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.buk.cl/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "BukuWarung": {
+   "url": "https://bukuwarung.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.bukuwarung.com:443/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Bumpa": {
+   "url": "https://www.getbumpa.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.getbumpa.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Buttondown": {
+   "url": "https://buttondown.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://buttondown.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "CGTrader": {
+   "url": "https://www.cgtrader.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.cgtrader.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Calendly": {
+   "url": "https://calendly.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://calendly.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Calltouch": {
+   "url": "https://www.calltouch.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.calltouch.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Cameo": {
+   "url": "https://www.cameo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.cameo.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Canny": {
+   "url": "https://canny.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://canny.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Canva": {
+   "url": "https://www.canva.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.canva.com/cs_cz/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs-CZ\""
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://www.canva.com/cs_cz/"
+    }
+   ]
+  },
+  "Care.com": {
+   "url": "https://www.care.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.care.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Carrd": {
+   "url": "https://carrd.co",
+   "checked_at": "2026-09-26",
+   "final_url": "https://carrd.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Cars24": {
+   "url": "https://www.cars24.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.cars24.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Carwow": {
+   "url": "https://www.carwow.co.uk",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.carwow.co.uk/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Cash-flow Forecasting for SMEs (Float archetype)": {
+   "url": "https://floatapp.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://floatapp.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Catawiki": {
+   "url": "https://www.catawiki.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.catawiki.com/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Chai Point": {
+   "url": "https://chaipoint.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.chaipoint.com",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Channel Talk": {
+   "url": "https://channel.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://channel.io/us",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Chargebee": {
+   "url": "https://www.chargebee.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.chargebee.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Chatbase": {
+   "url": "https://www.chatbase.co",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.chatbase.co/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Checkbox": {
+   "url": "https://checkbox.ua",
+   "checked_at": "2026-09-26",
+   "final_url": "https://checkbox.ua/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Cheerz": {
+   "url": "https://www.cheerz.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.cheerz.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Chocolife": {
+   "url": "https://chocolife.me",
+   "checked_at": "2026-09-26",
+   "final_url": "https://chocolife.me/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Class101": {
+   "url": "https://class101.net",
+   "checked_at": "2026-09-26",
+   "final_url": "https://class101.net/en",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "ClassPass": {
+   "url": "https://classpass.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://classpass.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Classplus": {
+   "url": "https://classplusapp.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://classplusapp.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "CleanShot X": {
+   "url": "https://cleanshot.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://cleanshot.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Cleo": {
+   "url": "https://web.meetcleo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://web.meetcleo.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Client Galleries for Photographers (Pixieset archetype)": {
+   "url": "https://pixieset.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://pixieset.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Cliniko": {
+   "url": "https://www.cliniko.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.cliniko.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Clio": {
+   "url": "https://www.clio.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.clio.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Clip": {
+   "url": "https://clip.mx",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.clip.mx/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Close": {
+   "url": "https://www.close.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://close.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Cofix": {
+   "url": "https://www.cofix.co.il",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "SSLError"
+  },
+  "Community group-buying (Xingsheng Youxuan archetype)": {
+   "url": "",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "no_url"
+  },
+  "Competitor Price Monitoring (Prisync archetype)": {
+   "url": "https://prisync.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://prisync.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Conta Azul": {
+   "url": "https://contaazul.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://contaazul.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Cookie Consent Manager (Cookiebot archetype)": {
+   "url": "https://www.cookiebot.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.cookiebot.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Cookpad": {
+   "url": "https://cookpad.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://cookpad.com/uk",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Country Delight": {
+   "url": "https://www.countrydelight.in",
+   "checked_at": "2026-09-26",
+   "final_url": "https://countrydelight.in:443/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Coworking Day-pass Marketplace (Deskpass archetype)": {
+   "url": "https://www.deskpass.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.deskpass.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Craft": {
+   "url": "https://www.craft.do",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.craft.do/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Craft Beer Subscription Box": {
+   "url": "https://www.beer52.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.beer52.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Crehana": {
+   "url": "https://www.crehana.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.crehana.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Crimson Education": {
+   "url": "https://www.crimsoneducation.org",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.crimsoneducation.org/",
+   "http_status": 429,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_429"
+  },
+  "Crisp": {
+   "url": "https://crisp.chat",
+   "checked_at": "2026-09-26",
+   "final_url": "https://crisp.chat/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Crowdin": {
+   "url": "https://crowdin.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://crowdin.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    }
+   ]
+  },
+  "Czech Transcription & Subtitles (Descript/Rev archetype)": {
+   "url": "https://www.rev.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.rev.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Czech for Foreigners: Exam-prep Marketplace": {
+   "url": "https://www.italki.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.italki.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "DIKIDI": {
+   "url": "https://dikidi.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://dikidi.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Databox": {
+   "url": "https://databox.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://databox.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Deliverect": {
+   "url": "https://www.deliverect.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.deliverect.com/en",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Depositphotos": {
+   "url": "https://depositphotos.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://depositphotos.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    }
+   ]
+  },
+  "Descomplica": {
+   "url": "https://descomplica.com.br",
+   "checked_at": "2026-09-26",
+   "final_url": "https://descomplica.com.br/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Diadoc (Диадок)": {
+   "url": "https://www.diadoc.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.diadoc.ru/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Digital Loyalty Cards for Cafés (Stamp Me archetype)": {
+   "url": "https://www.stampme.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.stampme.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Digital Product Storefront (Gumroad archetype)": {
+   "url": "https://gumroad.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://gumroad.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "DoNotPay": {
+   "url": "https://donotpay.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://donotpay.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Doctolib": {
+   "url": "https://www.doctolib.fr",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.doctolib.fr/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Dodo Pizza": {
+   "url": "https://dodopizza.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://dodopizza.ru/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Dollar Shave Club": {
+   "url": "https://www.dollarshaveclub.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://us.dollarshaveclub.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Domestika": {
+   "url": "https://www.domestika.org",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.domestika.org/en",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Doodle": {
+   "url": "https://doodle.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://doodle.com/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Dorik": {
+   "url": "https://dorik.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://dorik.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Driving School Management & Theory App": {
+   "url": "https://www.drivingschoolsoftware.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.drivingschoolsoftware.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Dubsado": {
+   "url": "https://www.dubsado.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.dubsado.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Duolingo": {
+   "url": "https://www.duolingo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.duolingo.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    }
+   ]
+  },
+  "E-signature with Bank Identity (DocuSign archetype)": {
+   "url": "https://www.docusign.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.docusign.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "ELSA Speak": {
+   "url": "https://elsaspeak.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://elsaspeak.com/en",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Ecwid": {
+   "url": "https://www.ecwid.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.ecwid.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    }
+   ]
+  },
+  "Eden Life": {
+   "url": "https://ouredenlife.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://ouredenlife.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Elementor": {
+   "url": "https://elementor.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://elementor.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "ElevenLabs": {
+   "url": "https://elevenlabs.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://elevenlabs.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "English Tax Returns for Expats in Czechia (TaxScouts archetype)": {
+   "url": "https://taxscouts.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://taxfix.com/en-uk/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Envato": {
+   "url": "https://www.envato.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://elements.envato.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Epidemic Sound": {
+   "url": "https://www.epidemicsound.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.epidemicsound.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Etsy": {
+   "url": "https://www.etsy.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.etsy.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Event Ticketing for Small Organisers (Eventbrite archetype)": {
+   "url": "https://www.eventbrite.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.eventbrite.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Evotor (Эвотор)": {
+   "url": "https://evotor.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://evotor.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Exploding Topics": {
+   "url": "https://explodingtopics.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://explodingtopics.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Factorial": {
+   "url": "https://factorialhr.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://factorialhr.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "FareHarbor": {
+   "url": "https://fareharbor.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://fareharbor.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "cs_path",
+     "value": "https://fareharbor.com/cs/ (cs)"
+    }
+   ]
+  },
+  "Farewill": {
+   "url": "https://farewill.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://farewill.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Fastmail": {
+   "url": "https://www.fastmail.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.fastmail.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Fathom Analytics": {
+   "url": "https://usefathom.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://usefathom.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Fever": {
+   "url": "https://feverup.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://feverup.com/en",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    }
+   ]
+  },
+  "Fitness & Yoga Studio Software (Mindbody archetype)": {
+   "url": "https://www.mindbodyonline.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.mindbodyonline.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Fiverr": {
+   "url": "https://www.fiverr.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.fiverr.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Fixflo": {
+   "url": "https://www.fixflo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.fixflo.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Flipdish": {
+   "url": "https://www.flipdish.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.flipdish.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Flo": {
+   "url": "https://flo.health",
+   "checked_at": "2026-09-26",
+   "final_url": "https://flo.health/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Flowwow": {
+   "url": "https://flowwow.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://flowwow.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Follow Up Boss": {
+   "url": "https://www.followupboss.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.followupboss.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Foodics": {
+   "url": "https://www.foodics.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.foodics.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Foxford (Фоксфорд)": {
+   "url": "https://foxford.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://foxford.ru/",
+   "http_status": 401,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_401"
+  },
+  "Fractory": {
+   "url": "https://fractory.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://fractory.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Framer": {
+   "url": "https://www.framer.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.framer.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Frank Body": {
+   "url": "https://www.frankbody.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://frankbody.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "FreeAgent": {
+   "url": "https://www.freeagent.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.freeagent.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Freed": {
+   "url": "https://www.getfreed.ai",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.getfreed.ai/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Freelancer Invoicing (Invoice Ninja archetype)": {
+   "url": "https://invoiceninja.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://invoiceninja.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Freeletics": {
+   "url": "https://www.freeletics.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.freeletics.com/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "FreshBooks": {
+   "url": "https://www.freshbooks.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.freshbooks.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Freshworks": {
+   "url": "https://www.freshworks.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.freshworks.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "GDPR & Legal Docs Generator (iubenda archetype)": {
+   "url": "https://www.iubenda.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.iubenda.com/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Gamma": {
+   "url": "https://gamma.app",
+   "checked_at": "2026-09-26",
+   "final_url": "https://gamma.app/cs",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    },
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs\""
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://gamma.app/cs"
+    }
+   ]
+  },
+  "GetCourse": {
+   "url": "https://getcourse.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://getcourse.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "GetSmarter": {
+   "url": "https://www.getsmarter.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.getsmarter.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Gift Cards & Vouchers for E-shops (Rise.ai archetype)": {
+   "url": "https://rise.ai",
+   "checked_at": "2026-09-26",
+   "final_url": "https://rise.ai/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Glofox": {
+   "url": "https://www.glofox.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.glofox.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "GoCardless": {
+   "url": "https://gocardless.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://gocardless.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Going (Scott's Cheap Flights)": {
+   "url": "https://www.going.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.going.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Gorgias": {
+   "url": "https://www.gorgias.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.gorgias.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Grammarly": {
+   "url": "https://www.grammarly.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.grammarly.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Grover": {
+   "url": "https://www.grover.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.grover.com/de-de",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Guesthouse Booking Engine & Channel Manager (Little Hotelier archetype)": {
+   "url": "https://www.littlehotelier.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.littlehotelier.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Guesty": {
+   "url": "https://www.guesty.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.guesty.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Gymshark": {
+   "url": "https://www.gymshark.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.gymshark.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Hahow": {
+   "url": "https://hahow.in",
+   "checked_at": "2026-09-26",
+   "final_url": "https://hahow.in/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "HeadshotPro": {
+   "url": "https://www.headshotpro.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.headshotpro.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Headspace": {
+   "url": "https://www.headspace.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.headspace.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "HealthifyMe": {
+   "url": "https://www.healthifyme.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.healthifyme.com/in/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "HelloFresh": {
+   "url": "https://www.hellofresh.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.hellofresh.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Help Scout": {
+   "url": "https://www.helpscout.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.helpscout.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Hipcamp": {
+   "url": "https://www.hipcamp.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.hipcamp.com/en-GB",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Hnry": {
+   "url": "https://hnry.co.nz",
+   "checked_at": "2026-09-26",
+   "final_url": "https://hnry.co.nz/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Home Cleaning Marketplace (Helpling archetype)": {
+   "url": "https://www.helpling.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.helpling.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Home-care & Senior Companion Matching (Honor archetype)": {
+   "url": "https://www.joinhonor.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.honorcare.com:443/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "HoneyBook": {
+   "url": "https://www.honeybook.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.honeybook.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Hostinger": {
+   "url": "https://www.hostinger.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.hostinger.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    }
+   ]
+  },
+  "Hotjar": {
+   "url": "https://www.hotjar.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://contentsquare.com/hotjar/?utm_campaign=exp__hj_hp_redirection",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Hotmart": {
+   "url": "https://hotmart.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://hotmart.com/en",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Housecall Pro": {
+   "url": "https://www.housecallpro.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.housecallpro.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Huel": {
+   "url": "https://huel.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://cz.huel.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "price_czk",
+     "value": "1 370 Kč"
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://cz.huel.com/"
+    }
+   ]
+  },
+  "Hunter": {
+   "url": "https://hunter.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://hunter.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Huntflow (Хантфлоу)": {
+   "url": "https://huntflow.ru",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "robots_disallow"
+  },
+  "InVideo": {
+   "url": "https://invideo.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://invideo.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Influencer Marketplace (Collabstr archetype)": {
+   "url": "https://collabstr.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://collabstr.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Instabug": {
+   "url": "https://www.instabug.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.luciq.ai:443/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Instatus": {
+   "url": "https://instatus.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://instatus.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    }
+   ]
+  },
+  "Interior AI": {
+   "url": "https://interiorai.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://interiorai.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Invitro": {
+   "url": "https://www.invitro.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.invitro.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Jane App": {
+   "url": "https://jane.app",
+   "checked_at": "2026-09-26",
+   "final_url": "https://jane.app/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Jasper": {
+   "url": "https://www.jasper.ai",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.jasper.ai/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Jivo": {
+   "url": "https://www.jivo.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.jivo.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Jobber": {
+   "url": "https://getjobber.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.getjobber.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Jooble": {
+   "url": "https://jooble.org",
+   "checked_at": "2026-09-26",
+   "final_url": "https://jooble.org/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Jotform": {
+   "url": "https://www.jotform.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.jotform.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Judge.me": {
+   "url": "https://judge.me",
+   "checked_at": "2026-09-26",
+   "final_url": "https://judge.me/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Juro": {
+   "url": "https://juro.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://juro.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Justlife": {
+   "url": "https://www.justlife.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.justlife.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Kahoot!": {
+   "url": "https://kahoot.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://kahoot.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Kajabi": {
+   "url": "https://kajabi.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.kajabi.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Kalibrr": {
+   "url": "https://www.kalibrr.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.kalibrr.com/home",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Karrot (Danggeun)": {
+   "url": "https://www.karrotmarket.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.karrotmarket.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Katana": {
+   "url": "https://katanamrp.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://katanamrp.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "KeyCRM": {
+   "url": "https://keycrm.app",
+   "checked_at": "2026-09-26",
+   "final_url": "https://keycrm.app/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Khatabook": {
+   "url": "https://khatabook.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://khatabook.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Kickstarter": {
+   "url": "https://www.kickstarter.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.kickstarter.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Kids' Clubs & Camps Booking (ActivityHero archetype)": {
+   "url": "https://www.activityhero.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.activityhero.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Kit (formerly ConvertKit)": {
+   "url": "https://kit.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://kit.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Kitabisa": {
+   "url": "https://kitabisa.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://kitabisa.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Kitopi": {
+   "url": "https://www.kitopi.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.kitopi.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Klaviyo": {
+   "url": "https://www.klaviyo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.klaviyo.com/uk/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Knopka (Кнопка)": {
+   "url": "https://knopka.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://knopka.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Komoot": {
+   "url": "https://www.komoot.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.komoot.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    }
+   ]
+  },
+  "Kontur.Elba (Контур.Эльба)": {
+   "url": "https://kontur.ru/elba",
+   "checked_at": "2026-09-26",
+   "final_url": "https://kontur.ru/elba",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Kopi Kenangan": {
+   "url": "https://kopikenangan.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://kopikenangan.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Krisp": {
+   "url": "https://krisp.ai",
+   "checked_at": "2026-09-26",
+   "final_url": "https://krisp.ai/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Kukhnya na Rayone (Кухня на районе)": {
+   "url": "",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "no_url"
+  },
+  "Kumon": {
+   "url": "https://www.kumon.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.kumon.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Kurly": {
+   "url": "https://www.kurly.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.kurly.com/main",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "La Belle Assiette": {
+   "url": "https://www.labelleassiette.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://socolivetvttbdh.tv/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Laba": {
+   "url": "https://laba.ua",
+   "checked_at": "2026-09-26",
+   "final_url": "https://laba.ua/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Lalamove": {
+   "url": "https://www.lalamove.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.lalamove.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Lalilo": {
+   "url": "https://lalilo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.lalilo.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Landlord Toolkit (Landlord Studio archetype)": {
+   "url": "https://www.landlordstudio.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.landlordstudio.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Laundry Pickup & Delivery (Rinse archetype)": {
+   "url": "https://www.rinse.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.rinse.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "LawnStarter": {
+   "url": "https://www.lawnstarter.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.lawnstarter.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "LegalZoom": {
+   "url": "https://www.legalzoom.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.legalzoom.com/country/cz",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Lemon Squeezy": {
+   "url": "https://www.lemonsqueezy.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.lemonsqueezy.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Lenskart": {
+   "url": "https://www.lenskart.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.lenskart.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Lingokids": {
+   "url": "https://lingokids.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://lingokids.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Lingvist": {
+   "url": "https://lingvist.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://lingvist.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Linktree": {
+   "url": "https://linktr.ee",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "robots_disallow"
+  },
+  "Liquid Death": {
+   "url": "https://liquiddeath.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://liquiddeath.com/en-cz",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "LitRes (ЛитРес)": {
+   "url": "https://www.litres.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.litres.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Live-stream shopping for small brands (Taobao Live archetype)": {
+   "url": "",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "no_url"
+  },
+  "LiveChat (Text)": {
+   "url": "https://www.livechat.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.livechat.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Livestorm": {
+   "url": "https://livestorm.co",
+   "checked_at": "2026-09-26",
+   "final_url": "https://livestorm.co/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Local Freelance Marketplace (Upwork archetype)": {
+   "url": "https://www.upwork.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.upwork.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Local SEO for Google & Seznam (BrightLocal archetype)": {
+   "url": "https://www.brightlocal.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.brightlocal.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Lodgify": {
+   "url": "https://www.lodgify.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.lodgify.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Loom": {
+   "url": "https://www.loom.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.loom.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Lottie": {
+   "url": "https://lottie.org",
+   "checked_at": "2026-09-26",
+   "final_url": "https://lottie.org/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Lovable": {
+   "url": "https://lovable.dev",
+   "checked_at": "2026-09-26",
+   "final_url": "https://lovable.dev/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Luckin Coffee": {
+   "url": "https://www.luckincoffee.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.luckincoffee.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "M-KOPA": {
+   "url": "https://www.m-kopa.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.m-kopa.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "MPStats": {
+   "url": "https://mpstats.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://mpstats.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "MacPaw": {
+   "url": "https://macpaw.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://macpaw.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Mailchimp": {
+   "url": "https://mailchimp.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://mailchimp.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "MailerLite": {
+   "url": "https://www.mailerlite.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.mailerlite.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Makerist": {
+   "url": "https://www.makerist.de",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "SSLError"
+  },
+  "Mangools": {
+   "url": "https://mangools.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://mangools.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Marketplace Connector: Allegro, Kaufland, eMAG (ChannelEngine archetype)": {
+   "url": "https://www.channelengine.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.channelengine.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Marketplace fulfilment operator (Wildberries/Ozon sellers)": {
+   "url": "",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "no_url"
+  },
+  "Meal-Prep Subscription (krabičková dieta)": {
+   "url": "https://www.factor75.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.factor75.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Meesho": {
+   "url": "https://www.meesho.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.meesho.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Meetup": {
+   "url": "https://www.meetup.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.meetup.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Melhor Envio": {
+   "url": "https://melhorenvio.com.br",
+   "checked_at": "2026-09-26",
+   "final_url": "https://melhorenvio.com.br/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Mentimeter": {
+   "url": "https://www.mentimeter.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.mentimeter.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Mercari": {
+   "url": "https://www.mercari.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.mercari.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Mid-term Rentals for Students & Expats (HousingAnywhere archetype)": {
+   "url": "https://housinganywhere.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://housinganywhere.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Misfits Market": {
+   "url": "https://www.misfitsmarket.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.misfitsmarket.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Mobile Car Detailing Booking": {
+   "url": "https://www.getspiffy.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.getspiffy.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Money Fellows": {
+   "url": "https://www.moneyfellows.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.moneyfellows.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Moo": {
+   "url": "https://www.moo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.moo.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Moonpig": {
+   "url": "https://www.moonpig.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.moonpig.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "MoySklad (МойСклад)": {
+   "url": "https://www.moysklad.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.moysklad.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Mumsnet": {
+   "url": "https://www.mumsnet.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.mumsnet.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "MyGate": {
+   "url": "https://mygate.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://mygate.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Mynewsdesk": {
+   "url": "https://www.mynewsdesk.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.mynewsdesk.com/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Newsletter Sponsorship Marketplace (Paved archetype)": {
+   "url": "https://www.paved.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.paved.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Nextdoor": {
+   "url": "https://nextdoor.com",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "robots_disallow"
+  },
+  "Nicereply": {
+   "url": "https://www.nicereply.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.nicereply.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "NoBroker": {
+   "url": "https://www.nobroker.in",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.nobroker.in/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Nomad List": {
+   "url": "https://nomadlist.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://nomads.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Nuvemshop (Tiendanube)": {
+   "url": "https://www.nuvemshop.com.br",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.nuvemshop.com.br/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Obilet": {
+   "url": "https://www.obilet.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.obilet.com/cs",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    },
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs-CZ\""
+    },
+    {
+     "signal": "lang_picker_cs",
+     "value": "Čeština"
+    },
+    {
+     "signal": "price_czk",
+     "value": "328 Kč"
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://www.obilet.com/cs"
+    }
+   ]
+  },
+  "Obsidian": {
+   "url": "https://obsidian.md",
+   "checked_at": "2026-09-26",
+   "final_url": "https://obsidian.md/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Odoo": {
+   "url": "https://www.odoo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.odoo.com/cs_CZ",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    },
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs-CZ\""
+    },
+    {
+     "signal": "lang_picker_cs",
+     "value": "Čeština"
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://www.odoo.com/cs_CZ"
+    }
+   ]
+  },
+  "Office Catering Marketplace (ezCater archetype)": {
+   "url": "https://www.ezcater.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.ezcater.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Oh Dear": {
+   "url": "https://ohdear.app",
+   "checked_at": "2026-09-26",
+   "final_url": "https://ohdear.app/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Ohouse": {
+   "url": "https://ohou.se",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "robots_disallow"
+  },
+  "Olio": {
+   "url": "https://olioapp.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://olioapp.com/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Olist": {
+   "url": "https://olist.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://olist.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Omie": {
+   "url": "https://www.omie.com.br",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.omie.com.br/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Omnisend": {
+   "url": "https://www.omnisend.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.omnisend.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Online Table Reservations (OpenTable archetype)": {
+   "url": "https://www.opentable.com",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "robots_disallow"
+  },
+  "Online s.r.o. Formation & Virtual Office (Stripe Atlas archetype)": {
+   "url": "https://stripe.com/atlas",
+   "checked_at": "2026-09-26",
+   "final_url": "https://stripe.com/en-cz/atlas",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "OpenClassrooms": {
+   "url": "https://openclassrooms.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://openclassrooms.com/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "OpenRent": {
+   "url": "https://www.openrent.co.uk",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.openrent.co.uk/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Opus Clip": {
+   "url": "https://www.opus.pro",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.opus.pro/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Ornikar": {
+   "url": "https://www.ornikar.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.ornikar.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Otsimo": {
+   "url": "https://otsimo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://otsimo.com/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Oura": {
+   "url": "https://ouraring.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://ouraring.com/cs",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    },
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs\""
+    },
+    {
+     "signal": "lang_picker_cs",
+     "value": "Čeština"
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://ouraring.com/cs"
+    }
+   ]
+  },
+  "Outdoorsy": {
+   "url": "https://www.outdoorsy.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.outdoorsy.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Outschool": {
+   "url": "https://outschool.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://outschool.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Packhelp": {
+   "url": "https://packhelp.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://packhelp.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Pact Coffee": {
+   "url": "https://www.pactcoffee.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.pactcoffee.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Paddle": {
+   "url": "https://www.paddle.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.paddle.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Paid Community Platform (Skool archetype)": {
+   "url": "https://www.skool.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.skool.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Paid Memberships for Creators (Patreon archetype)": {
+   "url": "https://www.patreon.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.patreon.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "PandaDoc": {
+   "url": "https://www.pandadoc.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.pandadoc.com/",
+   "http_status": 429,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_429"
+  },
+  "Patch Plants": {
+   "url": "https://www.patchplants.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.patchplants.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Payroll for Micro-businesses (Gusto archetype)": {
+   "url": "https://gusto.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://gusto.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Peer-to-peer Equipment Rental (Fat Llama archetype)": {
+   "url": "https://fatllama.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://hygglo.com/uk",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Pet Sitting & Dog Walking Marketplace (Rover archetype)": {
+   "url": "https://www.rover.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.rover.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Photo AI": {
+   "url": "https://photoai.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://photoai.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Photomath": {
+   "url": "https://photomath.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://photomath.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Photoroom": {
+   "url": "https://www.photoroom.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.photoroom.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Physics Wallah": {
+   "url": "https://www.pw.live",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.pw.live/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "PicsArt": {
+   "url": "https://picsart.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://picsart.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    }
+   ]
+  },
+  "Pinkoi": {
+   "url": "https://www.pinkoi.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.pinkoi.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Pipedrive": {
+   "url": "https://www.pipedrive.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.pipedrive.com/cs",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    },
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs\""
+    },
+    {
+     "signal": "lang_picker_cs",
+     "value": "Čeština"
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://www.pipedrive.com/cs"
+    }
+   ]
+  },
+  "Pipefy": {
+   "url": "https://www.pipefy.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.pipefy.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "PlanRadar": {
+   "url": "https://www.planradar.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.planradar.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs-cz\""
+    }
+   ]
+  },
+  "Planable": {
+   "url": "https://planable.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://planable.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Planday": {
+   "url": "https://www.planday.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.planday.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Platzi": {
+   "url": "https://platzi.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://platzi.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Plausible Analytics": {
+   "url": "https://plausible.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://plausible.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Pocket FM": {
+   "url": "https://www.pocketfm.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://pocketfm.com",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Podia": {
+   "url": "https://www.podia.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.podia.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "PolicyBazaar": {
+   "url": "https://www.policybazaar.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.policybazaar.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Pop Mart": {
+   "url": "https://www.popmart.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.popmart.com/de",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Post-purchase Upsell App (ReConvert archetype)": {
+   "url": "https://www.reconvert.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://upsell.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Poster POS": {
+   "url": "https://joinposter.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://joinposter.com/en",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Prezi": {
+   "url": "https://prezi.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://prezi.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "PriceLabs": {
+   "url": "https://hello.pricelabs.co",
+   "checked_at": "2026-09-26",
+   "final_url": "https://hello.pricelabs.co/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Printful": {
+   "url": "https://www.printful.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.printful.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Private Parking Space Sharing (JustPark archetype)": {
+   "url": "https://www.justpark.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.justpark.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Privy": {
+   "url": "https://www.privy.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.privy.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Product Feed Manager (DataFeedWatch archetype)": {
+   "url": "https://www.datafeedwatch.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.datafeedwatch.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Profi.ru": {
+   "url": "https://profi.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://profi.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Public Tender Alerts for SMEs (GovSpend archetype)": {
+   "url": "https://govspend.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://govspend.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "QR Table Ordering & Pay (Sunday/Mr Yum archetype)": {
+   "url": "https://sundayapp.com",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "robots_disallow"
+  },
+  "QuintoAndar": {
+   "url": "https://www.quintoandar.com.br",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.quintoandar.com.br/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "RD Station": {
+   "url": "https://www.rdstation.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.rdstation.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Raksul": {
+   "url": "https://raksul.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://raksul.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Readdle": {
+   "url": "https://readdle.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://readdle.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Rebel Foods": {
+   "url": "https://www.rebelfoods.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.rebelfoods.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Receipt & Expense Capture (Dext archetype)": {
+   "url": "https://dext.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://dext.com/en",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Refurbed": {
+   "url": "https://www.refurbed.at",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.refurbed.at/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs-cz\""
+    },
+    {
+     "signal": "link_cz_domain",
+     "value": "https://www.refurbed.cz/"
+    }
+   ]
+  },
+  "RemoteOK": {
+   "url": "https://remoteok.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://remoteok.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Rent the Runway": {
+   "url": "https://www.renttherunway.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.renttherunway.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Restaurant Inventory & Food-cost Control (MarketMan archetype)": {
+   "url": "https://www.marketman.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.marketman.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Retail Rocket": {
+   "url": "https://retailrocket.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://retailrocket.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Returns & Complaints Portal (Loop Returns archetype)": {
+   "url": "https://www.loopreturns.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.loopreturns.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Review Request Automation (NiceJob archetype)": {
+   "url": "https://get.nicejob.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://get.nicejob.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Rewardful": {
+   "url": "https://www.rewardful.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.rewardful.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Riverside": {
+   "url": "https://riverside.fm",
+   "checked_at": "2026-09-26",
+   "final_url": "https://riverside.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Rocket Money": {
+   "url": "https://www.rocketmoney.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.rocketmoney.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Roistat": {
+   "url": "https://roistat.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://roistat.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "SMS/WhatsApp Cart Recovery (Postscript archetype)": {
+   "url": "https://postscript.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://postscript.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "SVJ Building Management Portal (Buildium archetype)": {
+   "url": "https://www.buildium.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.buildium.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "SafetyCulture": {
+   "url": "https://safetyculture.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://mitti.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Salebot": {
+   "url": "https://salebot.pro",
+   "checked_at": "2026-09-26",
+   "final_url": "https://salebot.pro/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Salon Booking with No-show Deposits (Fresha archetype)": {
+   "url": "https://www.fresha.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.fresha.com/cs",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    },
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs-CZ\""
+    },
+    {
+     "signal": "lang_picker_cs",
+     "value": "Čeština"
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://www.fresha.com/cs"
+    }
+   ]
+  },
+  "SavvyCal": {
+   "url": "https://savvycal.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://savvycal.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Screen Studio": {
+   "url": "https://www.screen.studio",
+   "checked_at": "2026-09-26",
+   "final_url": "https://screen.studio/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "ScreenshotOne": {
+   "url": "https://screenshotone.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://screenshotone.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Scribbr": {
+   "url": "https://www.scribbr.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.scribbr.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Scrimba": {
+   "url": "https://scrimba.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://scrimba.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "SendPulse": {
+   "url": "https://sendpulse.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://sendpulse.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Sendy": {
+   "url": "https://sendy.co",
+   "checked_at": "2026-09-26",
+   "final_url": "https://sendy.co/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Seneca Learning": {
+   "url": "https://senecalearning.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://senecalearning.com/en-gb/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Senja": {
+   "url": "https://senja.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://senja.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Senler": {
+   "url": "https://senler.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://senler.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Shift Scheduling for Hourly Staff (Deputy archetype)": {
+   "url": "https://www.deputy.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.deputy.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "ShipFast": {
+   "url": "https://shipfa.st",
+   "checked_at": "2026-09-26",
+   "final_url": "https://shipfa.st/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Shipping Label & Carrier Hub (ShipStation archetype)": {
+   "url": "https://www.shipstation.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.shipstation.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "ShopBack": {
+   "url": "https://www.shopback.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.shopback.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Shopify": {
+   "url": "https://www.shopify.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.shopify.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    },
+    {
+     "signal": "lang_picker_cs",
+     "value": "Čeština"
+    }
+   ]
+  },
+  "Short-term Rental Host Automation (Hospitable archetype)": {
+   "url": "https://hospitable.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://hospitable.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Simple Analytics": {
+   "url": "https://www.simpleanalytics.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.simpleanalytics.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "SimplePractice": {
+   "url": "https://www.simplepractice.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.simplepractice.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Sklik + Google Ads Client Reporting (AgencyAnalytics archetype)": {
+   "url": "https://agencyanalytics.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://agencyanalytics.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Skyeng": {
+   "url": "https://skyeng.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://skyeng.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "SleekFlow": {
+   "url": "https://sleekflow.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://sleekflow.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Slice": {
+   "url": "https://slicelife.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://slicelife.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Slido": {
+   "url": "https://www.slido.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.slido.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Smallpdf": {
+   "url": "https://smallpdf.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://smallpdf.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "SmartHR": {
+   "url": "https://smarthr.jp",
+   "checked_at": "2026-09-26",
+   "final_url": "https://smarthr.jp/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Smile.io": {
+   "url": "https://smile.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://smile.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Smol": {
+   "url": "https://smolproducts.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://smol.com/uk",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Softr": {
+   "url": "https://www.softr.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.softr.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Solar Staff": {
+   "url": "https://solar-staff.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://solarstaff.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "SoloLearn": {
+   "url": "https://www.sololearn.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.sololearn.com/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Soomgo": {
+   "url": "https://soomgo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://soomgo.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Spacemarket": {
+   "url": "https://www.spacemarket.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.spacemarket.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Spellbook": {
+   "url": "https://www.spellbook.legal",
+   "checked_at": "2026-09-26",
+   "final_url": "https://spellbook.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Spond": {
+   "url": "https://www.spond.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.spond.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Starter Story": {
+   "url": "https://www.starterstory.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.starterstory.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Stitch Fix": {
+   "url": "https://www.stitchfix.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.stitchfix.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Strava": {
+   "url": "https://www.strava.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.strava.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    },
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs\""
+    }
+   ]
+  },
+  "StreamYard": {
+   "url": "https://streamyard.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://streamyard.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Studocu": {
+   "url": "https://www.studocu.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.studocu.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Subscriptions for E-shops (Recharge archetype)": {
+   "url": "https://rechargepayments.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://getrecharge.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Substack": {
+   "url": "https://substack.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://substack.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "SuperFaktúra": {
+   "url": "https://www.superfaktura.sk",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.superfaktura.sk/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Supermetrics": {
+   "url": "https://supermetrics.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://supermetrics.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Supplier Risk & VAT-Reliability Monitoring (Creditsafe archetype)": {
+   "url": "https://www.creditsafe.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.creditsafe.com/cs/en.html",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Surplus Food Marketplace (Too Good To Go archetype)": {
+   "url": "https://www.toogoodtogo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.toogoodtogo.com/",
+   "http_status": 429,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_429"
+  },
+  "Swapfiets": {
+   "url": "https://swapfiets.nl",
+   "checked_at": "2026-09-26",
+   "final_url": "https://swapfiets.nl/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "SweepSouth": {
+   "url": "https://sweepsouth.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://sweepsouth.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Swile": {
+   "url": "https://www.swile.co",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.swile.co/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Synthesia": {
+   "url": "https://www.synthesia.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.synthesia.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Tailor Brands": {
+   "url": "https://www.tailorbrands.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.tailorbrands.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Tails.com": {
+   "url": "https://tails.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://tails.com/gb/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Tailwind Labs (Tailwind UI)": {
+   "url": "https://tailwindui.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://tailwindcss.com/plus/login",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Tally": {
+   "url": "https://tally.so",
+   "checked_at": "2026-09-26",
+   "final_url": "https://tally.so/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Tandem": {
+   "url": "https://tandem.net",
+   "checked_at": "2026-09-26",
+   "final_url": "https://tandem.net/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Taplink": {
+   "url": "https://taplink.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://taplink.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "TaskRabbit": {
+   "url": "https://www.taskrabbit.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.taskrabbit.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Taxfix": {
+   "url": "https://taxfix.de",
+   "checked_at": "2026-09-26",
+   "final_url": "https://taxfix.de/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Teachable": {
+   "url": "https://teachable.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.teachable.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Teamleader": {
+   "url": "https://www.teamleader.eu",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.teamleader.eu/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Teamwork": {
+   "url": "https://www.teamwork.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.teamwork.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Telega.in": {
+   "url": "https://telega.in",
+   "checked_at": "2026-09-26",
+   "final_url": "https://telega.in/tmgrdfrend/showcaptcha?cc=1&form-fb-hint=1.150&mt=C56EFC731561BCA69F66D7586B66FACA6A941D39D4291112AAD46B274E2FD02121197D29304471B302212FE6DF86BE09013A52B0EEE36C313F6DD8D11F6E6D9F7823C5DC2BBD65C3642725EE52301CC9E59C30DF19C603976B438D352ECE008B7FB8232598EA9784F7E5ABEAB8F8D734779D1F33A9D5317AA09B1D5AF6EDFC2828EDD12151757DE6AD520B5289951CFCB519A11AA88D6EF662D4868D9BFE24920905237CF8C6F17BA32F55DCD13FCECD81BCC05B01F8DB45BB6C859BDAF2F43EC2F508917BFC8DB4CCD1708659EC97CA97F1EABF78D09B2B0B19ED89A267751AF775CADC370C6DDEAADC49F7B3AEACDD24A86375&retpath=aHR0cHM6Ly90ZWxlZ2EuaW4v_3a21d64073f7c9969782990b46ef083a&t=7%252F1790445808%252Fbcda95f729a9169596b5cf479749ea0b&u=9474319811957359207&s=f9a0a8e01dd267811bd5d8be5bc3686d",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Things (Cultured Code)": {
+   "url": "https://culturedcode.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://culturedcode.com/things/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Thinkific": {
+   "url": "https://www.thinkific.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.thinkific.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Thriva": {
+   "url": "https://thriva.co",
+   "checked_at": "2026-09-26",
+   "final_url": "https://thriva.co/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Thumbtack": {
+   "url": "https://www.thumbtack.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.thumbtack.com/",
+   "http_status": 202,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Tidio": {
+   "url": "https://www.tidio.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.tidio.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Tilda": {
+   "url": "https://tilda.cc",
+   "checked_at": "2026-09-26",
+   "final_url": "https://tilda.cc/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Timee": {
+   "url": "https://timee.co.jp",
+   "checked_at": "2026-09-26",
+   "final_url": "https://timee.co.jp/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Timeleft": {
+   "url": "https://timeleft.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://timeleft.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Toast": {
+   "url": "https://pos.toasttab.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://pos.toasttab.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Toptal": {
+   "url": "https://www.toptal.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.toptal.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Tractive": {
+   "url": "https://tractive.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://tractive.com/cs/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    },
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs-CZ\""
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://tractive.com/cs/"
+    }
+   ]
+  },
+  "Tradesperson Quote Marketplace (Checkatrade archetype)": {
+   "url": "https://www.checkatrade.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.checkatrade.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Transistor.fm": {
+   "url": "https://transistor.fm",
+   "checked_at": "2026-09-26",
+   "final_url": "https://transistor.fm/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Travelline": {
+   "url": "https://www.travelline.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.travelline.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Treatwell": {
+   "url": "https://www.treatwell.co.uk",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.treatwell.co.uk/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Treedom": {
+   "url": "https://www.treedom.net",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.treedom.net/en",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Trustpilot": {
+   "url": "https://www.trustpilot.com",
+   "checked_at": "2026-09-26",
+   "status": "unknown",
+   "evidence": [],
+   "error": "robots_disallow"
+  },
+  "Tuple": {
+   "url": "https://tuple.app",
+   "checked_at": "2026-09-26",
+   "final_url": "https://tuple.app/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Turo": {
+   "url": "https://turo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://turo.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Tutoring Marketplace (Preply archetype)": {
+   "url": "https://preply.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://preply.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Twinkl": {
+   "url": "https://www.twinkl.co.uk",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.twinkl.co.uk/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Tylko": {
+   "url": "https://tylko.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://tylko.com/en-cz",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Typeform": {
+   "url": "https://www.typeform.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.typeform.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Typefully": {
+   "url": "https://typefully.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://typefully.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "TypingMind": {
+   "url": "https://www.typingmind.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.typingmind.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Uchi.ru (Учи.ру)": {
+   "url": "https://uchi.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://uchi.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Ulule": {
+   "url": "https://www.ulule.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.ulule.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Unisender": {
+   "url": "https://www.unisender.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.unisender.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Urban Company": {
+   "url": "https://www.urbancompany.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.urbancompany.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "UserGuiding": {
+   "url": "https://userguiding.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://userguiding.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Userlist": {
+   "url": "https://userlist.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://userlist.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "VWO": {
+   "url": "https://vwo.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://wingify.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Vinted": {
+   "url": "https://www.vinted.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.vinted.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs-CZ\""
+    },
+    {
+     "signal": "link_cz_domain",
+     "value": "https://www.vinted.cz/"
+    }
+   ]
+  },
+  "Vivino": {
+   "url": "https://www.vivino.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.vivino.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "VkusVill (ВкусВилл)": {
+   "url": "https://vkusvill.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://vkusvill.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Warby Parker": {
+   "url": "https://www.warbyparker.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.warbyparker.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Wave": {
+   "url": "https://www.waveapps.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.waveapps.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "WeBuyAnyCar": {
+   "url": "https://www.webuyanycar.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.webuyanycar.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "WeTransfer": {
+   "url": "https://wetransfer.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://wetransfer.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Web Accessibility Checker (EAA compliance)": {
+   "url": "https://www.silktide.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://silktide.com",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Webflow": {
+   "url": "https://webflow.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://webflow.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Website Translation Layer (Weglot archetype)": {
+   "url": "https://www.weglot.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.weglot.com/",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "hreflang_cs",
+     "value": "hreflang=\"cs\""
+    },
+    {
+     "signal": "lang_picker_cs",
+     "value": "Čeština"
+    }
+   ]
+  },
+  "Wecasa": {
+   "url": "https://www.wecasa.fr",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.wecasa.fr/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Wedding Website & RSVP (Joy archetype)": {
+   "url": "https://withjoy.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://withjoy.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Wellhub (Gympass)": {
+   "url": "https://wellhub.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://wellhub.com/en-us/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Who Gives A Crap": {
+   "url": "https://www.whogivesacrap.org",
+   "checked_at": "2026-09-26",
+   "final_url": "https://eu.whogivesacrap.org/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Wild": {
+   "url": "https://www.wearewild.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://wearewild.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Withlocals": {
+   "url": "https://www.withlocals.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.withlocals.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Wongnai": {
+   "url": "https://www.wongnai.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.wongnai.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Workable": {
+   "url": "https://www.workable.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.workable.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Workana": {
+   "url": "https://www.workana.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.workana.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Xero": {
+   "url": "https://www.xero.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.xero.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "YCLIENTS": {
+   "url": "https://www.yclients.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.yclients.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "YNAB": {
+   "url": "https://www.ynab.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.ynab.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Yoco": {
+   "url": "https://www.yoco.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.yoco.com/za/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "YouCan": {
+   "url": "https://youcan.shop",
+   "checked_at": "2026-09-26",
+   "final_url": "https://youcan.shop/en",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Youzan": {
+   "url": "https://www.youzan.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.youzan.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Yuka": {
+   "url": "https://yuka.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://yuka.io/en/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Zapier": {
+   "url": "https://zapier.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://zapier.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Zen Educate": {
+   "url": "https://www.zeneducate.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.zeneducate.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Zenjob": {
+   "url": "https://www.zenjob.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.zenjob.com/de/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "Zocdoc": {
+   "url": "https://www.zocdoc.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.zocdoc.com/",
+   "http_status": 403,
+   "status": "unknown",
+   "evidence": [],
+   "error": "http_403"
+  },
+  "Zoho": {
+   "url": "https://www.zoho.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.zoho.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "amoCRM (Kommo)": {
+   "url": "https://www.amocrm.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.amocrm.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "freee": {
+   "url": "https://www.freee.co.jp",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.freee.co.jp/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "iCHEF": {
+   "url": "https://www.ichefpos.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.ichefpos.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "iSpring": {
+   "url": "https://www.ispring.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.ispring.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "iiko": {
+   "url": "https://iiko.ru",
+   "checked_at": "2026-09-26",
+   "final_url": "https://iiko.ru/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "inFakt": {
+   "url": "https://www.infakt.pl",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.infakt.pl/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "lemlist": {
+   "url": "https://www.lemlist.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.lemlist.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "mymuesli": {
+   "url": "https://www.mymuesli.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.mymuesli.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "n8n": {
+   "url": "https://n8n.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://n8n.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "note": {
+   "url": "https://note.com",
+   "checked_at": "2026-09-26",
+   "final_url": "https://note.com/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "remove.bg": {
+   "url": "https://www.remove.bg",
+   "checked_at": "2026-09-26",
+   "final_url": "https://www.remove.bg/cs",
+   "http_status": 200,
+   "status": "yes",
+   "evidence": [
+    {
+     "signal": "html_lang_cs",
+     "value": "lang=\"cs\""
+    },
+    {
+     "signal": "lang_picker_cs",
+     "value": "Čeština"
+    },
+    {
+     "signal": "locale_url_cs",
+     "value": "https://www.remove.bg/cs"
+    }
+   ]
+  },
+  "respond.io": {
+   "url": "https://respond.io",
+   "checked_at": "2026-09-26",
+   "final_url": "https://respond.io/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  },
+  "sevDesk": {
+   "url": "https://sevdesk.de",
+   "checked_at": "2026-09-26",
+   "final_url": "https://sevdesk.de/",
+   "http_status": 200,
+   "status": "unknown",
+   "evidence": []
+  }
+ }
+}
