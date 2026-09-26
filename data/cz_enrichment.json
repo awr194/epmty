@@ -167,6 +167,32 @@
       "target_nace": [
         "9602",
         "9604"
+      ],
+      "local_incumbents": [
+        {
+          "name": "Reservio",
+          "strength": 2,
+          "url": "https://www.reservio.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "Reservanto",
+          "strength": 2,
+          "note": "Czech booking system - strength to verify",
+          "url": "https://www.reservanto.cz"
+        },
+        {
+          "name": "Bookio",
+          "strength": 2,
+          "url": "https://www.bookio.com",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "Booksy",
+          "strength": 2,
+          "url": "https://booksy.com",
+          "note": "presence in CZ to verify; draft - to verify"
+        }
       ]
     },
     "Fitness & Yoga Studio Software (Mindbody archetype)": {
@@ -345,7 +371,39 @@
         "42",
         "43"
       ],
-      "sam_segment": "legal_entities"
+      "sam_segment": "legal_entities",
+      "local_incumbents": [
+        {
+          "name": "Hlídač státu",
+          "strength": 2,
+          "url": "https://www.hlidacstatu.cz",
+          "note": "free public-contract data; draft - to verify"
+        },
+        {
+          "name": "NEN / ISVZ",
+          "strength": 2,
+          "note": "Official procurement portals - raw data - strength to verify",
+          "url": "https://nen.nipez.cz"
+        },
+        {
+          "name": "Existing paid tender-alert services",
+          "strength": 2,
+          "note": "Several exist - verify features & pricing - strength to verify",
+          "url": ""
+        },
+        {
+          "name": "Tender Arena",
+          "strength": 2,
+          "url": "https://www.tenderarena.cz",
+          "note": "e-tendering platform; draft - to verify"
+        },
+        {
+          "name": "Věstník veřejných zakázek",
+          "strength": 2,
+          "url": "https://www.vestnikverejnychzakazek.cz",
+          "note": "official procurement bulletin; draft - to verify"
+        }
+      ]
     },
     "PlanRadar": {
       "target_nace": [
@@ -396,7 +454,479 @@
     },
     "AI Tutor for Přijímačky & Maturita (Khanmigo archetype)": {
       "sam_estimate": 96482,
-      "sam_source": "CERMAT: ~96,482 applicants taking the JPZ for 4-year programmes in 2026 (quoted from CERMAT news; source page not reachable - to verify)"
+      "sam_source": "CERMAT: ~96,482 applicants taking the JPZ for 4-year programmes in 2026 (quoted from CERMAT news; source page not reachable - to verify)",
+      "local_incumbents": [
+        {
+          "name": "Umíme to",
+          "strength": 2,
+          "url": "https://www.umimeto.org",
+          "note": "adaptive practice; draft - to verify"
+        },
+        {
+          "name": "Scio",
+          "strength": 2,
+          "url": "https://www.scio.cz",
+          "note": "mock tests & prep courses; draft - to verify"
+        },
+        {
+          "name": "Private tutors",
+          "strength": 2,
+          "note": "400-800 CZK/hour - strength to verify",
+          "url": ""
+        },
+        {
+          "name": "CERMAT materials",
+          "strength": 2,
+          "url": "https://prijimacky.cermat.cz",
+          "note": "free official past papers; draft - to verify"
+        }
+      ]
+    },
+    "Back-in-Stock Alerts (Shopify app archetype)": {
+      "local_incumbents": [
+        {
+          "name": "Shoptet Addons marketplace",
+          "strength": 2,
+          "note": "Check existing watchdog add-ons - strength to verify",
+          "url": "https://doplnky.shoptet.cz"
+        },
+        {
+          "name": "Heureka hlídací pes",
+          "strength": 2,
+          "note": "Price watchdog on comparison site - strength to verify",
+          "url": "https://www.heureka.cz"
+        },
+        {
+          "name": "Shoptet built-in 'Hlídací pes'",
+          "strength": 2,
+          "url": "https://www.shoptet.cz",
+          "note": "native back-in-stock watchdog; draft - to verify"
+        }
+      ]
+    },
+    "Treatwell": {
+      "local_incumbents": [
+        {
+          "name": "Reservio",
+          "strength": 2,
+          "url": "https://www.reservio.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "Booksy",
+          "strength": 2,
+          "url": "https://booksy.com",
+          "note": "presence in CZ to verify; draft - to verify"
+        },
+        {
+          "name": "Bookio",
+          "strength": 2,
+          "url": "https://www.bookio.com",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "YCLIENTS": {
+      "local_incumbents": [
+        {
+          "name": "Reservio",
+          "strength": 2,
+          "url": "https://www.reservio.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "Booksy",
+          "strength": 2,
+          "url": "https://booksy.com",
+          "note": "presence in CZ to verify; draft - to verify"
+        },
+        {
+          "name": "Bookio",
+          "strength": 2,
+          "url": "https://www.bookio.com",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "DIKIDI": {
+      "local_incumbents": [
+        {
+          "name": "Reservio",
+          "strength": 2,
+          "url": "https://www.reservio.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "Booksy",
+          "strength": 2,
+          "url": "https://booksy.com",
+          "note": "presence in CZ to verify; draft - to verify"
+        },
+        {
+          "name": "Bookio",
+          "strength": 2,
+          "url": "https://www.bookio.com",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "Acuity Scheduling": {
+      "local_incumbents": [
+        {
+          "name": "Reservio",
+          "strength": 2,
+          "url": "https://www.reservio.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "Booksy",
+          "strength": 2,
+          "url": "https://booksy.com",
+          "note": "presence in CZ to verify; draft - to verify"
+        },
+        {
+          "name": "Bookio",
+          "strength": 2,
+          "url": "https://www.bookio.com",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "Booksy": {
+      "local_incumbents": [
+        {
+          "name": "Reservio",
+          "strength": 2,
+          "url": "https://www.reservio.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "Bookio",
+          "strength": 2,
+          "url": "https://www.bookio.com",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "Bookio": {
+      "local_incumbents": [
+        {
+          "name": "Reservio",
+          "strength": 2,
+          "url": "https://www.reservio.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "Booksy",
+          "strength": 2,
+          "url": "https://booksy.com",
+          "note": "presence in CZ to verify; draft - to verify"
+        }
+      ]
+    },
+    "Seneca Learning": {
+      "local_incumbents": [
+        {
+          "name": "Umíme to",
+          "strength": 2,
+          "url": "https://www.umimeto.org",
+          "note": "adaptive practice; draft - to verify"
+        },
+        {
+          "name": "Scio",
+          "strength": 2,
+          "url": "https://www.scio.cz",
+          "note": "mock tests & prep courses; draft - to verify"
+        },
+        {
+          "name": "CERMAT materials",
+          "strength": 2,
+          "url": "https://prijimacky.cermat.cz",
+          "note": "free official past papers; draft - to verify"
+        }
+      ]
+    },
+    "Descomplica": {
+      "local_incumbents": [
+        {
+          "name": "Scio",
+          "strength": 2,
+          "url": "https://www.scio.cz",
+          "note": "mock tests & prep courses; draft - to verify"
+        },
+        {
+          "name": "Umíme to",
+          "strength": 2,
+          "url": "https://www.umimeto.org",
+          "note": "adaptive practice; draft - to verify"
+        },
+        {
+          "name": "CERMAT materials",
+          "strength": 2,
+          "url": "https://prijimacky.cermat.cz",
+          "note": "free official past papers; draft - to verify"
+        }
+      ]
+    },
+    "Foxford (Фоксфорд)": {
+      "local_incumbents": [
+        {
+          "name": "Scio",
+          "strength": 2,
+          "url": "https://www.scio.cz",
+          "note": "mock tests & prep courses; draft - to verify"
+        },
+        {
+          "name": "Umíme to",
+          "strength": 2,
+          "url": "https://www.umimeto.org",
+          "note": "adaptive practice; draft - to verify"
+        },
+        {
+          "name": "CERMAT materials",
+          "strength": 2,
+          "url": "https://prijimacky.cermat.cz",
+          "note": "free official past papers; draft - to verify"
+        }
+      ]
+    },
+    "Physics Wallah": {
+      "local_incumbents": [
+        {
+          "name": "Scio",
+          "strength": 2,
+          "url": "https://www.scio.cz",
+          "note": "mock tests & prep courses; draft - to verify"
+        },
+        {
+          "name": "Umíme to",
+          "strength": 2,
+          "url": "https://www.umimeto.org",
+          "note": "adaptive practice; draft - to verify"
+        },
+        {
+          "name": "CERMAT materials",
+          "strength": 2,
+          "url": "https://prijimacky.cermat.cz",
+          "note": "free official past papers; draft - to verify"
+        }
+      ]
+    },
+    "AI Grant & Subsidy Finder (Instrumentl archetype)": {
+      "local_incumbents": [
+        {
+          "name": "Grant consultancies (dotační poradci)",
+          "strength": 2,
+          "note": "Many; success fees 5-10% - strength to verify",
+          "url": ""
+        },
+        {
+          "name": "Official portals (e.g. MPO, OP TAK)",
+          "strength": 2,
+          "note": "Raw information only - strength to verify",
+          "url": ""
+        },
+        {
+          "name": "Grant consultancies (dotační poradenské agentury)",
+          "strength": 2,
+          "url": "",
+          "note": "many small agencies, success fees; draft - to verify"
+        },
+        {
+          "name": "Subsidy portals (e.g. dotaceeu.cz)",
+          "strength": 2,
+          "url": "https://www.dotaceeu.cz",
+          "note": "official EU-funds information; draft - to verify"
+        }
+      ]
+    },
+    "Freelancer Invoicing (Invoice Ninja archetype)": {
+      "local_incumbents": [
+        {
+          "name": "Fakturoid",
+          "strength": 2,
+          "url": "https://www.fakturoid.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "iDoklad",
+          "strength": 2,
+          "url": "https://www.idoklad.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "Vyfakturuj.cz",
+          "strength": 2,
+          "note": "Czech invoicing tool - strength to verify",
+          "url": "https://www.vyfakturuj.cz"
+        }
+      ]
+    },
+    "FreshBooks": {
+      "local_incumbents": [
+        {
+          "name": "Fakturoid",
+          "strength": 2,
+          "url": "https://www.fakturoid.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "iDoklad",
+          "strength": 2,
+          "url": "https://www.idoklad.cz",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "FreeAgent": {
+      "local_incumbents": [
+        {
+          "name": "Fakturoid",
+          "strength": 2,
+          "url": "https://www.fakturoid.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "iDoklad",
+          "strength": 2,
+          "url": "https://www.idoklad.cz",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "Wave": {
+      "local_incumbents": [
+        {
+          "name": "iDoklad",
+          "strength": 2,
+          "url": "https://www.idoklad.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "Fakturoid",
+          "strength": 2,
+          "url": "https://www.fakturoid.cz",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "sevDesk": {
+      "local_incumbents": [
+        {
+          "name": "Fakturoid",
+          "strength": 2,
+          "url": "https://www.fakturoid.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "iDoklad",
+          "strength": 2,
+          "url": "https://www.idoklad.cz",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "SuperFaktúra": {
+      "local_incumbents": [
+        {
+          "name": "Fakturoid",
+          "strength": 2,
+          "url": "https://www.fakturoid.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "iDoklad",
+          "strength": 2,
+          "url": "https://www.idoklad.cz",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "Kontur.Elba (Контур.Эльба)": {
+      "local_incumbents": [
+        {
+          "name": "Fakturoid",
+          "strength": 2,
+          "url": "https://www.fakturoid.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "iDoklad",
+          "strength": 2,
+          "url": "https://www.idoklad.cz",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "inFakt": {
+      "local_incumbents": [
+        {
+          "name": "Fakturoid",
+          "strength": 2,
+          "url": "https://www.fakturoid.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "iDoklad",
+          "strength": 2,
+          "url": "https://www.idoklad.cz",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "Xero": {
+      "local_incumbents": [
+        {
+          "name": "Pohoda",
+          "strength": 2,
+          "note": "Dominant Czech accounting software - strength to verify",
+          "url": "https://www.stormware.cz"
+        },
+        {
+          "name": "Fakturoid",
+          "strength": 2,
+          "url": "https://www.fakturoid.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "iDoklad",
+          "strength": 2,
+          "url": "https://www.idoklad.cz",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "freee": {
+      "local_incumbents": [
+        {
+          "name": "Fakturoid",
+          "strength": 2,
+          "url": "https://www.fakturoid.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "iDoklad",
+          "strength": 2,
+          "url": "https://www.idoklad.cz",
+          "note": "draft - to verify"
+        }
+      ]
+    },
+    "Conta Azul": {
+      "local_incumbents": [
+        {
+          "name": "Fakturoid",
+          "strength": 2,
+          "url": "https://www.fakturoid.cz",
+          "note": "draft - to verify"
+        },
+        {
+          "name": "iDoklad",
+          "strength": 2,
+          "url": "https://www.idoklad.cz",
+          "note": "draft - to verify"
+        }
+      ]
     }
   }
 }
