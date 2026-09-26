@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-ROOT = Path(r"D:\Downloads\AI folder\Claude projects\Czech-biz-radar")
+ROOT = Path(__file__).resolve().parents[1]
 p = ROOT / "data" / "cz_enrichment.json"
 d = json.loads(p.read_text(encoding="utf-8"))
 models = d["models"]
