@@ -102,3 +102,19 @@ def czech_adjusted_score(base: int, m: BusinessModel, metrics: DerivedMetrics,
     score = round(max(0.0, min(100.0, base + sum(a.points for a in breakdown))))
     return CzechScore(base=base, score=score, breakdown=breakdown,
                       recommendations=_recommendations(m, metrics, weights))
+
+
+def to_context(result: CzechScore, m: BusinessModel, metrics: DerivedMetrics) -> dict:
+    """Plain-dict view of the rule-based Czech score, passed to the LLM prompt and the offline report."""
+    return {
+        "base_score": result.base,
+        "czech_adjusted_score": result.score,
+        "adjustments": [{"factor": a.factor, "points": a.points, "detail": a.detail} for a in result.breakdown],
+        "recommendations": result.recommendations,
+        "model_type": m.model_type,
+        "mrr_status": metrics.mrr_status,
+        "customers_needed": metrics.customers_needed,
+        "sam_share_12m": metrics.sam_share_12m,
+        "sam_estimate": m.sam_estimate,
+        "sam_source": m.sam_source,
+    }

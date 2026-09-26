@@ -40,6 +40,11 @@ def to_markdown(m: BusinessModel, res: AnalysisResult) -> str:
         "",
         f"> {r.one_liner}",
         "",
+        f"**Czech-adjusted score:** {r.czech_adjusted_score}/100  ",
+        f"**Confidence:** {r.confidence} - {r.confidence_reason}",
+        "",
+        *[f"- {x.factor}: {x.points:+d} ({x.detail})" for x in r.czech_adjustments],
+        "",
         "| Factor | Score | Weight | Rationale |",
         "|---|---|---|---|",
         *[f"| {f.factor} | {f.score} | {f.weight:.0%} | {f.rationale} |" for f in r.score_breakdown],
@@ -166,6 +171,10 @@ def to_pdf(m: BusinessModel, res: AnalysisResult) -> bytes:
 
     pdf.heading(f"Feasibility score: {r.feasibility_score}/100 - {r.verdict}", 14)
     pdf.para(r.one_liner)
+    pdf.para(f"Czech-adjusted score: {r.czech_adjusted_score}/100 | confidence: {r.confidence} - {r.confidence_reason}",
+             size=9)
+    for x in r.czech_adjustments:
+        pdf.bullet(f"{x.factor}: {x.points:+d} ({x.detail})")
     pdf.ln(1)
     pdf.grid(["Factor", "Score", "Weight", "Rationale"],
               [[f.factor, f.score, f"{f.weight:.0%}", f.rationale] for f in r.score_breakdown], [40, 14, 16, 120])

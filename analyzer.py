@@ -19,6 +19,7 @@ import json
 import math
 import os
 from dataclasses import dataclass, field
+from typing import Literal
 
 from pydantic import BaseModel
 
@@ -112,8 +113,18 @@ class GTMStep(BaseModel):
     kpi: str
 
 
+class CzechAdjustmentItem(BaseModel):
+    factor: str
+    points: int  # <= 0
+    detail: str
+
+
 class CzechReport(BaseModel):
     feasibility_score: int
+    czech_adjusted_score: int
+    czech_adjustments: list[CzechAdjustmentItem]
+    confidence: Literal["low", "medium", "high"]
+    confidence_reason: str
     verdict: str
     one_liner: str
     score_breakdown: list[ScoreFactor]
@@ -325,7 +336,7 @@ _CATEGORY_CHECKLIST = {
 }
 
 
-def mock_report(m: BusinessModel, a: CzechAssumptions) -> CzechReport:
+def mock_report(m: BusinessModel, a: CzechAssumptions, czech_context: dict | None = None) -> CzechReport:
     factors = _factor_scores(m)
     breakdown = [ScoreFactor(factor=k, score=factors[k], weight=w, rationale=_rationale(k, m)) for k, w in WEIGHTS.items()]
     score = round(sum(f.score * f.weight for f in breakdown))
@@ -424,8 +435,15 @@ def mock_report(m: BusinessModel, a: CzechAssumptions) -> CzechReport:
     if m.cz_notes:
         assumptions.append(m.cz_notes)
 
+    ctx = czech_context or {}
+    adjustments = [CzechAdjustmentItem(factor=x["factor"], points=round(x["points"]), detail=x["detail"])
+                   for x in ctx.get("adjustments", [])]
+    risks += [r for r in ctx.get("recommendations", []) if r not in risks]
     return CzechReport(
-        feasibility_score=score, verdict=verdict_for(score), one_liner=one_liner, score_breakdown=breakdown,
+        feasibility_score=score, czech_adjusted_score=ctx.get("czech_adjusted_score", score),
+        czech_adjustments=adjustments, confidence="low",
+        confidence_reason="Rule-based heuristic from 1-5 ratings and category defaults; no model-specific research.",
+        verdict=verdict_for(score), one_liner=one_liner, score_breakdown=breakdown,
         target_audiences=audiences, unit_economics=econ, competitors=competitors, gtm_plan=_gtm_plan(m, price),
         risks=risks, localization_checklist=checklist, assumptions=assumptions,
     )
@@ -450,7 +468,8 @@ natural name (OSVČ, s.r.o., DPH, paušální daň)."""
 
 
 def _user_prompt(m: BusinessModel, baseline: CzechReport, a: CzechAssumptions) -> str:
-    model_json = m.model_dump(exclude={"id"})
+    model_json = m.model_dump(exclude={"id", "inferred_fields"})
+    model_json["fields_inferred_by_rules_not_verified"] = m.inferred_fields
     return f"""Produce a Czech feasibility report for this business model.
 
 <business_model>
@@ -476,14 +495,29 @@ the right legal form (OSVČ paušální daň vs. s.r.o.), total costs, net profi
 - competitors: the most relevant local incumbents plus international substitutes, each with threat level \
 (Low/Medium/High) and the gap a newcomer could exploit.
 - gtm_plan: exactly 3 steps covering days 1-14 to launch the MVP in Prague/Czechia, each with concrete actions and a KPI.
+- czech_adjusted_score: start from feasibility_score and subtract Czech-specific frictions, one \
+czech_adjustments item each (negative points, one-line detail):
+  * local incumbents - weigh their real strength in Czechia, not just their number;
+  * share of the Czech SAM the plan needs within 12 months (sam_estimate and sam_source; a heuristic SAM is weak evidence);
+  * legal complexity - GDPR, zákon 480/2004 Sb. on commercial communications, consumer protection \
+(ochrana spotřebitele), trade licence type (živnost volná / vázaná / koncese), health-care rules, ČNB licensing;
+  * complex integrations the Czech market expects (Pohoda, Money S3, ABRA, Fakturoid, iDoklad, Shoptet, Upgates, \
+Heureka, Zboží.cz, Sklik, Firmy.cz, QR platba, GoPay, Comgate, Bank iD, ISDOC);
+  * the cost of Czech-language support for a solo founder.
+  Seasonality is not a penalty: put the latest sensible launch month into risks or gtm_plan.
+  The rule-based values in the baseline (czech_adjusted_score, czech_adjustments) are a starting point - \
+correct them where you know better. Fields listed in fields_inferred_by_rules_not_verified are guesses.
+- confidence: "low", "medium" or "high" - how much the assessment rests on specific, current knowledge of \
+the Czech market rather than assumptions. Explain in confidence_reason (1-2 sentences).
 - risks, localization_checklist and assumptions as short bullet strings."""
 
 
-def claude_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: str) -> CzechReport:
+def claude_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: str,
+                  czech_context: dict | None = None) -> CzechReport:
     import anthropic
 
     client = anthropic.Anthropic(api_key=api_key, timeout=300)
-    baseline = mock_report(m, a)
+    baseline = mock_report(m, a, czech_context)
     response = client.messages.parse(
         model=model,
         max_tokens=16000,
@@ -495,17 +529,16 @@ def claude_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: st
         raise RuntimeError("Claude declined this request.")
     if response.stop_reason == "max_tokens" or response.parsed_output is None:
         raise RuntimeError("Claude's response was incomplete.")
-    report = response.parsed_output
-    report.feasibility_score = max(0, min(100, report.feasibility_score))
-    return report
+    return _clamp(response.parsed_output)
 
 
-def gemini_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: str) -> CzechReport:
+def gemini_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: str,
+                  czech_context: dict | None = None) -> CzechReport:
     from google import genai
     from google.genai import types
 
     client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=300_000))
-    baseline = mock_report(m, a)
+    baseline = mock_report(m, a, czech_context)
     response = client.models.generate_content(
         model=model,
         contents=_user_prompt(m, baseline, a),
@@ -524,7 +557,12 @@ def gemini_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: st
     report = response.parsed
     if not isinstance(report, CzechReport):
         report = CzechReport.model_validate_json(response.text)
+    return _clamp(report)
+
+
+def _clamp(report: CzechReport) -> CzechReport:
     report.feasibility_score = max(0, min(100, report.feasibility_score))
+    report.czech_adjusted_score = max(0, min(100, report.czech_adjusted_score))
     return report
 
 
@@ -550,17 +588,17 @@ def pick_engine(engine: str, anthropic_key: str | None, gemini_key: str | None) 
     return "mock"
 
 
-def _fallback(m: BusinessModel, a: CzechAssumptions, msg: str) -> AnalysisResult:
-    return AnalysisResult(mock_report(m, a), "mock", [f"{msg} - showing the offline heuristic report instead."])
+def _fallback(m: BusinessModel, a: CzechAssumptions, msg: str, ctx: dict | None = None) -> AnalysisResult:
+    return AnalysisResult(mock_report(m, a, ctx), "mock", [f"{msg} - showing the offline heuristic report instead."])
 
 
-def _run_claude(m: BusinessModel, a: CzechAssumptions, key: str, model: str) -> AnalysisResult:
+def _run_claude(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx: dict | None) -> AnalysisResult:
     try:
         import anthropic
     except ImportError:
-        return _fallback(m, a, "`anthropic` package not installed")
+        return _fallback(m, a, "`anthropic` package not installed", ctx)
     try:
-        return AnalysisResult(claude_report(m, a, key, model), model)
+        return AnalysisResult(claude_report(m, a, key, model, ctx), model)
     except anthropic.AuthenticationError:
         msg = "Invalid Anthropic API key"
     except anthropic.RateLimitError:
@@ -571,16 +609,16 @@ def _run_claude(m: BusinessModel, a: CzechAssumptions, key: str, model: str) -> 
         msg = "Could not reach the Anthropic API"
     except Exception as e:  # validation / refusal / unexpected output
         msg = f"Claude analysis failed ({e})"
-    return _fallback(m, a, msg)
+    return _fallback(m, a, msg, ctx)
 
 
-def _run_gemini(m: BusinessModel, a: CzechAssumptions, key: str, model: str) -> AnalysisResult:
+def _run_gemini(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx: dict | None) -> AnalysisResult:
     try:
         from google.genai import errors
     except ImportError:
-        return _fallback(m, a, "`google-genai` package not installed")
+        return _fallback(m, a, "`google-genai` package not installed", ctx)
     try:
-        return AnalysisResult(gemini_report(m, a, key, model), model)
+        return AnalysisResult(gemini_report(m, a, key, model, ctx), model)
     except errors.ClientError as e:
         if e.code in (401, 403) or "API_KEY_INVALID" in str(e) or "API key not valid" in str(e):
             msg = "Invalid Gemini API key"
@@ -594,22 +632,25 @@ def _run_gemini(m: BusinessModel, a: CzechAssumptions, key: str, model: str) -> 
         msg = f"Gemini server error {e.code} - try again"
     except Exception as e:  # network / validation / blocked output
         msg = f"Gemini analysis failed ({e})"
-    return _fallback(m, a, msg)
+    return _fallback(m, a, msg, ctx)
 
 
 def analyze(m: BusinessModel, a: CzechAssumptions | None = None, engine: str = "auto",
             anthropic_key: str | None = None, gemini_key: str | None = None,
-            claude_model: str = DEFAULT_CLAUDE_MODEL, gemini_model: str = DEFAULT_GEMINI_MODEL) -> AnalysisResult:
-    """Run the deep-dive. engine: 'auto', 'claude', 'gemini' or 'mock'."""
+            claude_model: str = DEFAULT_CLAUDE_MODEL, gemini_model: str = DEFAULT_GEMINI_MODEL,
+            czech_context: dict | None = None) -> AnalysisResult:
+    """Run the deep-dive. engine: 'auto', 'claude', 'gemini' or 'mock'.
+    czech_context: the rule-based Czech score (scoring.czech.to_context) given to the LLM as a baseline."""
+    ctx = czech_context
     a = a or CzechAssumptions()
     anthropic_key, gemini_key = resolve_keys(anthropic_key, gemini_key)
     engine = pick_engine(engine, anthropic_key, gemini_key)
     if engine == "claude":
         if not anthropic_key:
-            return _fallback(m, a, "No ANTHROPIC_API_KEY found")
-        return _run_claude(m, a, anthropic_key, claude_model)
+            return _fallback(m, a, "No ANTHROPIC_API_KEY found", ctx)
+        return _run_claude(m, a, anthropic_key, claude_model, ctx)
     if engine == "gemini":
         if not gemini_key:
-            return _fallback(m, a, "No GEMINI_API_KEY found")
-        return _run_gemini(m, a, gemini_key, gemini_model)
-    return AnalysisResult(mock_report(m, a), "mock")
+            return _fallback(m, a, "No GEMINI_API_KEY found", ctx)
+        return _run_gemini(m, a, gemini_key, gemini_model, ctx)
+    return AnalysisResult(mock_report(m, a, ctx), "mock")

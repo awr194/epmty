@@ -5,3 +5,5 @@ __pycache__/
 
 # Raw ČSÚ download (~540 MB); the aggregated data/nace_counts.json is committed
 data/cache/
+# LLM deep-dive results (generated, may contain paid API output)
+data/llm_reports/
