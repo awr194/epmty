@@ -151,12 +151,16 @@ with st.sidebar:
             incumbent_cap=st.slider(t("w_incumbent_cap"), 0.0, 50.0, d.incumbent_cap, 1.0),
             sam_soft=st.slider(t("w_sam_soft"), 0.0, 0.10, d.sam_soft, 0.005, format="%.3f"),
             sam_hard=st.slider(t("w_sam_hard"), 0.02, 0.30, d.sam_hard, 0.01, format="%.2f"),
+            sam_step_penalty=st.slider(t("w_sam_step"), 0.0, 10.0, d.sam_step_penalty, 0.5),
             sam_soft_penalty=st.slider(t("w_sam_soft_pen"), 0.0, 30.0, d.sam_soft_penalty, 1.0),
             sam_hard_penalty=st.slider(t("w_sam_hard_pen"), 0.0, 40.0, d.sam_hard_penalty, 1.0),
+            heuristic_sam_confidence=st.slider(t("w_sam_conf"), 0.0, 1.0, d.heuristic_sam_confidence, 0.05),
             legal_points_per_level=st.slider(t("w_legal"), 0.0, 8.0, d.legal_points_per_level, 0.5),
             integration_points_each=st.slider(t("w_integration"), 0.0, 8.0, d.integration_points_each, 0.5),
             solo_founder=st.toggle(t("w_solo"), d.solo_founder),
             czech_support_penalty=st.slider(t("w_support"), 0.0, 10.0, d.czech_support_penalty, 0.5),
+            czech_support_penalty_other_b2b=st.slider(t("w_support_other"), 0.0, 10.0,
+                                                      d.czech_support_penalty_other_b2b, 0.5),
         )
 
     st.header(t("live_header"))

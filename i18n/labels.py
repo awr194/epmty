@@ -21,6 +21,7 @@ MODEL_TYPE_RU = {
     "d2c_physical": "физический D2C",
     "offline_retail": "офлайн-розница",
     "service": "услуга",
+    "media_ads": "медиа с рекламой",
 }
 
 MRR_STATUS_RU = {
@@ -28,6 +29,7 @@ MRR_STATUS_RU = {
     "marketplace_gmv": "Маркетплейс: take rate × GMV",
     "marketplace_no_gmv": "Маркетплейс без данных о GMV — MRR не сопоставим",
     "not_recurring": "Продажи физических товаров / розница — не SaaS-MRR",
+    "media_ads": "Рекламная выручка — зависит от аудитории, не SaaS-MRR",
 }
 
 FIELD_RU = {

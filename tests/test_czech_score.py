@@ -60,16 +60,42 @@ def test_incumbent_penalty_scales_with_strength_and_is_capped(make_model):
     assert _factors(czech_adjusted_score(60, many, _metrics(), w))["Local incumbents"] == -25
 
 
+OFFICIAL_SAM = "ČSÚ RES as of 2026-09-15, CZ-NACE 62.01"
+
+
 @pytest.mark.parametrize("share, expected", [
+    (0.019, 0.0),     # below the soft threshold
     (0.02, 0.0),      # at the soft threshold: no penalty
-    (0.06, -4.0),     # halfway between soft and hard
-    (0.10, -8.0),     # at the hard threshold
-    (0.15, -18.0),    # steep beyond hard
-    (0.50, -28.0),    # capped at soft + hard penalty
+    (0.024, -3.4),    # just above it: the step (3) plus a small linear part (8 x 0.4/8)
+    (0.06, -7.0),     # step + halfway between soft and hard
+    (0.10, -11.0),    # at the hard threshold: step + full soft penalty
+    (0.15, -21.0),    # steep beyond hard
+    (0.50, -31.0),    # capped at step + soft + hard penalty
 ])
 def test_sam_share_penalty_curve(make_model, share, expected):
-    r = czech_adjusted_score(60, make_model(czech_support_required=False), _metrics(1_000, share))
+    m = make_model(czech_support_required=False, sam_source=OFFICIAL_SAM)
+    r = czech_adjusted_score(60, m, _metrics(1_000, share))
     assert _factors(r).get("Share of market needed", 0.0) == pytest.approx(expected)
+
+
+def test_crossing_the_threshold_is_a_visible_jump(make_model):
+    m = make_model(czech_support_required=False, sam_source=OFFICIAL_SAM)
+    at = czech_adjusted_score(60, m, _metrics(1_000, 0.020)).score
+    above = czech_adjusted_score(60, m, _metrics(1_000, 0.0201)).score
+    assert at - above >= 3
+
+
+def test_heuristic_sam_scales_share_penalty(make_model):
+    w = CzechScoreWeights(heuristic_sam_confidence=0.5, solo_founder=False)
+    official = make_model(sam_source=OFFICIAL_SAM)
+    heuristic = make_model(sam_source="heuristic estimate (unverified)")
+    r_off = czech_adjusted_score(60, official, _metrics(1_000, 0.10), w)
+    r_heur = czech_adjusted_score(60, heuristic, _metrics(1_000, 0.10), w)
+    assert _factors(r_off)["Share of market needed"] == pytest.approx(-11.0)
+    assert _factors(r_heur)["Share of market needed"] == pytest.approx(-5.5)
+    assert "heuristic SAM" in r_heur.breakdown[0].detail
+    ru = czech_adjusted_score(60, heuristic, _metrics(1_000, 0.10), w, lang="ru")
+    assert "×0,5" in ru.breakdown[0].detail
 
 
 def test_legal_complexity_falls_back_to_regulatory(make_model):
@@ -85,9 +111,25 @@ def test_only_complex_integrations_count(make_model):
 
 
 def test_czech_support_penalty_only_for_solo_founder(make_model):
-    m = make_model(czech_support_required=True)
+    m = make_model(czech_support_required=True, audience="B2C")
     assert "Czech-language support" in _factors(czech_adjusted_score(60, m, _metrics()))
     assert "Czech-language support" not in _factors(czech_adjusted_score(60, m, _metrics(), NO_SUPPORT))
+
+
+@pytest.mark.parametrize("audience, category, expected", [
+    ("B2C", "Dev & Productivity Tools", -3.0),        # consumers: full
+    ("B2B", "Hospitality & Gastro", -3.0),            # local SMB owners: full
+    ("B2B", "Dev & Productivity Tools", -1.0),        # technical B2B: reduced
+])
+def test_czech_support_penalty_depends_on_segment(make_model, audience, category, expected):
+    m = make_model(czech_support_required=True, audience=audience, category=category)
+    assert _factors(czech_adjusted_score(60, m, _metrics()))["Czech-language support"] == expected
+
+
+def test_other_b2b_support_penalty_can_be_switched_off(make_model):
+    m = make_model(czech_support_required=True, audience="B2B")
+    w = CzechScoreWeights(czech_support_penalty_other_b2b=0.0)
+    assert "Czech-language support" not in _factors(czech_adjusted_score(60, m, _metrics(), w))
 
 
 def test_seasonality_recommends_launch_month_without_penalty(make_model):

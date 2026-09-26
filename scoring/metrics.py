@@ -12,12 +12,14 @@ COMPARABLE = "comparable"  # SaaS / service: recurring revenue = customers x pri
 MARKETPLACE_GMV = "marketplace_gmv"  # marketplace with take rate and GMV: MRR = take_rate x GMV
 MARKETPLACE_NO_GMV = "marketplace_no_gmv"  # marketplace without GMV data: not comparable
 NOT_RECURRING = "not_recurring"  # physical D2C / offline retail: revenue is sales, not MRR
+MEDIA_ADS = "media_ads"  # advertising-funded media: revenue follows audience size, not customers x price
 
 MRR_STATUS_LABELS = {
     COMPARABLE: "Recurring revenue (comparable)",
     MARKETPLACE_GMV: "Marketplace: take rate x GMV",
     MARKETPLACE_NO_GMV: "Marketplace without GMV data - MRR not comparable",
     NOT_RECURRING: "Physical / retail sales - not SaaS MRR",
+    MEDIA_ADS: "Advertising revenue - depends on audience, not SaaS MRR",
 }
 
 
@@ -42,6 +44,8 @@ def derived_metrics(m: BusinessModel, a: CzechAssumptions, quick: dict | None = 
 
     if model_type in ("d2c_physical", "offline_retail"):
         mrr, status = None, NOT_RECURRING
+    elif model_type == "media_ads":
+        mrr, status = None, MEDIA_ADS
     elif model_type == "marketplace":
         if m.take_rate is not None and m.gmv_estimate:
             mrr, status = round(m.take_rate * m.gmv_estimate), MARKETPLACE_GMV

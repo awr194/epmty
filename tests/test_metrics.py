@@ -1,5 +1,7 @@
 from analyzer import CzechAssumptions
-from scoring.metrics import (COMPARABLE, MARKETPLACE_GMV, MARKETPLACE_NO_GMV, NOT_RECURRING, derived_metrics)
+from cz_enrichment import infer_model_type
+from scoring.metrics import (COMPARABLE, MARKETPLACE_GMV, MARKETPLACE_NO_GMV, MEDIA_ADS, NOT_RECURRING,
+                             derived_metrics)
 
 A = CzechAssumptions()
 
@@ -42,3 +44,16 @@ def test_physical_and_retail_are_not_recurring(make_model):
 
 def test_missing_model_type_defaults_to_saas(make_model):
     assert derived_metrics(make_model(model_type=None), A).mrr_status == COMPARABLE
+
+
+def test_media_ads_is_not_comparable(make_model):
+    d = derived_metrics(make_model(model_type="media_ads"), A)
+    assert d.mrr_status == MEDIA_ADS
+    assert d.mrr_czk_m12 is None and d.customers_needed is None and d.sam_share_12m is None
+
+
+def test_advertising_revenue_infers_media_ads():
+    assert infer_model_type({"revenue_model": "Local advertising", "category": "Communities & Marketplaces"}) \
+        == "media_ads"
+    # Sponsorship marketplaces take a commission: still marketplaces.
+    assert infer_model_type({"revenue_model": "Commission on sponsorships"}) == "marketplace"

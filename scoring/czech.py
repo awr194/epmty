@@ -10,6 +10,7 @@ from __future__ import annotations
 import calendar
 from dataclasses import dataclass, field
 
+from cz_enrichment import LOCAL_CATEGORIES
 from data_loader import BusinessModel
 from scoring.config import DEFAULT_WEIGHTS, CzechScoreWeights
 from scoring.metrics import DerivedMetrics
@@ -43,9 +44,11 @@ _TX = {
     "en": {
         "incumbents": "Local incumbents", "incumbents_d": "{n} incumbent(s): {names}{more}", "more": " +{n} more",
         "share": "Share of market needed", "share_d": "{c:,} customers = {s:.1%} of SAM within 12 months",
+        "share_heur": " (heuristic SAM: penalty x{k})", "dec": ".",
         "legal": "Legal complexity", "legal_d": "Level {lvl}/5",
         "integr": "Complex integrations",
         "support": "Czech-language support", "support_d": "Customers expect support in Czech",
+        "support_other": "B2B segment: English or occasional Czech support is usually enough",
         "season": "Seasonal (peak {peaks}): launch by {month}.",
         "not_comparable": "MRR is not comparable with SaaS models for this model type - judge it on unit economics.",
         "no_sam": "No SAM estimate - market-share check skipped.",
@@ -53,9 +56,11 @@ _TX = {
     "ru": {
         "incumbents": "Местные конкуренты", "incumbents_d": "конкурентов: {n} — {names}{more}", "more": " и ещё {n}",
         "share": "Нужная доля рынка", "share_d": "{c:,} клиентов = {s:.1%} SAM за 12 месяцев",
+        "share_heur": " (SAM оценён эвристикой: штраф ×{k})", "dec": ",",
         "legal": "Юридическая сложность", "legal_d": "Уровень {lvl}/5",
         "integr": "Сложные интеграции",
         "support": "Поддержка на чешском", "support_d": "Клиенты ждут поддержки на чешском",
+        "support_other": "B2B-сегмент: обычно хватает английского или эпизодической поддержки на чешском",
         "season": "Сезонность (пик: {peaks}): запускайтесь до {month}.",
         "not_comparable": "Для этого типа модели MRR не сопоставим с SaaS — оценивайте по юнит-экономике.",
         "no_sam": "Нет оценки размера рынка — проверка доли рынка пропущена.",
@@ -79,15 +84,26 @@ def _incumbents(m: BusinessModel, w: CzechScoreWeights, tx: dict) -> Adjustment 
                                                                           more=more))
 
 
-def _sam_share(metrics: DerivedMetrics, w: CzechScoreWeights, tx: dict) -> Adjustment | None:
+def sam_is_heuristic(m: BusinessModel) -> bool:
+    """True when the SAM is a rule-of-thumb guess rather than a registry / official figure."""
+    return not m.sam_source or m.sam_source.startswith("heuristic")
+
+
+def _sam_share(m: BusinessModel, metrics: DerivedMetrics, w: CzechScoreWeights, tx: dict) -> Adjustment | None:
     share = metrics.sam_share_12m
     if share is None or share <= w.sam_soft:
         return None
     if share <= w.sam_hard:
-        pts = w.sam_soft_penalty * (share - w.sam_soft) / (w.sam_hard - w.sam_soft)
+        pts = w.sam_step_penalty + w.sam_soft_penalty * (share - w.sam_soft) / (w.sam_hard - w.sam_soft)
     else:
-        pts = w.sam_soft_penalty + w.sam_hard_penalty * min(1.0, (share - w.sam_hard) / w.sam_hard)
-    return Adjustment(tx["share"], -pts, tx["share_d"].format(c=metrics.customers_needed, s=share))
+        pts = (w.sam_step_penalty + w.sam_soft_penalty
+               + w.sam_hard_penalty * min(1.0, (share - w.sam_hard) / w.sam_hard))
+    detail = tx["share_d"].format(c=metrics.customers_needed, s=share)
+    if sam_is_heuristic(m) and w.heuristic_sam_confidence != 1.0:
+        pts *= w.heuristic_sam_confidence
+        k = f"{w.heuristic_sam_confidence:.2f}".rstrip("0").rstrip(".").replace(".", tx["dec"])
+        detail += tx["share_heur"].format(k=k)
+    return Adjustment(tx["share"], -pts, detail)
 
 
 def _legal(m: BusinessModel, w: CzechScoreWeights, tx: dict) -> Adjustment | None:
@@ -104,10 +120,19 @@ def _integrations(m: BusinessModel, w: CzechScoreWeights, tx: dict) -> Adjustmen
     return Adjustment(tx["integr"], -min(w.integration_cap, len(hard) * w.integration_points_each), ", ".join(hard))
 
 
+def support_segment(m: BusinessModel) -> str:
+    """'full' for B2C and local SMB categories (many or non-technical customers), 'other_b2b' otherwise."""
+    return "full" if m.audience == "B2C" or m.category in LOCAL_CATEGORIES else "other_b2b"
+
+
 def _support(m: BusinessModel, w: CzechScoreWeights, tx: dict) -> Adjustment | None:
     if not (m.czech_support_required and w.solo_founder):
         return None
-    return Adjustment(tx["support"], -w.czech_support_penalty, tx["support_d"])
+    if support_segment(m) == "full":
+        return Adjustment(tx["support"], -w.czech_support_penalty, tx["support_d"])
+    if w.czech_support_penalty_other_b2b <= 0:
+        return None
+    return Adjustment(tx["support"], -w.czech_support_penalty_other_b2b, tx["support_other"])
 
 
 def _recommendations(m: BusinessModel, metrics: DerivedMetrics, w: CzechScoreWeights, tx: dict,
@@ -134,7 +159,7 @@ def czech_adjusted_score(base: int, m: BusinessModel, metrics: DerivedMetrics,
     """Base feasibility minus Czech frictions, clamped to 0-100, with a per-factor breakdown.
     `lang` ('en' | 'ru') only changes the explanatory texts, never the numbers."""
     tx = _TX.get(lang, _TX["en"])
-    breakdown = [adj for adj in (_incumbents(m, weights, tx), _sam_share(metrics, weights, tx),
+    breakdown = [adj for adj in (_incumbents(m, weights, tx), _sam_share(m, metrics, weights, tx),
                                  _legal(m, weights, tx), _integrations(m, weights, tx), _support(m, weights, tx))
                  if adj is not None]
     score = round(max(0.0, min(100.0, base + sum(a.points for a in breakdown))))

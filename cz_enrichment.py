@@ -27,8 +27,8 @@ ENRICHMENT_PATH = Path(__file__).parent / "data" / "cz_enrichment.json"
 # Base-record fields the overlay may correct (only via reviewed patches).
 BASE_OVERRIDES = ("country", "url", "cz_segments")
 
-ModelType = Literal["saas", "marketplace", "d2c_physical", "offline_retail", "service"]
-MODEL_TYPES: tuple[str, ...] = ("saas", "marketplace", "d2c_physical", "offline_retail", "service")
+ModelType = Literal["saas", "marketplace", "d2c_physical", "offline_retail", "service", "media_ads"]
+MODEL_TYPES: tuple[str, ...] = ("saas", "marketplace", "d2c_physical", "offline_retail", "service", "media_ads")
 
 # Integrations recognised in free text; the scoring config decides which ones count as "complex".
 KNOWN_INTEGRATIONS = [
@@ -38,7 +38,7 @@ KNOWN_INTEGRATIONS = [
 _INTEGRATION_ALIASES = {"Zboží.cz": ["Zboží", "Zbozi"], "Bank iD": ["Bankovní identita", "Bank iD"]}
 
 # Categories whose customers expect Czech-language support.
-_LOCAL_CATEGORIES = {"Local Services", "Hospitality & Gastro", "Finance & Admin", "Health & Wellness",
+LOCAL_CATEGORIES = {"Local Services", "Hospitality & Gastro", "Finance & Admin", "Health & Wellness",
                      "Education & EdTech"}
 
 
@@ -64,6 +64,8 @@ def infer_model_type(row: dict) -> str:
     cogs = row.get("cogs_pct", 0.0) or 0.0
     if rev in ("retail", "food sales") or "franchise" in rev:
         return "offline_retail"
+    if "advertising" in rev:  # audience media paid by advertisers (6AM City, Nextdoor)
+        return "media_ads"
     if "margin on resale" in rev:  # buys and resells goods (e.g. used cars)
         return "d2c_physical"
     if "per-service" in rev or "revenue share" in rev:
@@ -124,7 +126,7 @@ def infer_integrations(row: dict) -> list[str]:
 
 
 def infer_czech_support(row: dict) -> bool:
-    return row.get("audience") == "B2C" or row.get("category") in _LOCAL_CATEGORIES or row.get("moat", 0) >= 4
+    return row.get("audience") == "B2C" or row.get("category") in LOCAL_CATEGORIES or row.get("moat", 0) >= 4
 
 
 def incumbents_from_competitors(row: dict) -> list[Incumbent]:
