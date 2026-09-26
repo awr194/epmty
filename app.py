@@ -14,7 +14,7 @@ import streamlit as st
 
 from analyzer import (CLAUDE_MODELS, DEFAULT_CLAUDE_MODEL, DEFAULT_GEMINI_MODEL, GEMINI_MODELS, AnalysisResult,
                       CzechAssumptions, analyze, pick_engine, quick_metrics)
-from data_loader import CATEGORIES, LIVE_SOURCES, BusinessModel, _id, load_curated, with_cz_defaults
+from data_loader import CATEGORIES, LIVE_SOURCES, LOW_CZ_RELEVANCE_SOURCES, BusinessModel, _id, load_curated, with_cz_defaults
 from exporter import to_markdown, to_pdf
 from scoring.config import DEFAULT_WEIGHTS, CzechScoreWeights
 import report_store
@@ -122,6 +122,9 @@ with st.sidebar:
     st.header("🌐 Live sources")
     sources = st.multiselect("Fetch fresh launches from", list(LIVE_SOURCES), default=list(LIVE_SOURCES))
     live_limit = st.slider("Items per source", 5, 30, 15)
+    show_live = st.toggle("Show launch feeds in the radar", False,
+                          help="Hacker News and Product Hunt are global launch feeds - not representative of the "
+                               "Czech SMB segment, so they are hidden by default.")
     c1, c2 = st.columns(2)
     if c1.button("Fetch live", width="stretch", disabled=not sources):
         fetched: list[BusinessModel] = []
@@ -132,10 +135,12 @@ with st.sidebar:
                 except Exception as e:
                     st.warning(f"{name}: {e}")
         ss.live_models = fetched
-        st.toast(f"Fetched {len(fetched)} live launches")
+        st.toast(f"Fetched {len(fetched)} live launches" + ("" if show_live else
+                 " - turn on 'Show launch feeds in the radar' to see them"))
     if c2.button("Clear live", width="stretch", disabled=not ss.live_models):
         ss.live_models = []
-    st.caption("Indie Hackers has no public API - its revenue-transparent products are in the curated set.")
+    st.caption("⚠️ Global launch feeds: low relevance for Czech SMBs. Indie Hackers has no public API - its "
+               "revenue-transparent products are in the curated set.")
 
     with st.expander("➕ Add your own model"):
         with st.form("custom", clear_on_submit=True):
@@ -238,6 +243,8 @@ if countries:
     view_df = view_df[view_df["Country"].isin(countries)]
 if srcs:
     view_df = view_df[view_df["Source"].isin(srcs)]
+if not show_live:
+    view_df = view_df[~view_df["Source"].isin(LOW_CZ_RELEVANCE_SOURCES)]
 if query:
     hay = (view_df["Name"] + " " + view_df["Niche"] + " " + view_df["Problem"] + " " + view_df["Category"] + " " + view_df["Country"]).str.lower()
     view_df = view_df[hay.str.contains(query.lower(), regex=False)]
@@ -306,6 +313,8 @@ def radar_view() -> None:
             badges = f":blue-badge[{m.category}] :green-badge[{m.country}] :gray-badge[{m.model_type}]"
             if m.needs_rethink_for_cz:
                 badges += " :red-badge[needs rethink for CZ]"
+            if m.source in LOW_CZ_RELEVANCE_SOURCES:
+                badges += " :orange-badge[launch feed - low CZ SMB relevance]"
             st.markdown(badges)
             st.caption(m.niche)
             st.progress(score / 100, text=f"{score_col} **{score}**/100")

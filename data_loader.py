@@ -753,6 +753,14 @@ LIVE_SOURCES = {
     "Product Hunt": fetch_product_hunt,
 }
 
+# Global tech-launch feeds: useful for spotting trends, but their launches are mostly dev tools and
+# consumer apps with no traction data - not representative of the Czech SMB segment. The app hides
+# them from the radar unless the user opts in.
+LOW_CZ_RELEVANCE_SOURCES = {
+    "Hacker News (Show HN)": "Global developer launches; rarely relevant to Czech SMB demand",
+    "Product Hunt": "Global consumer/SaaS launches without traction data; low relevance to Czech SMBs",
+}
+
 
 def to_dataframe(models: list[BusinessModel]) -> pd.DataFrame:
     return pd.DataFrame(
