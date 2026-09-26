@@ -10,3 +10,4 @@ data/llm_reports/
 
 # Working list produced by scripts/i18n_extract.py
 data/i18n/todo_ru.json
+.pytest_cache/
