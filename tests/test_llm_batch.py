@@ -47,12 +47,26 @@ def test_batch_resumes_skips_failures_and_stops_on_quota(tmp_path, monkeypatch):
         return AnalysisResult(mock_report(m, a), gemini_model)
 
     monkeypatch.setattr(mod, "analyze", fake_analyze)
+    monkeypatch.setattr(mod, "RETRY_WAITS", (0, 0))
     monkeypatch.setattr(sys, "argv", ["x", "--model", "g-test", "--runs", "2", "--pause", "0"])
     mod.main()
-    assert calls == ["Slice", "Slice", "Nicereply", "6AM City"]
+    assert calls == ["Slice", "Slice", "Nicereply", "6AM City", "6AM City", "6AM City"]  # quota: 2 retries
     slice_id = next(m.id for m in __import__("data_loader").load_curated() if m.name == "Slice")
     assert len(mod.runs_with(slice_id, "g-test")) == 2
     calls.clear()
     mod.main()  # resume: Slice already has 2 runs
     assert calls[0] == "Nicereply"
     assert "| Slice |" in (tmp_path / "summary.md").read_text()
+
+
+def test_retry_recovers_from_a_per_minute_limit():
+    mod = _mod()
+    from analyzer import AnalysisResult, CzechAssumptions, mock_report
+    from data_loader import load_curated
+    m = load_curated()[0]
+    ok = AnalysisResult(mock_report(m, CzechAssumptions()), "g-test")
+    limited = AnalysisResult(ok.report, "mock", ["Gemini rate limit / free-tier quota hit - try again later"])
+    answers = iter([limited, ok])
+    waits = []
+    res, n, verdict = mod.call_with_retry(lambda: next(answers), sleep=waits.append)
+    assert verdict == "ok" and n == 2 and waits == [65]

@@ -82,6 +82,31 @@ def runs_with(model_id: str, engine: str) -> list[dict]:
     return [r for r in json.loads(path.read_text(encoding="utf-8"))["runs"] if r["engine"] == engine]
 
 
+QUOTA_WORDS = ("quota", "limit", "квот", "лимит")
+SERVER_WORDS = ("server error", "ошибка сервера", "unavailable", "overloaded")
+RETRY_WAITS = (65, 130)  # a per-minute limit clears within a minute; a daily one does not
+
+
+def call_with_retry(call, sleep=time.sleep):
+    """Run one analysis; wait and retry on rate limits and server errors.
+    Returns (result, API calls made, verdict: "ok" | "failed" | "quota")."""
+    calls = 0
+    for wait in (*RETRY_WAITS, None):
+        res = call()
+        calls += 1
+        if res.engine != "mock":
+            return res, calls, "ok"
+        text = " ".join(res.warnings)
+        print("FAILED: " + text)
+        quota = any(w in text.lower() for w in QUOTA_WORDS)
+        server = any(w in text.lower() for w in SERVER_WORDS)
+        if not (quota or server) or wait is None:
+            return res, calls, "quota" if quota else "failed"
+        print(f"  waiting {wait} s and retrying ... ", end="", flush=True)
+        sleep(wait)
+    return res, calls, "failed"
+
+
 def summarize(models: dict[str, BusinessModel], names: list[str], scores: dict[str, tuple], engine: str) -> str:
     lines = [f"# LLM batch summary ({engine})", "",
              "Rules = rule-based scores now; LLM = czech_adjusted_score of each stored run (oldest first).",
@@ -152,14 +177,15 @@ def main() -> None:
                     if args.limit and calls >= args.limit:
                         raise StopIteration
                     print(f"[{i}/{len(names)}] {n} run {k + 1}/{args.runs} ... ", end="", flush=True)
-                    res = analyze(m, a, engine="gemini", gemini_model=args.model,
-                                  czech_context=scores[n][2], lang=args.lang)
-                    calls += 1
-                    if res.engine == "mock":  # the call failed and analyze fell back to the heuristic
-                        print("FAILED: " + "; ".join(res.warnings))
-                        if any(w in " ".join(res.warnings).lower() for w in ("quota", "limit", "квот", "лимит")):
-                            print("Rate limit / quota reached - progress saved, run again later.")
-                            raise StopIteration
+                    res, calls_made, verdict = call_with_retry(
+                        lambda: analyze(m, a, engine="gemini", gemini_model=args.model,
+                                        czech_context=scores[n][2], lang=args.lang))
+                    calls += calls_made
+                    if verdict == "quota":
+                        print("Quota still exhausted after waiting (probably the daily limit) - progress saved, "
+                              "run again later.")
+                        raise StopIteration
+                    if verdict == "failed":
                         break  # skip this model, go on with the next one
                     report_store.save(m.id, m.name, res)
                     print(f"CZ {res.report.czech_adjusted_score} (rules {scores[n][1]}), "
