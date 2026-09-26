@@ -1,0 +1,359 @@
+{
+  "generated": "2026-09-26",
+  "fixes": [
+    {
+      "model": "MoySklad (МойСклад)",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "Russian marking & fiscal integrations"
+    },
+    {
+      "model": "Evotor (Эвотор)",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "fiscal / cash-register law"
+    },
+    {
+      "model": "iiko",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "Russian EGAIS / fiscal integrations"
+    },
+    {
+      "model": "Kontur.Elba (Контур.Эльба)",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "Russian ИП tax regimes"
+    },
+    {
+      "model": "Knopka (Кнопка)",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "Russian accounting standards (RSBU)"
+    },
+    {
+      "model": "Diadoc (Диадок)",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "national e-document (EDO) rules"
+    },
+    {
+      "model": "Solar Staff",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "Russian self-employed (НПД) regime"
+    },
+    {
+      "model": "MPStats",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "Wildberries/Ozon marketplaces (absent in CZ)"
+    },
+    {
+      "model": "Marketplace fulfilment operator (Wildberries/Ozon sellers)",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "Wildberries/Ozon marketplaces (absent in CZ)"
+    },
+    {
+      "model": "Telega.in",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "Telegram ad market (niche in CZ)"
+    },
+    {
+      "model": "Senler",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "VK platform (not used in CZ)"
+    },
+    {
+      "model": "Checkbox",
+      "field": "needs_rethink_for_cz",
+      "old": false,
+      "new": true,
+      "reason": "fiscal / cash-register law"
+    },
+    {
+      "model": "Czech for Foreigners: Exam-prep Marketplace",
+      "field": "country",
+      "old": "Hong Kong",
+      "new": "Global / remote",
+      "reason": "Czech-specific idea; italki (Hong Kong) is only the inspiration, not the origin of this model"
+    },
+    {
+      "model": "Czech for Foreigners: Exam-prep Marketplace",
+      "field": "url",
+      "old": "https://www.italki.com",
+      "new": "",
+      "reason": "italki.com is a general tutoring marketplace, not a reference for this exam-prep niche"
+    },
+    {
+      "model": "AirDNA",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Short-term rental investors",
+        "Prague Airbnb hosts",
+        "Property-management companies"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "PriceLabs",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Prague Airbnb hosts & co-hosts",
+        "Apartment-management companies",
+        "Small hotels & pensions"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Guesty",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Short-term rental management companies",
+        "Prague co-hosting agencies"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Lodgify",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Holiday-home owners (chaty, chalupy)",
+        "Pensions (penziony)",
+        "Apartment managers"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Travelline",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Small hotels",
+        "Pensions (penziony)",
+        "Spa hotels"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Aviasales",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Czech leisure travellers",
+        "Budget travellers & students"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "La Belle Assiette",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Private chefs",
+        "Households hosting dinners",
+        "Corporate event organisers"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Withlocals",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Prague tour guides",
+        "Tourists wanting private tours"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Kitopi",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Restaurant brands wanting delivery reach",
+        "Dark-kitchen operators"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Luckin Coffee",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Urban commuters",
+        "Office workers",
+        "Students"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Kopi Kenangan",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Urban commuters",
+        "Office workers",
+        "Students"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Cofix",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Price-sensitive coffee drinkers",
+        "Students",
+        "Office workers"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Chai Point",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Offices wanting hot-drink service",
+        "Commuters"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Dodo Pizza",
+      "field": "cz_segments",
+      "old": [
+        "Prague restaurants & cafés",
+        "Short-term rental hosts"
+      ],
+      "new": [
+        "Families ordering delivery",
+        "Office lunch orders",
+        "Franchisees"
+      ],
+      "reason": "templated gastro/STR segments don't describe this model"
+    },
+    {
+      "model": "Cleo",
+      "field": "cz_segments",
+      "old": [
+        "Czech OSVČ",
+        "Small accounting firms"
+      ],
+      "new": [
+        "Young adults 18-30",
+        "Students managing money"
+      ],
+      "reason": "templated 'OSVČ / accounting firms' segments don't fit a consumer product"
+    },
+    {
+      "model": "Farewill",
+      "field": "cz_segments",
+      "old": [
+        "Czech OSVČ",
+        "Small accounting firms"
+      ],
+      "new": [
+        "Adults 40+ planning inheritance",
+        "Families going through probate (dědické řízení)"
+      ],
+      "reason": "templated 'OSVČ / accounting firms' segments don't fit a consumer product"
+    },
+    {
+      "model": "Banki.ru",
+      "field": "cz_segments",
+      "old": [
+        "Czech OSVČ",
+        "Small accounting firms"
+      ],
+      "new": [
+        "Consumers comparing loans & deposits",
+        "Banks & lenders buying leads"
+      ],
+      "reason": "templated 'OSVČ / accounting firms' segments don't fit a consumer product"
+    },
+    {
+      "model": "PolicyBazaar",
+      "field": "cz_segments",
+      "old": [
+        "Czech OSVČ",
+        "Small accounting firms"
+      ],
+      "new": [
+        "Consumers comparing insurance",
+        "Insurers & brokers buying leads"
+      ],
+      "reason": "templated 'OSVČ / accounting firms' segments don't fit a consumer product"
+    },
+    {
+      "model": "Money Fellows",
+      "field": "cz_segments",
+      "old": [
+        "Czech OSVČ",
+        "Small accounting firms"
+      ],
+      "new": [
+        "Young savers",
+        "Communities saving together"
+      ],
+      "reason": "templated 'OSVČ / accounting firms' segments don't fit a consumer product"
+    }
+  ]
+}

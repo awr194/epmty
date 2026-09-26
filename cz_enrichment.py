@@ -24,6 +24,9 @@ from market.nace_sam import cache_info, sam_for_nace
 
 ENRICHMENT_PATH = Path(__file__).parent / "data" / "cz_enrichment.json"
 
+# Base-record fields the overlay may correct (only via reviewed patches).
+BASE_OVERRIDES = ("country", "url", "cz_segments")
+
 ModelType = Literal["saas", "marketplace", "d2c_physical", "offline_retail", "service"]
 MODEL_TYPES: tuple[str, ...] = ("saas", "marketplace", "d2c_physical", "offline_retail", "service")
 
@@ -154,6 +157,9 @@ def apply_cz_defaults(row: dict, overlay: dict[str, dict] | None = None) -> dict
     row = dict(row)
     over = (load_overlay() if overlay is None else overlay).get(row["name"], {})
     inferred: list[str] = []
+    for field in BASE_OVERRIDES:  # reviewed corrections to base metadata (see patches/)
+        if field in over:
+            row[field] = over[field]
 
     def put(field: str, infer):
         if field in over:
