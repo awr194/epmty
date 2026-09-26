@@ -15,6 +15,9 @@ from analyzer import (CLAUDE_MODELS, DEFAULT_CLAUDE_MODEL, DEFAULT_GEMINI_MODEL,
                       CzechAssumptions, analyze, pick_engine, quick_metrics)
 from data_loader import CATEGORIES, LIVE_SOURCES, BusinessModel, _id, load_curated, with_cz_defaults
 from exporter import to_markdown, to_pdf
+from scoring.config import DEFAULT_WEIGHTS, CzechScoreWeights
+from scoring.czech import czech_adjusted_score
+from scoring.metrics import derived_metrics
 
 st.set_page_config(page_title="Czech Business Model Radar", page_icon="🇨🇿", layout="wide")
 
@@ -93,6 +96,23 @@ with st.sidebar:
             pausal_band3=st.number_input("Paušální daň band 3 (CZK/month)", 15_000, 45_000, 27_000, 100),
             sro_accounting=st.number_input("s.r.o. accountant (CZK/month)", 0, 20_000, 4_000, 500),
         )
+        st.markdown("**Czech score weights**")
+        d = DEFAULT_WEIGHTS
+        weights = CzechScoreWeights(
+            incumbent_points_per_strength=st.slider("Points per incumbent strength", 0.0, 10.0,
+                                                    d.incumbent_points_per_strength, 0.5),
+            incumbent_cap=st.slider("Max incumbent penalty", 0.0, 50.0, d.incumbent_cap, 1.0),
+            sam_soft=st.slider("SAM share: penalty starts at", 0.0, 0.10, d.sam_soft, 0.005, format="%.3f"),
+            sam_hard=st.slider("SAM share: steep penalty from", 0.02, 0.30, d.sam_hard, 0.01, format="%.2f"),
+            sam_soft_penalty=st.slider("SAM penalty up to the steep threshold", 0.0, 30.0, d.sam_soft_penalty, 1.0),
+            sam_hard_penalty=st.slider("Extra SAM penalty beyond it", 0.0, 40.0, d.sam_hard_penalty, 1.0),
+            legal_points_per_level=st.slider("Points per legal-complexity level", 0.0, 8.0,
+                                             d.legal_points_per_level, 0.5),
+            integration_points_each=st.slider("Points per complex integration", 0.0, 8.0,
+                                              d.integration_points_each, 0.5),
+            solo_founder=st.toggle("Solo founder (Czech support is costly)", d.solo_founder),
+            czech_support_penalty=st.slider("Czech-support penalty", 0.0, 10.0, d.czech_support_penalty, 0.5),
+        )
 
     st.header("🌐 Live sources")
     sources = st.multiselect("Fetch fresh launches from", list(LIVE_SOURCES), default=list(LIVE_SOURCES))
@@ -151,10 +171,13 @@ def curated() -> list[BusinessModel]:
 models: dict[str, BusinessModel] = {m.id: m for m in curated() + ss.live_models + ss.custom_models}
 
 rows = []
+czech_scores = {}
 for m in models.values():
     q = quick_metrics(m, a)
+    dm = derived_metrics(m, a, q)
+    czech_scores[m.id] = czech_adjusted_score(q["score"], m, dm, weights)
     rows.append({"id": m.id, "Name": m.name, "Category": m.category, "Source": m.source, "Country": m.country, "Niche": m.niche,
-                 "Score": q["score"], "Price (CZK)": q["price_czk"], "Customers M12": q["customers_m12"],
+                 "Score": q["score"], "Czech score": czech_scores[m.id].score, "Price (CZK)": q["price_czk"], "Customers M12": q["customers_m12"],
                  "CZK potential (M12 MRR)": q["mrr_czk_m12"], "Intl. MRR (USD)": m.mrr_usd,
                  "Revenue model": m.revenue_model, "Problem": m.problem, "Tech stack": ", ".join(m.tech_stack),
                  "URL": m.url})
