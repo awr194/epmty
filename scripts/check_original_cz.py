@@ -36,7 +36,7 @@ REPORT_PATH = ROOT / "reports" / "original_cz_unknown.md"
 USER_AGENT = "CzechBizRadar/1.0 (research; checks whether a product is offered in Czechia)"
 TIMEOUT = 12
 PAUSE_S = 1.0
-MAX_HTML = 2_000_000  # bytes; enough for the <head> and the footer language picker
+MAX_HTML = 1_000_000  # characters; enough for the <head> and the footer language picker
 
 
 def _robots_allows(url: str, cache: dict[str, robotparser.RobotFileParser | None]) -> bool:
@@ -100,15 +100,24 @@ def main() -> None:
     if args.limit:
         todo = todo[:args.limit]
 
+    def save() -> None:
+        RESULTS_PATH.write_text(json.dumps({"models": dict(sorted(existing.items()))}, ensure_ascii=False,
+                                           indent=1) + "\n", encoding="utf-8")
+
     robots_cache: dict = {}
-    for i, m in enumerate(todo, 1):
-        res = check(m.url, robots_cache)
-        existing[m.name] = res
-        print(f"[{i}/{len(todo)}] {res['status']:<7} {m.name}  {res.get('error', '')}")
-        if i % 20 == 0 or i == len(todo):  # save progress
-            RESULTS_PATH.write_text(json.dumps({"models": dict(sorted(existing.items()))}, ensure_ascii=False,
-                                               indent=1) + "\n", encoding="utf-8")
-        time.sleep(PAUSE_S)
+    try:
+        for i, m in enumerate(todo, 1):
+            print(f"[{i}/{len(todo)}] {m.name} ... ", end="", flush=True)
+            res = check(m.url, robots_cache)
+            existing[m.name] = res
+            print(f"{res['status']} {res.get('error', '')}")
+            if i % 20 == 0:  # save progress
+                save()
+            time.sleep(PAUSE_S)
+    except KeyboardInterrupt:
+        print("\nInterrupted - progress saved; run again to continue.")
+    finally:
+        save()
 
     write_report(existing, [m.name for m in models])
     counts = {s: sum(1 for r in existing.values() if r["status"] == s) for s in ("yes", "likely", "unknown")}

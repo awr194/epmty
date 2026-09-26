@@ -34,7 +34,11 @@ WEAK = ("price_czk",)
 _HREFLANG = re.compile(r"""<link[^>]+hreflang\s*=\s*["']?(cs(?:-cz)?)["'\s>]""", re.I)
 _HTML_LANG = re.compile(r"""<html[^>]*\blang\s*=\s*["']?(cs(?:-cz)?)\b""", re.I)
 _HREF = re.compile(r"""href\s*=\s*["']?(https?://[^"'\s>]+)""", re.I)
-_PRICE_CZK = re.compile(r"(\d[\d\s.,]*\s?(?:Kč|CZK)\b|\bCZK\s?\d)", re.I)
+# Bounded repetition, anchored on a non-digit boundary: an unbounded [\d\s.,]* backtracks
+# quadratically on long runs of numbers and spaces (minified scripts) and hangs the check.
+# The character classes contain a space and a no-break space (U+00A0).
+_PRICE_CZK = re.compile(r"(?<![\d.,])(\d{1,3}(?:[  .,]?\d{3}){0,3}(?:[.,]\d{1,2})?[  ]?(?:Kč|CZK)\b"
+                        r"|\bCZK[  ]?\d[\d.,]{0,12})", re.I)
 _LANG_PICKER = re.compile(r"Čeština", re.I)
 
 

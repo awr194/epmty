@@ -101,3 +101,17 @@ def test_check_script_offline(monkeypatch):
     assert mod.check("https://acme.com/private", {})["error"] == "robots_disallow"
     assert mod.check("https://down.com", {})["error"] == "http_503"
     assert mod.check("", {})["status"] == "unknown"
+
+
+def test_price_regex_is_linear_on_hostile_pages():
+    import time
+    for html in ("1 " * 200_000, "1,2,3.4 " * 200_000, "1" + " " * 1_000_000 + "x", "7" * 1_000_000):
+        t = time.perf_counter()
+        detect_signals("https://x.com", html)
+        assert time.perf_counter() - t < 2.0
+
+
+@pytest.mark.parametrize("text, value", [
+    ("od 1 290 Kč měsíčně", "1 290 Kč"), ("1\u00a0290,50 CZK", "1 290,50 CZK"), ("CZK 499", "CZK 499")])
+def test_price_formats(text, value):
+    assert detect_signals("https://x.com", text) == [{"signal": "price_czk", "value": value}]
