@@ -77,6 +77,11 @@ Streamlit-приложение, которое собирает проверен
   SAM (дата из источника ČSÚ или unknown), непроверенные конкуренты, «оригинал в CZ», živnost, сложные
   интеграции. Промт: 5–10 пунктов, без URL; `competitors.url` = null, если LLM не уверен; `_clamp` убирает
   битые и «общие» ссылки (facebook, google, example). Вкладка «✅ Проверить перед запуском», экспорт MD/PDF.
+- **10.7 (скрипт) сделан**, порядок изменён: 10.7 перед 10.3. `scripts/run_llm_batch.py`: выборка 51 модель
+  (`data/llm_batch_sample.json`: по 4 на категорию по квантилям скора + Slice/6AM City/Nicereply + все типы),
+  N прогонов на модель (по умолчанию 2), пауза 8 с, возобновление, стоп при квоте, сбойные вызовы
+  (откат на офлайн) не сохраняются. Сводка `reports/llm_batch_summary.md` (правила vs LLM, разброс).
+  **Ждём прогона у пользователя** (ключ Gemini локально), затем 10.3 на этих данных.
 - **10.2 сделан** (`51d3cf7`): `market/competitors.py` + `scripts/import_llm_competitors.py` →
   `data/llm_competitors.json`; `scripts/verify_competitors.py` проверяет URL (ещё НЕ запускался — сеть).
   Incumbent: `verified`, `source`, `kind`, `url_status`, `checked_at`, `mentions`. В карточке список
@@ -123,7 +128,7 @@ scripts/
   i18n_extract.py       Найти непереведённые строки данных
 reports/                audit.md, models_without_incumbents.md
 patches/data_fixes.json Патч исправлений данных (33 изменения, НЕ применён)
-tests/                  106 тестов (pytest)
+tests/                  108 тестов (pytest)
 ```
 
 ### Поток данных
@@ -235,7 +240,7 @@ Google Trends — официальный API с ограниченным дос�
 
 ```bash
 .venv\Scripts\python -m streamlit run app.py          # приложение (localhost:8501)
-.venv\Scripts\python -m pytest -q tests               # 106 тестов
+.venv\Scripts\python -m pytest -q tests               # 108 тестов
 .venv\Scripts\python scripts\i18n_extract.py --check  # все ли данные переведены
 .venv\Scripts\python scripts\audit_data.py            # аудит данных
 .venv\Scripts\python scripts\refresh_nace_sam.py      # обновить SAM из ČSÚ (~540 МБ)
