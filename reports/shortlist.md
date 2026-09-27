@@ -10,19 +10,19 @@ Score = Czech-adjusted score with the profile's weights (native Czech: no langua
 | # | Model | Category | Type | Score | Base | Price CZK/mo | Customers for goal | Incumbents | Original in CZ | Main deductions |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | Czech for Foreigners: Exam-prep Marketplace | Communities & Marketplaces | marketplace | **70** | 73 | 700 | 65 | 1 | unknown | Local incumbents -3 |
-| 2 | Sklik + Google Ads Client Reporting (AgencyAnalytics archetype) | Marketing & Growth | saas | **67** | 70 | 990 | 46 | 1 | unknown | Local incumbents -3 |
-| 3 | AI Multilingual Menu & Allergen Labels | Hospitality & Gastro | saas | **66** | 75 | 449 | 101 | 2 | unknown | Local incumbents -6, Legal complexity -3 |
-| 4 | Review Request Automation (NiceJob archetype) | Marketing & Growth | saas | **66** | 72 | 849 | 54 | 1 | unknown | Local incumbents -3, Legal complexity -3 |
-| 5 | Twinkl | Education & EdTech | saas | **66** | 66 | 199 | 227 | 0 | unknown | - |
-| 6 | Spond | Communities & Marketplaces | saas | **65** | 68 | 300 | 150 | 0 | unknown | Share of market needed -3 |
-| 7 | Kids' Clubs & Camps Booking (ActivityHero archetype) | Local Services | saas | **63** | 72 | 690 | 66 | 2 | unknown | Local incumbents -6, Legal complexity -3 |
-| 8 | AI Product Descriptions for E-shops (Hypotenuse archetype) | AI Tools | saas | **63** | 66 | 649 | 70 | 1 | unknown | Local incumbents -3 |
-| 9 | Interior AI | AI Tools | saas | **61** | 64 | 499 | 91 | 1 | unknown | Local incumbents -3 |
-| 10 | Classplus | Education & EdTech | saas | **61** | 61 | 849 | 54 | 0 | unknown | - |
-| 11 | Fixflo | Finance & Admin | saas | **61** | 61 | 790 | 57 | 0 | unknown | - |
-| 12 | Outschool | Education & EdTech | marketplace | **61** | 61 | 500 | 90 | 0 | unknown | - |
-| 13 | Timeleft | Communities & Marketplaces | saas | **61** | 61 | 390 | 116 | 0 | unknown | - |
-| 14 | AI Tutor for Přijímačky & Maturita (Khanmigo archetype) | AI Tools | saas | **60** | 70 | 249 | 181 | 4 | unknown | Local incumbents -10 |
-| 15 | Public Tender Alerts for SMEs (GovSpend archetype) | Finance & Admin | saas | **60** | 70 | 990 | 46 | 5 | unknown | Local incumbents -10 |
+| 2 | AI Multilingual Menu & Allergen Labels | Hospitality & Gastro | saas | **66** | 75 | 449 | 101 | 2 | unknown | Local incumbents -6, Legal complexity -3 |
+| 3 | Twinkl | Education & EdTech | saas | **66** | 66 | 199 | 227 | 0 | unknown | - |
+| 4 | Spond | Communities & Marketplaces | saas | **65** | 68 | 300 | 150 | 0 | unknown | Share of market needed -3 |
+| 5 | Kids' Clubs & Camps Booking (ActivityHero archetype) | Local Services | saas | **63** | 72 | 690 | 66 | 2 | unknown | Local incumbents -6, Legal complexity -3 |
+| 6 | Sklik + Google Ads Client Reporting (AgencyAnalytics archetype) | Marketing & Growth | saas | **62** | 70 | 990 | 46 | 3 | unknown | Local incumbents -8 |
+| 7 | Interior AI | AI Tools | saas | **61** | 64 | 499 | 91 | 1 | unknown | Local incumbents -3 |
+| 8 | Classplus | Education & EdTech | saas | **61** | 61 | 849 | 54 | 0 | unknown | - |
+| 9 | Fixflo | Finance & Admin | saas | **61** | 61 | 790 | 57 | 0 | unknown | - |
+| 10 | Outschool | Education & EdTech | marketplace | **61** | 61 | 500 | 90 | 0 | unknown | - |
+| 11 | Timeleft | Communities & Marketplaces | saas | **61** | 61 | 390 | 116 | 0 | unknown | - |
+| 12 | AI Tutor for Přijímačky & Maturita (Khanmigo archetype) | AI Tools | saas | **60** | 70 | 249 | 181 | 4 | unknown | Local incumbents -10 |
+| 13 | Public Tender Alerts for SMEs (GovSpend archetype) | Finance & Admin | saas | **60** | 70 | 990 | 46 | 5 | unknown | Local incumbents -10 |
+| 14 | 6AM City | Creator Economy | media_ads | **60** | 68 | 12 000 | 4 | 2 | unknown | Local incumbents -8 |
+| 15 | Review Request Automation (NiceJob archetype) | Marketing & Growth | saas | **59** | 72 | 849 | 54 | 4 | unknown | Local incumbents -10, Legal complexity -3 |
 
 Next: LLM deep-dive of this list (`python scripts/run_llm_batch.py --sample-file data/shortlist.json --model gemini-3.5-flash --runs 2`), then customer interviews for the top 3.

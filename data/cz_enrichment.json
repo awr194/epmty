@@ -283,6 +283,47 @@
         "862",
         "9602",
         "432"
+      ],
+      "local_incumbents": [
+        {
+          "name": "Firmy.cz reviews",
+          "strength": 2,
+          "note": "Seznam's directory - key review surface - strength to verify",
+          "url": "https://www.firmy.cz",
+          "verified": false,
+          "source": "",
+          "kind": "",
+          "url_status": "",
+          "checked_at": "",
+          "mentions": 1
+        },
+        {
+          "name": "Ratemat.cz",
+          "strength": 3,
+          "note": "",
+          "url": "",
+          "verified": false,
+          "source": "user research 2026-09-27 (LLM, to verify); ARES: Ratemat, s.r.o., IČO 23545674, since 2025-07-30",
+          "kind": "direct local clone: SMS/e-mail review requests, widgets"
+        },
+        {
+          "name": "Walio.cz",
+          "strength": 2,
+          "note": "",
+          "url": "",
+          "verified": false,
+          "source": "user research 2026-09-27 (LLM, to verify); ARES: walio digital s.r.o., IČO 29893984, since 2026-08-13 - link to the brand unverified",
+          "kind": "wallet loyalty cards with review prompts"
+        },
+        {
+          "name": "Heureka Ověřeno zákazníky",
+          "strength": 1,
+          "note": "",
+          "url": "",
+          "verified": false,
+          "source": "user research 2026-09-27 (LLM, to verify)",
+          "kind": "e-commerce reviews only"
+        }
       ]
     },
     "Accountant-Client Document Portal (TaxDome archetype)": {
@@ -328,6 +369,38 @@
     "Sklik + Google Ads Client Reporting (AgencyAnalytics archetype)": {
       "target_nace": [
         "7311"
+      ],
+      "local_incumbents": [
+        {
+          "name": "Marketing Miner",
+          "strength": 2,
+          "note": "SEO-focused - strength to verify",
+          "url": "https://www.marketingminer.com",
+          "verified": false,
+          "source": "",
+          "kind": "",
+          "url_status": "",
+          "checked_at": "",
+          "mentions": 1
+        },
+        {
+          "name": "Seznam Sklik connector for Looker Studio",
+          "strength": 2,
+          "note": "",
+          "url": "",
+          "verified": false,
+          "source": "user research 2026-09-27 (LLM, to verify)",
+          "kind": "free DIY connector (GitHub) - substitute"
+        },
+        {
+          "name": "Advertify.cz",
+          "strength": 1,
+          "note": "",
+          "url": "",
+          "verified": false,
+          "source": "user research 2026-09-27 (LLM, to verify); ARES: no company of this name found",
+          "kind": "AI ad optimiser / auditor - adjacent"
+        }
       ]
     },
     "Agency Time Tracking & Profitability (Toggl archetype)": {
@@ -1079,6 +1152,49 @@
       "cz_segments": [
         "Young savers",
         "Communities saving together"
+      ]
+    },
+    "AI Product Descriptions for E-shops (Hypotenuse archetype)": {
+      "local_incumbents": [
+        {
+          "name": "Shoptet AI add-ons",
+          "strength": 2,
+          "note": "Check existing add-ons - strength to verify",
+          "url": "https://doplnky.shoptet.cz",
+          "verified": false,
+          "source": "",
+          "kind": "",
+          "url_status": "",
+          "checked_at": "",
+          "mentions": 1
+        },
+        {
+          "name": "AI Copywriter by JARABOT",
+          "strength": 3,
+          "note": "",
+          "url": "",
+          "verified": false,
+          "source": "user research 2026-09-27 (LLM, to verify); ARES: JARABOT s.r.o., IČO 22571299, since 2025-02-10 - link to the add-on unverified",
+          "kind": "Shoptet Doplňky add-on"
+        },
+        {
+          "name": "GPTfeed.ai",
+          "strength": 2,
+          "note": "",
+          "url": "",
+          "verified": false,
+          "source": "user research 2026-09-27 (LLM, to verify); ARES: no company of this name found",
+          "kind": "batch AI rewrite of Shoptet XML feeds"
+        },
+        {
+          "name": "Editee (formerly Deeply.cz)",
+          "strength": 2,
+          "note": "",
+          "url": "",
+          "verified": false,
+          "source": "user research 2026-09-27 (LLM, to verify); ARES: no company of this name found",
+          "kind": "Czech AI copywriting service"
+        }
       ]
     }
   }
