@@ -160,6 +160,8 @@ def main() -> None:
     ap.add_argument("--runs", type=int, default=2, help="runs per model")
     ap.add_argument("--pause", type=float, default=8.0, help="seconds between API calls (free-tier limits)")
     ap.add_argument("--lang", default="ru", choices=("ru", "en"))
+    ap.add_argument("--every", type=int, default=1,
+                    help="use every N-th model of the sample (2 = about 26 models, still spread over categories)")
     ap.add_argument("--blind", action="store_true",
                     help="withhold all rule-based scores from the LLM (runs stored as '<model>+blind')")
     ap.add_argument("--limit", type=int, default=0, help="stop after N API calls")
@@ -182,6 +184,8 @@ def main() -> None:
         print(f"Sample of {len(names)} models written to {SAMPLE_PATH}")
     if args.sample_only:
         return
+    if args.every > 1:  # a thinner, still stratified subset (e.g. for a model with a small daily quota)
+        names = names[::args.every]
 
     if not args.summary_only:
         if not (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")):
