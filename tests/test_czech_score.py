@@ -156,3 +156,17 @@ def test_breakdown_sums_to_the_delta_when_not_clamped(make_model):
     m = make_model(legal_complexity=3, local_incumbents=[Incumbent(name="A", strength=2)], czech_support_required=True)
     r = czech_adjusted_score(80, m, _metrics(1_000, 0.06))
     assert r.score == round(80 + sum(a.points for a in r.breakdown))
+
+
+@pytest.mark.parametrize("model_type, penalised", [
+    ("d2c_physical", True), ("offline_retail", True), ("service", True), ("saas", False), ("marketplace", False)])
+def test_non_software_revenue_penalty(make_model, model_type, penalised):
+    m = make_model(model_type=model_type, czech_support_required=False)
+    f = _factors(czech_adjusted_score(60, m, _metrics()))
+    assert (f.get("Non-software revenue") == -10) if penalised else ("Non-software revenue" not in f)
+
+
+def test_calibrated_incumbent_defaults(make_model):
+    many = make_model(czech_support_required=False,
+                      local_incumbents=[Incumbent(name=str(i), strength=3) for i in range(5)])
+    assert _factors(czech_adjusted_score(60, many, _metrics()))["Local incumbents"] == -10

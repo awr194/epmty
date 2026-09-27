@@ -49,6 +49,7 @@ _TX = {
         "integr": "Complex integrations",
         "support": "Czech-language support", "support_d": "Customers expect support in Czech",
         "support_other": "B2B segment: English or occasional Czech support is usually enough",
+        "nonsw": "Non-software revenue", "nonsw_d": "{t}: revenue needs ongoing operations, not software MRR",
         "orig": "Original already in Czechia", "orig_d": "Evidence on its site: {ev}",
         "orig_likely": "The original may already sell in Czechia ({ev}) - check before launch.",
         "orig_no": "Original not offered in Czechia ({src}).",
@@ -64,6 +65,7 @@ _TX = {
         "integr": "Сложные интеграции",
         "support": "Поддержка на чешском", "support_d": "Клиенты ждут поддержки на чешском",
         "support_other": "B2B-сегмент: обычно хватает английского или эпизодической поддержки на чешском",
+        "nonsw": "Выручка не от софта", "nonsw_d": "{t}: выручка требует постоянной операционной работы, это не MRR софта",
         "orig": "Оригинал уже в Чехии", "orig_d": "Признаки на его сайте: {ev}",
         "orig_likely": "Оригинал, возможно, уже продаёт в Чехии ({ev}) — проверьте перед запуском.",
         "orig_no": "Оригинал в Чехии не представлен ({src}).",
@@ -141,6 +143,13 @@ def _support(m: BusinessModel, w: CzechScoreWeights, tx: dict) -> Adjustment | N
     return Adjustment(tx["support"], -w.czech_support_penalty_other_b2b, tx["support_other"])
 
 
+def _non_software(m: BusinessModel, w: CzechScoreWeights, tx: dict, lang: str) -> Adjustment | None:
+    if m.model_type not in w.non_software_types or w.non_software_penalty <= 0:
+        return None
+    from i18n import type_label
+    return Adjustment(tx["nonsw"], -w.non_software_penalty, tx["nonsw_d"].format(t=type_label(m.model_type, lang)))
+
+
 def _evidence_text(m: BusinessModel) -> str:
     return ", ".join(e.get("value", "") for e in m.original_cz_evidence[:3]) or m.original_cz_source
 
@@ -181,7 +190,7 @@ def czech_adjusted_score(base: int, m: BusinessModel, metrics: DerivedMetrics,
     tx = _TX.get(lang, _TX["en"])
     breakdown = [adj for adj in (_incumbents(m, weights, tx), _sam_share(m, metrics, weights, tx),
                                  _legal(m, weights, tx), _integrations(m, weights, tx), _support(m, weights, tx),
-                                 _original(m, weights, tx))
+                                 _original(m, weights, tx), _non_software(m, weights, tx, lang))
                  if adj is not None]
     score = round(max(0.0, min(100.0, base + sum(a.points for a in breakdown))))
     return CzechScore(base=base, score=score, breakdown=breakdown,

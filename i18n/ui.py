@@ -71,6 +71,8 @@ UI: dict[str, dict[str, str]] = {
     "w_support_other": {"ru": "Штраф за поддержку на чешском (прочий B2B)",
                         "en": "Czech-support penalty (other B2B)"},
 
+    "w_nonsw": {"ru": "Штраф за выручку не от софта (товары, розница, услуги)",
+                "en": "Penalty for non-software revenue (goods, retail, services)"},
     "w_original": {"ru": "Штраф, если оригинал уже в Чехии", "en": "Penalty if the original is already in Czechia"},
 
     # ---------------------------------------------------------------- sidebar: live sources

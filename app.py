@@ -162,6 +162,7 @@ with st.sidebar:
             czech_support_penalty_other_b2b=st.slider(t("w_support_other"), 0.0, 10.0,
                                                       d.czech_support_penalty_other_b2b, 0.5),
             original_in_cz_penalty=st.slider(t("w_original"), 0.0, 20.0, d.original_in_cz_penalty, 1.0),
+            non_software_penalty=st.slider(t("w_nonsw"), 0.0, 30.0, d.non_software_penalty, 1.0),
         )
 
     st.header(t("live_header"))

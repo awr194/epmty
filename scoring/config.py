@@ -7,9 +7,11 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class CzechScoreWeights:
-    # Local incumbents: points per unit of strength (1-3), capped.
-    incumbent_points_per_strength: float = 4.0
-    incumbent_cap: float = 25.0
+    # Local incumbents: points per unit of strength (1-3), capped. Calibrated 2026-09-27 on blind LLM runs
+    # (reports/llm_batch_summary_*+blind.md): 4 / 25 wiped out models with several named competitors,
+    # while blind Flash and Flash Lite gave the count of competitors almost no weight.
+    incumbent_points_per_strength: float = 1.5
+    incumbent_cap: float = 10.0
 
     # Share of SAM needed within 12 months: no penalty up to `sam_soft`; just above it a fixed
     # `sam_step_penalty` (crossing the threshold must be visible), plus a linear part up to
@@ -36,6 +38,11 @@ class CzechScoreWeights:
     solo_founder: bool = True
     czech_support_penalty: float = 3.0
     czech_support_penalty_other_b2b: float = 1.0
+
+    # Revenue that is not software MRR (physical goods, retail, hours of service) needs ongoing operations;
+    # blind Flash scored these types 20-28 points below the rules. Calibrated 2026-09-27.
+    non_software_types: tuple[str, ...] = ("d2c_physical", "offline_retail", "service")
+    non_software_penalty: float = 10.0
 
     # The original product itself already sells in Czechia (Czech site / hreflang / .cz domain):
     # a proven, localised competitor. "likely" (only CZK prices) gives a recommendation, no penalty.
