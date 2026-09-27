@@ -81,7 +81,15 @@ Streamlit-приложение, которое собирает проверен
   (`data/llm_batch_sample.json`: по 4 на категорию по квантилям скора + Slice/6AM City/Nicereply + все типы),
   N прогонов на модель (по умолчанию 2), пауза 8 с, возобновление, стоп при квоте, сбойные вызовы
   (откат на офлайн) не сохраняются. Сводка `reports/llm_batch_summary.md` (правила vs LLM, разброс).
-  **Ждём прогона у пользователя** (ключ Gemini локально), затем 10.3 на этих данных.
+  Прогоны (2026-09-27): **Flash Lite — вся выборка ×2** (разброс 2,5), **Flash — 7 моделей** (бесплатная
+  квота ~25/день; у Lite 500/день). Сводки: `reports/llm_batch_summary_<engine>.md`, ошибки — в
+  `reports/llm_batch_errors.log` (вне git).
+  **Главный вывод: Lite «якорится» на скор правил** (корреляция с правилами 0,88, |diff| 4,9), Flash — нет
+  (0,22, |diff| 9,1 на 7 точках): Photoroom правила 56 / Lite 54 / Flash 39; Slice 28 / 24 / 49.
+  Калибровать правила по LLM, который видит правила, — круг. Добавлен **слепой режим** (`--blind`,
+  `analyze(blind=True)`): из промта убраны все скоры правил, оценки 1–5, вердикт и допущения; факты
+  остаются; прогоны хранятся как `<model>+blind`. **Следующее:** слепой прогон Lite по выборке, затем 10.3
+  по слепым прогонам (Flash — контроль качества).
 - **10.2 сделан** (`51d3cf7`): `market/competitors.py` + `scripts/import_llm_competitors.py` →
   `data/llm_competitors.json`; `scripts/verify_competitors.py` проверяет URL (ещё НЕ запускался — сеть).
   Incumbent: `verified`, `source`, `kind`, `url_status`, `checked_at`, `mentions`. В карточке список
@@ -128,7 +136,7 @@ scripts/
   i18n_extract.py       Найти непереведённые строки данных
 reports/                audit.md, models_without_incumbents.md
 patches/data_fixes.json Патч исправлений данных (33 изменения, НЕ применён)
-tests/                  108 тестов (pytest)
+tests/                  110 тестов (pytest)
 ```
 
 ### Поток данных
@@ -240,7 +248,7 @@ Google Trends — официальный API с ограниченным дос�
 
 ```bash
 .venv\Scripts\python -m streamlit run app.py          # приложение (localhost:8501)
-.venv\Scripts\python -m pytest -q tests               # 108 тестов
+.venv\Scripts\python -m pytest -q tests               # 110 тестов
 .venv\Scripts\python scripts\i18n_extract.py --check  # все ли данные переведены
 .venv\Scripts\python scripts\audit_data.py            # аудит данных
 .venv\Scripts\python scripts\refresh_nace_sam.py      # обновить SAM из ČSÚ (~540 МБ)

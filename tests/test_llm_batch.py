@@ -39,7 +39,7 @@ def test_batch_resumes_skips_failures_and_stops_on_quota(tmp_path, monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", "test")
     calls = []
 
-    def fake_analyze(m, a, engine, gemini_model, czech_context, lang):
+    def fake_analyze(m, a, engine, gemini_model, czech_context, lang, blind=False):
         calls.append(m.name)
         if m.name == "Nicereply":  # a failing call: analyze falls back to the heuristic
             return AnalysisResult(mock_report(m, a), "mock", ["Gemini analysis failed (boom)"])
@@ -73,3 +73,19 @@ def test_retry_recovers_from_a_per_minute_limit():
     waits = []
     res, n, verdict = mod.call_with_retry(lambda: next(answers), sleep=waits.append)
     assert verdict == "ok" and n == 2 and waits == [65]
+
+
+def test_blind_prompt_hides_rule_scores(make_model):
+    from analyzer import CzechAssumptions, _user_prompt, engine_id, mock_report
+    a = CzechAssumptions()
+    m = make_model(demand=4, competition=2)
+    ctx = {"czech_adjusted_score": 37, "adjustments": [{"factor": "Local incumbents", "points": -9, "detail": "x"}]}
+    base = mock_report(m, a, ctx)
+    normal = _user_prompt(m, base, a)
+    blind = _user_prompt(m, base, a, blind=True)
+    assert '"czech_adjusted_score": 37' in normal and '"demand": 4' in normal
+    for leak in ('"czech_adjusted_score"', '"feasibility_score"', '"score_breakdown"', '"czech_adjustments"',
+                 '"demand"', '"competition"', "starting point"):
+        assert leak not in blind, leak
+    assert '"competitors"' in blind and '"unit_economics"' in blind  # facts stay
+    assert engine_id("g", True) == "g+blind" and engine_id("g") == "g"

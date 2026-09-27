@@ -756,9 +756,31 @@ _LANGUAGE_RULE = {
 }
 
 
-def _user_prompt(m: BusinessModel, baseline: CzechReport, a: CzechAssumptions, lang: str = "en") -> str:
-    model_json = m.model_dump(exclude={"id", "inferred_fields"})
+# Blind mode (calibration): the LLM must score on its own, so every rule-based score and the 1-5 ratings
+# that produce them are withheld. Facts (competitors, SAM, economics, legal data) stay.
+_BLIND_MODEL_FIELDS = {"demand", "competition", "complexity", "regulatory", "moat"}
+_BLIND_BASELINE_FIELDS = {"feasibility_score", "czech_adjusted_score", "czech_adjustments", "score_breakdown",
+                          "verdict", "confidence", "confidence_reason",
+                          "assumptions"}  # assumptions quote the 1-5 ratings
+
+
+def _user_prompt(m: BusinessModel, baseline: CzechReport, a: CzechAssumptions, lang: str = "en",
+                 blind: bool = False) -> str:
+    model_json = m.model_dump(exclude={"id", "inferred_fields"} | (_BLIND_MODEL_FIELDS if blind else set()))
     model_json["fields_inferred_by_rules_not_verified"] = m.inferred_fields
+    if blind:
+        baseline_intro = ("This is a rule-based draft with all scores removed. Treat its numbers and lists as "
+                          "unverified inputs to check; score the model independently from your own knowledge.")
+        baseline_json = json.dumps(baseline.model_dump(exclude=_BLIND_BASELINE_FIELDS), ensure_ascii=False, indent=2)
+        baseline_rule = "  Score independently: no rule-based score is given on purpose."
+    else:
+        baseline_intro = ("This is the output of a simple rule-based scorer. Use it as a starting point: keep its "
+                          "arithmetic conventions, but correct anything unrealistic, sharpen the audiences, "
+                          "competitors and go-to-market steps with specific Czech knowledge, and explain your "
+                          "reasoning in the rationale fields.")
+        baseline_json = baseline.model_dump_json(indent=2)
+        baseline_rule = ("  The rule-based values in the baseline (czech_adjusted_score, czech_adjustments) are a "
+                         "starting point - correct them where you know better.")
     return f"""Produce a Czech feasibility report for this business model.
 
 <business_model>
@@ -770,10 +792,8 @@ def _user_prompt(m: BusinessModel, baseline: CzechReport, a: CzechAssumptions, l
 </market_assumptions>
 
 <heuristic_baseline>
-This is the output of a simple rule-based scorer. Use it as a starting point: keep its arithmetic \
-conventions, but correct anything unrealistic, sharpen the audiences, competitors and go-to-market steps \
-with specific Czech knowledge, and explain your reasoning in the rationale fields.
-{baseline.model_dump_json(indent=2)}
+{baseline_intro}
+{baseline_json}
 </heuristic_baseline>
 
 Requirements:
@@ -798,8 +818,7 @@ Heureka, Zboží.cz, Sklik, Firmy.cz, QR platba, GoPay, Comgate, Bank iD, ISDOC)
 own site in original_cz_evidence, "likely" = only CZK prices, "unknown" = not checked or no evidence - \
 unknown is NOT proof of absence).
   Seasonality is not a penalty: put the latest sensible launch month into risks or gtm_plan.
-  The rule-based values in the baseline (czech_adjusted_score, czech_adjustments) are a starting point - \
-correct them where you know better. Fields listed in fields_inferred_by_rules_not_verified are guesses.
+{baseline_rule} Fields listed in fields_inferred_by_rules_not_verified are guesses.
 - confidence: "low", "medium" or "high" - how much the assessment rests on specific, current knowledge of \
 the Czech market rather than assumptions. Explain in confidence_reason (1-2 sentences).
 - risks, localization_checklist and assumptions as short bullet strings.
@@ -812,7 +831,7 @@ names only, no URLs). Include the baseline's verify_before_launch items that sti
 
 
 def claude_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: str,
-                  czech_context: dict | None = None, lang: str = "en") -> CzechReport:
+                  czech_context: dict | None = None, lang: str = "en", blind: bool = False) -> CzechReport:
     import anthropic
 
     client = anthropic.Anthropic(api_key=api_key, timeout=300)
@@ -821,7 +840,7 @@ def claude_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: st
         model=model,
         max_tokens=16000,
         system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": _user_prompt(m, baseline, a, lang)}],
+        messages=[{"role": "user", "content": _user_prompt(m, baseline, a, lang, blind)}],
         output_format=CzechReport,
     )
     if response.stop_reason == "refusal":
@@ -832,7 +851,7 @@ def claude_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: st
 
 
 def gemini_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: str,
-                  czech_context: dict | None = None, lang: str = "en") -> CzechReport:
+                  czech_context: dict | None = None, lang: str = "en", blind: bool = False) -> CzechReport:
     from google import genai
     from google.genai import types
 
@@ -840,7 +859,7 @@ def gemini_report(m: BusinessModel, a: CzechAssumptions, api_key: str, model: st
     baseline = mock_report(m, a, czech_context, lang)
     response = client.models.generate_content(
         model=model,
-        contents=_user_prompt(m, baseline, a, lang),
+        contents=_user_prompt(m, baseline, a, lang, blind),
         config=types.GenerateContentConfig(
             system_instruction=SYSTEM_PROMPT,
             response_mime_type="application/json",
@@ -942,13 +961,13 @@ def _fallback(m: BusinessModel, a: CzechAssumptions, msg: str, ctx: dict | None 
 
 
 def _run_claude(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx: dict | None,
-                lang: str = "en") -> AnalysisResult:
+                lang: str = "en", blind: bool = False) -> AnalysisResult:
     try:
         import anthropic
     except ImportError:
         return _fallback(m, a, "`anthropic` package not installed", ctx, lang)
     try:
-        return AnalysisResult(claude_report(m, a, key, model, ctx, lang), model)
+        return AnalysisResult(claude_report(m, a, key, model, ctx, lang, blind), engine_id(model, blind))
     except anthropic.AuthenticationError:
         msg = "Invalid Anthropic API key"
     except anthropic.RateLimitError:
@@ -963,13 +982,13 @@ def _run_claude(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx
 
 
 def _run_gemini(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx: dict | None,
-                lang: str = "en") -> AnalysisResult:
+                lang: str = "en", blind: bool = False) -> AnalysisResult:
     try:
         from google.genai import errors
     except ImportError:
         return _fallback(m, a, "`google-genai` package not installed", ctx, lang)
     try:
-        return AnalysisResult(gemini_report(m, a, key, model, ctx, lang), model)
+        return AnalysisResult(gemini_report(m, a, key, model, ctx, lang, blind), engine_id(model, blind))
     except errors.ClientError as e:
         if e.code in (401, 403) or "API_KEY_INVALID" in str(e) or "API key not valid" in str(e):
             msg = "Invalid Gemini API key"
@@ -986,12 +1005,18 @@ def _run_gemini(m: BusinessModel, a: CzechAssumptions, key: str, model: str, ctx
     return _fallback(m, a, msg, ctx, lang)
 
 
+def engine_id(model: str, blind: bool = False) -> str:
+    """Stored engine label: blind runs are kept apart from anchored ones."""
+    return f"{model}+blind" if blind else model
+
+
 def analyze(m: BusinessModel, a: CzechAssumptions | None = None, engine: str = "auto",
             anthropic_key: str | None = None, gemini_key: str | None = None,
             claude_model: str = DEFAULT_CLAUDE_MODEL, gemini_model: str = DEFAULT_GEMINI_MODEL,
-            czech_context: dict | None = None, lang: str = "en") -> AnalysisResult:
+            czech_context: dict | None = None, lang: str = "en", blind: bool = False) -> AnalysisResult:
     """Run the deep-dive. engine: 'auto', 'claude', 'gemini' or 'mock'.
-    czech_context: the rule-based Czech score (scoring.czech.to_context) given to the LLM as a baseline."""
+    czech_context: the rule-based Czech score (scoring.czech.to_context) given to the LLM as a baseline.
+    blind: withhold every rule-based score from the LLM (calibration runs); the engine id gets '+blind'."""
     ctx = czech_context
     a = a or CzechAssumptions()
     anthropic_key, gemini_key = resolve_keys(anthropic_key, gemini_key)
@@ -999,9 +1024,9 @@ def analyze(m: BusinessModel, a: CzechAssumptions | None = None, engine: str = "
     if engine == "claude":
         if not anthropic_key:
             return _fallback(m, a, "No ANTHROPIC_API_KEY found", ctx, lang)
-        return _run_claude(m, a, anthropic_key, claude_model, ctx, lang)
+        return _run_claude(m, a, anthropic_key, claude_model, ctx, lang, blind)
     if engine == "gemini":
         if not gemini_key:
             return _fallback(m, a, "No GEMINI_API_KEY found", ctx, lang)
-        return _run_gemini(m, a, gemini_key, gemini_model, ctx, lang)
+        return _run_gemini(m, a, gemini_key, gemini_model, ctx, lang, blind)
     return AnalysisResult(mock_report(m, a, ctx, lang), "mock")

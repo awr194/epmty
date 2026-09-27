@@ -6,6 +6,7 @@ categories, model types and the whole score range, plus repeated runs to measure
   python scripts/run_llm_batch.py --sample-only           # write data/llm_batch_sample.json, no API calls
   python scripts/run_llm_batch.py                         # Gemini, 2 runs per sampled model
   python scripts/run_llm_batch.py --model gemini-3.5-flash --runs 2 --pause 8
+  python scripts/run_llm_batch.py --model gemini-3.5-flash-lite --blind   # no rule scores shown to the LLM
   python scripts/run_llm_batch.py --summary-only --model gemini-3.5-flash   # reports/llm_batch_summary_<model>.md
 
 Failed calls are appended to reports/llm_batch_errors.log (time, model id, business model, error).
@@ -30,7 +31,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 import report_store  # noqa: E402
-from analyzer import DEFAULT_GEMINI_MODEL, CzechAssumptions, analyze, quick_metrics  # noqa: E402
+from analyzer import DEFAULT_GEMINI_MODEL, CzechAssumptions, analyze, engine_id, quick_metrics  # noqa: E402
 from data_loader import BusinessModel, load_curated  # noqa: E402
 from scoring.czech import czech_adjusted_score, to_context  # noqa: E402
 from scoring.metrics import derived_metrics  # noqa: E402
@@ -159,6 +160,8 @@ def main() -> None:
     ap.add_argument("--runs", type=int, default=2, help="runs per model")
     ap.add_argument("--pause", type=float, default=8.0, help="seconds between API calls (free-tier limits)")
     ap.add_argument("--lang", default="ru", choices=("ru", "en"))
+    ap.add_argument("--blind", action="store_true",
+                    help="withhold all rule-based scores from the LLM (runs stored as '<model>+blind')")
     ap.add_argument("--limit", type=int, default=0, help="stop after N API calls")
     ap.add_argument("--sample-only", action="store_true")
     ap.add_argument("--summary-only", action="store_true")
@@ -166,6 +169,7 @@ def main() -> None:
     args = ap.parse_args()
 
     a = CzechAssumptions()
+    engine = engine_id(args.model, args.blind)  # stored runs are counted per engine id
     all_models = load_curated()
     by_name = {m.name: m for m in all_models}
     scores = rule_scores(all_models, a, args.lang)
@@ -186,15 +190,15 @@ def main() -> None:
         try:
             for i, n in enumerate(names, 1):
                 m = by_name[n]
-                have = len(runs_with(m.id, args.model))
+                have = len(runs_with(m.id, engine))
                 for k in range(have, args.runs):
                     if args.limit and calls >= args.limit:
                         raise StopIteration
                     print(f"[{i}/{len(names)}] {n} run {k + 1}/{args.runs} ... ", end="", flush=True)
                     res, calls_made, verdict = call_with_retry(
-                        lambda: analyze(m, a, engine="gemini", gemini_model=args.model,
+                        lambda: analyze(m, a, engine="gemini", gemini_model=args.model, blind=args.blind,
                                         czech_context=scores[n][2], lang=args.lang),
-                        on_error=lambda text, n=n: log_error(n, args.model, text))
+                        on_error=lambda text, n=n: log_error(n, engine, text))
                     calls += calls_made
                     if verdict == "quota":
                         print("Quota still exhausted after waiting (probably the daily limit) - progress saved, "
@@ -210,9 +214,9 @@ def main() -> None:
             print("\nStopped.")
         print(f"API calls made: {calls}")
 
-    out = summary_path(args.model)
+    out = summary_path(engine)
     out.parent.mkdir(exist_ok=True)
-    out.write_text(summarize(by_name, names, scores, args.model), encoding="utf-8")
+    out.write_text(summarize(by_name, names, scores, engine), encoding="utf-8")
     print(f"Summary: {out}")
     if ERROR_LOG.exists():
         print(f"Errors (if any) are logged in {ERROR_LOG}")
