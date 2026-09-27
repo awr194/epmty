@@ -96,6 +96,11 @@ Streamlit-приложение, которое собирает проверен
   моделях слепой Lite расходится со (заякоренным) Flash: Photoroom 70 vs 39, AI Tutor 70 vs 40.
   Решение: веса по одному Lite не менять; нужен **слепой Flash** на подвыборке (`--every 2 --runs 1`,
   26 моделей ≈ квота на день). Если слепые Flash и Lite согласны — калибруем по Lite, иначе по Flash.
+  **Слепой Flash (26×1) получен:** со слепым Lite ранжирование согласно (r 0,79), но Lite выше в среднем
+  на 17 (шкала: flash ≈ 1,09·lite − 21,8). С правилами r 0,41. Оба слепых LLM **не учитывают штраф
+  за конкурентов** (коэф. ≈0); Flash сильно ниже правил для d2c_physical / offline_retail / service
+  (−20…−28). Симуляция: конкуренты 1,5/ед. силы, потолок 10 + штраф −10 за нерегулярную выручку →
+  r с Flash 0,41→0,67, с Lite 0,50→0,66; MAE с Flash 15,0→13,1. **Предложено пользователю, НЕ применено.**
 - **10.2 сделан** (`51d3cf7`): `market/competitors.py` + `scripts/import_llm_competitors.py` →
   `data/llm_competitors.json`; `scripts/verify_competitors.py` проверяет URL (ещё НЕ запускался — сеть).
   Incumbent: `verified`, `source`, `kind`, `url_status`, `checked_at`, `mentions`. В карточке список
