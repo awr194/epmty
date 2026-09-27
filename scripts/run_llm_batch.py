@@ -160,6 +160,9 @@ def main() -> None:
     ap.add_argument("--runs", type=int, default=2, help="runs per model")
     ap.add_argument("--pause", type=float, default=8.0, help="seconds between API calls (free-tier limits)")
     ap.add_argument("--lang", default="ru", choices=("ru", "en"))
+    ap.add_argument("--sample-file", type=Path, default=None,
+                    help="use the model list in this JSON file instead of the calibration sample "
+                         "(e.g. data/shortlist.json)")
     ap.add_argument("--every", type=int, default=1,
                     help="use every N-th model of the sample (2 = about 26 models, still spread over categories)")
     ap.add_argument("--blind", action="store_true",
@@ -176,7 +179,9 @@ def main() -> None:
     by_name = {m.name: m for m in all_models}
     scores = rule_scores(all_models, a, args.lang)
 
-    if SAMPLE_PATH.exists() and not args.resample:
+    if args.sample_file:
+        names = [n for n in json.loads(args.sample_file.read_text(encoding="utf-8"))["models"] if n in by_name]
+    elif SAMPLE_PATH.exists() and not args.resample:
         names = [n for n in json.loads(SAMPLE_PATH.read_text(encoding="utf-8"))["models"] if n in by_name]
     else:
         names = stratified_sample(all_models, scores)
@@ -218,7 +223,8 @@ def main() -> None:
             print("\nStopped.")
         print(f"API calls made: {calls}")
 
-    out = summary_path(engine)
+    # a custom list gets its own summary, e.g. llm_batch_summary_gemini-3.5-flash_shortlist.md
+    out = summary_path(engine + (f"_{args.sample_file.stem}" if args.sample_file else ""))
     out.parent.mkdir(exist_ok=True)
     out.write_text(summarize(by_name, names, scores, engine), encoding="utf-8")
     print(f"Summary: {out}")

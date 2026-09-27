@@ -100,7 +100,18 @@ Streamlit-приложение, которое собирает проверен
   на 17 (шкала: flash ≈ 1,09·lite − 21,8). С правилами r 0,41. Оба слепых LLM **не учитывают штраф
   за конкурентов** (коэф. ≈0); Flash сильно ниже правил для d2c_physical / offline_retail / service
   (−20…−28). Симуляция: конкуренты 1,5/ед. силы, потолок 10 + штраф −10 за нерегулярную выручку →
-  r с Flash 0,41→0,67, с Lite 0,50→0,66; MAE с Flash 15,0→13,1. **Предложено пользователю, НЕ применено.**
+  r с Flash 0,41→0,67, с Lite 0,50→0,66; MAE с Flash 15,0→13,1. **Применено** (`90afed2`),
+  `scripts/calibrate.py` воспроизводит цифры. Патч данных (33 изменения) применён (`59c2ada`).
+
+### Этап G. Выбор бизнеса (шаг 11)
+Профиль владельца (2026-09-27): базовые навыки → no-code; носитель чешского; работа + бизнес параллельно;
+есть živnost (OSVČ); без крупного офлайна; цель ≥ 30 000 CZK/мес чистыми.
+- `scoring/profile.py` (`FounderProfile`, `OWNER_PROFILE`): фильтры (сложность ≤3, юр. ≤3, без
+  offline_retail/d2c_physical/service, без «пересмотра», ≤300 клиентов для цели 45 000 CZK MRR),
+  без штрафа за чешский язык.
+- `scripts/shortlist.py` → `reports/shortlist.md`, `data/shortlist.json` (топ-15). Прошли 168 из 500.
+- План: (3) разбор топ-15 через Flash: `run_llm_batch.py --sample-file data/shortlist.json
+  --model gemini-3.5-flash --runs 1`; (4) сравнение и 3 финалиста; (5) интервью с клиентами.
 - **10.2 сделан** (`51d3cf7`): `market/competitors.py` + `scripts/import_llm_competitors.py` →
   `data/llm_competitors.json`; `scripts/verify_competitors.py` проверяет URL (ещё НЕ запускался — сеть).
   Incumbent: `verified`, `source`, `kind`, `url_status`, `checked_at`, `mentions`. В карточке список
@@ -147,7 +158,7 @@ scripts/
   i18n_extract.py       Найти непереведённые строки данных
 reports/                audit.md, models_without_incumbents.md
 patches/data_fixes.json Патч исправлений данных (33 изменения, НЕ применён)
-tests/                  110 тестов (pytest)
+tests/                  119 тестов (pytest)
 ```
 
 ### Поток данных
@@ -259,7 +270,7 @@ Google Trends — официальный API с ограниченным дос�
 
 ```bash
 .venv\Scripts\python -m streamlit run app.py          # приложение (localhost:8501)
-.venv\Scripts\python -m pytest -q tests               # 110 тестов
+.venv\Scripts\python -m pytest -q tests               # 119 тестов
 .venv\Scripts\python scripts\i18n_extract.py --check  # все ли данные переведены
 .venv\Scripts\python scripts\audit_data.py            # аудит данных
 .venv\Scripts\python scripts\refresh_nace_sam.py      # обновить SAM из ČSÚ (~540 МБ)
