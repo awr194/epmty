@@ -112,6 +112,12 @@ Streamlit-приложение, которое собирает проверен
 - `scripts/shortlist.py` → `reports/shortlist.md`, `data/shortlist.json` (топ-15). Прошли 168 из 500.
 - План: (3) разбор топ-15 через Flash: `run_llm_batch.py --sample-file data/shortlist.json
   --model gemini-3.5-flash --runs 1`; (4) сравнение и 3 финалиста; (5) интервью с клиентами.
+- Шаг 3 сделан (Flash, 15×1, `reports/llm_batch_summary_gemini-3.5-flash_shortlist.md`).
+- Шаг 4 сделан: `reports/finalists.md` — **1) отчёты Sklik + Google Ads для агентств (67,5);
+  2) автоматические запросы отзывов (66); 3) AI-описания товаров для e-shop'ов (65);
+  резерв — подготовка иностранцев к экзамену по чешскому (65)**. Там же план интервью.
+- Дальше: шаг 5 — интервью (пользователь). Для финалистов стоит импортировать конкурентов из отчётов
+  Flash (нужен zip `data/llm_reports/`).
 - **10.2 сделан** (`51d3cf7`): `market/competitors.py` + `scripts/import_llm_competitors.py` →
   `data/llm_competitors.json`; `scripts/verify_competitors.py` проверяет URL (ещё НЕ запускался — сеть).
   Incumbent: `verified`, `source`, `kind`, `url_status`, `checked_at`, `mentions`. В карточке список
