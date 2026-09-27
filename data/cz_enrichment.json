@@ -27,7 +27,11 @@
       "model_type": "service"
     },
     "Chai Point": {
-      "model_type": "offline_retail"
+      "model_type": "offline_retail",
+      "cz_segments": [
+        "Offices wanting hot-drink service",
+        "Commuters"
+      ]
     },
     "Wedding Website & RSVP (Joy archetype)": {
       "model_type": "saas"
@@ -37,6 +41,11 @@
       "target_nace": [
         "551",
         "552"
+      ],
+      "cz_segments": [
+        "Small hotels",
+        "Pensions (penziony)",
+        "Spa hotels"
       ]
     },
     "Raksul": {
@@ -46,7 +55,11 @@
       "model_type": "service"
     },
     "Kitopi": {
-      "model_type": "service"
+      "model_type": "service",
+      "cz_segments": [
+        "Restaurant brands wanting delivery reach",
+        "Dark-kitchen operators"
+      ]
     },
     "QR Table Ordering & Pay (Sunday/Mr Yum archetype)": {
       "target_nace": [
@@ -108,7 +121,8 @@
         "561",
         "563"
       ],
-      "sam_segment": "with_employees"
+      "sam_segment": "with_employees",
+      "needs_rethink_for_cz": true
     },
     "Poster POS": {
       "target_nace": [
@@ -155,6 +169,11 @@
     "Lodgify": {
       "target_nace": [
         "552"
+      ],
+      "cz_segments": [
+        "Holiday-home owners (chaty, chalupy)",
+        "Pensions (penziony)",
+        "Apartment managers"
       ]
     },
     "FareHarbor": {
@@ -858,7 +877,8 @@
           "url": "https://www.idoklad.cz",
           "note": "draft - to verify"
         }
-      ]
+      ],
+      "needs_rethink_for_cz": true
     },
     "inFakt": {
       "local_incumbents": [
@@ -928,6 +948,137 @@
           "url": "https://www.idoklad.cz",
           "note": "draft - to verify"
         }
+      ]
+    },
+    "MoySklad (МойСклад)": {
+      "needs_rethink_for_cz": true
+    },
+    "Evotor (Эвотор)": {
+      "needs_rethink_for_cz": true
+    },
+    "Knopka (Кнопка)": {
+      "needs_rethink_for_cz": true
+    },
+    "Diadoc (Диадок)": {
+      "needs_rethink_for_cz": true
+    },
+    "Solar Staff": {
+      "needs_rethink_for_cz": true
+    },
+    "MPStats": {
+      "needs_rethink_for_cz": true
+    },
+    "Marketplace fulfilment operator (Wildberries/Ozon sellers)": {
+      "needs_rethink_for_cz": true
+    },
+    "Telega.in": {
+      "needs_rethink_for_cz": true
+    },
+    "Senler": {
+      "needs_rethink_for_cz": true
+    },
+    "Checkbox": {
+      "needs_rethink_for_cz": true
+    },
+    "Czech for Foreigners: Exam-prep Marketplace": {
+      "country": "Global / remote",
+      "url": ""
+    },
+    "AirDNA": {
+      "cz_segments": [
+        "Short-term rental investors",
+        "Prague Airbnb hosts",
+        "Property-management companies"
+      ]
+    },
+    "PriceLabs": {
+      "cz_segments": [
+        "Prague Airbnb hosts & co-hosts",
+        "Apartment-management companies",
+        "Small hotels & pensions"
+      ]
+    },
+    "Guesty": {
+      "cz_segments": [
+        "Short-term rental management companies",
+        "Prague co-hosting agencies"
+      ]
+    },
+    "Aviasales": {
+      "cz_segments": [
+        "Czech leisure travellers",
+        "Budget travellers & students"
+      ]
+    },
+    "La Belle Assiette": {
+      "cz_segments": [
+        "Private chefs",
+        "Households hosting dinners",
+        "Corporate event organisers"
+      ]
+    },
+    "Withlocals": {
+      "cz_segments": [
+        "Prague tour guides",
+        "Tourists wanting private tours"
+      ]
+    },
+    "Luckin Coffee": {
+      "cz_segments": [
+        "Urban commuters",
+        "Office workers",
+        "Students"
+      ]
+    },
+    "Kopi Kenangan": {
+      "cz_segments": [
+        "Urban commuters",
+        "Office workers",
+        "Students"
+      ]
+    },
+    "Cofix": {
+      "cz_segments": [
+        "Price-sensitive coffee drinkers",
+        "Students",
+        "Office workers"
+      ]
+    },
+    "Dodo Pizza": {
+      "cz_segments": [
+        "Families ordering delivery",
+        "Office lunch orders",
+        "Franchisees"
+      ]
+    },
+    "Cleo": {
+      "cz_segments": [
+        "Young adults 18-30",
+        "Students managing money"
+      ]
+    },
+    "Farewill": {
+      "cz_segments": [
+        "Adults 40+ planning inheritance",
+        "Families going through probate (dědické řízení)"
+      ]
+    },
+    "Banki.ru": {
+      "cz_segments": [
+        "Consumers comparing loans & deposits",
+        "Banks & lenders buying leads"
+      ]
+    },
+    "PolicyBazaar": {
+      "cz_segments": [
+        "Consumers comparing insurance",
+        "Insurers & brokers buying leads"
+      ]
+    },
+    "Money Fellows": {
+      "cz_segments": [
+        "Young savers",
+        "Communities saving together"
       ]
     }
   }
