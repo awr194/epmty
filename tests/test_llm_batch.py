@@ -34,6 +34,7 @@ def test_batch_resumes_skips_failures_and_stops_on_quota(tmp_path, monkeypatch):
     monkeypatch.setattr(report_store, "STORE_DIR", tmp_path / "reports")
     monkeypatch.setattr(mod, "SAMPLE_PATH", tmp_path / "sample.json")
     monkeypatch.setattr(mod, "SUMMARY_PATH", tmp_path / "summary.md")
+    monkeypatch.setattr(mod, "ERROR_LOG", tmp_path / "errors.log")
     (tmp_path / "sample.json").write_text(json.dumps({"models": ["Slice", "Nicereply", "6AM City"]}))
     monkeypatch.setenv("GEMINI_API_KEY", "test")
     calls = []
@@ -56,7 +57,9 @@ def test_batch_resumes_skips_failures_and_stops_on_quota(tmp_path, monkeypatch):
     calls.clear()
     mod.main()  # resume: Slice already has 2 runs
     assert calls[0] == "Nicereply"
-    assert "| Slice |" in (tmp_path / "summary.md").read_text()
+    assert "| Slice |" in (tmp_path / "summary_g-test.md").read_text()
+    log = (tmp_path / "errors.log").read_text()
+    assert "Nicereply\tGemini analysis failed (boom)" in log and "6AM City" in log
 
 
 def test_retry_recovers_from_a_per_minute_limit():

@@ -6,7 +6,9 @@ categories, model types and the whole score range, plus repeated runs to measure
   python scripts/run_llm_batch.py --sample-only           # write data/llm_batch_sample.json, no API calls
   python scripts/run_llm_batch.py                         # Gemini, 2 runs per sampled model
   python scripts/run_llm_batch.py --model gemini-3.5-flash --runs 2 --pause 8
-  python scripts/run_llm_batch.py --summary-only          # rebuild reports/llm_batch_summary.md
+  python scripts/run_llm_batch.py --summary-only --model gemini-3.5-flash   # reports/llm_batch_summary_<model>.md
+
+Failed calls are appended to reports/llm_batch_errors.log (time, model id, business model, error).
 
 Needs GEMINI_API_KEY (or GOOGLE_API_KEY) in the environment. Every successful run is stored by
 report_store (data/llm_reports/, outside git) exactly like a run from the app. Models that already
@@ -34,7 +36,18 @@ from scoring.czech import czech_adjusted_score, to_context  # noqa: E402
 from scoring.metrics import derived_metrics  # noqa: E402
 
 SAMPLE_PATH = ROOT / "data" / "llm_batch_sample.json"
-SUMMARY_PATH = ROOT / "reports" / "llm_batch_summary.md"
+SUMMARY_PATH = ROOT / "reports" / "llm_batch_summary.md"  # the model id is added: llm_batch_summary_<model>.md
+ERROR_LOG = ROOT / "reports" / "llm_batch_errors.log"
+
+
+def summary_path(model: str) -> Path:
+    return SUMMARY_PATH.with_name(f"{SUMMARY_PATH.stem}_{model}{SUMMARY_PATH.suffix}")
+
+
+def log_error(model_name: str, engine: str, text: str) -> None:
+    ERROR_LOG.parent.mkdir(exist_ok=True)
+    with ERROR_LOG.open("a", encoding="utf-8") as f:
+        f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')}\t{engine}\t{model_name}\t{text}\n")
 PER_CATEGORY = 4
 QUANTILES = (0.1, 0.4, 0.7, 0.95)  # spread picks over each category's score range
 ALWAYS = ("Slice", "6AM City", "Nicereply")  # models already run by hand: keep them comparable
@@ -87,7 +100,7 @@ SERVER_WORDS = ("server error", "ошибка сервера", "unavailable", "o
 RETRY_WAITS = (65, 130)  # a per-minute limit clears within a minute; a daily one does not
 
 
-def call_with_retry(call, sleep=time.sleep):
+def call_with_retry(call, sleep=time.sleep, on_error=lambda text: None):
     """Run one analysis; wait and retry on rate limits and server errors.
     Returns (result, API calls made, verdict: "ok" | "failed" | "quota")."""
     calls = 0
@@ -98,6 +111,7 @@ def call_with_retry(call, sleep=time.sleep):
             return res, calls, "ok"
         text = " ".join(res.warnings)
         print("FAILED: " + text)
+        on_error(text)
         quota = any(w in text.lower() for w in QUOTA_WORDS)
         server = any(w in text.lower() for w in SERVER_WORDS)
         if not (quota or server) or wait is None:
@@ -179,7 +193,8 @@ def main() -> None:
                     print(f"[{i}/{len(names)}] {n} run {k + 1}/{args.runs} ... ", end="", flush=True)
                     res, calls_made, verdict = call_with_retry(
                         lambda: analyze(m, a, engine="gemini", gemini_model=args.model,
-                                        czech_context=scores[n][2], lang=args.lang))
+                                        czech_context=scores[n][2], lang=args.lang),
+                        on_error=lambda text, n=n: log_error(n, args.model, text))
                     calls += calls_made
                     if verdict == "quota":
                         print("Quota still exhausted after waiting (probably the daily limit) - progress saved, "
@@ -195,9 +210,12 @@ def main() -> None:
             print("\nStopped.")
         print(f"API calls made: {calls}")
 
-    SUMMARY_PATH.parent.mkdir(exist_ok=True)
-    SUMMARY_PATH.write_text(summarize(by_name, names, scores, args.model), encoding="utf-8")
-    print(f"Summary: {SUMMARY_PATH}")
+    out = summary_path(args.model)
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(summarize(by_name, names, scores, args.model), encoding="utf-8")
+    print(f"Summary: {out}")
+    if ERROR_LOG.exists():
+        print(f"Errors (if any) are logged in {ERROR_LOG}")
 
 
 if __name__ == "__main__":

@@ -11,3 +11,6 @@ data/llm_reports/
 # Working list produced by scripts/i18n_extract.py
 data/i18n/todo_ru.json
 .pytest_cache/
+
+# Local diagnostics of scripts/run_llm_batch.py
+reports/llm_batch_errors.log
