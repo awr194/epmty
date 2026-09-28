@@ -1,0 +1,104 @@
+{
+  "generated": "2026-09-28",
+  "note": "Redirect targets from scripts/check_original_cz.py (2026-09-26/27) and the browser pass (2026-09-28). Left out on purpose, check by hand: VWO (-> wingify.com, looks like a bot/geo redirect: vwo.com is the product site), SafetyCulture (-> mitti.com, unexpected), La Belle Assiette (domain now serves an unrelated site: probably dead).",
+  "fixes": [
+    {
+      "model": "BarkBox",
+      "field": "url",
+      "old": "https://www.barkbox.com",
+      "new": "https://bark.co",
+      "reason": "rebrand: barkbox.com redirects to bark.co (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Beekeeper",
+      "field": "url",
+      "old": "https://www.beekeeper.io",
+      "new": "https://www.lumapps.com/beekeeper",
+      "reason": "acquired: beekeeper.io redirects to LumApps ('Beekeeper Is Now Part of LumApps') (checked 2026-09-26/28)"
+    },
+    {
+      "model": "English Tax Returns for Expats in Czechia (TaxScouts archetype)",
+      "field": "url",
+      "old": "https://taxscouts.com",
+      "new": "https://taxfix.com/en-uk/",
+      "reason": "acquired: taxscouts.com redirects to Taxfix (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Home-care & Senior Companion Matching (Honor archetype)",
+      "field": "url",
+      "old": "https://www.joinhonor.com",
+      "new": "https://www.honorcare.com",
+      "reason": "rebrand: joinhonor.com redirects to honorcare.com (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Hotjar",
+      "field": "url",
+      "old": "https://www.hotjar.com",
+      "new": "https://contentsquare.com/hotjar/",
+      "reason": "acquired: hotjar.com redirects to Contentsquare (utm parameters dropped) (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Instabug",
+      "field": "url",
+      "old": "https://www.instabug.com",
+      "new": "https://www.luciq.ai",
+      "reason": "rebrand: instabug.com redirects to luciq.ai (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Nomad List",
+      "field": "url",
+      "old": "https://nomadlist.com",
+      "new": "https://nomads.com",
+      "reason": "rebrand: nomadlist.com redirects to nomads.com (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Peer-to-peer Equipment Rental (Fat Llama archetype)",
+      "field": "url",
+      "old": "https://fatllama.com",
+      "new": "https://hygglo.com",
+      "reason": "acquired: fatllama.com redirects to Hygglo (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Post-purchase Upsell App (ReConvert archetype)",
+      "field": "url",
+      "old": "https://www.reconvert.io",
+      "new": "https://upsell.com",
+      "reason": "rebrand: reconvert.io redirects to upsell.com (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Smol",
+      "field": "url",
+      "old": "https://smolproducts.com",
+      "new": "https://smol.com",
+      "reason": "domain change: smolproducts.com redirects to smol.com (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Solar Staff",
+      "field": "url",
+      "old": "https://solar-staff.com",
+      "new": "https://solarstaff.ru",
+      "reason": "domain change: solar-staff.com redirects to solarstaff.ru (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Subscriptions for E-shops (Recharge archetype)",
+      "field": "url",
+      "old": "https://rechargepayments.com",
+      "new": "https://getrecharge.com",
+      "reason": "domain change: rechargepayments.com redirects to getrecharge.com (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Tailwind Labs (Tailwind UI)",
+      "field": "url",
+      "old": "https://tailwindui.com",
+      "new": "https://tailwindcss.com/plus",
+      "reason": "rebrand: Tailwind UI is now Tailwind Plus; tailwindui.com redirects to tailwindcss.com/plus/login (checked 2026-09-26/28)"
+    },
+    {
+      "model": "Carrd",
+      "field": "url",
+      "old": "https://carrd.co",
+      "new": "https://carrd.com",
+      "reason": "domain change: carrd.co redirects to carrd.com (checked 2026-09-26/28)"
+    }
+  ]
+}
