@@ -309,3 +309,55 @@ def test_wayback_source_label(monkeypatch):
     monkeypatch.setattr("cz_enrichment.load_original_cz",
                         lambda: {"W": {"status": "yes", "evidence": [], "via": "wayback", "archived_at": "2026-09-01"}})
     assert "archive copy 2026-09-01" in apply_cz_defaults({"name": "W"}, overlay={})["original_cz_source"]
+
+
+def test_wayback_429_is_retried_then_reported(monkeypatch):
+    mod = _load_script()
+    calls = []
+
+    def fake_get(url, params=None, **kw):
+        if url.endswith("robots.txt"):
+            return _Resp(url, "")
+        if url in (mod.WAYBACK_AVAILABLE, mod.WAYBACK_CDX):
+            calls.append(url)
+            return _Resp(url, "<h1>429 Too Many Requests</h1>", 429)
+        return _Resp(url, "", 403)
+
+    monkeypatch.setattr(mod.requests, "get", fake_get)
+    monkeypatch.setattr(mod.time, "sleep", lambda s: None)
+    res = mod.check("https://guard.com", {})
+    assert res["error"] == "http_403" and res["wayback_error"] == "wayback_http_429" and len(calls) == 2
+    assert mod.needs_recheck(res | {"checked_at": "2026-09-28"}, "2026-09-28")  # rate limit: try again later
+
+
+def test_wayback_cdx_fallback(monkeypatch):
+    mod = _load_script()
+
+    def fake_get(url, params=None, **kw):
+        if url.endswith("robots.txt"):
+            return _Resp(url, "")
+        if url == mod.WAYBACK_AVAILABLE:
+            return _Resp(url, json_data={"archived_snapshots": {}})
+        if url == mod.WAYBACK_CDX:
+            return _Resp(url, json_data=[["timestamp"], ["20250101000000"], ["20260801000000"]])
+        if "web.archive.org/web/20260801000000id_/" in url:
+            return _Resp(url, "<html lang='cs'>")
+        return _Resp(url, "", 403)
+
+    monkeypatch.setattr(mod.requests, "get", fake_get)
+    monkeypatch.setattr(mod.time, "sleep", lambda s: None)
+    res = mod.check("https://guard.com", {})
+    assert res["status"] == "yes" and res["archived_at"] == "2026-08-01"
+
+
+def test_recheck_resumes_but_retries_unread_archives():
+    mod = _load_script()
+    today = "2026-09-28"
+    assert mod.needs_recheck({"status": "unknown", "checked_at": "2026-09-27"}, today)
+    assert not mod.needs_recheck({"status": "unknown", "checked_at": today}, today)          # done this morning
+    assert not mod.needs_recheck({"status": "yes", "checked_at": "2026-09-01"}, today)
+    # 403 checked today by the old script (no archive attempt recorded) -> again
+    assert mod.needs_recheck({"status": "unknown", "checked_at": today, "error": "http_403"}, today)
+    assert not mod.needs_recheck({"status": "unknown", "checked_at": today, "error": "http_403",
+                                  "wayback_error": "no_snapshot"}, today)
+    assert not mod.needs_recheck({"status": "unknown", "checked_at": today, "error": "robots_disallow"}, today)

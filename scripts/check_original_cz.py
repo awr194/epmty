@@ -11,7 +11,8 @@ Already-checked models are skipped unless --refresh is given, so an interrupted 
   python scripts/check_original_cz.py                 # all models not checked yet
   python scripts/check_original_cz.py --limit 20      # first 20 unchecked
   python scripts/check_original_cz.py --only Spond --only Jobber --refresh
-  python scripts/check_original_cz.py --recheck-unknown   # after a detector update (~30-40 min)
+  python scripts/check_original_cz.py --recheck-unknown   # after a detector update (1-1.5 h; Ctrl+C and
+                                                           # run again: today's results are kept)
   python scripts/check_original_cz.py --reclassify        # re-apply rules to saved results, no network
 
 Politeness: robots.txt is respected (a disallowed site is never read, not even from an archive), one
@@ -52,7 +53,9 @@ MAX_SITEMAP = 5_000_000
 RETRY_STATUSES = {429, 500, 502, 503, 504, 520, 521, 522, 523, 524, 525}
 RETRY_MAX_WAIT_S = 60
 WAYBACK_AVAILABLE = "https://archive.org/wayback/available"
-WAYBACK_PAUSE_S = 2.0
+WAYBACK_CDX = "https://web.archive.org/cdx/search/cdx"
+WAYBACK_PAUSE_S = 5.0     # archive.org answers 429 quickly; stay well below its limit
+WAYBACK_BACKOFF_S = 60
 
 
 def _robots_allows(url: str, cache: dict[str, robotparser.RobotFileParser | None]) -> bool:
@@ -113,8 +116,10 @@ def check(url: str, robots_cache: dict, wayback: bool = True) -> dict:
         if wayback and r.status_code in (401, 403):
             # the live site refuses automated requests: we do not get around that, but a public
             # archive copy is a fact with a date
-            if arch := check_wayback(url):
+            arch = check_wayback(url)
+            if "via" in arch:
                 return {k: v for k, v in blocked.items() if k != "error"} | {"live_error": blocked["error"]} | arch
+            return blocked | arch  # keeps the reason, e.g. wayback_http_429: a later run tries again
         return blocked
     evidence = detect_signals(url, r.text[:MAX_HTML], r.url, r.headers.get("Link", ""))
     if classify(evidence) != "yes":
@@ -124,24 +129,51 @@ def check(url: str, robots_cache: dict, wayback: bool = True) -> dict:
     return out | {"status": classify(evidence), "evidence": evidence}
 
 
-def check_wayback(url: str) -> dict | None:
-    """Latest Wayback Machine copy of the page, checked with the same rules. The evidence is dated by the
-    snapshot (archived_at), not by today. None if there is no copy or the archive cannot be reached."""
-    try:
+def _wayback_json(url: str, params: dict):
+    """GET a Wayback API as JSON; one retry after 429 (the archive rate-limits hard). Raises on failure."""
+    for attempt in (1, 2):
         time.sleep(WAYBACK_PAUSE_S)
-        api = requests.get(WAYBACK_AVAILABLE, params={"url": url}, headers={"User-Agent": USER_AGENT},
-                           timeout=TIMEOUT).json()
-        snap = api.get("archived_snapshots", {}).get("closest") or {}
-        if not snap.get("available") or str(snap.get("status", "200")) != "200":
-            return None
-        ts = snap["timestamp"]
+        r = requests.get(url, params=params, headers={"User-Agent": USER_AGENT}, timeout=TIMEOUT * 2)
+        if r.status_code == 429 and attempt == 1:
+            ra = str(r.headers.get("Retry-After", ""))
+            time.sleep(min(int(ra), RETRY_MAX_WAIT_S) if ra.isdigit() else WAYBACK_BACKOFF_S)
+            continue
+        if r.status_code != 200:
+            raise WaybackError(f"wayback_http_{r.status_code}")
+        return r.json()
+
+
+class WaybackError(Exception):
+    pass
+
+
+def latest_snapshot(url: str) -> str | None:
+    """Timestamp (YYYYMMDDhhmmss) of the latest archived copy that was a 200 page, or None if there is none.
+    Tries the 'available' API, then the CDX index (the first is often empty or slow)."""
+    snap = (_wayback_json(WAYBACK_AVAILABLE, {"url": url}).get("archived_snapshots", {}).get("closest") or {})
+    if snap.get("available") and str(snap.get("status", "200")) == "200":
+        return snap["timestamp"]
+    rows = _wayback_json(WAYBACK_CDX, {"url": url, "output": "json", "fl": "timestamp",
+                                       "filter": "statuscode:200", "limit": "-1"})
+    return rows[-1][0] if len(rows) > 1 else None
+
+
+def check_wayback(url: str) -> dict:
+    """Latest Wayback Machine copy of the page, checked with the same rules. The evidence is dated by the
+    snapshot (archived_at), not by today. Without a usable copy: {"wayback_error": reason}."""
+    try:
+        ts = latest_snapshot(url)
+        if not ts:
+            return {"wayback_error": "no_snapshot"}
         time.sleep(WAYBACK_PAUSE_S)
         r = requests.get(f"https://web.archive.org/web/{ts}id_/{url}", headers={"User-Agent": USER_AGENT},
                          timeout=TIMEOUT * 2)
         if r.status_code != 200:
-            return None
-    except (requests.RequestException, ValueError, KeyError):
-        return None
+            return {"wayback_error": f"wayback_http_{r.status_code}"}
+    except WaybackError as e:
+        return {"wayback_error": str(e)}
+    except (requests.RequestException, ValueError, KeyError, IndexError) as e:
+        return {"wayback_error": type(e).__name__}
     evidence = detect_signals(url, r.text[:MAX_HTML])
     return {"status": classify(evidence), "evidence": evidence, "via": "wayback",
             "archived_at": f"{ts[:4]}-{ts[4:6]}-{ts[6:8]}", "snapshot": f"https://web.archive.org/web/{ts}/{url}"}
@@ -225,8 +257,9 @@ def write_report(results: dict[str, dict], names: list[str]) -> None:
              f"(site not readable: {len(blocked)}, no product URL: {len(no_url)}, read but no signal: {len(silent)})", "",
              "## Site not readable (blocked, rate-limited, no URL) - check these by hand first", "",
              "| Model | URL | Reason |", "|---|---|---|"]
-    lines += [f"| {n} | {results.get(n, {}).get('url', '')} | {results.get(n, {}).get('error', 'not checked')} |"
-              for n in blocked]
+    lines += [f"| {n} | {results.get(n, {}).get('url', '')} | {results.get(n, {}).get('error', 'not checked')}"
+              + (f", archive: {results[n]['wayback_error']}" if results.get(n, {}).get("wayback_error") else "")
+              + " |" for n in blocked]
     lines += ["", "## Not applicable: no product URL (an archetype, or the company has no site)", ""] + [f"- {n}" for n in no_url]
     lines += ["", "## Read, no Czech signal (home page, Link header, /cs/ /cs-cz/ /cz/, sitemaps checked;",
               "for sites that block bots - the latest Wayback Machine copy of the home page)", "",
@@ -241,6 +274,17 @@ def write_report(results: dict[str, dict], names: list[str]) -> None:
     lines += [f"| {n} | {results[n]['url']} | {results[n]['final_url']} |" for n in moved]
     REPORT_PATH.parent.mkdir(exist_ok=True)
     REPORT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def needs_recheck(r: dict, today: str) -> bool:
+    """--recheck-unknown: an 'unknown' result is checked again unless it was checked today (so an
+    interrupted run resumes) - except a 401/403 whose archive copy was not read yet or hit a 429."""
+    if r.get("status") != "unknown":
+        return False
+    if r.get("checked_at") != today:
+        return True
+    return r.get("error") in ("http_401", "http_403") and (
+        "wayback_error" not in r or str(r["wayback_error"]).endswith("429"))
 
 
 def main() -> None:
@@ -258,8 +302,9 @@ def main() -> None:
 
     models = load_curated()
     existing = json.loads(RESULTS_PATH.read_text(encoding="utf-8"))["models"] if RESULTS_PATH.exists() else {}
+    today = date.today().isoformat()
     todo = [m for m in models if (not args.only or m.name in args.only) and (args.refresh or m.name not in existing
-             or (args.recheck_unknown and existing[m.name].get("status") == "unknown"))]
+             or (args.recheck_unknown and needs_recheck(existing[m.name], today)))]
     if args.limit:
         todo = todo[:args.limit]
     if args.reclassify:
@@ -280,7 +325,9 @@ def main() -> None:
             print(f"[{i}/{len(todo)}] {m.name} ... ", end="", flush=True)
             res = check(m.url, robots_cache, wayback=not args.no_wayback)
             existing[m.name] = res
-            print(f"{res['status']} {res.get('error', '')}{' (wayback ' + res['archived_at'] + ')' if res.get('via') else ''}")
+            note = (f" (wayback {res['archived_at']})" if res.get("via")
+                    else f" ({res['wayback_error']})" if res.get("wayback_error") else "")
+            print(f"{res['status']} {res.get('error', '')}{note}")
             if i % 20 == 0:  # save progress
                 save()
             time.sleep(PAUSE_S)
