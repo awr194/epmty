@@ -1196,6 +1196,26 @@
           "kind": "Czech AI copywriting service"
         }
       ]
+    },
+    "Twinkl": {
+      "original_available_in_cz": "yes",
+      "original_cz_evidence": [
+        {
+          "signal": "link_cz_domain",
+          "value": "https://www.twinkl.cz/"
+        }
+      ],
+      "original_cz_source": "manual 2026-09-28: browser from a Czech IP - twinkl.co.uk links to its own twinkl.cz"
+    },
+    "BetterMe": {
+      "original_available_in_cz": "likely",
+      "original_cz_evidence": [
+        {
+          "signal": "sitemap_cs",
+          "value": "https://betterme.world/cs/privacy-policy"
+        }
+      ],
+      "original_cz_source": "manual 2026-09-28: sitemap lists hreflang=cs legal pages only; no Czech home page (/cs is 404)"
     }
   }
 }
