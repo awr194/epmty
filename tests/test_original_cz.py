@@ -327,7 +327,7 @@ def test_wayback_429_is_retried_then_reported(monkeypatch):
     monkeypatch.setattr(mod.time, "sleep", lambda s: None)
     res = mod.check("https://guard.com", {})
     assert res["error"] == "http_403" and res["wayback_error"] == "wayback_http_429" and len(calls) == 2
-    assert mod.needs_recheck(res | {"checked_at": "2026-09-28"}, "2026-09-28")  # rate limit: try again later
+    assert mod.needs_archive(res) and not mod.needs_recheck(res | {"checked_at": "2026-09-28"}, "2026-09-28")
 
 
 def test_wayback_cdx_fallback(monkeypatch):
@@ -356,11 +356,11 @@ def test_recheck_resumes_but_retries_unread_archives():
     assert mod.needs_recheck({"status": "unknown", "checked_at": "2026-09-27"}, today)
     assert not mod.needs_recheck({"status": "unknown", "checked_at": today}, today)          # done this morning
     assert not mod.needs_recheck({"status": "yes", "checked_at": "2026-09-01"}, today)
-    # 403 checked today by the old script (no archive attempt recorded) -> again
-    assert mod.needs_recheck({"status": "unknown", "checked_at": today, "error": "http_403"}, today)
-    assert not mod.needs_recheck({"status": "unknown", "checked_at": today, "error": "http_403",
-                                  "wayback_error": "no_snapshot"}, today)
-    assert not mod.needs_recheck({"status": "unknown", "checked_at": today, "error": "robots_disallow"}, today)
+    # archive retries only on request (--archive)
+    assert mod.needs_archive({"status": "unknown", "error": "http_403"})
+    assert mod.needs_archive({"status": "unknown", "error": "http_403", "wayback_error": "wayback_skipped_after_429"})
+    assert not mod.needs_archive({"status": "unknown", "error": "http_403", "wayback_error": "no_snapshot"})
+    assert not mod.needs_archive({"status": "unknown", "error": "robots_disallow"})
 
 
 def test_wayback_fuse_after_repeated_429(monkeypatch):
@@ -382,4 +382,4 @@ def test_wayback_fuse_after_repeated_429(monkeypatch):
     n = len(calls)
     third = mod.check("https://c.com", {})
     assert third["wayback_error"] == "wayback_skipped_after_429" and len(calls) == n  # no more archive calls
-    assert mod.needs_recheck(third | {"checked_at": "2026-09-28"}, "2026-09-28")
+    assert mod.needs_archive(third)

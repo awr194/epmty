@@ -14,6 +14,7 @@ Already-checked models are skipped unless --refresh is given, so an interrupted 
   python scripts/check_original_cz.py --recheck-unknown   # after a detector update (1-1.5 h; Ctrl+C and
                                                            # run again: today's results are kept)
   python scripts/check_original_cz.py --reclassify        # re-apply rules to saved results, no network
+  python scripts/check_original_cz.py --archive           # only 401/403 sites via Wayback (a few minutes)
 
 Politeness: robots.txt is respected (a disallowed site is never read, not even from an archive), one
 request per second, one retry after 429 / 5xx honouring Retry-After. A site that answers 401/403 is not
@@ -289,13 +290,14 @@ def write_report(results: dict[str, dict], names: list[str]) -> None:
 
 def needs_recheck(r: dict, today: str) -> bool:
     """--recheck-unknown: an 'unknown' result is checked again unless it was checked today (so an
-    interrupted run resumes) - except a 401/403 whose archive copy was not read yet or hit a 429."""
-    if r.get("status") != "unknown":
-        return False
-    if r.get("checked_at") != today:
-        return True
-    return r.get("error") in ("http_401", "http_403") and (
-        "wayback_error" not in r or "429" in str(r["wayback_error"]))
+    interrupted run resumes)."""
+    return r.get("status") == "unknown" and r.get("checked_at") != today
+
+
+def needs_archive(r: dict) -> bool:
+    """--archive: a 401/403 site whose Wayback copy has not been read (never tried, or archive.org said 429)."""
+    return (r.get("status") == "unknown" and r.get("error") in ("http_401", "http_403")
+            and "429" in str(r.get("wayback_error", "429")))
 
 
 def main() -> None:
@@ -305,6 +307,8 @@ def main() -> None:
     ap.add_argument("--refresh", action="store_true", help="re-check models already in the results file")
     ap.add_argument("--recheck-unknown", action="store_true",
                     help="re-check only models whose status is 'unknown' (e.g. after the detector improved)")
+    ap.add_argument("--archive", action="store_true",
+                    help="only the sites that answered 401/403 and whose archive copy is not read yet (few requests)")
     ap.add_argument("--no-wayback", action="store_true",
                     help="do not fall back to the Wayback Machine copy when the site answers 401/403")
     ap.add_argument("--reclassify", action="store_true",
@@ -315,7 +319,8 @@ def main() -> None:
     existing = json.loads(RESULTS_PATH.read_text(encoding="utf-8"))["models"] if RESULTS_PATH.exists() else {}
     today = date.today().isoformat()
     todo = [m for m in models if (not args.only or m.name in args.only) and (args.refresh or m.name not in existing
-             or (args.recheck_unknown and needs_recheck(existing[m.name], today)))]
+             or (args.recheck_unknown and needs_recheck(existing[m.name], today))
+             or (args.archive and needs_archive(existing[m.name])))]
     if args.limit:
         todo = todo[:args.limit]
     if args.reclassify:
