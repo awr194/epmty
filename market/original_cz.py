@@ -3,8 +3,10 @@
 Only facts found on the original's site count; nothing is guessed:
 
   strong  - the site redirects to a .cz domain, declares hreflang="cs", links to its own .cz domain,
-            serves <html lang="cs"> or offers "Čeština" in its language picker;
-  weak    - prices in Kč / CZK (a currency picker can list CZK without real local sales).
+            serves <html lang="cs"> or offers "Čeština" in its language picker; its sitemap lists Czech
+            content pages (hreflang="cs", /cs/, /cs-cz/);
+  weak    - prices in Kč / CZK (a currency picker can list CZK without real local sales); a sitemap with
+            Czech legal pages only, or only /cz/ paths.
 
 "Czech Republic" in the page text is ignored: country drop-downs list every country.
 
@@ -29,9 +31,11 @@ STATUSES = ("yes", "likely", "unknown")
 
 # Signal codes -> strength. Texts for the UI live in i18n/ui.py under "cz_sig_<code>".
 STRONG = ("redirect_cz", "hreflang_cs", "link_cz_domain", "html_lang_cs", "lang_picker_cs", "og_locale_cs",
-          "cs_path", "locale_url_cs")
+          "cs_path", "locale_url_cs", "sitemap_cs")
 _CS_PATH_SEGMENTS = {"cs", "cz", "cs-cz", "cs_cz"}
-WEAK = ("price_czk",)
+# sitemap_cs_weak: the sitemap lists Czech pages, but only legal ones (privacy, terms) or only /cz/ paths
+# (/cz/ is also used for country pages in English, e.g. data for Czech cities).
+WEAK = ("price_czk", "sitemap_cs_weak")
 
 _HREFLANG = re.compile(r"""<link[^>]+hreflang\s*=\s*["']?(cs(?:[-_]cz)?)["'\s>]""", re.I)
 # HTTP header form: Link: <https://x.com/cs/>; rel="alternate"; hreflang="cs"
@@ -44,7 +48,17 @@ _HREF = re.compile(r"""href\s*=\s*["']?(https?://[^"'\s>]+)""", re.I)
 # The character classes contain a space and a no-break space (U+00A0).
 _PRICE_CZK = re.compile(r"(?<![\d.,])(\d{1,3}(?:[  .,]?\d{3}){0,3}(?:[.,]\d{1,2})?[  ]?(?:Kč|CZK)\b"
                         r"|\bCZK[  ]?\d[\d.,]{0,12})")  # case-sensitive: "czk58" in a script is not a price
-_LANG_PICKER = re.compile(r"Čeština", re.I)
+# Case-sensitive: a language picker names Czech in Czech, capitalised. The Google Translate widget, shown to
+# visitors with a Czech browser, lists "čeština" in lower case and says nothing about the site itself.
+_LANG_PICKER = re.compile(r"Čeština")
+
+# Sitemaps: <loc>https://x.com/cs/page</loc> and <xhtml:link rel="alternate" hreflang="cs" href="..."/>
+_SM_LOC = re.compile(r"<loc>\s*([^<\s]{1,2000})\s*</loc>", re.I)
+_SM_ALT = re.compile(r"<(?:xhtml:)?link\b[^>]{0,800}>", re.I)
+_SM_ALT_LANG = re.compile(r"""hreflang\s*=\s*["']?(cs(?:[-_]cz)?)["'\s/>]""", re.I)
+_SM_ALT_HREF = re.compile(r"""href\s*=\s*["']?([^"'\s>]{1,2000})""", re.I)
+_LEGAL_PAGE = re.compile(r"privacy|terms|cookie|legal|impressum|imprint|gdpr|polic|datenschutz|agb|"
+                         r"podminky|ochrana|obchodni|withdraw", re.I)
 
 
 def _host(url: str) -> str:
@@ -115,6 +129,46 @@ def detect_signals(url: str, html: str, final_url: str | None = None, link_heade
     if m:
         found.append({"signal": "price_czk", "value": " ".join(m.group(1).split())})
     return found
+
+
+def sitemap_children(xml: str) -> list[str]:
+    """Child sitemaps of a <sitemapindex>, Czech-looking ones first (sitemap-cs.xml, /cs/sitemap.xml)."""
+    if not re.search(r"<sitemapindex\b", xml[:5000], re.I):
+        return []
+    kids = _SM_LOC.findall(xml)
+    czech = [k for k in kids if re.search(r"[/_.-](cs|cz|cs[-_]cz)([/_.-]|$)", urlparse(k).path, re.I)]
+    return czech + [k for k in kids if k not in czech]
+
+
+def sitemap_czech_urls(xml: str, site_url: str) -> tuple[list[str], list[str]]:
+    """Czech pages a sitemap declares for this brand: (by hreflang="cs" or a /cs/, /cs-cz/, cz. locale,
+    by a /cz/ path only). Other brands' URLs are ignored."""
+    brand = brand_label(site_url)
+    strong: list[str] = []
+    cz_only: list[str] = []
+    for tag in _SM_ALT.finditer(xml):
+        t = tag.group(0)
+        if _SM_ALT_LANG.search(t) and (h := _SM_ALT_HREF.search(t)) and brand_label(h.group(1)) == brand:
+            strong.append(h.group(1))
+    for loc in _SM_LOC.findall(xml):
+        if brand_label(loc) != brand:
+            continue
+        first = next((s for s in urlparse(loc).path.lower().split("/") if s), "")
+        if (first in _CS_PATH_SEGMENTS - {"cz"} or _host(loc).startswith("cz.")) and locale_url_cs(loc):
+            strong.append(loc)
+        elif first == "cz" and locale_url_cs(loc):
+            cz_only.append(loc)
+    return strong, cz_only
+
+
+def sitemap_evidence(strong: list[str], cz_only: list[str]) -> list[dict]:
+    """One evidence item from the Czech URLs found in a site's sitemaps (see sitemap_czech_urls)."""
+    content = [u for u in strong if not _LEGAL_PAGE.search(urlparse(u).path)]
+    if content:
+        return [{"signal": "sitemap_cs", "value": content[0]}]
+    if strong or cz_only:
+        return [{"signal": "sitemap_cs_weak", "value": (strong or cz_only)[0]}]
+    return []
 
 
 def classify(evidence: list[dict]) -> str:

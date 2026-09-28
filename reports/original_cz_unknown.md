@@ -4,7 +4,7 @@ No Czech signal on the original's own site (or the site could not be read).
 This is NOT proof of absence - check by hand and record the result in
 `data/cz_enrichment.json` as `original_available_in_cz` (`yes` / `no`) with a source.
 
-Total: **470** of 500 (site not readable: 44, read but no signal: 426)
+Total: **470** of 500 (site not readable: 40, no product URL: 4, read but no signal: 426)
 
 ## Site not readable (blocked, rate-limited, no URL) - check these by hand first
 
@@ -18,7 +18,6 @@ Total: **470** of 500 (site not readable: 44, read but no signal: 426)
 | Brainly | https://brainly.com | http_403 |
 | Clio | https://www.clio.com | http_403 |
 | Cofix | https://www.cofix.co.il | SSLError |
-| Community group-buying (Xingsheng Youxuan archetype) |  | no_url |
 | Crimson Education | https://www.crimsoneducation.org | http_429 |
 | Diadoc (Диадок) | https://www.diadoc.ru | http_403 |
 | Dodo Pizza | https://dodopizza.ru | http_403 |
@@ -29,14 +28,11 @@ Total: **470** of 500 (site not readable: 44, read but no signal: 426)
 | Jooble | https://jooble.org | http_403 |
 | Judge.me | https://judge.me | http_403 |
 | Kickstarter | https://www.kickstarter.com | http_403 |
-| Kukhnya na Rayone (Кухня на районе) |  | no_url |
 | Kumon | https://www.kumon.com | http_403 |
 | Lenskart | https://www.lenskart.com | http_403 |
 | Linktree | https://linktr.ee | robots_disallow |
-| Live-stream shopping for small brands (Taobao Live archetype) |  | no_url |
 | Local Freelance Marketplace (Upwork archetype) | https://www.upwork.com | http_403 |
 | Makerist | https://www.makerist.de | SSLError |
-| Marketplace fulfilment operator (Wildberries/Ozon sellers) |  | no_url |
 | Meesho | https://www.meesho.com | http_403 |
 | Mercari | https://www.mercari.com | http_403 |
 | Nextdoor | https://nextdoor.com | robots_disallow |
@@ -55,7 +51,15 @@ Total: **470** of 500 (site not readable: 44, read but no signal: 426)
 | Vivino | https://www.vivino.com | http_403 |
 | Zocdoc | https://www.zocdoc.com | http_403 |
 
-## Read, no Czech signal (home page, Link header, /cs/ /cs-cz/ /cz/ checked)
+## Not applicable: no product URL (an archetype, or the company has no site)
+
+- Community group-buying (Xingsheng Youxuan archetype)
+- Kukhnya na Rayone (Кухня на районе)
+- Live-stream shopping for small brands (Taobao Live archetype)
+- Marketplace fulfilment operator (Wildberries/Ozon sellers)
+
+## Read, no Czech signal (home page, Link header, /cs/ /cs-cz/ /cz/, sitemaps checked;
+for sites that block bots - the latest Wayback Machine copy of the home page)
 
 | Model | URL |
 |---|---|

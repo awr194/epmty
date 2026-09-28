@@ -163,3 +163,149 @@ def test_reclassify_offline():
     assert reclassify(huel)["status"] == "yes" and {e["signal"] for e in reclassify(huel)["evidence"]} == {
         "price_czk", "locale_url_cs"}
     assert reclassify(blocked)["status"] == "unknown"
+
+
+# --- sitemaps, Google Translate, SSL / 429 / Wayback (2026-09-28) ---
+
+def _load_script():
+    import importlib.util
+    from pathlib import Path
+    spec = importlib.util.spec_from_file_location(
+        "check_original_cz", Path(__file__).resolve().parents[1] / "scripts" / "check_original_cz.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+class _Resp:
+    def __init__(self, url, text="", status=200, headers=None, json_data=None):
+        self.url, self.text, self.status_code, self.headers = url, text, status, headers or {}
+        self.content, self._json = text.encode(), json_data
+
+    def json(self):
+        return self._json
+
+
+def test_google_translate_lowercase_cestina_is_not_a_picker():
+    widget = '<select class="goog-te-combo"><option value="cs">čeština</option></select>'
+    assert detect_signals("https://x.com", widget) == []
+
+
+def test_sitemap_hreflang_and_cs_path_are_strong():
+    from market.original_cz import sitemap_czech_urls, sitemap_evidence
+    xml = ('<urlset><url><loc>https://x.com/en/pricing</loc>'
+           '<xhtml:link rel="alternate" hreflang="cs-CZ" href="https://x.com/cs/cenik"/></url>'
+           '<url><loc>https://x.com/cs-cz/blog</loc></url><url><loc>https://other.com/cs/</loc></url></urlset>')
+    strong, cz_only = sitemap_czech_urls(xml, "https://www.x.com")
+    assert strong == ["https://x.com/cs/cenik", "https://x.com/cs-cz/blog"] and cz_only == []
+    ev = sitemap_evidence(strong, cz_only)
+    assert ev == [{"signal": "sitemap_cs", "value": "https://x.com/cs/cenik"}] and classify(ev) == "yes"
+
+
+@pytest.mark.parametrize("xml", [
+    # BetterMe: only the privacy policy is translated
+    '<urlset><url><loc>https://betterme.world/cs/privacy-policy</loc></url></urlset>',
+    # a /cz/ page, which can be an English country page
+    '<urlset><url><loc>https://x.com/cz/</loc></url></urlset>'])
+def test_sitemap_legal_only_or_cz_path_is_weak(xml):
+    from market.original_cz import sitemap_czech_urls, sitemap_evidence
+    site = "https://betterme.world" if "betterme" in xml else "https://x.com"
+    ev = sitemap_evidence(*sitemap_czech_urls(xml, site))
+    assert [e["signal"] for e in ev] == ["sitemap_cs_weak"] and classify(ev) == "likely"
+
+
+def test_sitemap_country_data_path_is_ignored():
+    from market.original_cz import sitemap_czech_urls
+    xml = "<urlset><url><loc>https://www.airdna.co/vacation-rental-data/app/cz/default/prague/overview</loc></url>"
+    assert sitemap_czech_urls(xml, "https://www.airdna.co") == ([], [])
+
+
+def test_sitemap_index_czech_children_first():
+    from market.original_cz import sitemap_children
+    xml = ("<sitemapindex><sitemap><loc>https://x.com/sitemap-en.xml</loc></sitemap>"
+           "<sitemap><loc>https://x.com/sitemap-cs.xml</loc></sitemap></sitemapindex>")
+    assert sitemap_children(xml) == ["https://x.com/sitemap-cs.xml", "https://x.com/sitemap-en.xml"]
+    assert sitemap_children("<urlset></urlset>") == []
+
+
+def test_script_reads_sitemap_from_robots(monkeypatch):
+    mod = _load_script()
+    pages = {
+        "https://s.com/robots.txt": "User-agent: *\nDisallow: /private\nSitemap: https://s.com/sm-index.xml",
+        "https://s.com/sm-index.xml": "<sitemapindex><sitemap><loc>https://s.com/sm-cs.xml</loc></sitemap>"
+                                      "</sitemapindex>",
+        "https://s.com/sm-cs.xml": "<urlset><url><loc>https://s.com/cs/</loc></url></urlset>",
+        "https://s.com": "<html lang='en'>",
+    }
+    monkeypatch.setattr(mod.requests, "get", lambda url, **kw: _Resp(url, pages.get(url, ""), 200 if url in pages
+                                                                        else 404))
+    monkeypatch.setattr(mod, "PAUSE_S", 0)
+    res = mod.check("https://s.com", {})
+    assert res["status"] == "yes" and res["evidence"] == [{"signal": "sitemap_cs", "value": "https://s.com/cs/"}]
+
+
+def test_www_variant():
+    mod = _load_script()
+    assert mod._www_variant("https://www.a.de/x") == "https://a.de/x"
+    assert mod._www_variant("https://a.co.il") == "https://www.a.co.il"
+
+
+def test_ssl_error_retries_other_name_once(monkeypatch):
+    mod = _load_script()
+    calls = []
+
+    def fake_get(url, **kw):
+        calls.append(url)
+        if url.endswith("robots.txt"):
+            return _Resp(url, "")
+        if url.startswith("https://www."):
+            raise mod.requests.exceptions.SSLError("hostname mismatch")
+        return _Resp(url, "<html lang='cs'>")
+
+    monkeypatch.setattr(mod.requests, "get", fake_get)
+    res = mod.check("https://www.shop.de", {})
+    assert res["status"] == "yes" and res["tried_url"] == "https://shop.de"
+
+
+def test_429_is_retried_after_retry_after(monkeypatch):
+    mod = _load_script()
+    seen, slept = [], []
+
+    def fake_get(url, **kw):
+        if url.endswith("robots.txt"):
+            return _Resp(url, "")
+        seen.append(url)
+        return _Resp(url, "<html lang='cs'>") if len(seen) > 1 else _Resp(url, "", 429, {"Retry-After": "7"})
+
+    monkeypatch.setattr(mod.requests, "get", fake_get)
+    monkeypatch.setattr(mod.time, "sleep", slept.append)
+    assert mod.check("https://busy.com", {})["status"] == "yes" and 7 in slept
+
+
+def test_403_falls_back_to_dated_wayback_copy(monkeypatch):
+    mod = _load_script()
+
+    def fake_get(url, params=None, **kw):
+        if url.endswith("robots.txt"):
+            return _Resp(url, "")
+        if url == mod.WAYBACK_AVAILABLE:
+            return _Resp(url, json_data={"archived_snapshots": {"closest": {
+                "available": True, "status": "200", "timestamp": "20260901120000"}}})
+        if url.startswith("https://web.archive.org/web/20260901120000id_/"):
+            return _Resp(url, '<link rel="alternate" hreflang="cs" href="https://guard.com/cs/">')
+        return _Resp(url, "", 403)
+
+    monkeypatch.setattr(mod.requests, "get", fake_get)
+    monkeypatch.setattr(mod.time, "sleep", lambda s: None)
+    res = mod.check("https://guard.com", {})
+    assert res["status"] == "yes" and res["via"] == "wayback" and res["archived_at"] == "2026-09-01"
+    assert res["live_error"] == "http_403" and "error" not in res
+    from market.original_cz import reclassify
+    assert reclassify(res)["status"] == "yes"
+    assert mod.check("https://guard.com", {}, wayback=False)["error"] == "http_403"
+
+
+def test_wayback_source_label(monkeypatch):
+    monkeypatch.setattr("cz_enrichment.load_original_cz",
+                        lambda: {"W": {"status": "yes", "evidence": [], "via": "wayback", "archived_at": "2026-09-01"}})
+    assert "archive copy 2026-09-01" in apply_cz_defaults({"name": "W"}, overlay={})["original_cz_source"]

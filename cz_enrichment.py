@@ -220,7 +220,9 @@ def apply_cz_defaults(row: dict, overlay: dict[str, dict] | None = None) -> dict
     elif (check := load_original_cz().get(row["name"])) is not None:
         row["original_available_in_cz"] = check["status"]
         row["original_cz_evidence"] = check.get("evidence", [])
-        row["original_cz_source"] = f"site check {check.get('checked_at', '')}".strip()
+        row["original_cz_source"] = (f"web archive copy {check['archived_at']} (live site blocks bots)"
+                                     if check.get("via") == "wayback"
+                                     else f"site check {check.get('checked_at', '')}".strip())
 
     row["inferred_fields"] = inferred
     return row
