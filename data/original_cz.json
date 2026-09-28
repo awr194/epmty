@@ -34,7 +34,7 @@
   },
   "AI CV & Cover Letter Builder (Kickresume archetype)": {
    "url": "https://www.kickresume.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.kickresume.com/en/",
    "http_status": 200,
    "status": "unknown",
@@ -42,16 +42,17 @@
   },
   "AI Grant & Subsidy Finder (Instrumentl archetype)": {
    "url": "https://www.instrumentl.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.instrumentl.com/",
    "http_status": 403,
    "status": "unknown",
    "evidence": [],
-   "error": "http_403"
+   "error": "http_403",
+   "wayback_error": "wayback_skipped_after_429"
   },
   "AI Legal Research Assistant for Czech Law (Harvey archetype)": {
    "url": "https://www.harvey.ai",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.harvey.ai/",
    "http_status": 200,
    "status": "unknown",
@@ -59,7 +60,7 @@
   },
   "AI Meeting Notes (Otter/Fireflies archetype)": {
    "url": "https://fireflies.ai",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://fireflies.ai/",
    "http_status": 200,
    "status": "unknown",
@@ -67,7 +68,7 @@
   },
   "AI Multilingual Menu & Allergen Labels": {
    "url": "https://www.menutiger.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.menutiger.com/",
    "http_status": 200,
    "status": "unknown",
@@ -75,7 +76,7 @@
   },
   "AI Phone Receptionist in Czech (Smith.ai archetype)": {
    "url": "https://smith.ai",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://smith.ai/",
    "http_status": 200,
    "status": "unknown",
@@ -83,7 +84,7 @@
   },
   "AI Product Descriptions for E-shops (Hypotenuse archetype)": {
    "url": "https://www.hypotenuse.ai",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.hypotenuse.ai/",
    "http_status": 200,
    "status": "unknown",
@@ -91,7 +92,7 @@
   },
   "AI SEO Content Writer in Czech (Surfer archetype)": {
    "url": "https://surferseo.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://surferseo.com/",
    "http_status": 200,
    "status": "unknown",
@@ -99,7 +100,7 @@
   },
   "AI Tutor for Přijímačky & Maturita (Khanmigo archetype)": {
    "url": "https://www.khanmigo.ai",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.khanmigo.ai/",
    "http_status": 200,
    "status": "unknown",
@@ -107,12 +108,13 @@
   },
   "Accountant-Client Document Portal (TaxDome archetype)": {
    "url": "https://taxdome.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://taxdome.com/",
    "http_status": 403,
    "status": "unknown",
    "evidence": [],
-   "error": "http_403"
+   "error": "http_403",
+   "wayback_error": "wayback_http_429"
   },
   "Acuity Scheduling": {
    "url": "https://acuityscheduling.com",
@@ -137,7 +139,7 @@
   },
   "Agency Time Tracking & Profitability (Toggl archetype)": {
    "url": "https://toggl.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://toggl.com/",
    "http_status": 200,
    "status": "unknown",
@@ -217,7 +219,7 @@
   },
   "Automated Payment Reminders & Collections (Chaser archetype)": {
    "url": "https://www.chaserhq.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.chaserhq.com/",
    "http_status": 200,
    "status": "unknown",
@@ -233,7 +235,7 @@
   },
   "B2B Wholesale Portal for Small Brands (Faire/SparkLayer archetype)": {
    "url": "https://www.sparklayer.io",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.sparklayer.io/",
    "http_status": 200,
    "status": "unknown",
@@ -286,7 +288,7 @@
   },
   "Bannerbear": {
    "url": "https://www.bannerbear.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.bannerbear.com/",
    "http_status": 200,
    "status": "unknown",
@@ -482,7 +484,7 @@
   },
   "Buffer": {
    "url": "https://buffer.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://buffer.com/",
    "http_status": 200,
    "status": "unknown",
@@ -595,7 +597,7 @@
   },
   "Carrd": {
    "url": "https://carrd.co",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://carrd.com/",
    "http_status": 200,
    "status": "unknown",
@@ -619,7 +621,7 @@
   },
   "Cash-flow Forecasting for SMEs (Float archetype)": {
    "url": "https://floatapp.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://floatapp.com/",
    "http_status": 200,
    "status": "unknown",
@@ -659,7 +661,7 @@
   },
   "Chatbase": {
    "url": "https://www.chatbase.co",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.chatbase.co/",
    "http_status": 200,
    "status": "unknown",
@@ -731,7 +733,7 @@
   },
   "Client Galleries for Photographers (Pixieset archetype)": {
    "url": "https://pixieset.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://pixieset.com/",
    "http_status": 200,
    "status": "unknown",
@@ -786,7 +788,7 @@
   },
   "Competitor Price Monitoring (Prisync archetype)": {
    "url": "https://prisync.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://prisync.com/",
    "http_status": 200,
    "status": "unknown",
@@ -802,7 +804,7 @@
   },
   "Cookie Consent Manager (Cookiebot archetype)": {
    "url": "https://www.cookiebot.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.cookiebot.com/",
    "http_status": 200,
    "status": "unknown",
@@ -888,7 +890,7 @@
   },
   "Czech Transcription & Subtitles (Descript/Rev archetype)": {
    "url": "https://www.rev.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.rev.com/",
    "http_status": 200,
    "status": "unknown",
@@ -966,7 +968,7 @@
   },
   "Digital Product Storefront (Gumroad archetype)": {
    "url": "https://gumroad.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://gumroad.com/",
    "http_status": 200,
    "status": "unknown",
@@ -1060,7 +1062,7 @@
   },
   "E-signature with Bank Identity (DocuSign archetype)": {
    "url": "https://www.docusign.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.docusign.com/",
    "http_status": 200,
    "status": "unknown",
@@ -1113,7 +1115,7 @@
   },
   "English Tax Returns for Expats in Czechia (TaxScouts archetype)": {
    "url": "https://taxscouts.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://taxfix.com/en-uk/",
    "http_status": 200,
    "status": "unknown",
@@ -1146,7 +1148,7 @@
   },
   "Event Ticketing for Small Organisers (Eventbrite archetype)": {
    "url": "https://www.eventbrite.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.eventbrite.com/",
    "http_status": 200,
    "status": "unknown",
@@ -1342,7 +1344,7 @@
   },
   "Freelancer Invoicing (Invoice Ninja archetype)": {
    "url": "https://invoiceninja.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://invoiceninja.com/",
    "http_status": 200,
    "status": "unknown",
@@ -1374,7 +1376,7 @@
   },
   "GDPR & Legal Docs Generator (iubenda archetype)": {
    "url": "https://www.iubenda.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.iubenda.com/en/",
    "http_status": 200,
    "status": "unknown",
@@ -1419,11 +1421,13 @@
   },
   "Gift Cards & Vouchers for E-shops (Rise.ai archetype)": {
    "url": "https://rise.ai",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://rise.ai/",
-   "http_status": 200,
+   "http_status": 403,
    "status": "unknown",
-   "evidence": []
+   "evidence": [],
+   "error": "http_403",
+   "wayback_error": "wayback_skipped_after_429"
   },
   "Glofox": {
    "url": "https://www.glofox.com",
@@ -1507,7 +1511,7 @@
   },
   "HeadshotPro": {
    "url": "https://www.headshotpro.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.headshotpro.com/",
    "http_status": 200,
    "status": "unknown",
@@ -1563,7 +1567,7 @@
   },
   "Home Cleaning Marketplace (Helpling archetype)": {
    "url": "https://www.helpling.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.helpling.com/",
    "http_status": 200,
    "status": "unknown",
@@ -1664,7 +1668,7 @@
   },
   "Influencer Marketplace (Collabstr archetype)": {
    "url": "https://collabstr.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://collabstr.com/",
    "http_status": 200,
    "status": "unknown",
@@ -1693,7 +1697,7 @@
   },
   "Interior AI": {
    "url": "https://interiorai.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://interiorai.com/",
    "http_status": 200,
    "status": "unknown",
@@ -1758,12 +1762,13 @@
   },
   "Judge.me": {
    "url": "https://judge.me",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://judge.me/",
    "http_status": 403,
    "status": "unknown",
    "evidence": [],
-   "error": "http_403"
+   "error": "http_403",
+   "wayback_error": "wayback_http_429"
   },
   "Juro": {
    "url": "https://juro.com",
@@ -1856,7 +1861,7 @@
   },
   "Kit (formerly ConvertKit)": {
    "url": "https://kit.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://kit.com/",
    "http_status": 200,
    "status": "unknown",
@@ -1989,7 +1994,7 @@
   },
   "Landlord Toolkit (Landlord Studio archetype)": {
    "url": "https://www.landlordstudio.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.landlordstudio.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2109,7 +2114,7 @@
   },
   "Local SEO for Google & Seznam (BrightLocal archetype)": {
    "url": "https://www.brightlocal.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.brightlocal.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2212,7 +2217,7 @@
   },
   "Marketplace Connector: Allegro, Kaufland, eMAG (ChannelEngine archetype)": {
    "url": "https://www.channelengine.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.channelengine.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2227,7 +2232,7 @@
   },
   "Meal-Prep Subscription (krabičková dieta)": {
    "url": "https://www.factor75.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.factor75.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2357,7 +2362,7 @@
   },
   "Newsletter Sponsorship Marketplace (Paved archetype)": {
    "url": "https://www.paved.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.paved.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2388,7 +2393,7 @@
   },
   "Nomad List": {
    "url": "https://nomadlist.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://nomads.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2475,7 +2480,7 @@
   },
   "Oh Dear": {
    "url": "https://ohdear.app",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://ohdear.app/",
    "http_status": 200,
    "status": "unknown",
@@ -2529,7 +2534,7 @@
   },
   "Online s.r.o. Formation & Virtual Office (Stripe Atlas archetype)": {
    "url": "https://stripe.com/atlas",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://stripe.com/en-cz/atlas",
    "http_status": 200,
    "status": "unknown",
@@ -2642,7 +2647,7 @@
   },
   "Paid Community Platform (Skool archetype)": {
    "url": "https://www.skool.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.skool.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2650,7 +2655,7 @@
   },
   "Paid Memberships for Creators (Patreon archetype)": {
    "url": "https://www.patreon.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.patreon.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2675,12 +2680,13 @@
   },
   "Payroll for Micro-businesses (Gusto archetype)": {
    "url": "https://gusto.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://gusto.com/",
    "http_status": 403,
    "status": "unknown",
    "evidence": [],
-   "error": "http_403"
+   "error": "http_403",
+   "wayback_error": "wayback_skipped_after_429"
   },
   "Peer-to-peer Equipment Rental (Fat Llama archetype)": {
    "url": "https://fatllama.com",
@@ -2692,7 +2698,7 @@
   },
   "Pet Sitting & Dog Walking Marketplace (Rover archetype)": {
    "url": "https://www.rover.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.rover.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2700,7 +2706,7 @@
   },
   "Photo AI": {
    "url": "https://photoai.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://photoai.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2824,7 +2830,7 @@
   },
   "Plausible Analytics": {
    "url": "https://plausible.io",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://plausible.io/",
    "http_status": 200,
    "status": "unknown",
@@ -2840,7 +2846,7 @@
   },
   "Podia": {
    "url": "https://www.podia.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.podia.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2864,7 +2870,7 @@
   },
   "Post-purchase Upsell App (ReConvert archetype)": {
    "url": "https://www.reconvert.io",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://upsell.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2920,7 +2926,7 @@
   },
   "Product Feed Manager (DataFeedWatch archetype)": {
    "url": "https://www.datafeedwatch.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.datafeedwatch.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2936,7 +2942,7 @@
   },
   "Public Tender Alerts for SMEs (GovSpend archetype)": {
    "url": "https://govspend.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://govspend.com/",
    "http_status": 200,
    "status": "unknown",
@@ -2944,7 +2950,7 @@
   },
   "QR Table Ordering & Pay (Sunday/Mr Yum archetype)": {
    "url": "https://sundayapp.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "status": "unknown",
    "evidence": [],
    "error": "robots_disallow"
@@ -2991,7 +2997,7 @@
   },
   "Receipt & Expense Capture (Dext archetype)": {
    "url": "https://dext.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://dext.com/en",
    "http_status": 200,
    "status": "unknown",
@@ -3016,7 +3022,7 @@
   },
   "RemoteOK": {
    "url": "https://remoteok.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://remoteok.com/",
    "http_status": 200,
    "status": "unknown",
@@ -3048,7 +3054,7 @@
   },
   "Returns & Complaints Portal (Loop Returns archetype)": {
    "url": "https://www.loopreturns.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.loopreturns.com/",
    "http_status": 200,
    "status": "unknown",
@@ -3056,7 +3062,7 @@
   },
   "Review Request Automation (NiceJob archetype)": {
    "url": "https://get.nicejob.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://get.nicejob.com/",
    "http_status": 200,
    "status": "unknown",
@@ -3096,7 +3102,7 @@
   },
   "SMS/WhatsApp Cart Recovery (Postscript archetype)": {
    "url": "https://postscript.io",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://postscript.io/",
    "http_status": 200,
    "status": "unknown",
@@ -3104,7 +3110,7 @@
   },
   "SVJ Building Management Portal (Buildium archetype)": {
    "url": "https://www.buildium.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.buildium.com/",
    "http_status": 200,
    "status": "unknown",
@@ -3169,7 +3175,7 @@
   },
   "ScreenshotOne": {
    "url": "https://screenshotone.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://screenshotone.com/",
    "http_status": 200,
    "status": "unknown",
@@ -3217,7 +3223,7 @@
   },
   "Senja": {
    "url": "https://senja.io",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://senja.io/",
    "http_status": 200,
    "status": "unknown",
@@ -3233,7 +3239,7 @@
   },
   "Shift Scheduling for Hourly Staff (Deputy archetype)": {
    "url": "https://www.deputy.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.deputy.com/",
    "http_status": 200,
    "status": "unknown",
@@ -3249,7 +3255,7 @@
   },
   "Shipping Label & Carrier Hub (ShipStation archetype)": {
    "url": "https://www.shipstation.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.shipstation.com/",
    "http_status": 200,
    "status": "unknown",
@@ -3283,7 +3289,7 @@
   },
   "Short-term Rental Host Automation (Hospitable archetype)": {
    "url": "https://hospitable.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://hospitable.com/",
    "http_status": 200,
    "status": "unknown",
@@ -3307,7 +3313,7 @@
   },
   "Sklik + Google Ads Client Reporting (AgencyAnalytics archetype)": {
    "url": "https://agencyanalytics.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://agencyanalytics.com/",
    "http_status": 200,
    "status": "unknown",
@@ -3486,7 +3492,7 @@
   },
   "Subscriptions for E-shops (Recharge archetype)": {
    "url": "https://rechargepayments.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://getrecharge.com/",
    "http_status": 200,
    "status": "unknown",
@@ -3518,7 +3524,7 @@
   },
   "Supplier Risk & VAT-Reliability Monitoring (Creditsafe archetype)": {
    "url": "https://www.creditsafe.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.creditsafe.com/cs/en.html",
    "http_status": 200,
    "status": "unknown",
@@ -3591,7 +3597,7 @@
   },
   "Tally": {
    "url": "https://tally.so",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://tally.so/",
    "http_status": 200,
    "status": "unknown",
@@ -3764,15 +3770,17 @@
   },
   "Tradesperson Quote Marketplace (Checkatrade archetype)": {
    "url": "https://www.checkatrade.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://www.checkatrade.com/",
-   "http_status": 200,
+   "http_status": 403,
    "status": "unknown",
-   "evidence": []
+   "evidence": [],
+   "error": "http_403",
+   "wayback_error": "wayback_skipped_after_429"
   },
   "Transistor.fm": {
    "url": "https://transistor.fm",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://transistor.fm/",
    "http_status": 200,
    "status": "unknown",
@@ -3859,7 +3867,7 @@
   },
   "Typefully": {
    "url": "https://typefully.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://typefully.com/",
    "http_status": 200,
    "status": "unknown",
@@ -3997,7 +4005,7 @@
   },
   "Web Accessibility Checker (EAA compliance)": {
    "url": "https://www.silktide.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://silktide.com",
    "http_status": 200,
    "status": "unknown",
@@ -4038,7 +4046,7 @@
   },
   "Wedding Website & RSVP (Joy archetype)": {
    "url": "https://withjoy.com",
-   "checked_at": "2026-09-26",
+   "checked_at": "2026-09-28",
    "final_url": "https://withjoy.com/",
    "http_status": 200,
    "status": "unknown",

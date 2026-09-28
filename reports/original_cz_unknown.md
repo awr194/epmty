@@ -4,14 +4,14 @@ No Czech signal on the original's own site (or the site could not be read).
 This is NOT proof of absence - check by hand and record the result in
 `data/cz_enrichment.json` as `original_available_in_cz` (`yes` / `no`) with a source.
 
-Total: **470** of 500 (site not readable: 40, no product URL: 4, read but no signal: 426)
+Total: **470** of 500 (site not readable: 42, no product URL: 4, read but no signal: 424)
 
 ## Site not readable (blocked, rate-limited, no URL) - check these by hand first
 
 | Model | URL | Reason |
 |---|---|---|
-| AI Grant & Subsidy Finder (Instrumentl archetype) | https://www.instrumentl.com | http_403 |
-| Accountant-Client Document Portal (TaxDome archetype) | https://taxdome.com | http_403 |
+| AI Grant & Subsidy Finder (Instrumentl archetype) | https://www.instrumentl.com | http_403, archive: wayback_skipped_after_429 |
+| Accountant-Client Document Portal (TaxDome archetype) | https://taxdome.com | http_403, archive: wayback_http_429 |
 | Airbnb Cleaning Turnover Marketplace (Turno archetype) | https://turno.com | http_403 |
 | Ankorstore | https://www.ankorstore.com | robots_disallow |
 | Beekeeper | https://www.beekeeper.io | http_525 |
@@ -24,9 +24,10 @@ Total: **470** of 500 (site not readable: 40, no product URL: 4, read but no sig
 | Etsy | https://www.etsy.com | http_403 |
 | Flowwow | https://flowwow.com | http_403 |
 | Foxford (Фоксфорд) | https://foxford.ru | http_401 |
+| Gift Cards & Vouchers for E-shops (Rise.ai archetype) | https://rise.ai | http_403, archive: wayback_skipped_after_429 |
 | Huntflow (Хантфлоу) | https://huntflow.ru | robots_disallow |
 | Jooble | https://jooble.org | http_403 |
-| Judge.me | https://judge.me | http_403 |
+| Judge.me | https://judge.me | http_403, archive: wayback_http_429 |
 | Kickstarter | https://www.kickstarter.com | http_403 |
 | Kumon | https://www.kumon.com | http_403 |
 | Lenskart | https://www.lenskart.com | http_403 |
@@ -40,13 +41,14 @@ Total: **470** of 500 (site not readable: 40, no product URL: 4, read but no sig
 | Ohouse | https://ohou.se | robots_disallow |
 | Online Table Reservations (OpenTable archetype) | https://www.opentable.com | robots_disallow |
 | PandaDoc | https://www.pandadoc.com | http_429 |
-| Payroll for Micro-businesses (Gusto archetype) | https://gusto.com | http_403 |
+| Payroll for Micro-businesses (Gusto archetype) | https://gusto.com | http_403, archive: wayback_skipped_after_429 |
 | Pipefy | https://www.pipefy.com | http_403 |
 | QR Table Ordering & Pay (Sunday/Mr Yum archetype) | https://sundayapp.com | robots_disallow |
 | ShopBack | https://www.shopback.com | http_403 |
 | Slice | https://slicelife.com | http_403 |
 | Studocu | https://www.studocu.com | http_403 |
 | Surplus Food Marketplace (Too Good To Go archetype) | https://www.toogoodtogo.com | http_429 |
+| Tradesperson Quote Marketplace (Checkatrade archetype) | https://www.checkatrade.com | http_403, archive: wayback_skipped_after_429 |
 | Trustpilot | https://www.trustpilot.com | robots_disallow |
 | Vivino | https://www.vivino.com | http_403 |
 | Zocdoc | https://www.zocdoc.com | http_403 |
@@ -199,7 +201,6 @@ for sites that block bots - the latest Wayback Machine copy of the home page)
 | GDPR & Legal Docs Generator (iubenda archetype) | https://www.iubenda.com |
 | GetCourse | https://getcourse.ru |
 | GetSmarter | https://www.getsmarter.com |
-| Gift Cards & Vouchers for E-shops (Rise.ai archetype) | https://rise.ai |
 | Glofox | https://www.glofox.com |
 | GoCardless | https://gocardless.com |
 | Going (Scott's Cheap Flights) | https://www.going.com |
@@ -430,7 +431,6 @@ for sites that block bots - the latest Wayback Machine copy of the home page)
 | Timeleft | https://timeleft.com |
 | Toast | https://pos.toasttab.com |
 | Toptal | https://www.toptal.com |
-| Tradesperson Quote Marketplace (Checkatrade archetype) | https://www.checkatrade.com |
 | Transistor.fm | https://transistor.fm |
 | Travelline | https://www.travelline.ru |
 | Treatwell | https://www.treatwell.co.uk |
