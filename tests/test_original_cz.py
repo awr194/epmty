@@ -361,3 +361,25 @@ def test_recheck_resumes_but_retries_unread_archives():
     assert not mod.needs_recheck({"status": "unknown", "checked_at": today, "error": "http_403",
                                   "wayback_error": "no_snapshot"}, today)
     assert not mod.needs_recheck({"status": "unknown", "checked_at": today, "error": "robots_disallow"}, today)
+
+
+def test_wayback_fuse_after_repeated_429(monkeypatch):
+    mod = _load_script()
+    calls = []
+
+    def fake_get(url, params=None, **kw):
+        if url.endswith("robots.txt"):
+            return _Resp(url, "")
+        if url in (mod.WAYBACK_AVAILABLE, mod.WAYBACK_CDX):
+            calls.append(url)
+            return _Resp(url, "", 429)
+        return _Resp(url, "", 403)
+
+    monkeypatch.setattr(mod.requests, "get", fake_get)
+    monkeypatch.setattr(mod.time, "sleep", lambda s: None)
+    for site in ("https://a.com", "https://b.com"):
+        assert mod.check(site, {})["wayback_error"] == "wayback_http_429"
+    n = len(calls)
+    third = mod.check("https://c.com", {})
+    assert third["wayback_error"] == "wayback_skipped_after_429" and len(calls) == n  # no more archive calls
+    assert mod.needs_recheck(third | {"checked_at": "2026-09-28"}, "2026-09-28")

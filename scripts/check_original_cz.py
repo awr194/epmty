@@ -147,6 +147,12 @@ class WaybackError(Exception):
     pass
 
 
+# Fuse: archive.org blocks an IP for a long while after a burst. After this many 429s in a row the rest of
+# the run skips the archive (the sites keep wayback_error=..._429 and are retried by a later run).
+WAYBACK_MAX_429 = 2
+_wayback_429_streak = 0
+
+
 def latest_snapshot(url: str) -> str | None:
     """Timestamp (YYYYMMDDhhmmss) of the latest archived copy that was a 200 page, or None if there is none.
     Tries the 'available' API, then the CDX index (the first is often empty or slow)."""
@@ -161,8 +167,12 @@ def latest_snapshot(url: str) -> str | None:
 def check_wayback(url: str) -> dict:
     """Latest Wayback Machine copy of the page, checked with the same rules. The evidence is dated by the
     snapshot (archived_at), not by today. Without a usable copy: {"wayback_error": reason}."""
+    global _wayback_429_streak
+    if _wayback_429_streak >= WAYBACK_MAX_429:
+        return {"wayback_error": "wayback_skipped_after_429"}
     try:
         ts = latest_snapshot(url)
+        _wayback_429_streak = 0
         if not ts:
             return {"wayback_error": "no_snapshot"}
         time.sleep(WAYBACK_PAUSE_S)
@@ -171,6 +181,7 @@ def check_wayback(url: str) -> dict:
         if r.status_code != 200:
             return {"wayback_error": f"wayback_http_{r.status_code}"}
     except WaybackError as e:
+        _wayback_429_streak = _wayback_429_streak + 1 if str(e).endswith("429") else 0
         return {"wayback_error": str(e)}
     except (requests.RequestException, ValueError, KeyError, IndexError) as e:
         return {"wayback_error": type(e).__name__}
@@ -284,7 +295,7 @@ def needs_recheck(r: dict, today: str) -> bool:
     if r.get("checked_at") != today:
         return True
     return r.get("error") in ("http_401", "http_403") and (
-        "wayback_error" not in r or str(r["wayback_error"]).endswith("429"))
+        "wayback_error" not in r or "429" in str(r["wayback_error"]))
 
 
 def main() -> None:
